@@ -1,0 +1,182 @@
+[
+  {
+    "id": "taxes-q1",
+    "topic": "taxes",
+    "question": "What are taxes?",
+    "options": [
+      "Fines you pay for breaking the law",
+      "Money people and businesses pay to the government for public services",
+      "Tips you leave at restaurants",
+      "Fees for using the internet"
+    ],
+    "correctIndex": 1,
+    "explanation": "Taxes are money that citizens and businesses pay to the government. The government uses this money to fund public services like roads, schools, firefighters, and hospitals that everyone benefits from.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "taxes-q2",
+    "topic": "taxes",
+    "question": "Which of these is paid for by your tax dollars?",
+    "options": [
+      "Your Netflix subscription",
+      "Your family's groceries",
+      "Public schools and roads",
+      "Video games at the store"
+    ],
+    "correctIndex": 2,
+    "explanation": "Public schools, roads, firefighters, police, parks, and many other public services are all funded by taxes. These are things everyone in the community uses and benefits from!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "taxes-q3",
+    "topic": "taxes",
+    "question": "What is income tax?",
+    "options": [
+      "A tax on things you buy at the store",
+      "A tax on the money you earn from your job",
+      "A tax on your house",
+      "A tax on your savings account"
+    ],
+    "correctIndex": 1,
+    "explanation": "Income tax is a tax on the money you earn from working (or other sources like investments). It's usually the biggest tax most people pay, and it's taken directly from your paycheck.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "taxes-q4",
+    "topic": "taxes",
+    "question": "You buy a skateboard priced at $50 in a state with 8% sales tax. How much do you actually pay?",
+    "options": [
+      "$50.00",
+      "$54.00",
+      "$58.00",
+      "$40.00"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sales tax of 8% on $50 = $50 x 0.08 = $4.00. So you pay $50 + $4 = $54 total. This is why the price at the register is often more than the price on the tag!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q5",
+    "topic": "taxes",
+    "question": "What does a 'progressive tax system' mean?",
+    "options": [
+      "Everyone pays the exact same amount of tax",
+      "People who earn more pay a higher percentage of their income",
+      "Taxes increase by 1% every year automatically",
+      "Only people over 30 pay taxes"
+    ],
+    "correctIndex": 1,
+    "explanation": "In a progressive tax system, people who earn more money pay a higher percentage in taxes. This is designed to be fair — someone earning $500,000 can afford to contribute more than someone earning $30,000.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q6",
+    "topic": "taxes",
+    "question": "What is a W-2 form?",
+    "options": [
+      "A permission slip for a field trip",
+      "A document showing how much you earned and how much tax was withheld",
+      "A form to open a bank account",
+      "An application for a credit card"
+    ],
+    "correctIndex": 1,
+    "explanation": "A W-2 is a form your employer gives you at the beginning of each year. It shows exactly how much you earned last year and how much tax was already taken out of your paychecks.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q7",
+    "topic": "taxes",
+    "question": "When is the deadline to file your federal tax return in the U.S.?",
+    "options": [
+      "January 1st",
+      "April 15th",
+      "July 4th",
+      "December 31st"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tax Day is April 15th! That's when your federal tax return must be filed (or you need to request an extension). Mark your calendar — being late can mean penalties and fees!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "taxes-q8",
+    "topic": "taxes",
+    "question": "What is a tax deduction?",
+    "options": [
+      "Money the government takes as a penalty",
+      "An expense that reduces the amount of income you're taxed on",
+      "A bonus the government gives you for paying taxes",
+      "The total amount of tax you owe"
+    ],
+    "correctIndex": 1,
+    "explanation": "A tax deduction reduces your taxable income. If you earned $50,000 and have $5,000 in deductions, you only pay tax on $45,000. Deductions are a legal way to lower your tax bill!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q9",
+    "topic": "taxes",
+    "question": "Maria earned $40,000 this year but her paycheck showed $32,000 after taxes. What happened to the other $8,000?",
+    "options": [
+      "Her employer stole it",
+      "It went to taxes (income tax, Social Security, Medicare, etc.)",
+      "It was lost in a computer error",
+      "She donated it to charity"
+    ],
+    "correctIndex": 1,
+    "explanation": "The $8,000 difference was withheld for taxes — including federal and state income tax, Social Security, and Medicare. This is why your 'take home pay' is less than your salary!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q10",
+    "topic": "taxes",
+    "question": "What is a tax refund?",
+    "options": [
+      "A fine for not paying enough taxes",
+      "Money you get back if you paid MORE tax during the year than you actually owed",
+      "A loan from the government",
+      "The total amount of tax you pay each year"
+    ],
+    "correctIndex": 1,
+    "explanation": "If too much tax was taken out of your paychecks during the year, the government sends back the extra when you file your return. It's YOUR money being returned — not a gift!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "taxes-q11",
+    "topic": "taxes",
+    "question": "Which is BETTER for reducing your tax bill: a $1,000 tax deduction or a $1,000 tax credit?",
+    "options": [
+      "They're exactly the same thing",
+      "The $1,000 deduction is better",
+      "The $1,000 credit is better because it reduces your tax bill dollar-for-dollar",
+      "Neither — you can't reduce your tax bill"
+    ],
+    "correctIndex": 2,
+    "explanation": "A tax credit is better! A $1,000 credit directly reduces your tax bill by $1,000. A $1,000 deduction only reduces your taxable income by $1,000, which might save you $200-$370 depending on your tax bracket.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q12",
+    "topic": "taxes",
+    "question": "Your friend starts a lemonade stand and earns $500 over the summer. They say 'I don't need to worry about taxes because I'm a kid.' Are they right?",
+    "options": [
+      "Yes — kids never pay taxes",
+      "Yes — you only pay taxes once you turn 18",
+      "No — technically anyone who earns income may owe taxes, regardless of age",
+      "No — but only if they earn more than $10,000"
+    ],
+    "correctIndex": 2,
+    "explanation": "Surprise! There's no minimum age for paying taxes. If you earn income, you may owe taxes — even as a kid! However, most kids earn too little to actually owe anything. The standard deduction ($13,850 in 2023) means you'd need to earn more than that to owe federal income tax.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  }
+]

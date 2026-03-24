@@ -1,0 +1,182 @@
+[
+  {
+    "id": "credit-q1",
+    "topic": "credit",
+    "question": "What is credit?",
+    "options": [
+      "Free money from the government",
+      "An agreement to receive money now and pay it back later",
+      "A gift from your bank",
+      "Money you find on the street"
+    ],
+    "correctIndex": 1,
+    "explanation": "Credit is an agreement where a lender gives you money now, and you promise to pay it back later — usually with extra money called interest. It's not free money!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "credit-q2",
+    "topic": "credit",
+    "question": "What is the range of credit scores?",
+    "options": [
+      "0 to 100",
+      "100 to 500",
+      "300 to 850",
+      "1 to 1000"
+    ],
+    "correctIndex": 2,
+    "explanation": "Credit scores range from 300 (very poor) to 850 (excellent). Think of it like a grade — the higher, the better! Most people start around 650.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "credit-q3",
+    "topic": "credit",
+    "question": "Which factor has the BIGGEST impact on your credit score?",
+    "options": [
+      "How many credit cards you have",
+      "Your age",
+      "Payment history (paying on time)",
+      "How much money is in your savings account"
+    ],
+    "correctIndex": 2,
+    "explanation": "Payment history makes up 35% of your credit score — the biggest chunk! Paying your bills on time, every time, is the #1 thing you can do for a good credit score.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "credit-q4",
+    "topic": "credit",
+    "question": "Sarah has a credit card with a $1,000 limit. What's the MOST she should owe at any time to keep a healthy credit score?",
+    "options": [
+      "$1,000 — use all of it!",
+      "$800 — almost everything",
+      "$500 — exactly half",
+      "$300 — about 30%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Experts recommend keeping your credit utilization below 30%. With a $1,000 limit, that means owing no more than $300. This shows lenders you're not desperate for money!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q5",
+    "topic": "credit",
+    "question": "Jake borrowed $500 at 12% annual interest. How much interest will he owe after ONE full year?",
+    "options": [
+      "$12",
+      "$60",
+      "$120",
+      "$500"
+    ],
+    "correctIndex": 1,
+    "explanation": "Interest = amount borrowed x interest rate. So $500 x 0.12 = $60. Jake will owe $560 total after one year. The $60 is the cost of borrowing that money!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q6",
+    "topic": "credit",
+    "question": "Which type of credit lets you borrow, pay back, and borrow again up to a limit?",
+    "options": [
+      "A mortgage",
+      "A student loan",
+      "A credit card",
+      "A car loan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Credit cards are 'revolving credit' — you can use them, pay them off, and use them again up to your limit. Loans give you money once and you pay it back over time.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "credit-q7",
+    "topic": "credit",
+    "question": "What is a mortgage?",
+    "options": [
+      "A type of savings account",
+      "A loan specifically for buying a house",
+      "A monthly phone bill",
+      "A credit card for groceries"
+    ],
+    "correctIndex": 1,
+    "explanation": "A mortgage is a special long-term loan used to buy a house. It usually takes 15 to 30 years to pay back because houses are really expensive!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "credit-q8",
+    "topic": "credit",
+    "question": "Which action would HURT your credit score?",
+    "options": [
+      "Paying your bills on time every month",
+      "Keeping your credit card balance low",
+      "Having a long credit history",
+      "Missing a payment deadline"
+    ],
+    "correctIndex": 3,
+    "explanation": "Missing a payment is one of the worst things for your credit score! Payment history is the #1 factor (35% of your score). Always pay at least the minimum on time.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q9",
+    "topic": "credit",
+    "question": "Why is it bad to only make minimum payments on a credit card?",
+    "options": [
+      "The bank will close your account",
+      "Interest keeps adding up, so you pay much more over time",
+      "Your credit score drops to zero",
+      "It's actually the best strategy"
+    ],
+    "correctIndex": 1,
+    "explanation": "Making only minimum payments means interest piles up month after month. A $1,000 balance at 20% interest with minimum payments could take 8+ years to pay off and cost you over $800 in interest!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q10",
+    "topic": "credit",
+    "question": "Emma has a credit score of 750. What range does this fall in?",
+    "options": [
+      "Poor (300-579)",
+      "Fair (580-669)",
+      "Good (670-739)",
+      "Very Good (740-799)"
+    ],
+    "correctIndex": 3,
+    "explanation": "A score of 750 falls in the 'Very Good' range (740-799). Emma would qualify for great interest rates on loans. Nice job, Emma!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q11",
+    "topic": "credit",
+    "question": "Why might a landlord check your credit score before renting you an apartment?",
+    "options": [
+      "They want to know your favorite color",
+      "It's required by law to check credit for all renters",
+      "A good credit score shows you're likely to pay rent on time",
+      "They want to sell you a credit card"
+    ],
+    "correctIndex": 2,
+    "explanation": "Landlords check credit because a good score shows a history of paying bills on time. It tells them you're likely to pay rent reliably. Credit scores affect more than just borrowing!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q12",
+    "topic": "credit",
+    "question": "Two people want to buy the same $20,000 car with a loan. Alex has a 750 credit score and gets 4% interest. Jordan has a 580 credit score and gets 12% interest. Over 5 years, who pays MORE for the same car?",
+    "options": [
+      "Alex, because a higher credit score means higher costs",
+      "They pay the same amount since it's the same car",
+      "Jordan, because a lower credit score means a higher interest rate",
+      "Neither — the dealership sets one price for everyone"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jordan pays WAY more! At 12% interest, Jordan would pay about $6,700 in interest, while Alex at 4% pays only about $2,100. That's $4,600 MORE for the exact same car. Good credit saves you real money!",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  }
+]

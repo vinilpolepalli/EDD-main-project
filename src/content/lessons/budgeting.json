@@ -1,0 +1,157 @@
+[
+  {
+    "id": "budgeting-1",
+    "topic": "budgeting",
+    "title": "Why Budget?",
+    "order": 1,
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Your Money Needs a Plan",
+        "content": "Imagine you're playing a video game and you get 100 gold coins. You could spend them all on a cool sword, but then you can't afford health potions for the boss fight! A budget is a plan for your money that makes sure you have enough for everything you need — and still some left over for what you want."
+      },
+      {
+        "type": "definition",
+        "term": "Budget",
+        "definition": "A plan that shows how much money you have coming in (income) and how you'll divide it among things you need to pay for (expenses) and things you want to save for (goals).",
+        "content": "A budget isn't about saying 'no' to everything fun. It's about saying 'yes' to the things that matter most to you!"
+      },
+      {
+        "type": "flashcard",
+        "title": "Why Budgets Are Powerful",
+        "content": "Without a budget, money just... disappears. Studies show the average American can't cover a $400 emergency. That's because most people don't track where their money goes! With a budget, you: KNOW exactly where every dollar goes, AVOID running out of money before the month ends, SAVE for big goals (new phone, college, a car), FEEL less stressed about money, and BUILD wealth over time. Even millionaires use budgets!"
+      },
+      {
+        "type": "text",
+        "title": "Budgeting Is a Skill",
+        "content": "Like any skill — playing an instrument, a sport, or a video game — budgeting gets easier with practice. Your first budget won't be perfect, and that's totally okay! The important thing is to start. Even tracking your allowance or birthday money is a great way to begin. The earlier you learn, the better off you'll be. Many successful adults wish they had learned budgeting as a kid!"
+      }
+    ]
+  },
+  {
+    "id": "budgeting-2",
+    "topic": "budgeting",
+    "title": "Needs vs Wants",
+    "order": 2,
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Big Question",
+        "content": "Every time you spend money, ask yourself: 'Do I NEED this, or do I WANT this?' Needs are things you must have to survive and live safely. Wants are things that are nice to have but you could live without. The tricky part? Sometimes the line between needs and wants isn't as clear as you'd think!"
+      },
+      {
+        "type": "definition",
+        "term": "Need",
+        "definition": "Something essential for survival and basic well-being — like food, shelter, basic clothing, healthcare, and transportation to work or school.",
+        "content": "You NEED food, but you don't NEED a fancy restaurant meal. You NEED shoes, but you don't NEED the latest $200 sneakers. Knowing the difference is a budgeting superpower!"
+      },
+      {
+        "type": "flashcard",
+        "title": "Needs vs Wants: Quick Test",
+        "content": "NEEDS: Rent or mortgage, Groceries, Electricity and water, Basic clothing, Health insurance, Transportation to work. WANTS: Streaming subscriptions, New video games, Eating out at restaurants, Designer clothing, The latest phone upgrade, Concert tickets. TRICKY ONES: Internet (need for work/school, want for streaming), Phone (need for communication, want for the newest model), Car (need for some jobs, want if there's good public transit)."
+      },
+      {
+        "type": "text",
+        "title": "It's Not About Giving Up Wants",
+        "content": "Good budgeting doesn't mean never buying things you want! It means making sure your needs are covered FIRST, then enjoying your wants with whatever is left over. Think of it like eating dinner before dessert — you take care of the important stuff first, then treat yourself. A good budget has room for fun — it just makes sure the fun doesn't come at the cost of your essentials."
+      }
+    ]
+  },
+  {
+    "id": "budgeting-3",
+    "topic": "budgeting",
+    "title": "The 50/30/20 Rule",
+    "order": 3,
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "A Simple Framework",
+        "content": "Feeling overwhelmed by budgeting? There's a super simple rule that works great as a starting point: the 50/30/20 rule. Senator Elizabeth Warren made it famous in her book 'All Your Worth.' It splits your income into just three buckets. Easy to remember, easy to follow!"
+      },
+      {
+        "type": "flashcard",
+        "title": "The Magic Split",
+        "content": "Take your monthly income (after taxes) and split it: 50% for NEEDS — rent, groceries, utilities, insurance, minimum loan payments. This is the must-pay stuff. 30% for WANTS — eating out, entertainment, hobbies, shopping, subscriptions. This is the fun stuff! 20% for SAVINGS & DEBT — emergency fund, retirement savings, extra debt payments. This is the future-you stuff. Example: You earn $1,000/month. $500 goes to needs, $300 to wants, $200 to savings."
+      },
+      {
+        "type": "definition",
+        "term": "50/30/20 Rule",
+        "definition": "A budgeting guideline that says to spend 50% of your after-tax income on needs, 30% on wants, and save/invest 20%.",
+        "content": "This rule isn't perfect for everyone — if you live in an expensive city, needs might take 60%. But it's an amazing starting point that keeps things simple!"
+      },
+      {
+        "type": "text",
+        "title": "Make It Work for You",
+        "content": "The beauty of the 50/30/20 rule is that it's flexible. If you want to save up for something big faster (like a car), you could go 50/20/30 — cutting wants and boosting savings. If you're paying off debt, maybe 50/20/30 with extra going to debt payments. The point is to have a PLAN, not to be perfect. Even if your actual split is 55/28/17, that's way better than having no plan at all!"
+      }
+    ]
+  },
+  {
+    "id": "budgeting-4",
+    "topic": "budgeting",
+    "title": "Saving Strategies",
+    "order": 4,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Pay Yourself First",
+        "content": "Here's the number one saving tip from every financial expert: pay yourself first! This means before you spend money on ANYTHING else, move some money into savings. If you wait until the end of the month to save what's left over, there usually isn't anything left. But if you save first, you learn to live on what remains."
+      },
+      {
+        "type": "definition",
+        "term": "Emergency Fund",
+        "definition": "Money saved specifically for unexpected expenses — like a car repair, medical bill, or job loss. Experts recommend saving 3-6 months of living expenses.",
+        "content": "An emergency fund is your financial safety net. Without one, a single unexpected expense can spiral into debt. With one, surprises become manageable bumps instead of disasters."
+      },
+      {
+        "type": "flashcard",
+        "title": "The Magic of Compound Interest",
+        "content": "Here's why starting to save NOW (even small amounts) is so powerful: compound interest means you earn interest on your interest! Example: Save $100/month starting at age 15, earning 7% per year. By age 65, you'd have about $528,000! But if you wait until age 25 to start, you'd only have about $264,000 — HALF as much, just because you waited 10 years! That's the magic of compound interest and why starting early matters so much."
+      },
+      {
+        "type": "text",
+        "title": "Goal-Based Saving",
+        "content": "Saving is easier when you have a specific goal! Instead of just 'saving money,' try: 'I'm saving $300 for new headphones by December.' Break it down: that's $50/month for 6 months, or about $12.50/week. Suddenly it feels achievable! Write your goals down, track your progress, and celebrate when you reach them. Having multiple savings goals (short-term like a game, medium-term like a bike, long-term like college) keeps you motivated."
+      }
+    ]
+  },
+  {
+    "id": "budgeting-5",
+    "topic": "budgeting",
+    "title": "Smart Spending",
+    "order": 5,
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Spend Less Without Missing Out",
+        "content": "Smart spending isn't about being cheap — it's about getting the most value for your money. Would you rather pay $60 for a game on release day, or wait a month and get it for $40 on sale? Same game, same fun, but you just saved $20! Smart spenders get the same stuff for less money, leaving more for saving and other goals."
+      },
+      {
+        "type": "flashcard",
+        "title": "Smart Spending Power Moves",
+        "content": "COMPARISON SHOP: Check prices at multiple stores (or websites) before buying. THE 24-HOUR RULE: Want something? Wait 24 hours before buying. If you still want it tomorrow, go for it. This kills impulse buys! USE COUPONS AND DEALS: Apps, student discounts, and sales can save you 10-50%. BUY QUALITY: Sometimes a $40 item that lasts 3 years is better than a $15 item you replace every 6 months. AVOID 'SALES' TRAPS: 50% off something you don't need is still 100% wasted money!"
+      },
+      {
+        "type": "definition",
+        "term": "Impulse Buy",
+        "definition": "A purchase you make on the spot without planning for it, usually triggered by emotions, ads, or 'limited time' pressure.",
+        "content": "Stores and apps are DESIGNED to make you impulse buy — flashy displays, 'only 2 left!', countdown timers. Recognizing these tricks gives you power over your spending."
+      },
+      {
+        "type": "text",
+        "title": "The True Cost of Things",
+        "content": "Here's a mind-bending way to think about spending: convert prices into work hours. If you make $10/hour, a $50 video game costs 5 hours of your life working. Is it worth 5 hours of work? Maybe! But that $5 daily coffee costs 2.5 hours/week, or 130 hours/year — that's over three weeks of full-time work just for coffee! Thinking about purchases in terms of work-hours helps you decide what's truly worth it to YOU. Everyone's answer will be different, and that's okay."
+      }
+    ]
+  }
+]

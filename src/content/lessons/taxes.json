@@ -1,0 +1,158 @@
+[
+  {
+    "id": "taxes-1",
+    "topic": "taxes",
+    "title": "What Are Taxes?",
+    "order": 1,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Chipping In Together",
+        "content": "Imagine you and your friends want to throw an awesome pizza party, but nobody can afford it alone. So everyone chips in $5, and together you have enough to buy pizza, drinks, and decorations. Taxes work the same way! Everyone pays a small share of their money to the government, and the government uses that pool of money to pay for things everyone uses — like roads, schools, firefighters, and parks."
+      },
+      {
+        "type": "definition",
+        "term": "Tax",
+        "definition": "Money that people and businesses are required to pay to the government. The government uses this money to provide public services that benefit everyone.",
+        "content": "Taxes aren't optional — they're required by law. In the United States, the Internal Revenue Service (IRS) is the government agency that collects taxes."
+      },
+      {
+        "type": "flashcard",
+        "title": "Why Do We Need Taxes?",
+        "content": "Without taxes, there would be no public schools (everyone would need private school!), no fire departments (your house is on fire? Good luck!), no police, no public roads (every road would be a toll road!), no military for national defense, no public parks or libraries, and no social safety nets for people who need help. Taxes make modern society possible!"
+      },
+      {
+        "type": "text",
+        "title": "A Very Old Idea",
+        "content": "Taxes have been around for thousands of years! Ancient Egyptians taxed cooking oil, and ancient Romans taxed everything from land to slaves. The American Revolution even started partly because of taxes — the colonists were angry about paying taxes to Britain without having a say in how the money was spent. 'No taxation without representation' was their battle cry! Today, American citizens vote for representatives who decide how tax money is spent."
+      }
+    ]
+  },
+  {
+    "id": "taxes-2",
+    "topic": "taxes",
+    "title": "Types of Taxes",
+    "order": 2,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Taxes Come in Many Flavors",
+        "content": "There isn't just one kind of tax — there are several! Different taxes apply to different things: earning money, buying stuff, owning property, and more. Understanding the different types helps you understand where your money goes."
+      },
+      {
+        "type": "definition",
+        "term": "Income Tax",
+        "definition": "A tax on the money you earn from your job (or other sources like investments). The more you earn, the higher percentage you usually pay.",
+        "content": "Income tax is the biggest tax most people pay. It's taken directly out of your paycheck before you even see the money — that's why your paycheck amount is less than your salary!"
+      },
+      {
+        "type": "flashcard",
+        "title": "The Tax Family",
+        "content": "INCOME TAX: Paid on money you earn. Federal + state (most states). SALES TAX: Added when you buy things at stores. Usually 4-10% depending on your state. PROPERTY TAX: Paid by homeowners based on their home's value. Pays for local schools and services. PAYROLL TAX: Taken from your paycheck for Social Security and Medicare (programs that help older and disabled Americans). CAPITAL GAINS TAX: Paid when you sell an investment for a profit."
+      },
+      {
+        "type": "text",
+        "title": "Tax Rates Aren't the Same for Everyone",
+        "content": "The U.S. uses a progressive tax system for income tax. This means people who earn more money pay a higher percentage. It's like a video game with difficulty levels: if you're earning at Level 1 ($0-$11,000), you pay 10%. At Level 2 ($11,001-$44,725), the extra money is taxed at 12%. And so on, up to 37% for the highest earners. This system is designed to be fair — people with more money can afford to contribute more."
+      }
+    ]
+  },
+  {
+    "id": "taxes-3",
+    "topic": "taxes",
+    "title": "Where Do Taxes Go?",
+    "order": 3,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Follow the Money",
+        "content": "Ever wonder what happens to all that tax money? The government has a budget just like a family does. The federal government spends about $6 trillion every year! That's $6,000,000,000,000 — more zeros than a video game high score. Let's see where it all goes."
+      },
+      {
+        "type": "flashcard",
+        "title": "The Big Spending Categories",
+        "content": "Here's roughly how the federal government spends your tax dollars: SOCIAL SECURITY (21%) — Monthly payments to retired people and disabled Americans. HEALTH CARE (25%) — Medicare and Medicaid programs that help pay for medical care. DEFENSE (13%) — The military, keeping the country safe. SAFETY NET PROGRAMS (8%) — Help for families in need, food assistance, housing. INTEREST ON DEBT (10%) — Yes, the government borrows money too and has to pay interest! EVERYTHING ELSE (23%) — Education, transportation, science, NASA, parks, and more."
+      },
+      {
+        "type": "text",
+        "title": "State and Local Taxes",
+        "content": "It's not just the federal government that collects taxes. Your state and city have their own taxes and their own budgets. State taxes typically pay for highways, state universities, state police, and state parks. Local property taxes mostly fund your school district — that's right, the school you go to is largely paid for by taxes on local homes and businesses!"
+      },
+      {
+        "type": "definition",
+        "term": "Government Budget",
+        "definition": "A plan for how the government will spend the tax money it collects. Just like a family budget, it lists where every dollar goes.",
+        "content": "The President proposes a budget each year, and Congress (the Senate and House of Representatives) debates and votes on it. Citizens can influence the budget through voting!"
+      }
+    ]
+  },
+  {
+    "id": "taxes-4",
+    "topic": "taxes",
+    "title": "Tax Filing Basics",
+    "order": 4,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Tax Day: April 15th",
+        "content": "Every year by April 15th, most Americans have to file a tax return — a report to the government showing how much money they made and how much tax they owe. It sounds scary, but it's really just math! And the cool part? Sometimes you find out the government owes YOU money back (called a tax refund)."
+      },
+      {
+        "type": "definition",
+        "term": "W-2 Form",
+        "definition": "A form your employer gives you in January that shows exactly how much money you earned and how much tax was already taken out of your paychecks during the year.",
+        "content": "Your employer sends a copy of your W-2 to the IRS too, so the government already knows what you earned. Filing your tax return is your chance to make sure the math is right!"
+      },
+      {
+        "type": "flashcard",
+        "title": "Filing Step by Step",
+        "content": "Step 1: Gather your documents (W-2 from your job, any other income records). Step 2: Choose your filing method (tax software like TurboTax, a tax professional, or fill out the forms yourself). Step 3: Report your income (how much you earned). Step 4: Claim deductions and credits (ways to lower what you owe — more on this next!). Step 5: Calculate what you owe or what you're owed. Step 6: Submit by April 15th!"
+      },
+      {
+        "type": "definition",
+        "term": "Tax Deduction",
+        "definition": "An expense that reduces the amount of income you're taxed on. For example, if you earned $50,000 and have $5,000 in deductions, you only pay tax on $45,000.",
+        "content": "Common deductions include student loan interest, charitable donations, and some medical expenses. Deductions are one reason why understanding taxes can save you money!"
+      }
+    ]
+  },
+  {
+    "id": "taxes-5",
+    "topic": "taxes",
+    "title": "Tax Tips for the Future",
+    "order": 5,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Smart Tax Strategies",
+        "content": "Here's a secret: wealthy people don't necessarily pay the highest tax rates. Why? Because they understand the tax code and use legal strategies to keep more of their money. You can learn these strategies too! Being smart about taxes is one of the most valuable financial skills you can develop."
+      },
+      {
+        "type": "flashcard",
+        "title": "Legal Ways to Save on Taxes",
+        "content": "RETIREMENT ACCOUNTS: Money put into a 401(k) or IRA isn't taxed until you withdraw it (in retirement). This can save you thousands! TAX CREDITS: Even better than deductions — credits directly reduce your tax bill dollar-for-dollar. EDUCATION CREDITS: Going to college? There are tax credits for that! CHARITABLE GIVING: Donating to charity can lower your taxable income. HEALTH SAVINGS ACCOUNTS: Money saved for medical expenses can be tax-free. The key: these are all 100% legal! The tax code WANTS you to save for retirement, give to charity, and invest in education."
+      },
+      {
+        "type": "definition",
+        "term": "Tax Credit",
+        "definition": "A dollar-for-dollar reduction in the tax you owe. A $1,000 tax credit saves you exactly $1,000 — even better than a deduction!",
+        "content": "If you owe $5,000 in taxes and have a $1,000 tax credit, you only pay $4,000. Some credits are even refundable, meaning you get money back even if you owe nothing!"
+      },
+      {
+        "type": "text",
+        "title": "Start Thinking About Taxes Now",
+        "content": "Even though you probably won't file your own taxes for a few years, understanding how they work gives you a huge advantage. When you get your first job, you'll understand why your paycheck is less than your hourly rate times your hours. When you start saving for retirement, you'll know to use tax-advantaged accounts. And when tax day comes, you won't be stressed — you'll be prepared! Remember: paying taxes is part of being a responsible citizen. The goal isn't to avoid taxes — it's to understand them and use legal strategies wisely."
+      }
+    ]
+  }
+]

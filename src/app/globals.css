@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --color-background: #FFFBF5;
+  --color-foreground: #1C1917;
+  --color-muted: #F5F0EB;
+  --color-muted-foreground: #78716C;
+  --color-border: #E7E0D9;
+
+  --color-primary: #0D9488;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #F0FDFA;
+  --color-secondary-foreground: #0D9488;
+
+  --color-accent: #F59E0B;
+  --color-accent-foreground: #FFFFFF;
+
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-success: #22C55E;
+  --color-success-foreground: #FFFFFF;
+
+  --color-learn: #22C55E;
+  --color-learn-light: #DCFCE7;
+  --color-simulator: #A855F7;
+  --color-simulator-light: #F3E8FF;
+  --color-arcade: #F59E0B;
+  --color-arcade-light: #FEF3C7;
+
+  --color-xp: #EC4899;
+  --color-xp-light: #FCE7F3;
+
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1C1917;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}

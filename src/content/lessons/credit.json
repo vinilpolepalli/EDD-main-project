@@ -1,0 +1,158 @@
+[
+  {
+    "id": "credit-1",
+    "topic": "credit",
+    "title": "What Is Credit?",
+    "order": 1,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Borrowing and Lending",
+        "content": "Have you ever borrowed a book from a friend and promised to return it? Credit works the same way, but with money! When you use credit, someone (usually a bank) lends you money, and you promise to pay it back later. The key difference? You usually have to pay back MORE than you borrowed because of something called interest."
+      },
+      {
+        "type": "definition",
+        "term": "Credit",
+        "definition": "An agreement where you receive money or goods now and promise to pay for them later.",
+        "content": "Credit is like a trust agreement. A lender trusts you enough to give you money now because they believe you'll pay it back."
+      },
+      {
+        "type": "flashcard",
+        "title": "Why Credit Exists",
+        "content": "Imagine you want to buy a bicycle that costs $200, but you only have $50 saved. Without credit, you'd have to wait months to save up. With credit, you could buy the bike now and pay the lender back a little bit each month. The lender charges interest (extra money) for letting you borrow — that's how they make money."
+      },
+      {
+        "type": "text",
+        "title": "Real-World Credit",
+        "content": "Adults use credit all the time! When someone buys a house, they usually borrow money from a bank (called a mortgage) and spend 15-30 years paying it back. When someone swipes a credit card at the store, they're borrowing money from the credit card company. The important thing is to only borrow what you can afford to pay back!"
+      }
+    ]
+  },
+  {
+    "id": "credit-2",
+    "topic": "credit",
+    "title": "Credit Scores Explained",
+    "order": 2,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Your Financial Report Card",
+        "content": "Just like you get grades in school, adults get a \"grade\" for how well they handle borrowed money. This grade is called a credit score, and it's a number between 300 and 850. The higher your score, the more lenders trust you. Think of it like a video game reputation stat — the more responsible you are, the higher your score!"
+      },
+      {
+        "type": "definition",
+        "term": "Credit Score",
+        "definition": "A three-digit number (300-850) that shows how trustworthy you are with borrowed money. Higher is better!",
+        "content": "Banks and lenders check your credit score before deciding whether to lend you money. A high score means you'll get better deals."
+      },
+      {
+        "type": "flashcard",
+        "title": "What Affects Your Score?",
+        "content": "Five things affect your credit score: (1) Payment History (35%) — Do you pay on time? This is the BIGGEST factor! (2) How Much You Owe (30%) — Are you maxing out your credit? (3) How Long You've Had Credit (15%) — Longer history is better. (4) New Credit (10%) — Opening lots of new accounts at once looks risky. (5) Mix of Credit Types (10%) — Having different types shows you can handle them."
+      },
+      {
+        "type": "text",
+        "title": "Score Ranges",
+        "content": "Here's what the numbers mean: 300-579 is Poor (very hard to borrow money), 580-669 is Fair (some lenders will work with you), 670-739 is Good (most lenders will approve you), 740-799 is Very Good (you get great interest rates), and 800-850 is Excellent (the best deals available!). Most people start around 650-700 when they first build credit."
+      }
+    ]
+  },
+  {
+    "id": "credit-3",
+    "topic": "credit",
+    "title": "Types of Credit",
+    "order": 3,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Not All Credit Is the Same",
+        "content": "There are different ways to borrow money, and each type works a little differently. The three main types are credit cards, loans, and mortgages. Choosing the right type of credit for what you need is an important financial skill!"
+      },
+      {
+        "type": "definition",
+        "term": "Credit Card",
+        "definition": "A card that lets you borrow money for purchases up to a certain limit. You must pay it back each month or you'll be charged interest.",
+        "content": "Credit cards are revolving credit — you can borrow, pay back, and borrow again up to your limit. They're convenient but can be dangerous if you don't pay the full balance each month."
+      },
+      {
+        "type": "flashcard",
+        "title": "Loans vs. Credit Cards",
+        "content": "A LOAN gives you a big chunk of money all at once, and you pay it back in fixed monthly payments over a set time period. For example, a car loan might be $15,000 paid back over 5 years. A CREDIT CARD lets you borrow small amounts over and over. The key difference: loans have a fixed end date, but credit card debt can last forever if you only make minimum payments!"
+      },
+      {
+        "type": "definition",
+        "term": "Mortgage",
+        "definition": "A special long-term loan used specifically to buy a house. It usually takes 15 to 30 years to pay back.",
+        "content": "Mortgages are the biggest loans most people ever take out. Because houses are so expensive, banks spread the payments over many years to make them affordable."
+      }
+    ]
+  },
+  {
+    "id": "credit-4",
+    "topic": "credit",
+    "title": "Interest Rates",
+    "order": 4,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Cost of Borrowing",
+        "content": "When you borrow money, the lender charges you a fee for the privilege. This fee is called interest, and it's calculated as a percentage of what you owe. If you borrow $100 at 10% interest per year, you'd owe $110 after one year. That extra $10 is the lender's profit for trusting you with their money."
+      },
+      {
+        "type": "definition",
+        "term": "Interest Rate",
+        "definition": "The percentage charged on borrowed money, usually calculated yearly. It's the 'price' of borrowing.",
+        "content": "Lower interest rates save you money. A 5% rate on $1,000 costs $50/year, while a 20% rate costs $200/year. That's why your credit score matters — better scores get lower rates!"
+      },
+      {
+        "type": "flashcard",
+        "title": "The Snowball Effect",
+        "content": "Here's a scary math fact: if you have $1,000 on a credit card at 20% interest and only make minimum payments, it could take over 8 YEARS to pay off, and you'd pay more than $800 in interest alone! That means the $1,000 worth of stuff actually cost you $1,800. This is why paying off credit cards quickly is so important — interest piles up fast!"
+      },
+      {
+        "type": "text",
+        "title": "Interest Can Work FOR You Too",
+        "content": "Here's the good news: interest isn't always bad! When you put money in a savings account, the BANK pays YOU interest for keeping your money there. The same math that makes credit card debt grow can make your savings grow. This is called compound interest, and Albert Einstein supposedly called it the 'eighth wonder of the world.' Start saving early and let interest work in your favor!"
+      }
+    ]
+  },
+  {
+    "id": "credit-5",
+    "topic": "credit",
+    "title": "Building Good Credit",
+    "order": 5,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Start Early, Start Smart",
+        "content": "Building good credit is like leveling up a character in a video game — it takes time and consistent effort, but the rewards are worth it. People with good credit scores save thousands of dollars over their lifetime because they get lower interest rates on everything from car loans to mortgages."
+      },
+      {
+        "type": "flashcard",
+        "title": "The Golden Rules of Credit",
+        "content": "Rule 1: ALWAYS pay on time. Set reminders or automatic payments. Late payments are the #1 credit score killer. Rule 2: Don't use more than 30% of your credit limit. If your limit is $1,000, try to keep your balance under $300. Rule 3: Don't close old accounts. Length of credit history matters. Rule 4: Don't apply for lots of credit at once. Each application temporarily lowers your score."
+      },
+      {
+        "type": "definition",
+        "term": "Credit Utilization",
+        "definition": "The percentage of your available credit that you're actually using. Keeping it under 30% is ideal for a healthy credit score.",
+        "content": "If you have a credit card with a $500 limit, try to never owe more than $150 at any time. This shows lenders you're not desperate for money."
+      },
+      {
+        "type": "text",
+        "title": "Your Future Self Will Thank You",
+        "content": "Good credit unlocks so many doors: renting an apartment (landlords check credit), getting a cell phone plan, buying a car, and eventually buying a house. Some employers even check credit scores when hiring! The habits you build now — being responsible with money, paying what you owe, and not overspending — will set you up for financial success as an adult."
+      }
+    ]
+  }
+]
