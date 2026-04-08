@@ -10,14 +10,14 @@
       "Money you find on the street"
     ],
     "correctIndex": 1,
-    "explanation": "Credit is an agreement where a lender gives you money now, and you promise to pay it back later — usually with extra money called interest. It's not free money!",
+    "explanation": "Credit is an agreement where a lender gives you money now, and you promise to pay it back later — usually with extra money called interest. It's not free money or a gift! The interest is how the lender profits from trusting you with their money.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "beginner"
   },
   {
     "id": "credit-q2",
     "topic": "credit",
-    "question": "What is the range of credit scores?",
+    "question": "What is the range of FICO credit scores?",
     "options": [
       "0 to 100",
       "100 to 500",
@@ -25,7 +25,7 @@
       "1 to 1000"
     ],
     "correctIndex": 2,
-    "explanation": "Credit scores range from 300 (very poor) to 850 (excellent). Think of it like a grade — the higher, the better! Most people start around 650.",
+    "explanation": "FICO credit scores range from 300 (very poor) to 850 (exceptional). The score is used by 90% of top lenders to decide whether to approve loans and what interest rate to charge. Most people start around 650 when they first build credit.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "beginner"
   },
@@ -40,7 +40,7 @@
       "How much money is in your savings account"
     ],
     "correctIndex": 2,
-    "explanation": "Payment history makes up 35% of your credit score — the biggest chunk! Paying your bills on time, every time, is the #1 thing you can do for a good credit score.",
+    "explanation": "Payment history makes up 35% of your credit score — the biggest chunk! Your age and savings account balance have NO direct effect on your score. The number of cards matters a little (under 'credit mix' at 10%), but paying on time is far more important.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "beginner"
   },
@@ -55,7 +55,7 @@
       "$300 — about 30%"
     ],
     "correctIndex": 3,
-    "explanation": "Experts recommend keeping your credit utilization below 30%. With a $1,000 limit, that means owing no more than $300. This shows lenders you're not desperate for money!",
+    "explanation": "Experts recommend keeping your credit utilization below 30%. With a $1,000 limit, that means owing no more than $300. Using $500 (50%) or more signals to lenders that you might be overly reliant on credit. Under 10% ($100) is even better for your score!",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "intermediate"
   },
@@ -70,39 +70,39 @@
       "$500"
     ],
     "correctIndex": 1,
-    "explanation": "Interest = amount borrowed x interest rate. So $500 x 0.12 = $60. Jake will owe $560 total after one year. The $60 is the cost of borrowing that money!",
+    "explanation": "Interest = amount borrowed x interest rate. So $500 x 0.12 = $60. Jake will owe $560 total after one year. $12 would be if the rate were 2.4%, $120 would be at 24%, and $500 would mean 100% interest — luckily that's not legal for most loans!",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "intermediate"
   },
   {
     "id": "credit-q6",
     "topic": "credit",
-    "question": "Which type of credit lets you borrow, pay back, and borrow again up to a limit?",
+    "question": "What is the average credit card APR (Annual Percentage Rate) in 2024?",
     "options": [
-      "A mortgage",
-      "A student loan",
-      "A credit card",
-      "A car loan"
+      "About 5%",
+      "About 12%",
+      "About 24%",
+      "About 50%"
     ],
     "correctIndex": 2,
-    "explanation": "Credit cards are 'revolving credit' — you can use them, pay them off, and use them again up to your limit. Loans give you money once and you pay it back over time.",
+    "explanation": "The average credit card APR in 2024 is about 24% — one of the highest interest rates on any type of borrowing! This is why carrying a balance on credit cards is so expensive. A mortgage might be 7%, a car loan 6%, but credit cards charge 24% or more. Always try to pay your full balance each month.",
     "ceeStandard": "CEE.PF.4",
-    "difficulty": "beginner"
+    "difficulty": "intermediate"
   },
   {
     "id": "credit-q7",
     "topic": "credit",
-    "question": "What is a mortgage?",
+    "question": "What is a secured credit card?",
     "options": [
-      "A type of savings account",
-      "A loan specifically for buying a house",
-      "A monthly phone bill",
-      "A credit card for groceries"
+      "A credit card stored in a safe",
+      "A card where you put down a cash deposit that becomes your credit limit",
+      "A credit card with extra fraud protection",
+      "A card that can only be used at secure websites"
     ],
     "correctIndex": 1,
-    "explanation": "A mortgage is a special long-term loan used to buy a house. It usually takes 15 to 30 years to pay back because houses are really expensive!",
+    "explanation": "A secured credit card requires a cash deposit (usually $200-500) that acts as your credit limit. The bank holds your money as security, which is why they're willing to give cards to people with no credit history. After 6-12 months of responsible use, you can usually upgrade to a regular (unsecured) card and get your deposit back.",
     "ceeStandard": "CEE.PF.4",
-    "difficulty": "beginner"
+    "difficulty": "intermediate"
   },
   {
     "id": "credit-q8",
@@ -115,9 +115,9 @@
       "Missing a payment deadline"
     ],
     "correctIndex": 3,
-    "explanation": "Missing a payment is one of the worst things for your credit score! Payment history is the #1 factor (35% of your score). Always pay at least the minimum on time.",
+    "explanation": "Missing a payment is one of the worst things for your credit score! Payment history is the #1 factor (35% of your score). A single missed payment can drop your score by 50-100 points and stay on your report for 7 years. The other three options all HELP your score.",
     "ceeStandard": "CEE.PF.4",
-    "difficulty": "intermediate"
+    "difficulty": "beginner"
   },
   {
     "id": "credit-q9",
@@ -130,7 +130,7 @@
       "It's actually the best strategy"
     ],
     "correctIndex": 1,
-    "explanation": "Making only minimum payments means interest piles up month after month. A $1,000 balance at 20% interest with minimum payments could take 8+ years to pay off and cost you over $800 in interest!",
+    "explanation": "Making only minimum payments means interest piles up month after month. A $1,000 balance at 24% interest with minimum payments could take 4+ years to pay off and cost you over $500 in interest! Your score won't drop to zero, and the bank won't close your account — they LOVE minimum payers because they earn so much interest.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "intermediate"
   },
@@ -145,12 +145,42 @@
       "Very Good (740-799)"
     ],
     "correctIndex": 3,
-    "explanation": "A score of 750 falls in the 'Very Good' range (740-799). Emma would qualify for great interest rates on loans. Nice job, Emma!",
+    "explanation": "A score of 750 falls in the 'Very Good' range (740-799). Emma would qualify for great interest rates on loans. She's just 50 points away from 'Exceptional' (800+). The Good range stops at 739, so 750 is solidly in Very Good territory.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "credit-q11",
+    "topic": "credit",
+    "question": "Which of these is an example of 'good debt'?",
+    "options": [
+      "Credit card debt from a shopping spree",
+      "A payday loan to cover rent",
+      "A student loan for college education",
+      "A loan to buy the latest phone"
+    ],
+    "correctIndex": 2,
+    "explanation": "A student loan is considered 'good debt' because it's an investment in your future earning power — college graduates earn about $1 million more over their lifetime on average. Credit card debt for shopping and phone loans are 'bad debt' because those items lose value. Payday loans have extremely high interest rates (400%+ APR) and are almost always bad.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "intermediate"
   },
   {
-    "id": "credit-q11",
+    "id": "credit-q12",
+    "topic": "credit",
+    "question": "What is the 'grace period' on a credit card?",
+    "options": [
+      "A period where you can use the card without any limit",
+      "The time between your billing cycle end and payment due date, during which no interest is charged if you pay in full",
+      "A waiting period before you can use a new card",
+      "Extra time the bank gives you when you miss a payment"
+    ],
+    "correctIndex": 1,
+    "explanation": "The grace period (usually 21-25 days) is the time between your billing cycle closing and your payment due date. If you pay your FULL balance within this period, you pay zero interest! Smart credit card users take advantage of this to build credit and earn rewards without ever paying interest.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q13",
     "topic": "credit",
     "question": "Why might a landlord check your credit score before renting you an apartment?",
     "options": [
@@ -160,22 +190,112 @@
       "They want to sell you a credit card"
     ],
     "correctIndex": 2,
-    "explanation": "Landlords check credit because a good score shows a history of paying bills on time. It tells them you're likely to pay rent reliably. Credit scores affect more than just borrowing!",
+    "explanation": "Landlords check credit because a good score shows a history of paying bills on time. It tells them you're likely to pay rent reliably. It's not legally required — landlords choose to do it as part of their screening process. Credit scores affect more than just borrowing: housing, insurance, and even some jobs check credit!",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "advanced"
   },
   {
-    "id": "credit-q12",
+    "id": "credit-q14",
     "topic": "credit",
-    "question": "Two people want to buy the same $20,000 car with a loan. Alex has a 750 credit score and gets 4% interest. Jordan has a 580 credit score and gets 12% interest. Over 5 years, who pays MORE for the same car?",
+    "question": "What percentage of Americans have been victims of identity theft?",
     "options": [
-      "Alex, because a higher credit score means higher costs",
-      "They pay the same amount since it's the same car",
-      "Jordan, because a lower credit score means a higher interest rate",
-      "Neither — the dealership sets one price for everyone"
+      "About 5%",
+      "About 15%",
+      "About 28%",
+      "About 50%"
     ],
     "correctIndex": 2,
-    "explanation": "Jordan pays WAY more! At 12% interest, Jordan would pay about $6,700 in interest, while Alex at 4% pays only about $2,100. That's $4,600 MORE for the exact same car. Good credit saves you real money!",
+    "explanation": "About 28% of Americans — nearly 1 in 3 people — have been victims of identity theft. Thieves can open credit cards, take out loans, and rack up debt in your name. This is why protecting your credit with freezes, monitoring, and strong passwords is essential.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q15",
+    "topic": "credit",
+    "question": "What is a credit freeze?",
+    "options": [
+      "When your credit card stops working in cold weather",
+      "A security measure that prevents anyone from opening new accounts in your name",
+      "When the bank freezes your bank account",
+      "A temporary pause on interest charges"
+    ],
+    "correctIndex": 1,
+    "explanation": "A credit freeze locks your credit report so no one — including you — can open new accounts in your name until you lift the freeze. It's the single most effective way to prevent identity theft, and it's completely free! You can temporarily unfreeze when you need to apply for credit.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q16",
+    "topic": "credit",
+    "question": "How long does a late payment stay on your credit report?",
+    "options": [
+      "30 days",
+      "1 year",
+      "7 years",
+      "Forever"
+    ],
+    "correctIndex": 2,
+    "explanation": "Late payments stay on your credit report for 7 years from the date of the missed payment. Bankruptcies stay for 7-10 years. The good news: positive information stays forever, and the impact of a late payment decreases over time. After 2-3 years, a single old late payment has much less effect.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q17",
+    "topic": "credit",
+    "question": "What is 'debt-to-income ratio' and what should it be?",
+    "options": [
+      "The ratio of your savings to your debt — should be above 50%",
+      "The percentage of monthly income going to debt payments — lenders want it under 36%",
+      "The number of debts you have divided by your age",
+      "How much debt you have compared to your net worth — should be under 100%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Debt-to-income ratio is the percentage of your monthly income that goes to paying debts. Lenders typically want this under 36%. If you earn $4,000/month, your total monthly debt payments shouldn't exceed $1,440. Going above 36% is a red flag that you may be stretched too thin.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q18",
+    "topic": "credit",
+    "question": "Two people buy the same $20,000 car. Alex (750 credit score) gets 4% interest. Jordan (580 score) gets 12% interest. Over 5 years, approximately how much MORE does Jordan pay?",
+    "options": [
+      "About $500 more",
+      "About $1,000 more",
+      "About $4,600 more",
+      "About $10,000 more"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jordan pays about $4,600 MORE for the exact same car! At 12% interest, Jordan pays roughly $6,700 in total interest, while Alex at 4% pays only about $2,100. That $4,600 difference is the real-world cost of a low credit score. Good credit literally saves you thousands.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q19",
+    "topic": "credit",
+    "question": "What is the AZEO strategy for credit utilization?",
+    "options": [
+      "Apply for Zero Extra credit cards Only",
+      "All Zero Except One — pay all cards to $0 except one with a small balance",
+      "Always Zero Every Outstanding balance",
+      "Adjust Zero-balance accounts to Equal One percent"
+    ],
+    "correctIndex": 1,
+    "explanation": "AZEO stands for 'All Zero Except One.' You pay all your credit cards to $0 except one, which carries a small balance (like $10-50). This shows the credit bureaus that you're actively using credit (not just letting cards sit idle) while keeping your overall utilization extremely low.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q20",
+    "topic": "credit",
+    "question": "About what percentage of credit reports contain errors?",
+    "options": [
+      "Less than 1%",
+      "About 5%",
+      "About 20%",
+      "About 50%"
+    ],
+    "correctIndex": 2,
+    "explanation": "About 20% (1 in 5) of credit reports contain errors! These could be wrong addresses, accounts that aren't yours, or payments incorrectly marked as late. These errors can seriously hurt your score. That's why you should check your free credit reports annually at AnnualCreditReport.com and dispute any mistakes.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "advanced"
   }

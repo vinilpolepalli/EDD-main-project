@@ -2,7 +2,7 @@
   {
     "id": "budgeting-1",
     "topic": "budgeting",
-    "title": "Why Budget?",
+    "title": "What is a Budget?",
     "order": 1,
     "ceeStandard": "CEE.PF.2",
     "difficulty": "beginner",
@@ -25,8 +25,8 @@
       },
       {
         "type": "text",
-        "title": "Budgeting Is a Skill",
-        "content": "Like any skill — playing an instrument, a sport, or a video game — budgeting gets easier with practice. Your first budget won't be perfect, and that's totally okay! The important thing is to start. Even tracking your allowance or birthday money is a great way to begin. The earlier you learn, the better off you'll be. Many successful adults wish they had learned budgeting as a kid!"
+        "title": "Monthly vs Weekly Budgeting",
+        "content": "Most people budget monthly because bills like rent and phone plans are paid once a month. But if you get a weekly allowance or get paid every two weeks, a weekly budget might work better for you. The key is picking a schedule and sticking to it. Some people even use 'envelope budgeting' — they put cash into labeled envelopes (food, entertainment, savings) and when an envelope is empty, that category is done for the month."
       }
     ]
   },
@@ -52,12 +52,12 @@
       {
         "type": "flashcard",
         "title": "Needs vs Wants: Quick Test",
-        "content": "NEEDS: Rent or mortgage, Groceries, Electricity and water, Basic clothing, Health insurance, Transportation to work. WANTS: Streaming subscriptions, New video games, Eating out at restaurants, Designer clothing, The latest phone upgrade, Concert tickets. TRICKY ONES: Internet (need for work/school, want for streaming), Phone (need for communication, want for the newest model), Car (need for some jobs, want if there's good public transit)."
+        "content": "NEEDS: Rent or mortgage, Groceries, Electricity and water, Basic clothing, Health insurance, Transportation to work. WANTS: Netflix ($15.49/mo), New video games ($70 each), Eating out at restaurants, Designer clothing, The latest iPhone upgrade, Concert tickets. TRICKY ONES: Internet (need for work/school, want for streaming), Phone (need for communication, want for the newest model), Gym membership (need for some health conditions, want if you could exercise outside for free)."
       },
       {
         "type": "text",
-        "title": "It's Not About Giving Up Wants",
-        "content": "Good budgeting doesn't mean never buying things you want! It means making sure your needs are covered FIRST, then enjoying your wants with whatever is left over. Think of it like eating dinner before dessert — you take care of the important stuff first, then treat yourself. A good budget has room for fun — it just makes sure the fun doesn't come at the cost of your essentials."
+        "title": "Opportunity Cost: The Hidden Trade-Off",
+        "content": "Every dollar you spend on one thing is a dollar you CAN'T spend on something else. Economists call this 'opportunity cost.' If you spend $60 on a new video game, the opportunity cost is whatever else you could have done with that $60 — maybe saved it, bought supplies for a hobby, or put it toward a bigger goal. Good budgeters think about opportunity cost before every purchase: 'What am I giving up to buy this?'"
       }
     ]
   },
@@ -77,7 +77,7 @@
       {
         "type": "flashcard",
         "title": "The Magic Split",
-        "content": "Take your monthly income (after taxes) and split it: 50% for NEEDS — rent, groceries, utilities, insurance, minimum loan payments. This is the must-pay stuff. 30% for WANTS — eating out, entertainment, hobbies, shopping, subscriptions. This is the fun stuff! 20% for SAVINGS & DEBT — emergency fund, retirement savings, extra debt payments. This is the future-you stuff. Example: You earn $1,000/month. $500 goes to needs, $300 to wants, $200 to savings."
+        "content": "Take your monthly income (after taxes) and split it: 50% for NEEDS — rent, groceries, utilities, insurance, minimum loan payments. This is the must-pay stuff. 30% for WANTS — eating out, entertainment, hobbies, shopping, subscriptions. This is the fun stuff! 20% for SAVINGS & DEBT — emergency fund, retirement savings, extra debt payments. This is the future-you stuff."
       },
       {
         "type": "definition",
@@ -87,23 +87,23 @@
       },
       {
         "type": "text",
-        "title": "Make It Work for You",
-        "content": "The beauty of the 50/30/20 rule is that it's flexible. If you want to save up for something big faster (like a car), you could go 50/20/30 — cutting wants and boosting savings. If you're paying off debt, maybe 50/20/30 with extra going to debt payments. The point is to have a PLAN, not to be perfect. Even if your actual split is 55/28/17, that's way better than having no plan at all!"
+        "title": "Worked Example: $3,000 Salary",
+        "content": "Let's say you earn $3,000/month after taxes. With the 50/30/20 rule: $1,500 goes to NEEDS (rent $900, groceries $300, utilities $150, transportation $150). $900 goes to WANTS (dining out $200, streaming services $30, hobbies $150, new clothes $100, fun money $420). $600 goes to SAVINGS (emergency fund $300, retirement account $200, extra debt payment $100). After one year of this plan, you'd have $7,200 saved! That's enough for a solid emergency fund."
       }
     ]
   },
   {
     "id": "budgeting-4",
     "topic": "budgeting",
-    "title": "Saving Strategies",
+    "title": "Emergency Funds",
     "order": 4,
     "ceeStandard": "CEE.PF.3",
     "difficulty": "intermediate",
     "sections": [
       {
         "type": "text",
-        "title": "Pay Yourself First",
-        "content": "Here's the number one saving tip from every financial expert: pay yourself first! This means before you spend money on ANYTHING else, move some money into savings. If you wait until the end of the month to save what's left over, there usually isn't anything left. But if you save first, you learn to live on what remains."
+        "title": "Your Financial Safety Net",
+        "content": "Life is full of surprises — and not all of them are good ones. Your car breaks down. You need an unexpected dental procedure. Your phone takes a swim in the toilet. An emergency fund is money you've saved specifically for these moments. Without one, a single surprise expense can send you spiraling into debt."
       },
       {
         "type": "definition",
@@ -113,44 +113,137 @@
       },
       {
         "type": "flashcard",
-        "title": "The Magic of Compound Interest",
-        "content": "Here's why starting to save NOW (even small amounts) is so powerful: compound interest means you earn interest on your interest! Example: Save $100/month starting at age 15, earning 7% per year. By age 65, you'd have about $528,000! But if you wait until age 25 to start, you'd only have about $264,000 — HALF as much, just because you waited 10 years! That's the magic of compound interest and why starting early matters so much."
+        "title": "Emergency Fund Facts",
+        "content": "THE SCARY STAT: According to a Federal Reserve study, 40% of Americans can't cover a $400 emergency expense without borrowing money or selling something. Don't be part of that statistic! WHERE TO KEEP IT: A High-Yield Savings Account (HYSA) earns you 4-5% interest while keeping your money accessible. Regular savings accounts only pay 0.01-0.1%. WHAT COUNTS AS AN EMERGENCY: Car repair — YES. Medical bill — YES. Lost your job — YES. Concert tickets went on sale — NO. New phone model came out — NO. Friend is going on vacation — NO."
       },
       {
         "type": "text",
-        "title": "Goal-Based Saving",
-        "content": "Saving is easier when you have a specific goal! Instead of just 'saving money,' try: 'I'm saving $300 for new headphones by December.' Break it down: that's $50/month for 6 months, or about $12.50/week. Suddenly it feels achievable! Write your goals down, track your progress, and celebrate when you reach them. Having multiple savings goals (short-term like a game, medium-term like a bike, long-term like college) keeps you motivated."
+        "title": "Building Your Emergency Fund",
+        "content": "Start small — even $500 covers most minor emergencies. Then aim for one month of expenses, then three months, then six months. If your monthly expenses are $2,000, your full emergency fund target is $6,000-$12,000. That sounds like a lot, but at $200/month, you'd hit $6,000 in just 2.5 years. The important thing is to START, even if it's just $25 a week."
       }
     ]
   },
   {
     "id": "budgeting-5",
     "topic": "budgeting",
-    "title": "Smart Spending",
+    "title": "Compound Interest: The 8th Wonder",
     "order": 5,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Most Powerful Force in Finance",
+        "content": "Albert Einstein reportedly called compound interest 'the eighth wonder of the world,' saying 'those who understand it, earn it; those who don't, pay it.' Whether Einstein actually said this or not, the math behind it is truly mind-blowing. Compound interest is the reason why starting to save early — even tiny amounts — can make you wealthy over time."
+      },
+      {
+        "type": "definition",
+        "term": "Compound Interest",
+        "definition": "Interest earned on both your original savings AND the interest you've already earned. Your money earns money, and then THAT money earns money too!",
+        "content": "Simple interest only earns on your original deposit. Compound interest earns on everything — including previous interest. It's like a snowball rolling downhill, getting bigger and bigger."
+      },
+      {
+        "type": "flashcard",
+        "title": "The Rule of 72",
+        "content": "Want to know how long it takes to DOUBLE your money? Use the Rule of 72: divide 72 by your interest rate. At 7% return: 72 / 7 = about 10 years to double. At 10% return: 72 / 10 = about 7 years to double. At 1% return (regular savings account): 72 / 1 = 72 YEARS to double! REAL EXAMPLE: $1,000 invested at 7% annual return for 30 years = $7,612. That same $1,000 in a savings account at 0.1% for 30 years = $1,030. Starting early is your biggest superpower!"
+      },
+      {
+        "type": "text",
+        "title": "Time Is Your Greatest Asset",
+        "content": "Here's a powerful example: if you invest $100/month starting at age 15 with a 7% annual return, by age 65 you'd have about $528,000. But if you wait until age 25 to start the same $100/month, you'd only have about $264,000 — HALF as much, just because you waited 10 years. You'd have contributed $12,000 more but ended up with $264,000 LESS. That's the magic of time plus compound interest. Every year you wait costs you thousands."
+      }
+    ]
+  },
+  {
+    "id": "budgeting-6",
+    "topic": "budgeting",
+    "title": "Spending Traps",
+    "order": 6,
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Invisible Money Drain",
+        "content": "Companies spend billions of dollars every year figuring out how to get you to spend money you didn't plan to spend. Understanding their tricks gives you power over your wallet. Let's look at the most common spending traps that drain people's bank accounts without them even noticing."
+      },
+      {
+        "type": "definition",
+        "term": "Subscription Creep",
+        "definition": "The gradual accumulation of monthly subscriptions that individually seem cheap ($5-15 each) but collectively drain hundreds of dollars per month.",
+        "content": "The average American pays $219 per month in subscriptions — that's $2,628 per year! Netflix, Spotify, gaming subscriptions, cloud storage, gym memberships, meal kits... they add up fast. Most people don't even use half the subscriptions they pay for."
+      },
+      {
+        "type": "flashcard",
+        "title": "Common Spending Traps",
+        "content": "IMPULSE BUYING: Stores put candy and small items near checkout lines because you're tired of making decisions and more likely to grab things. Online stores use 'Buy Now' buttons and countdown timers. THE ANCHORING TRICK: A store puts a $200 jacket next to a $80 jacket. Suddenly $80 feels like a deal, even though you'd never normally spend $80 on a jacket. LIFESTYLE INFLATION: You get a raise from $40k to $50k. Instead of saving the extra $10k, you upgrade your car, apartment, and wardrobe. Now you need $50k just to maintain your lifestyle."
+      },
+      {
+        "type": "text",
+        "title": "The 24-Hour Rule",
+        "content": "Here's the single best trick to beat impulse buying: the 24-hour rule. See something you want? Wait 24 hours before buying it. If you still want it tomorrow, and it fits your budget, go for it. But studies show that about 70% of the time, you'll realize you didn't really need it. For bigger purchases ($100+), try waiting a full week. This simple habit can save you thousands of dollars a year."
+      }
+    ]
+  },
+  {
+    "id": "budgeting-7",
+    "topic": "budgeting",
+    "title": "Saving for Goals",
+    "order": 7,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Goals Make Saving Easy",
+        "content": "Saving money 'just because' is hard. But saving for something specific? That's motivating! When you have a clear goal — new headphones, a laptop for school, a trip with friends — every dollar saved gets you closer to something exciting. Research shows people who set specific savings goals save 2-3 times more than people who just try to 'save more.'"
+      },
+      {
+        "type": "definition",
+        "term": "SMART Goals",
+        "definition": "Goals that are Specific, Measurable, Achievable, Relevant, and Time-bound. Instead of 'I want to save money,' a SMART goal is 'I will save $500 for a new gaming setup by December 31st by saving $50 per month.'",
+        "content": "SMART goals work because they give you a clear target and deadline. You can track your progress and know exactly when you'll reach your goal."
+      },
+      {
+        "type": "flashcard",
+        "title": "Sinking Funds: Saving Made Simple",
+        "content": "A 'sinking fund' is money you set aside each month for a specific future expense. It's like a mini savings account for one goal. EXAMPLE: You want $600 for a new console in 6 months. Create a sinking fund: $600 / 6 months = $100/month. That's about $25/week or $3.57/day — the cost of a fancy coffee! You can have MULTIPLE sinking funds running at once: $100/mo for console, $50/mo for birthday gifts, $25/mo for back-to-school clothes. Each one slowly fills up while you barely notice the money leaving."
+      },
+      {
+        "type": "text",
+        "title": "The Auto-Transfer Trick",
+        "content": "The best savings hack is automation. Set up an automatic transfer from your checking account to your savings account on payday. This way, the money moves BEFORE you have a chance to spend it. It's the 'pay yourself first' principle in action. Start with an amount so small you won't miss it — even $10/week. Once you get used to it, increase it by $5. Before you know it, you're saving $50-100/week without feeling the pinch."
+      }
+    ]
+  },
+  {
+    "id": "budgeting-8",
+    "topic": "budgeting",
+    "title": "Your First Budget",
+    "order": 8,
     "ceeStandard": "CEE.PF.2",
     "difficulty": "advanced",
     "sections": [
       {
         "type": "text",
-        "title": "Spend Less Without Missing Out",
-        "content": "Smart spending isn't about being cheap — it's about getting the most value for your money. Would you rather pay $60 for a game on release day, or wait a month and get it for $40 on sale? Same game, same fun, but you just saved $20! Smart spenders get the same stuff for less money, leaving more for saving and other goals."
+        "title": "Let's Build One Together",
+        "content": "You've learned all the pieces — now let's put them together! Creating your first budget takes about 15 minutes, and it's one of the most valuable things you can do for your financial future. Don't worry about being perfect. The best budget is the one you actually follow, even if it's simple."
       },
       {
         "type": "flashcard",
-        "title": "Smart Spending Power Moves",
-        "content": "COMPARISON SHOP: Check prices at multiple stores (or websites) before buying. THE 24-HOUR RULE: Want something? Wait 24 hours before buying. If you still want it tomorrow, go for it. This kills impulse buys! USE COUPONS AND DEALS: Apps, student discounts, and sales can save you 10-50%. BUY QUALITY: Sometimes a $40 item that lasts 3 years is better than a $15 item you replace every 6 months. AVOID 'SALES' TRAPS: 50% off something you don't need is still 100% wasted money!"
+        "title": "Budget Building: Step by Step",
+        "content": "STEP 1: Track your income. How much money do you get each month? (Allowance, part-time job, birthday money averaged out). STEP 2: List fixed expenses. Things that cost the same every month (phone bill, subscriptions, school lunch money). STEP 3: Track variable spending. For one week, write down EVERYTHING you spend money on. Multiply by 4 for a monthly estimate. STEP 4: Calculate what's left. Income minus expenses = your remaining money. STEP 5: Allocate the remainder. Use the 50/30/20 rule or your own split between fun money and savings."
       },
       {
         "type": "definition",
-        "term": "Impulse Buy",
-        "definition": "A purchase you make on the spot without planning for it, usually triggered by emotions, ads, or 'limited time' pressure.",
-        "content": "Stores and apps are DESIGNED to make you impulse buy — flashy displays, 'only 2 left!', countdown timers. Recognizing these tricks gives you power over your spending."
+        "term": "Zero-Based Budget",
+        "definition": "A budgeting method where every single dollar has a job. Income minus all expenses (including savings and fun money) equals exactly zero.",
+        "content": "In a zero-based budget, you don't have money 'left over' — because every dollar is assigned to a category. Even your savings has a specific amount. This is the most thorough budgeting method and the one used by most financial experts."
       },
       {
         "type": "text",
-        "title": "The True Cost of Things",
-        "content": "Here's a mind-bending way to think about spending: convert prices into work hours. If you make $10/hour, a $50 video game costs 5 hours of your life working. Is it worth 5 hours of work? Maybe! But that $5 daily coffee costs 2.5 hours/week, or 130 hours/year — that's over three weeks of full-time work just for coffee! Thinking about purchases in terms of work-hours helps you decide what's truly worth it to YOU. Everyone's answer will be different, and that's okay."
+        "title": "Budget Mistakes to Avoid",
+        "content": "THE PERFECTION TRAP: Your budget won't be perfect the first month. Or the second. That's normal! Adjust it each month based on what actually happened. FORGETTING FUN: A budget with zero fun money is a budget you'll abandon. Always include some 'guilt-free' spending. IGNORING IRREGULAR EXPENSES: Things like birthday gifts, school supplies, or holiday shopping happen every year but not every month. Spread these costs across all 12 months in your budget. NOT TRACKING: A budget you never look at is useless. Check in weekly — it takes 2 minutes."
       }
     ]
   }

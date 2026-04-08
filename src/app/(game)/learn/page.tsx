@@ -1,221 +1,681 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CreditCard, Receipt, Wallet, ChevronRight, BookOpen } from "lucide-react";
+import {
+  BookOpen,
+  Check,
+  CreditCard,
+  Flame,
+  Lock,
+  Receipt,
+  Sparkles,
+  Star,
+  Trophy,
+  Wallet,
+  Zap,
+  Lightbulb,
+  Target,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
-import { GameLayout } from "@/components/shared/game-layout";
 import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 import { useLocalProgress } from "@/hooks/use-local-progress";
-import type { Topic } from "@/types/game";
+import { useGameState } from "@/hooks/use-game-state";
+import type { Topic, Lesson } from "@/types/game";
 
 import creditLessons from "@/content/lessons/credit.json";
 import taxesLessons from "@/content/lessons/taxes.json";
 import budgetingLessons from "@/content/lessons/budgeting.json";
 
-interface TopicCardData {
+/* -------------------------------------------------------------------------- */
+/*  Types & Constants                                                         */
+/* -------------------------------------------------------------------------- */
+
+interface SectionConfig {
   topic: Topic;
   title: string;
-  description: string;
+  subtitle: string;
   icon: React.ReactNode;
-  lessonCount: number;
+  lessons: Lesson[];
   bgColor: string;
-  lightBgColor: string;
+  ringColor: string;
   textColor: string;
-  borderColor: string;
-  progressColor: string;
+  glowColor: string;
+  bannerBg: string;
+  bannerBorder: string;
 }
 
-const topicCards: TopicCardData[] = [
+const SECTIONS: SectionConfig[] = [
+  {
+    topic: "budgeting",
+    title: "BUDGETING",
+    subtitle: "Master the 50/30/20 Rule",
+    icon: <Wallet className="h-5 w-5" />,
+    lessons: (budgetingLessons as Lesson[]).sort((a, b) => a.order - b.order),
+    bgColor: "bg-emerald-500",
+    ringColor: "ring-emerald-400",
+    textColor: "text-emerald-400",
+    glowColor: "shadow-emerald-500/40",
+    bannerBg: "bg-emerald-500/15",
+    bannerBorder: "border-emerald-500/30",
+  },
   {
     topic: "credit",
-    title: "Credit",
-    description: "Learn about credit scores, loans, interest rates, and building good credit habits.",
-    icon: <CreditCard className="h-7 w-7" />,
-    lessonCount: creditLessons.length,
-    bgColor: "bg-emerald-500",
-    lightBgColor: "bg-emerald-50",
-    textColor: "text-emerald-600",
-    borderColor: "border-emerald-300",
-    progressColor: "bg-emerald-500",
+    title: "CREDIT",
+    subtitle: "Build Your Credit Score",
+    icon: <CreditCard className="h-5 w-5" />,
+    lessons: (creditLessons as Lesson[]).sort((a, b) => a.order - b.order),
+    bgColor: "bg-indigo-500",
+    ringColor: "ring-indigo-400",
+    textColor: "text-indigo-400",
+    glowColor: "shadow-indigo-500/40",
+    bannerBg: "bg-indigo-500/15",
+    bannerBorder: "border-indigo-500/30",
   },
   {
     topic: "taxes",
-    title: "Taxes",
-    description: "Discover how taxes work, why we pay them, and different types of taxes you'll encounter.",
-    icon: <Receipt className="h-7 w-7" />,
-    lessonCount: taxesLessons.length,
-    bgColor: "bg-teal-500",
-    lightBgColor: "bg-teal-50",
-    textColor: "text-teal-600",
-    borderColor: "border-teal-300",
-    progressColor: "bg-teal-500",
-  },
-  {
-    topic: "budgeting",
-    title: "Budgeting",
-    description: "Master the art of managing your money with budgets, saving strategies, and smart spending.",
-    icon: <Wallet className="h-7 w-7" />,
-    lessonCount: budgetingLessons.length,
-    bgColor: "bg-green-500",
-    lightBgColor: "bg-green-50",
-    textColor: "text-green-600",
-    borderColor: "border-green-300",
-    progressColor: "bg-green-500",
+    title: "TAXES",
+    subtitle: "Understand Your Paycheck",
+    icon: <Receipt className="h-5 w-5" />,
+    lessons: (taxesLessons as Lesson[]).sort((a, b) => a.order - b.order),
+    bgColor: "bg-amber-500",
+    ringColor: "ring-amber-400",
+    textColor: "text-amber-400",
+    glowColor: "shadow-amber-500/40",
+    bannerBg: "bg-amber-500/15",
+    bannerBorder: "border-amber-500/30",
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-} as const;
+const FUN_FACTS = [
+  "Americans pay an average of $14,000 in taxes each year.",
+  "A penny saved is more than a penny earned, because you don't pay tax on savings!",
+  "The average credit score in the US is 715.",
+  "Compound interest was called the 'eighth wonder of the world.'",
+  "40% of Americans can't cover a $400 emergency expense.",
+  "The average American pays $219/month in subscriptions.",
+  "Your credit score can affect whether you can rent an apartment.",
+  "The Rule of 72: divide 72 by your interest rate to see how fast money doubles.",
+];
 
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 200, damping: 20 },
-  },
-};
+/* -------------------------------------------------------------------------- */
+/*  Node position calculation — creates the winding path                      */
+/* -------------------------------------------------------------------------- */
 
-export default function LearnPage() {
-  const { isLoaded, getTopicProgress } = useLocalProgress();
+/**
+ * Returns a horizontal offset class for each node index to
+ * create a left-center-right winding path effect.
+ */
+function getNodeOffset(index: number): string {
+  const pattern = index % 4;
+  switch (pattern) {
+    case 0:
+      return "ml-0 mr-auto";
+    case 1:
+      return "mx-auto";
+    case 2:
+      return "ml-auto mr-0";
+    case 3:
+      return "mx-auto";
+    default:
+      return "mx-auto";
+  }
+}
 
-  const topicProgressMap = useMemo(() => {
-    if (!isLoaded) return null;
-    return {
-      credit: getTopicProgress("credit"),
-      taxes: getTopicProgress("taxes"),
-      budgeting: getTopicProgress("budgeting"),
-    };
-  }, [isLoaded, getTopicProgress]);
+/* -------------------------------------------------------------------------- */
+/*  Sub-components                                                            */
+/* -------------------------------------------------------------------------- */
+
+function SectionHeader({
+  section,
+  completedCount,
+  sectionIndex,
+}: {
+  section: SectionConfig;
+  completedCount: number;
+  sectionIndex: number;
+}) {
+  const totalNodes = section.lessons.length + 1; // lessons + quiz
+  const progressPercent =
+    totalNodes > 0 ? Math.round((completedCount / totalNodes) * 100) : 0;
 
   return (
-    <GameLayout title="Learn Path" module="learn" backHref="/dashboard">
-      {!isLoaded ? (
-        <div className="flex flex-col gap-5">
-          {[0, 1, 2].map((i) => (
-            <Skeleton key={i} className="h-48 w-full rounded-2xl" />
-          ))}
-        </div>
-      ) : (
-        <motion.div
-          className="flex flex-col gap-4"
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
-          {/* Section Header */}
-          <motion.div variants={item} className="flex flex-col gap-1 pb-2">
-            <h2 className="flex items-center gap-2 text-lg font-extrabold text-foreground">
-              <BookOpen className="h-5 w-5 text-learn" />
-              Choose a Topic
-            </h2>
-            <p className="text-sm font-semibold text-muted-foreground">
-              Complete lessons and quizzes to earn XP and Arcade Tokens!
-            </p>
-          </motion.div>
-
-          {/* Topic Cards */}
-          {topicCards.map((card) => {
-            const topicProg = topicProgressMap?.[card.topic];
-            const completedCount = topicProg?.completedCount ?? 0;
-            const progressPercent =
-              card.lessonCount > 0
-                ? Math.round((completedCount / card.lessonCount) * 100)
-                : 0;
-            const isComplete = completedCount >= card.lessonCount;
-            const hasStarted = completedCount > 0;
-
-            return (
-              <motion.div key={card.topic} variants={item}>
-                <Link href={`/learn/${card.topic}`} className="block">
-                  <motion.div
-                    className={cn(
-                      "group relative overflow-hidden rounded-2xl border-2 bg-card shadow-md transition-shadow hover:shadow-lg",
-                      isComplete ? "border-learn" : "border-border"
-                    )}
-                    whileHover={{ y: -3 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                  >
-                    {/* Top section with icon */}
-                    <div className={cn("flex items-center gap-4 p-5 pb-3", card.lightBgColor)}>
-                      <div
-                        className={cn(
-                          "flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-sm",
-                          card.bgColor
-                        )}
-                      >
-                        {card.icon}
-                      </div>
-                      <div className="flex flex-1 flex-col gap-1">
-                        <div className="flex items-center gap-2">
-                          <h3 className={cn("text-xl font-extrabold", card.textColor)}>
-                            {card.title}
-                          </h3>
-                          {isComplete && (
-                            <Badge variant="learn" className="text-xs">
-                              Complete
-                            </Badge>
-                          )}
-                        </div>
-                        <span className="text-xs font-bold text-muted-foreground">
-                          {card.lessonCount} lessons
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col gap-4 p-5 pt-3">
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {card.description}
-                      </p>
-
-                      {/* Progress Bar */}
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex items-center justify-between text-xs font-bold text-muted-foreground">
-                          <span>
-                            {completedCount} / {card.lessonCount} lessons done
-                          </span>
-                          <span className="tabular-nums">{progressPercent}%</span>
-                        </div>
-                        <Progress
-                          value={progressPercent}
-                          color={card.progressColor}
-                          height="h-2.5"
-                        />
-                      </div>
-
-                      {/* CTA Button */}
-                      <div
-                        className={cn(
-                          "flex min-h-[48px] items-center justify-center gap-1.5 rounded-xl py-2.5 text-sm font-extrabold text-white transition-colors",
-                          card.bgColor,
-                          "group-hover:brightness-110"
-                        )}
-                      >
-                        {isComplete
-                          ? "Review"
-                          : hasStarted
-                            ? "Continue"
-                            : "Start"}
-                        <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+    <motion.div
+      className={cn(
+        "mx-auto w-full max-w-md rounded-2xl border-2 px-5 py-4",
+        section.bannerBg,
+        section.bannerBorder
       )}
-    </GameLayout>
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: sectionIndex * 0.15, type: "spring", stiffness: 200, damping: 20 }}
+    >
+      <div className="flex items-center gap-3">
+        <div
+          className={cn(
+            "flex h-10 w-10 items-center justify-center rounded-xl text-white",
+            section.bgColor
+          )}
+        >
+          {section.icon}
+        </div>
+        <div className="flex-1">
+          <p className="text-xs font-extrabold tracking-widest text-gray-400">
+            SECTION {sectionIndex + 1}
+          </p>
+          <h2 className={cn("text-lg font-extrabold", section.textColor)}>
+            {section.title}
+          </h2>
+          <p className="text-xs font-semibold text-gray-400">{section.subtitle}</p>
+        </div>
+      </div>
+      <div className="mt-3 flex flex-col gap-1.5">
+        <div className="flex items-center justify-between text-xs font-bold text-gray-500">
+          <span>
+            {completedCount} / {totalNodes} complete
+          </span>
+          <span className="tabular-nums">{progressPercent}%</span>
+        </div>
+        <Progress value={progressPercent} color={section.bgColor} height="h-2" />
+      </div>
+    </motion.div>
+  );
+}
+
+function LessonNode({
+  lesson,
+  section,
+  nodeIndex,
+  status,
+  globalDelay,
+}: {
+  lesson: Lesson;
+  section: SectionConfig;
+  nodeIndex: number;
+  status: "completed" | "current" | "locked";
+  globalDelay: number;
+}) {
+  const offset = getNodeOffset(nodeIndex);
+  const isQuizNode = false;
+
+  const nodeContent = (
+    <motion.div
+      className={cn("flex w-16 flex-col items-center gap-1.5", offset)}
+      initial={{ opacity: 0, y: 20, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        delay: globalDelay,
+        type: "spring",
+        stiffness: 200,
+        damping: 18,
+      }}
+    >
+      {/* Circle node */}
+      <motion.div
+        className={cn(
+          "relative flex h-16 w-16 items-center justify-center rounded-full border-4 transition-all",
+          status === "completed" &&
+            "border-emerald-400 bg-emerald-500 text-white",
+          status === "current" &&
+            cn(
+              "border-white/80",
+              section.bgColor,
+              "text-white ring-4",
+              section.ringColor,
+              "shadow-lg",
+              section.glowColor
+            ),
+          status === "locked" &&
+            "border-gray-600 bg-gray-700 text-gray-500"
+        )}
+        whileHover={status !== "locked" ? { scale: 1.1 } : undefined}
+        whileTap={status !== "locked" ? { scale: 0.95 } : undefined}
+        animate={
+          status === "current"
+            ? {
+                boxShadow: [
+                  "0 0 0 0 rgba(99, 102, 241, 0)",
+                  "0 0 20px 4px rgba(99, 102, 241, 0.3)",
+                  "0 0 0 0 rgba(99, 102, 241, 0)",
+                ],
+              }
+            : undefined
+        }
+        transition={
+          status === "current"
+            ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
+            : undefined
+        }
+      >
+        {status === "completed" ? (
+          <Check className="h-7 w-7" strokeWidth={3} />
+        ) : status === "locked" ? (
+          <Lock className="h-5 w-5" />
+        ) : (
+          <BookOpen className="h-6 w-6" />
+        )}
+      </motion.div>
+
+      {/* Label */}
+      <span
+        className={cn(
+          "max-w-[5rem] text-center text-[10px] font-bold leading-tight",
+          status === "locked" ? "text-gray-600" : "text-gray-300"
+        )}
+      >
+        {lesson.title}
+      </span>
+    </motion.div>
+  );
+
+  if (status === "locked") {
+    return nodeContent;
+  }
+
+  return (
+    <Link href={`/learn/${section.topic}`} className="block">
+      {nodeContent}
+    </Link>
+  );
+}
+
+function QuizNode({
+  section,
+  nodeIndex,
+  status,
+  globalDelay,
+}: {
+  section: SectionConfig;
+  nodeIndex: number;
+  status: "completed" | "current" | "locked";
+  globalDelay: number;
+}) {
+  const offset = getNodeOffset(nodeIndex);
+
+  const nodeContent = (
+    <motion.div
+      className={cn("flex w-20 flex-col items-center gap-1.5", offset)}
+      initial={{ opacity: 0, y: 20, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        delay: globalDelay,
+        type: "spring",
+        stiffness: 200,
+        damping: 18,
+      }}
+    >
+      <motion.div
+        className={cn(
+          "relative flex h-20 w-20 items-center justify-center rounded-full border-4 transition-all",
+          status === "completed" &&
+            "border-amber-400 bg-amber-500 text-white",
+          status === "current" &&
+            "border-amber-300 bg-amber-500 text-white ring-4 ring-amber-400 shadow-lg shadow-amber-500/40",
+          status === "locked" &&
+            "border-gray-600 bg-gray-700 text-gray-500"
+        )}
+        whileHover={status !== "locked" ? { scale: 1.1 } : undefined}
+        whileTap={status !== "locked" ? { scale: 0.95 } : undefined}
+        animate={
+          status === "current"
+            ? {
+                boxShadow: [
+                  "0 0 0 0 rgba(245, 158, 11, 0)",
+                  "0 0 20px 4px rgba(245, 158, 11, 0.3)",
+                  "0 0 0 0 rgba(245, 158, 11, 0)",
+                ],
+              }
+            : undefined
+        }
+        transition={
+          status === "current"
+            ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
+            : undefined
+        }
+      >
+        {status === "completed" ? (
+          <Trophy className="h-8 w-8" />
+        ) : status === "locked" ? (
+          <Lock className="h-6 w-6" />
+        ) : (
+          <Star className="h-8 w-8" />
+        )}
+      </motion.div>
+      <span
+        className={cn(
+          "text-center text-[10px] font-extrabold tracking-wide",
+          status === "locked" ? "text-gray-600" : "text-amber-400"
+        )}
+      >
+        UNIT QUIZ
+      </span>
+    </motion.div>
+  );
+
+  if (status === "locked") {
+    return nodeContent;
+  }
+
+  return (
+    <Link href={`/learn/quiz/${section.topic}`} className="block">
+      {nodeContent}
+    </Link>
+  );
+}
+
+function Sidebar({
+  streak,
+  totalXp,
+  funFact,
+}: {
+  streak: number;
+  totalXp: number;
+  funFact: string;
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      {/* Streak */}
+      <motion.div
+        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/20">
+            <Flame className="h-7 w-7 text-orange-500" />
+          </div>
+          <div>
+            <p className="text-2xl font-extrabold text-white tabular-nums">
+              {streak}
+            </p>
+            <p className="text-xs font-bold text-gray-400">Day Streak</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* XP */}
+      <motion.div
+        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3 }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/20">
+            <Zap className="h-7 w-7 text-yellow-500" />
+          </div>
+          <div>
+            <p className="text-2xl font-extrabold text-white tabular-nums">
+              {totalXp.toLocaleString()}
+            </p>
+            <p className="text-xs font-bold text-gray-400">Total XP</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Daily Goal */}
+      <motion.div
+        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4 }}
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <Target className="h-4 w-4 text-emerald-400" />
+          <p className="text-xs font-extrabold text-emerald-400">DAILY GOAL</p>
+        </div>
+        <p className="text-sm font-bold text-gray-300">
+          Complete 1 lesson today
+        </p>
+      </motion.div>
+
+      {/* Fun Fact */}
+      <motion.div
+        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <Lightbulb className="h-4 w-4 text-yellow-400" />
+          <p className="text-xs font-extrabold text-yellow-400">DID YOU KNOW?</p>
+        </div>
+        <p className="text-sm font-semibold leading-relaxed text-gray-300">
+          {funFact}
+        </p>
+      </motion.div>
+
+      {/* Nav Links */}
+      <motion.div
+        className="flex flex-col gap-2"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.6 }}
+      >
+        <Link
+          href="/dashboard"
+          className="flex min-h-[44px] items-center gap-2 rounded-xl border border-gray-700 bg-gray-800/60 px-4 py-2.5 text-sm font-bold text-gray-300 transition-colors hover:bg-gray-700/60"
+        >
+          <Sparkles className="h-4 w-4 text-gray-400" />
+          Dashboard
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Main Page Component                                                       */
+/* -------------------------------------------------------------------------- */
+
+export default function LearnPage() {
+  const { isLoaded: localLoaded, completedLessons, getTopicProgress } =
+    useLocalProgress();
+  const { progress, isLoaded: gameLoaded } = useGameState();
+
+  const isLoaded = localLoaded && gameLoaded;
+
+  // Select a consistent fun fact based on the day
+  const funFact = useMemo(() => {
+    const dayOfYear = Math.floor(
+      (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) /
+        (1000 * 60 * 60 * 24)
+    );
+    return FUN_FACTS[dayOfYear % FUN_FACTS.length];
+  }, []);
+
+  // Build completion sets for each topic
+  const completionData = useMemo(() => {
+    if (!isLoaded) return null;
+
+    const data: Record<Topic, Set<string>> = {
+      budgeting: new Set<string>(),
+      credit: new Set<string>(),
+      taxes: new Set<string>(),
+    };
+
+    for (const lc of completedLessons) {
+      data[lc.topic].add(lc.lessonId);
+    }
+
+    return data;
+  }, [isLoaded, completedLessons]);
+
+  if (!isLoaded) {
+    return (
+      <div className="flex min-h-screen flex-col bg-gray-900">
+        <div className="mx-auto w-full max-w-5xl px-4 py-8">
+          <div className="flex flex-col gap-6">
+            {[0, 1, 2].map((i) => (
+              <Skeleton key={i} className="h-48 w-full rounded-2xl bg-gray-800" />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Track a running node counter for staggered animation delays
+  let globalNodeIndex = 0;
+
+  return (
+    <div className="flex min-h-screen flex-col bg-gray-900">
+      {/* Header */}
+      <motion.header
+        className="sticky top-0 z-30 border-b border-gray-800 bg-gray-900/95 backdrop-blur-sm"
+        initial={{ y: -60 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      >
+        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/dashboard"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-800 hover:text-white"
+              aria-label="Back to dashboard"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </Link>
+            <h1 className="text-lg font-extrabold tracking-tight text-white">
+              Learn Path
+            </h1>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 text-sm font-bold text-orange-500">
+              <Flame className="h-4 w-4" />
+              <span className="tabular-nums">{progress.currentStreak}</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-sm font-bold text-yellow-500">
+              <Zap className="h-4 w-4" />
+              <span className="tabular-nums">
+                {progress.totalXp.toLocaleString()}
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Body: Path + Sidebar */}
+      <div className="mx-auto flex w-full max-w-5xl flex-1 gap-8 px-4 py-8">
+        {/* Main path area */}
+        <div className="flex-1">
+          <div className="mx-auto flex max-w-md flex-col gap-6">
+            {SECTIONS.map((section, sectionIdx) => {
+              const topicCompleted = completionData?.[section.topic] ?? new Set();
+              const completedLessonCount = topicCompleted.size;
+
+              // Determine status for each lesson node
+              const lessonStatuses = section.lessons.map((lesson, idx) => {
+                if (topicCompleted.has(lesson.id)) return "completed" as const;
+
+                // Previous section must be fully complete to unlock this section
+                if (sectionIdx > 0) {
+                  const prevSection = SECTIONS[sectionIdx - 1];
+                  const prevCompleted =
+                    completionData?.[prevSection.topic] ?? new Set();
+                  const prevAllDone =
+                    prevCompleted.size >= prevSection.lessons.length;
+                  if (!prevAllDone) return "locked" as const;
+                }
+
+                // Within this section, lessons unlock sequentially
+                if (idx === 0) return "current" as const;
+                const prevLesson = section.lessons[idx - 1];
+                if (topicCompleted.has(prevLesson.id)) return "current" as const;
+                return "locked" as const;
+              });
+
+              // Quiz unlocks after all lessons are complete
+              const allLessonsDone =
+                completedLessonCount >= section.lessons.length;
+              const quizStatus: "completed" | "current" | "locked" = allLessonsDone
+                ? "current"
+                : "locked";
+
+              // Section start index for animation
+              const sectionStartIndex = globalNodeIndex;
+
+              return (
+                <div key={section.topic} className="flex flex-col gap-5">
+                  {/* Section banner */}
+                  <SectionHeader
+                    section={section}
+                    completedCount={completedLessonCount}
+                    sectionIndex={sectionIdx}
+                  />
+
+                  {/* Lesson nodes */}
+                  <div className="relative flex flex-col items-center gap-4 px-4">
+                    {/* Vertical path line */}
+                    <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-gray-700 via-gray-700 to-gray-800" />
+
+                    {section.lessons.map((lesson, lessonIdx) => {
+                      const delay = 0.05 * globalNodeIndex;
+                      globalNodeIndex += 1;
+                      return (
+                        <div key={lesson.id} className="relative z-10 w-full">
+                          <LessonNode
+                            lesson={lesson}
+                            section={section}
+                            nodeIndex={lessonIdx}
+                            status={lessonStatuses[lessonIdx]}
+                            globalDelay={delay}
+                          />
+                        </div>
+                      );
+                    })}
+
+                    {/* Quiz node */}
+                    <div className="relative z-10 w-full">
+                      <QuizNode
+                        section={section}
+                        nodeIndex={section.lessons.length}
+                        status={quizStatus}
+                        globalDelay={0.05 * globalNodeIndex}
+                      />
+                      {(() => {
+                        globalNodeIndex += 1;
+                        return null;
+                      })()}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Sidebar — hidden on mobile */}
+        <aside className="hidden w-72 shrink-0 lg:block">
+          <div className="sticky top-20">
+            <Sidebar
+              streak={progress.currentStreak}
+              totalXp={progress.totalXp}
+              funFact={funFact}
+            />
+          </div>
+        </aside>
+      </div>
+
+      {/* Legal disclaimer */}
+      <div className="border-t border-gray-800 px-4 py-3">
+        <LegalDisclaimer className="text-gray-500" />
+      </div>
+    </div>
   );
 }
