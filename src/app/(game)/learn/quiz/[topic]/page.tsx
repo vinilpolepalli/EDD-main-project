@@ -12,7 +12,7 @@ import {
   Trophy,
   X,
   Sparkles,
-  Coins,
+
   BookOpen,
   AlertTriangle,
   Zap,
@@ -27,7 +27,6 @@ import { useLocalProgress } from "@/hooks/use-local-progress";
 import {
   calculateQuizScore,
   calculateXpEarned,
-  calculateTokensEarned,
 } from "@/lib/game-engine/learn";
 import type { Topic, QuizQuestion } from "@/types/game";
 
@@ -212,12 +211,9 @@ export default function QuizPage() {
       result.total,
       progress.currentStreak
     );
-    const tokensEarned = calculateTokensEarned(result.score, result.total);
-
     return {
       ...result,
       xpEarned,
-      tokensEarned,
     };
   }, [quizComplete, gameOver, answers, questions, progress.currentStreak]);
 
@@ -604,20 +600,6 @@ export default function QuizPage() {
                           </span>
                           <span className="text-xs font-bold text-gray-500">
                             XP Earned
-                          </span>
-                        </motion.div>
-                        <motion.div
-                          className="flex flex-col items-center gap-2 rounded-xl border border-gray-700 bg-gray-800/80 p-4"
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.6, type: "spring" }}
-                        >
-                          <Coins className="h-6 w-6 text-amber-500" />
-                          <span className="text-2xl font-extrabold text-white tabular-nums">
-                            +{quizResults.tokensEarned}
-                          </span>
-                          <span className="text-xs font-bold text-gray-500">
-                            Tokens
                           </span>
                         </motion.div>
                       </div>
