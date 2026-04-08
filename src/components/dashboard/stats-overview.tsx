@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Sparkles,
   Flame,
-  Coins,
   BookCheck,
   Trophy,
   Target,
@@ -23,7 +22,6 @@ interface StatItem {
 interface StatsOverviewProps {
   totalXp: number;
   currentStreak: number;
-  arcadeTokens: number;
   lessonsCompleted: number;
   simulatorBestMonths: number;
   arcadeHighScore: number;
@@ -33,7 +31,6 @@ interface StatsOverviewProps {
 const StatsOverview: React.FC<StatsOverviewProps> = ({
   totalXp,
   currentStreak,
-  arcadeTokens,
   lessonsCompleted,
   simulatorBestMonths,
   arcadeHighScore,
@@ -53,13 +50,6 @@ const StatsOverview: React.FC<StatsOverviewProps> = ({
       icon: <Flame className="h-5 w-5" />,
       color: "text-orange-500",
       bgColor: "bg-orange-100",
-    },
-    {
-      label: "Tokens",
-      value: arcadeTokens,
-      icon: <Coins className="h-5 w-5" />,
-      color: "text-arcade",
-      bgColor: "bg-arcade-light",
     },
     {
       label: "Lessons",

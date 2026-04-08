@@ -34,18 +34,6 @@ export const TOKENS_PER_LESSON = 3;
 /** Bonus arcade tokens earned for a perfect quiz score (100%). */
 export const TOKENS_PER_QUIZ_PERFECT = 5;
 
-/**
- * Cost in tokens to play each arcade game.
- * Budget Blitz and Tax Dash are entry-level (2 tokens).
- * Credit Rush is the premium game (3 tokens) because credit is the
- * most complex topic and the game is more rewarding.
- */
-export const TOKEN_COST_ARCADE: Record<GameId, number> = {
-  "budget-blitz": 2,
-  "tax-dash": 2,
-  "credit-rush": 3,
-};
-
 // ---------------------------------------------------------------------------
 // Streak System
 // ---------------------------------------------------------------------------
@@ -61,36 +49,50 @@ export const STREAK_RESET_HOURS = 36;
 // Life Simulator Constants
 // ---------------------------------------------------------------------------
 
-/** Minimum starting bank balance for a new simulator run ($). */
-export const SIMULATOR_STARTING_BALANCE_MIN = 1000;
-
-/** Maximum starting bank balance for a new simulator run ($). */
-export const SIMULATOR_STARTING_BALANCE_MAX = 5000;
-
-/** Minimum monthly salary for a new simulator run ($). */
-export const SIMULATOR_SALARY_MIN = 2000;
-
-/** Maximum monthly salary for a new simulator run ($). */
-export const SIMULATOR_SALARY_MAX = 6000;
+/**
+ * Fraction of gross salary taken as tax withholding each month.
+ * 22% is a simplified combined federal + state tax rate for education.
+ * This teaches kids that taxes reduce your take-home pay.
+ */
+export const SIMULATOR_TAX_RATE = 0.22;
 
 /**
- * Fraction of salary consumed by fixed monthly expenses (rent, food, utilities).
- * 40% is a simplified version of real-world essential spending ratios.
+ * Amount of emergency credit issued when a player enters a debt spiral.
+ * This models the real-world scenario of taking out a high-interest
+ * emergency loan when you can't cover expenses.
  */
-export const SIMULATOR_BASE_EXPENSES = 0.4;
+export const SIMULATOR_DEBT_SPIRAL_AMOUNT = 1000;
 
 /**
- * Annual interest rate for savings accounts.
- * 4% is above the real-world average to make the reward for saving
- * visible within a short game session.
+ * Monthly interest rate on debt-spiral emergency credit (24% APR).
+ * This is intentionally punishing to teach that emergency debt at
+ * high interest rates creates a vicious cycle.
  */
-export const SIMULATOR_SAVINGS_INTEREST_RATE = 0.04;
+export const SIMULATOR_DEBT_SPIRAL_RATE = 0.02;
 
 /**
- * Average annual return rate for investments (stocks, index funds).
- * 8% is close to the long-term S&P 500 historical average.
+ * Ratio of debt to monthly salary that triggers true bankruptcy.
+ * If debt > 3x monthly salary, the player is bankrupt.
  */
-export const SIMULATOR_INVESTMENT_RETURN_RATE = 0.08;
+export const SIMULATOR_BANKRUPTCY_RATIO = 3;
+
+/**
+ * Monthly interest earned on emergency fund savings.
+ * 2% APR / 12 = ~0.17%/month in a high-yield savings account.
+ */
+export const SIMULATOR_EMERGENCY_FUND_INTEREST = 0.02 / 12;
+
+/**
+ * Monthly interest earned on regular savings.
+ * 4% APR / 12. Higher than reality to make saving visibly rewarding.
+ */
+export const SIMULATOR_SAVINGS_INTEREST = 0.04 / 12;
+
+/**
+ * Average monthly return on investments (stocks, index funds).
+ * 8% APR / 12. Close to S&P 500 long-term historical average.
+ */
+export const SIMULATOR_INVESTMENT_RETURN = 0.08 / 12;
 
 /**
  * Volatility range for investment returns.
@@ -118,28 +120,6 @@ export const SIMULATOR_MAX_CREDIT_SCORE = 850;
 export const SIMULATOR_STARTING_HAPPINESS = 70;
 
 // ---------------------------------------------------------------------------
-// Arcade Game Constants
-// ---------------------------------------------------------------------------
-
-/** Duration of a single arcade game round in seconds. */
-export const ARCADE_TIME_LIMIT = 60;
-
-/**
- * Each consecutive correct answer in an arcade game adds this to the
- * combo multiplier (e.g., 1x → 1.25x → 1.5x → ...).
- */
-export const ARCADE_COMBO_MULTIPLIER_STEP = 0.25;
-
-/** Maximum combo multiplier to prevent runaway scores. */
-export const ARCADE_MAX_COMBO_MULTIPLIER = 5;
-
-/**
- * Total XP threshold before a cosmetic reward unlocks.
- * Every 500 XP across all arcade games triggers a cosmetic unlock.
- */
-export const ARCADE_COSMETIC_UNLOCK_THRESHOLD = 500;
-
-// ---------------------------------------------------------------------------
 // Level System
 // ---------------------------------------------------------------------------
 
@@ -156,6 +136,31 @@ export const LEVEL_XP_THRESHOLDS: readonly number[] = [
 // ---------------------------------------------------------------------------
 // Arcade Game Configurations
 // ---------------------------------------------------------------------------
+
+/** Duration of a single arcade game round in seconds. */
+export const ARCADE_TIME_LIMIT = 60;
+
+/**
+ * Each consecutive correct answer in an arcade game adds this to the
+ * combo multiplier (e.g., 1x -> 1.25x -> 1.5x -> ...).
+ */
+export const ARCADE_COMBO_MULTIPLIER_STEP = 0.25;
+
+/** Maximum combo multiplier to prevent runaway scores. */
+export const ARCADE_MAX_COMBO_MULTIPLIER = 5;
+
+/**
+ * Total XP threshold before a cosmetic reward unlocks.
+ * Every 500 XP across all arcade games triggers a cosmetic unlock.
+ */
+export const ARCADE_COSMETIC_UNLOCK_THRESHOLD = 500;
+
+/** Cost in tokens to play each arcade game. */
+export const TOKEN_COST_ARCADE: Record<GameId, number> = {
+  "budget-blitz": 2,
+  "tax-dash": 2,
+  "credit-rush": 3,
+};
 
 /**
  * Full configuration for every arcade game.

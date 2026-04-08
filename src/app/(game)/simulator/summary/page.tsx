@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
@@ -15,22 +15,23 @@ import {
   TrendingUp,
   Star,
   Target,
-  PiggyBank,
-  ShieldCheck,
+  ShieldAlert,
 } from "lucide-react";
 import { GameLayout } from "@/components/shared/game-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGameState } from "@/hooks/use-game-state";
 import { useLocalProgress } from "@/hooks/use-local-progress";
-import type { SimulatorState } from "@/types/game";
+import { SIMULATOR_GOALS } from "@/lib/constants/scenarios";
+import type { SimulatorState, ActivityEntry } from "@/types/game";
 
 const SIM_STORAGE_KEY = "cashquest-sim-state";
 
 function formatMoney(amount: number): string {
-  return `$${amount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+  return `$${Math.round(amount).toLocaleString()}`;
 }
 
 interface PerformanceRating {
@@ -41,32 +42,41 @@ interface PerformanceRating {
   borderColor: string;
 }
 
-function getPerformanceRating(
-  finalBalance: number,
-  startingBalance: number
-): PerformanceRating {
-  if (finalBalance <= 0) {
+function getPerformanceRating(state: SimulatorState): PerformanceRating {
+  const netWorth =
+    state.balance + state.emergencyFund + state.investments - state.debt;
+
+  if (state.balance <= 0 || netWorth < -10000) {
     return {
       title: "Bankrupt",
-      emoji: "💸",
+      emoji: "\uD83D\uDCB8",
       color: "text-red-600",
       bgColor: "bg-red-50",
       borderColor: "border-red-300",
     };
   }
-  if (finalBalance > startingBalance * 2) {
+  if (netWorth > 50000) {
     return {
       title: "Financial Wizard",
-      emoji: "🧙",
+      emoji: "\uD83E\uDDD9",
       color: "text-purple-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-300",
     };
   }
-  if (finalBalance > startingBalance) {
+  if (netWorth > 20000) {
+    return {
+      title: "Wealth Builder",
+      emoji: "\uD83D\uDCB0",
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50",
+      borderColor: "border-emerald-300",
+    };
+  }
+  if (netWorth > state.startingBalance) {
     return {
       title: "Money Smart",
-      emoji: "🧠",
+      emoji: "\uD83E\uDDE0",
       color: "text-green-600",
       bgColor: "bg-green-50",
       borderColor: "border-green-300",
@@ -74,51 +84,179 @@ function getPerformanceRating(
   }
   return {
     title: "Getting There",
-    emoji: "📈",
+    emoji: "\uD83D\uDCC8",
     color: "text-yellow-600",
     bgColor: "bg-yellow-50",
     borderColor: "border-yellow-300",
   };
 }
 
-function getTips(state: SimulatorState, startingBalance: number): string[] {
+function getTips(state: SimulatorState): string[] {
   const tips: string[] = [];
+  const netWorth =
+    state.balance + state.emergencyFund + state.investments - state.debt;
 
-  if (state.balance <= 0) {
-    tips.push("Try building an emergency fund by saving at least 20% each month.");
+  if (state.emergencyFund < state.monthlyExpenses * 3) {
+    tips.push(
+      "Build your emergency fund to cover at least 3 months of expenses \u2014 it's your financial safety net!"
+    );
   }
 
-  if (state.savingsAllocation < state.spendingAllocation) {
-    tips.push("Try saving more than you spend on wants — your future self will thank you!");
+  if (state.debt > 0) {
+    tips.push(
+      "Focus on paying off high-interest debt first. Every dollar in interest is money lost!"
+    );
   }
 
-  if (state.investments < state.salary) {
-    tips.push("Investing even a small amount each month can grow your money over time through compound returns.");
+  if (state.investments < state.salary * 2) {
+    tips.push(
+      "Investing even a small amount each month lets compound interest work its magic over time."
+    );
   }
 
   if (state.creditScore < 650) {
-    tips.push("Keep your credit score healthy by saving consistently and avoiding too much spending.");
+    tips.push(
+      "Boost your credit score by paying bills on time, keeping debt low, and saving consistently."
+    );
   }
 
   if (state.happiness < 50) {
-    tips.push("Don't forget to treat yourself sometimes — balance is key to financial happiness!");
+    tips.push(
+      "Don't forget to treat yourself sometimes! Financial health includes mental health."
+    );
   }
 
   if (tips.length === 0) {
-    tips.push("Great job! Keep up the smart money habits.");
-    tips.push("Try to beat your record by surviving more months with a higher balance!");
+    tips.push("Great job! You made smart financial decisions.");
+    tips.push(
+      "Try a different scenario next time to learn new financial skills!"
+    );
   }
 
   return tips;
 }
 
+/** Simple SVG sparkline chart for net worth history */
+function NetWorthSparkline({
+  data,
+  className,
+}: {
+  data: number[];
+  className?: string;
+}) {
+  if (data.length < 2) return null;
+
+  const width = 400;
+  const height = 100;
+  const padding = 10;
+
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  const range = max - min || 1;
+
+  const points = data
+    .map((value, index) => {
+      const x =
+        padding +
+        (index / (data.length - 1)) * (width - padding * 2);
+      const y =
+        height -
+        padding -
+        ((value - min) / range) * (height - padding * 2);
+      return `${x},${y}`;
+    })
+    .join(" ");
+
+  // Create area fill path
+  const firstX = padding;
+  const lastX =
+    padding + ((data.length - 1) / (data.length - 1)) * (width - padding * 2);
+  const areaPath = `M ${firstX},${height - padding} L ${points
+    .split(" ")
+    .map((p) => `L ${p}`)
+    .join(" ")} L ${lastX},${height - padding} Z`;
+
+  const lastValue = data[data.length - 1];
+  const isPositive = lastValue >= 0;
+
+  return (
+    <div className={className}>
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="w-full"
+        aria-label={`Net worth trend: ${data.length} months, ending at $${Math.round(lastValue).toLocaleString()}`}
+      >
+        {/* Zero line */}
+        {min < 0 && max > 0 && (
+          <line
+            x1={padding}
+            y1={
+              height -
+              padding -
+              ((0 - min) / range) * (height - padding * 2)
+            }
+            x2={width - padding}
+            y2={
+              height -
+              padding -
+              ((0 - min) / range) * (height - padding * 2)
+            }
+            stroke="#d1d5db"
+            strokeWidth="1"
+            strokeDasharray="4,4"
+          />
+        )}
+
+        {/* Area fill */}
+        <path
+          d={areaPath}
+          fill={isPositive ? "rgba(16, 185, 129, 0.15)" : "rgba(239, 68, 68, 0.15)"}
+        />
+
+        {/* Line */}
+        <polyline
+          points={points}
+          fill="none"
+          stroke={isPositive ? "#10b981" : "#ef4444"}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* End dot */}
+        {data.length > 0 && (
+          <circle
+            cx={lastX}
+            cy={
+              height -
+              padding -
+              ((lastValue - min) / range) * (height - padding * 2)
+            }
+            r="4"
+            fill={isPositive ? "#10b981" : "#ef4444"}
+          />
+        )}
+      </svg>
+    </div>
+  );
+}
+
 /** Celebratory particle for good performance */
 function CelebrationParticle({ index }: { index: number }) {
-  const emojis = ["🌟", "✨", "💰", "🎉", "🏆", "💎", "🪙", "📈"];
+  const emojis = [
+    "\uD83C\uDF1F",
+    "\u2728",
+    "\uD83D\uDCB0",
+    "\uD83C\uDF89",
+    "\uD83C\uDFC6",
+    "\uD83D\uDC8E",
+    "\uD83E\uDE99",
+    "\uD83D\uDCC8",
+  ];
   const emoji = emojis[index % emojis.length];
   const startX = (index * 43) % 100;
   const delay = (index * 0.15) % 2;
-  const duration = 2.5 + (index * 0.3) % 1.5;
+  const duration = 2.5 + ((index * 0.3) % 1.5);
 
   return (
     <motion.span
@@ -126,10 +264,10 @@ function CelebrationParticle({ index }: { index: number }) {
       style={{ left: `${startX}%` }}
       initial={{ y: 0, opacity: 1, scale: 0.5 }}
       animate={{
-        y: -300 - (index * 20) % 200,
+        y: -300 - ((index * 20) % 200),
         opacity: 0,
         scale: 1.2,
-        x: (index % 2 === 0 ? 1 : -1) * (30 + (index * 13) % 50),
+        x: (index % 2 === 0 ? 1 : -1) * (30 + ((index * 13) % 50)),
         rotate: 360,
       }}
       transition={{
@@ -174,7 +312,6 @@ export default function SimulatorSummaryPage() {
   const { updateXp } = useGameState();
   const { addSimulatorRun } = useLocalProgress();
   const [state, setState] = useState<SimulatorState | null>(null);
-  const [startingBalance, setStartingBalance] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [xpAwarded, setXpAwarded] = useState(0);
   const hasAwardedRef = useRef(false);
@@ -191,13 +328,7 @@ export default function SimulatorSummaryPage() {
           "balance" in parsed &&
           "salary" in parsed
         ) {
-          const simState = parsed as SimulatorState;
-          setState(simState);
-
-          // Estimate starting balance from the initial generation formula
-          // We don't have the original starting balance stored, so we use a reasonable default
-          // The range is $1,000 - $5,000, so we use the midpoint as a rough estimate
-          setStartingBalance(3000);
+          setState(parsed as SimulatorState);
         } else {
           router.replace("/simulator");
           return;
@@ -219,7 +350,14 @@ export default function SimulatorSummaryPage() {
     hasAwardedRef.current = true;
 
     const monthsSurvived = state.month - 1;
-    const balanceBonus = state.balance > startingBalance * 2 ? 100 : state.balance > startingBalance ? 50 : 0;
+    const netWorth =
+      state.balance + state.emergencyFund + state.investments - state.debt;
+    const balanceBonus =
+      netWorth > state.startingBalance * 2
+        ? 100
+        : netWorth > state.startingBalance
+          ? 50
+          : 0;
     const totalXp = monthsSurvived * 20 + balanceBonus;
 
     setXpAwarded(totalXp);
@@ -238,7 +376,12 @@ export default function SimulatorSummaryPage() {
     } catch {
       // Ignore
     }
-  }, [state, startingBalance, updateXp, addSimulatorRun]);
+  }, [state, updateXp, addSimulatorRun]);
+
+  const goal = useMemo(() => {
+    if (!state) return null;
+    return SIMULATOR_GOALS.find((g) => g.id === state.goalId) ?? null;
+  }, [state]);
 
   if (isLoading || !state) {
     return (
@@ -254,16 +397,30 @@ export default function SimulatorSummaryPage() {
   }
 
   const monthsSurvived = state.month - 1;
-  const rating = getPerformanceRating(state.balance, startingBalance);
-  const tips = getTips(state, startingBalance);
-  const showCelebration = state.balance > startingBalance;
+  const netWorth =
+    state.balance + state.emergencyFund + state.investments - state.debt;
+  const rating = getPerformanceRating(state);
+  const tips = getTips(state);
+  const showCelebration = netWorth > state.startingBalance;
+
+  const goalProgress = goal ? goal.progressValue(state) : 0;
+  const goalComplete = goal ? goal.isComplete(state) : false;
+
+  // Get last 5 activity log entries
+  const recentActivity = (state.activityLog || [])
+    .filter((e: ActivityEntry) => e.type === "choice" || e.type === "milestone")
+    .slice(-5)
+    .reverse();
 
   return (
     <GameLayout title="Summary" module="simulator" backHref="/simulator">
       <div className="relative flex flex-col items-center gap-8 overflow-hidden pb-8">
         {/* Celebration Particles */}
         {showCelebration && (
-          <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+            aria-hidden="true"
+          >
             {Array.from({ length: 16 }).map((_, i) => (
               <CelebrationParticle key={i} index={i} />
             ))}
@@ -281,7 +438,12 @@ export default function SimulatorSummaryPage() {
             className="text-5xl"
             initial={{ scale: 0, rotate: -30 }}
             animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 300, damping: 12 }}
+            transition={{
+              delay: 0.2,
+              type: "spring",
+              stiffness: 300,
+              damping: 12,
+            }}
           >
             {rating.emoji}
           </motion.span>
@@ -294,34 +456,103 @@ export default function SimulatorSummaryPage() {
             {rating.title}
           </motion.h2>
           <motion.div
+            className="flex flex-col items-center gap-1"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Badge className="bg-white/80 text-purple-700 text-sm font-extrabold">
+            <Badge className="bg-white/80 text-sm font-extrabold text-purple-700">
               +{xpAwarded} XP Earned
             </Badge>
+            <span className="text-xs font-bold text-muted-foreground">
+              Life Stage: {state.lifeStage}
+            </span>
           </motion.div>
         </motion.div>
+
+        {/* Goal Status */}
+        {goal && (
+          <motion.div
+            className={`w-full max-w-md rounded-2xl border-2 p-5 ${
+              goalComplete
+                ? "border-emerald-400 bg-emerald-50"
+                : "border-purple-200 bg-purple-50"
+            }`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+          >
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-2 text-sm font-extrabold">
+                <Target
+                  className={`h-5 w-5 ${goalComplete ? "text-emerald-500" : "text-purple-500"}`}
+                />
+                {goal.label}
+              </span>
+              {goalComplete ? (
+                <Badge className="bg-emerald-500 text-white">
+                  {"\uD83C\uDF89"} ACHIEVED!
+                </Badge>
+              ) : (
+                <span className="text-sm font-extrabold tabular-nums text-purple-600">
+                  {goalProgress}%
+                </span>
+              )}
+            </div>
+            <Progress
+              value={goalProgress}
+              className={`mt-2 h-3 ${goalComplete ? "[&>div]:bg-emerald-500" : "[&>div]:bg-purple-500"}`}
+            />
+          </motion.div>
+        )}
+
+        {/* Net Worth Sparkline */}
+        {state.netWorthHistory && state.netWorthHistory.length >= 2 && (
+          <motion.div
+            className="w-full max-w-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Card className="border-2 border-border">
+              <CardContent className="flex flex-col gap-2 p-5">
+                <div className="flex items-center justify-between">
+                  <h3 className="flex items-center gap-2 text-sm font-extrabold text-foreground">
+                    <TrendingUp className="h-4 w-4 text-blue-500" />
+                    Net Worth Over Time
+                  </h3>
+                  <span
+                    className={`text-sm font-extrabold tabular-nums ${
+                      netWorth >= 0 ? "text-emerald-600" : "text-red-600"
+                    }`}
+                  >
+                    {formatMoney(netWorth)}
+                  </span>
+                </div>
+                <NetWorthSparkline data={state.netWorthHistory} />
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
 
         {/* Stats Grid */}
         <motion.div
           className="grid w-full max-w-md grid-cols-2 gap-3 sm:grid-cols-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.5 }}
         >
           <SummaryStat
             icon={<Calendar className="h-5 w-5 text-purple-500" />}
             label="Months Survived"
             value={`${monthsSurvived}`}
-            delay={0.4}
+            delay={0.5}
           />
           <SummaryStat
-            icon={<DollarSign className="h-5 w-5 text-green-500" />}
+            icon={<DollarSign className="h-5 w-5 text-emerald-500" />}
             label="Final Balance"
             value={formatMoney(state.balance)}
-            delay={0.5}
+            delay={0.55}
           />
           <SummaryStat
             icon={<CreditCard className="h-5 w-5 text-blue-500" />}
@@ -333,21 +564,60 @@ export default function SimulatorSummaryPage() {
             icon={<Smile className="h-5 w-5 text-yellow-500" />}
             label="Happiness"
             value={`${state.happiness}%`}
+            delay={0.65}
+          />
+          <SummaryStat
+            icon={<ShieldAlert className="h-5 w-5 text-teal-500" />}
+            label="Emergency Fund"
+            value={formatMoney(state.emergencyFund)}
             delay={0.7}
           />
           <SummaryStat
             icon={<TrendingUp className="h-5 w-5 text-blue-500" />}
             label="Investments"
             value={formatMoney(state.investments)}
-            delay={0.8}
-          />
-          <SummaryStat
-            icon={<Zap className="h-5 w-5 text-orange-500" />}
-            label="Life Events"
-            value={`${state.events.length}`}
-            delay={0.9}
+            delay={0.75}
           />
         </motion.div>
+
+        {/* Recent Decisions */}
+        {recentActivity.length > 0 && (
+          <motion.div
+            className="w-full max-w-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            <Card className="border-2 border-purple-200">
+              <CardContent className="flex flex-col gap-3 p-5">
+                <h3 className="flex items-center gap-2 text-sm font-extrabold text-purple-700">
+                  <Zap className="h-4 w-4" />
+                  Key Decisions Made
+                </h3>
+                {recentActivity.map((entry: ActivityEntry, i: number) => (
+                  <motion.div
+                    key={i}
+                    className={`flex items-start gap-2.5 rounded-xl border px-3 py-2 ${
+                      entry.positivity === "positive"
+                        ? "border-emerald-200 bg-emerald-50"
+                        : entry.positivity === "negative"
+                          ? "border-red-200 bg-red-50"
+                          : "border-blue-200 bg-blue-50"
+                    }`}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.85 + i * 0.05 }}
+                  >
+                    <span className="mt-0.5 text-base">{entry.emoji}</span>
+                    <p className="text-xs font-semibold leading-relaxed text-foreground">
+                      {entry.text}
+                    </p>
+                  </motion.div>
+                ))}
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
 
         {/* Financial Tips */}
         <motion.div
@@ -368,7 +638,7 @@ export default function SimulatorSummaryPage() {
                   className="flex items-start gap-3 rounded-xl bg-purple-50 p-3"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.1 + i * 0.1 }}
+                  transition={{ delay: 1.05 + i * 0.1 }}
                 >
                   <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-purple-200">
                     <Star className="h-3 w-3 text-purple-600" />

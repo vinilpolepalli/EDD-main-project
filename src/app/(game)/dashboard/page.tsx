@@ -239,13 +239,13 @@ export default function DashboardPage() {
             <XpBar totalXp={progress.totalXp} />
           </motion.div>
 
-          {/* Stats Row: Streak + Tokens */}
+          {/* Stats Row: Streak */}
           <motion.div
             variants={item}
             className="grid grid-cols-1 gap-4 sm:grid-cols-2"
           >
             <StreakCounter streak={progress.currentStreak} />
-            <TokenDisplay tokens={progress.arcadeTokens} />
+            <TokenDisplay tokens={0} />
           </motion.div>
 
           {/* Module Cards */}
@@ -266,7 +266,6 @@ export default function DashboardPage() {
             <StatsOverview
               totalXp={progress.totalXp}
               currentStreak={progress.currentStreak}
-              arcadeTokens={progress.arcadeTokens}
               lessonsCompleted={completedLessons.length}
               simulatorBestMonths={simulatorBest?.monthsSurvived ?? 0}
               arcadeHighScore={arcadeHighScore}
