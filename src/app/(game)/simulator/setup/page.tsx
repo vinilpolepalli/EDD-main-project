@@ -4,104 +4,201 @@ import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  User,
   DollarSign,
   PiggyBank,
   CreditCard,
-  RefreshCw,
-  Rocket,
   Receipt,
+  Rocket,
+  Target,
+  Briefcase,
 } from "lucide-react";
 import { GameLayout } from "@/components/shared/game-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import { generateInitialState } from "@/lib/game-engine/simulator";
-import type { SimulatorState } from "@/types/game";
+import { SCENARIOS, SIMULATOR_GOALS } from "@/lib/constants/scenarios";
+import type { LifeScenario, ScenarioId } from "@/types/game";
 
 const SIM_STORAGE_KEY = "cashquest-sim-state";
 
-interface StatRevealProps {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  color: string;
-  bgColor: string;
-  delay: number;
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring" as const, stiffness: 200, damping: 18 },
+  },
+};
+
+function formatMoney(amount: number): string {
+  return `$${amount.toLocaleString()}`;
 }
 
-function StatReveal({ icon, label, value, color, bgColor, delay }: StatRevealProps) {
+interface ScenarioCardProps {
+  scenario: LifeScenario;
+  isSelected: boolean;
+  onSelect: () => void;
+}
+
+function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
+  const goal = SIMULATOR_GOALS.find((g) => g.id === scenario.goalId);
+  const isSurprise = scenario.id === "surprise";
+
   return (
-    <motion.div
-      className={`flex items-center gap-4 rounded-2xl border-2 border-transparent p-4 ${bgColor}`}
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        delay,
-        type: "spring",
-        stiffness: 200,
-        damping: 18,
-      }}
-    >
-      <motion.div
-        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${color} shadow-md`}
-        initial={{ rotate: -20 }}
-        animate={{ rotate: 0 }}
-        transition={{ delay: delay + 0.1, type: "spring", stiffness: 300, damping: 15 }}
+    <motion.div variants={cardVariant}>
+      <Card
+        className={`cursor-pointer border-2 transition-all ${
+          isSelected
+            ? "border-purple-500 shadow-lg shadow-purple-200 ring-2 ring-purple-300"
+            : "border-border hover:border-purple-300 hover:shadow-md"
+        }`}
+        onClick={onSelect}
+        role="radio"
+        aria-checked={isSelected}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onSelect();
+          }
+        }}
       >
-        {icon}
-      </motion.div>
-      <div className="flex flex-col">
-        <span className="text-xs font-bold text-muted-foreground">{label}</span>
-        <motion.span
-          className="text-xl font-extrabold tabular-nums text-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: delay + 0.15 }}
-        >
-          {value}
-        </motion.span>
-      </div>
+        <CardContent className="flex flex-col gap-3 p-5">
+          {/* Emoji + Title */}
+          <div className="flex items-center gap-3">
+            <motion.span
+              className="text-4xl"
+              animate={
+                isSurprise && isSelected
+                  ? { rotate: [0, 10, -10, 10, 0] }
+                  : {}
+              }
+              transition={{ duration: 0.5, repeat: isSurprise && isSelected ? Infinity : 0, repeatDelay: 1 }}
+            >
+              {scenario.emoji}
+            </motion.span>
+            <div className="flex flex-col">
+              <span className="text-lg font-extrabold text-foreground">
+                {scenario.label}
+              </span>
+              <span className="text-xs font-semibold text-muted-foreground">
+                {scenario.description}
+              </span>
+            </div>
+          </div>
+
+          {/* Key stats (hidden for surprise until selected) */}
+          {!isSurprise && (
+            <div className="grid grid-cols-2 gap-2">
+              <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
+                <Briefcase className="h-3.5 w-3.5 text-purple-500" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold text-muted-foreground">
+                    Age
+                  </span>
+                  <span className="text-sm font-extrabold tabular-nums text-foreground">
+                    {scenario.age}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
+                <DollarSign className="h-3.5 w-3.5 text-emerald-500" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold text-muted-foreground">
+                    Salary
+                  </span>
+                  <span className="text-sm font-extrabold tabular-nums text-foreground">
+                    {formatMoney(scenario.salary)}/mo
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
+                <PiggyBank className="h-3.5 w-3.5 text-blue-500" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold text-muted-foreground">
+                    Savings
+                  </span>
+                  <span className="text-sm font-extrabold tabular-nums text-foreground">
+                    {formatMoney(scenario.startingBalance)}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
+                <CreditCard className="h-3.5 w-3.5 text-red-500" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold text-muted-foreground">
+                    {scenario.debtLabel}
+                  </span>
+                  <span className="text-sm font-extrabold tabular-nums text-foreground">
+                    {formatMoney(scenario.startingDebt)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {isSurprise && (
+            <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-purple-300 bg-purple-50 p-4">
+              <p className="text-center text-sm font-bold text-purple-600">
+                Random age, salary, debt, and life situation!
+              </p>
+            </div>
+          )}
+
+          {/* Goal badge */}
+          {goal && (
+            <div className="flex items-center gap-2">
+              <Target className="h-3.5 w-3.5 text-purple-500" />
+              <span className="text-xs font-bold text-purple-600">
+                Goal: {goal.label}
+              </span>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
 
 export default function SimulatorSetupPage() {
   const router = useRouter();
-  const [seed, setSeed] = useState(() => Date.now());
-  const [state, setState] = useState<SimulatorState>(() =>
-    generateInitialState(seed)
-  );
-  const [isRerolling, setIsRerolling] = useState(false);
-  const [animKey, setAnimKey] = useState(0);
-
-  const handleReroll = useCallback(() => {
-    setIsRerolling(true);
-    const newSeed = Date.now();
-    setSeed(newSeed);
-
-    // Small delay for animation feel
-    setTimeout(() => {
-      const newState = generateInitialState(newSeed);
-      setState(newState);
-      setAnimKey((prev) => prev + 1);
-      setIsRerolling(false);
-    }, 300);
-  }, []);
+  const [selectedId, setSelectedId] = useState<ScenarioId | null>(null);
+  const [seed] = useState(() => Date.now());
 
   const handleBegin = useCallback(() => {
+    if (!selectedId) return;
+
+    const scenario = SCENARIOS.find((s) => s.id === selectedId);
+    if (!scenario) return;
+
+    const state = generateInitialState(scenario, seed);
+
     try {
       localStorage.setItem(SIM_STORAGE_KEY, JSON.stringify(state));
+      sessionStorage.setItem(
+        "cashquest-sim-seed",
+        JSON.stringify({ seed, scenarioId: selectedId })
+      );
       router.push("/simulator/play");
     } catch {
-      // If localStorage fails, still try to navigate
+      // If storage fails, still try to navigate
       router.push("/simulator/play");
     }
-  }, [state, router]);
-
-  const discretionaryIncome = state.salary - state.monthlyExpenses;
+  }, [selectedId, seed, router]);
 
   return (
-    <GameLayout title="Setup" module="simulator" backHref="/simulator">
+    <GameLayout title="Life Simulator" module="simulator" backHref="/simulator">
       <div className="flex flex-col items-center gap-8 py-4">
         {/* Title */}
         <motion.div
@@ -111,131 +208,49 @@ export default function SimulatorSetupPage() {
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
         >
           <h2 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
-            Your Character
+            Choose Your Life
           </h2>
           <p className="max-w-sm text-sm text-muted-foreground">
-            Here's the hand life dealt you. Can you make it work?
+            Pick a starting scenario. Each one teaches different financial skills!
           </p>
         </motion.div>
 
-        {/* Character Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={animKey}
-            className="w-full max-w-md"
-            initial={{ opacity: 0, scale: 0.95, rotateY: 10 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            exit={{ opacity: 0, scale: 0.95, rotateY: -10 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          >
-            <Card className="overflow-hidden border-2 border-purple-300 shadow-xl">
-              {/* Card Header */}
-              <div className="bg-gradient-to-r from-purple-600 to-violet-600 p-5 text-center text-white">
-                <motion.div
-                  className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.15, type: "spring", stiffness: 300, damping: 15 }}
-                >
-                  <User className="h-8 w-8" />
-                </motion.div>
-                <motion.p
-                  className="text-2xl font-extrabold"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  Age {state.age}
-                </motion.p>
-                <motion.p
-                  className="text-sm text-purple-200"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.25 }}
-                >
-                  Ready to take on the world!
-                </motion.p>
-              </div>
-
-              {/* Stats */}
-              <CardContent className="flex flex-col gap-3 p-4">
-                <StatReveal
-                  icon={<DollarSign className="h-6 w-6 text-white" />}
-                  label="Monthly Salary"
-                  value={`$${state.salary.toLocaleString()}`}
-                  color="bg-green-500"
-                  bgColor="bg-green-50"
-                  delay={0.3}
-                />
-                <StatReveal
-                  icon={<PiggyBank className="h-6 w-6 text-white" />}
-                  label="Starting Balance"
-                  value={`$${state.balance.toLocaleString()}`}
-                  color="bg-blue-500"
-                  bgColor="bg-blue-50"
-                  delay={0.45}
-                />
-                <StatReveal
-                  icon={<CreditCard className="h-6 w-6 text-white" />}
-                  label="Starting Credit Score"
-                  value={`${state.creditScore}`}
-                  color="bg-purple-500"
-                  bgColor="bg-purple-50"
-                  delay={0.6}
-                />
-                <StatReveal
-                  icon={<Receipt className="h-6 w-6 text-white" />}
-                  label="Monthly Expenses"
-                  value={`$${state.monthlyExpenses.toLocaleString()}`}
-                  color="bg-orange-500"
-                  bgColor="bg-orange-50"
-                  delay={0.75}
-                />
-
-                {/* Discretionary Income Callout */}
-                <motion.div
-                  className="mt-2 rounded-xl border-2 border-dashed border-purple-300 bg-purple-50 p-4 text-center"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9 }}
-                >
-                  <p className="text-xs font-bold text-purple-500">
-                    MONEY YOU GET TO DECIDE HOW TO USE
-                  </p>
-                  <p className="mt-1 text-2xl font-extrabold tabular-nums text-purple-700">
-                    ${discretionaryIncome.toLocaleString()}
-                    <span className="text-sm font-bold text-purple-400">/month</span>
-                  </p>
-                </motion.div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Action Buttons */}
+        {/* Scenario Cards Grid */}
         <motion.div
-          className="flex w-full max-w-md flex-col gap-3 sm:flex-row"
+          className="grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          role="radiogroup"
+          aria-label="Choose a life scenario"
+        >
+          {SCENARIOS.map((scenario) => (
+            <ScenarioCard
+              key={scenario.id}
+              scenario={scenario}
+              isSelected={selectedId === scenario.id}
+              onSelect={() => setSelectedId(scenario.id)}
+            />
+          ))}
+        </motion.div>
+
+        {/* Start Button */}
+        <motion.div
+          className="w-full max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.5 }}
         >
           <Button
-            variant="outline"
             size="lg"
-            className="flex-1 border-purple-300 text-purple-700 hover:bg-purple-50"
-            onClick={handleReroll}
-            disabled={isRerolling}
-          >
-            <RefreshCw className={`h-5 w-5 ${isRerolling ? "animate-spin" : ""}`} />
-            Reroll
-          </Button>
-          <Button
-            size="lg"
-            className="flex-1 bg-gradient-to-r from-purple-600 to-violet-600 text-white hover:from-purple-700 hover:to-violet-700"
+            className="w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white hover:from-purple-700 hover:to-violet-700 disabled:opacity-50"
             onClick={handleBegin}
+            disabled={!selectedId}
           >
             <Rocket className="h-5 w-5" />
-            Begin Simulation!
+            {selectedId
+              ? `Start as ${SCENARIOS.find((s) => s.id === selectedId)?.label ?? "..."}`
+              : "Select a Scenario to Begin"}
           </Button>
         </motion.div>
       </div>

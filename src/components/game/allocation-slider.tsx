@@ -2,48 +2,72 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { PiggyBank, ShoppingBag, TrendingUp } from "lucide-react";
+import {
+  PiggyBank,
+  ShoppingBag,
+  TrendingUp,
+  ShieldAlert,
+  Banknote,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type BucketKey =
+  | "emergencyFund"
+  | "savings"
+  | "investing"
+  | "spending"
+  | "debtPayment";
+
 interface AllocationSliderProps {
-  /** Percentage 0-100 allocated to savings */
+  /** Percentage 0-100 for each bucket */
+  emergencyFund: number;
   savings: number;
-  /** Percentage 0-100 allocated to spending */
   spending: number;
-  /** Percentage 0-100 allocated to investing */
   investing: number;
+  debtPayment: number;
+  /** Whether to show the debt payment slider */
+  showDebtPayment: boolean;
   /** The dollar amount that will be divided. Used for display only. */
   totalAmount: number;
   /** Called whenever any allocation changes */
-  onChange: (allocation: { savings: number; spending: number; investing: number }) => void;
+  onChange: (allocation: {
+    emergencyFund: number;
+    savings: number;
+    spending: number;
+    investing: number;
+    debtPayment: number;
+  }) => void;
   className?: string;
 }
 
 interface CategoryConfig {
-  key: "savings" | "spending" | "investing";
+  key: BucketKey;
   label: string;
   icon: React.ReactNode;
   color: string;
   thumbColor: string;
   bgColor: string;
+  emoji: string;
 }
 
-const categories: CategoryConfig[] = [
+const allCategories: CategoryConfig[] = [
+  {
+    key: "emergencyFund",
+    label: "Emergency Fund",
+    icon: <ShieldAlert className="h-4 w-4" />,
+    color: "text-red-500",
+    thumbColor: "bg-red-500",
+    bgColor: "bg-red-100",
+    emoji: "\uD83D\uDEA8",
+  },
   {
     key: "savings",
     label: "Savings",
     icon: <PiggyBank className="h-4 w-4" />,
-    color: "text-success",
-    thumbColor: "bg-success",
-    bgColor: "bg-learn-light",
-  },
-  {
-    key: "spending",
-    label: "Spending",
-    icon: <ShoppingBag className="h-4 w-4" />,
-    color: "text-orange-500",
-    thumbColor: "bg-orange-500",
-    bgColor: "bg-orange-100",
+    color: "text-emerald-500",
+    thumbColor: "bg-emerald-500",
+    bgColor: "bg-emerald-100",
+    emoji: "\uD83D\uDC37",
   },
   {
     key: "investing",
@@ -52,86 +76,129 @@ const categories: CategoryConfig[] = [
     color: "text-blue-500",
     thumbColor: "bg-blue-500",
     bgColor: "bg-blue-100",
+    emoji: "\uD83D\uDCC8",
+  },
+  {
+    key: "spending",
+    label: "Spending",
+    icon: <ShoppingBag className="h-4 w-4" />,
+    color: "text-orange-500",
+    thumbColor: "bg-orange-500",
+    bgColor: "bg-orange-100",
+    emoji: "\uD83D\uDECD\uFE0F",
+  },
+  {
+    key: "debtPayment",
+    label: "Debt Extra Payment",
+    icon: <Banknote className="h-4 w-4" />,
+    color: "text-purple-500",
+    thumbColor: "bg-purple-500",
+    bgColor: "bg-purple-100",
+    emoji: "\uD83D\uDCB3",
   },
 ];
 
 const AllocationSlider: React.FC<AllocationSliderProps> = ({
+  emergencyFund,
   savings,
   spending,
   investing,
+  debtPayment,
+  showDebtPayment,
   totalAmount,
   onChange,
   className,
 }) => {
-  const values: Record<string, number> = { savings, spending, investing };
+  const categories = showDebtPayment
+    ? allCategories
+    : allCategories.filter((c) => c.key !== "debtPayment");
 
-  const handleChange = (key: "savings" | "spending" | "investing", newValue: number) => {
+  const values: Record<BucketKey, number> = {
+    emergencyFund,
+    savings,
+    spending,
+    investing,
+    debtPayment,
+  };
+
+  const handleChange = (key: BucketKey, newValue: number) => {
     const clamped = Math.max(0, Math.min(100, Math.round(newValue)));
-    const currentValues = { savings, spending, investing };
+    const currentValues = { emergencyFund, savings, spending, investing, debtPayment };
     const oldValue = currentValues[key];
     const delta = clamped - oldValue;
 
     if (delta === 0) return;
 
-    // Determine the other two keys and distribute the delta
-    const otherKeys = categories
-      .map((c) => c.key)
-      .filter((k) => k !== key) as Array<"savings" | "spending" | "investing">;
+    // Determine the other keys and distribute the delta proportionally
+    const activeKeys = categories.map((c) => c.key).filter((k) => k !== key);
+    const otherTotal = activeKeys.reduce(
+      (sum, k) => sum + currentValues[k],
+      0
+    );
 
-    const otherTotal = otherKeys.reduce((sum, k) => sum + currentValues[k], 0);
-    const newOther: Record<string, number> = {};
+    const newValues: Record<BucketKey, number> = { ...currentValues };
+    newValues[key] = clamped;
 
     if (otherTotal === 0) {
-      // Split evenly
-      const each = Math.floor(-delta / 2);
-      newOther[otherKeys[0]] = Math.max(0, currentValues[otherKeys[0]] + each);
-      newOther[otherKeys[1]] = 100 - clamped - newOther[otherKeys[0]];
+      // Split evenly among others
+      const remaining = 100 - clamped;
+      const each = Math.floor(remaining / activeKeys.length);
+      for (let i = 0; i < activeKeys.length; i++) {
+        newValues[activeKeys[i]] = each;
+      }
+      // Fix rounding: add remainder to last key
+      const distributed = each * activeKeys.length;
+      if (remaining - distributed > 0) {
+        newValues[activeKeys[activeKeys.length - 1]] += remaining - distributed;
+      }
     } else {
       // Distribute proportionally
-      for (const k of otherKeys) {
+      for (const k of activeKeys) {
         const ratio = currentValues[k] / otherTotal;
-        newOther[k] = Math.max(0, Math.round(currentValues[k] - delta * ratio));
+        newValues[k] = Math.max(
+          0,
+          Math.round(currentValues[k] - delta * ratio)
+        );
       }
       // Correct rounding errors
-      const total = clamped + newOther[otherKeys[0]] + newOther[otherKeys[1]];
-      if (total !== 100) {
-        newOther[otherKeys[1]] += 100 - total;
-        newOther[otherKeys[1]] = Math.max(0, newOther[otherKeys[1]]);
+      const totalNow = categories.reduce(
+        (sum, cat) => sum + newValues[cat.key],
+        0
+      );
+      if (totalNow !== 100) {
+        // Adjust the last "other" key
+        const lastKey = activeKeys[activeKeys.length - 1];
+        newValues[lastKey] += 100 - totalNow;
+        newValues[lastKey] = Math.max(0, newValues[lastKey]);
       }
     }
 
-    onChange({
-      savings: key === "savings" ? clamped : (newOther.savings ?? savings),
-      spending: key === "spending" ? clamped : (newOther.spending ?? spending),
-      investing: key === "investing" ? clamped : (newOther.investing ?? investing),
-    });
+    onChange(newValues);
   };
 
   const formatDollar = (pct: number) =>
     `$${Math.round((pct / 100) * totalAmount).toLocaleString()}`;
 
+  // Calculate total for the summary bar (only active categories)
+  const activeTotal = categories.reduce((sum, cat) => sum + values[cat.key], 0);
+
   return (
     <div className={cn("flex flex-col gap-5", className)}>
       {/* Summary bar */}
-      <div className="flex h-4 w-full overflow-hidden rounded-full">
-        <motion.div
-          className="bg-success"
-          style={{ width: `${savings}%` }}
-          layout
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        />
-        <motion.div
-          className="bg-orange-500"
-          style={{ width: `${spending}%` }}
-          layout
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        />
-        <motion.div
-          className="bg-blue-500"
-          style={{ width: `${investing}%` }}
-          layout
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        />
+      <div className="flex h-4 w-full overflow-hidden rounded-full bg-muted">
+        {categories.map((cat) => {
+          const pct = values[cat.key];
+          if (pct <= 0) return null;
+          return (
+            <motion.div
+              key={cat.key}
+              className={cat.thumbColor}
+              style={{ width: `${pct}%` }}
+              layout
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            />
+          );
+        })}
       </div>
 
       {/* Individual sliders */}
@@ -142,15 +209,26 @@ const AllocationSlider: React.FC<AllocationSliderProps> = ({
         return (
           <div key={cat.key} className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
-              <span className={cn("flex items-center gap-1.5 text-sm font-bold", cat.color)}>
+              <span
+                className={cn(
+                  "flex items-center gap-1.5 text-sm font-bold",
+                  cat.color
+                )}
+              >
                 {cat.icon}
                 {cat.label}
               </span>
               <div className="flex items-center gap-2">
-                <span className={cn("rounded-md px-2 py-0.5 text-sm font-extrabold tabular-nums", cat.bgColor, cat.color)}>
+                <span
+                  className={cn(
+                    "rounded-md px-2 py-0.5 text-sm font-extrabold tabular-nums",
+                    cat.bgColor,
+                    cat.color
+                  )}
+                >
                   {pct}%
                 </span>
-                <span className="text-xs font-bold text-muted-foreground tabular-nums">
+                <span className="text-xs font-bold tabular-nums text-muted-foreground">
                   {formatDollar(pct)}
                 </span>
               </div>
@@ -183,9 +261,9 @@ const AllocationSlider: React.FC<AllocationSliderProps> = ({
       })}
 
       {/* Total check */}
-      {savings + spending + investing !== 100 && (
+      {activeTotal !== 100 && (
         <p className="text-center text-xs font-bold text-destructive">
-          Allocations must add up to 100% (currently {savings + spending + investing}%)
+          Allocations must add up to 100% (currently {activeTotal}%)
         </p>
       )}
     </div>

@@ -3,16 +3,18 @@ import type {
   MonthAllocation,
   MonthResult,
   LifeEvent,
+  LifeScenario,
+  ActivityEntry,
 } from "@/types/game";
 
 import {
-  SIMULATOR_STARTING_BALANCE_MIN,
-  SIMULATOR_STARTING_BALANCE_MAX,
-  SIMULATOR_SALARY_MIN,
-  SIMULATOR_SALARY_MAX,
-  SIMULATOR_BASE_EXPENSES,
-  SIMULATOR_SAVINGS_INTEREST_RATE,
-  SIMULATOR_INVESTMENT_RETURN_RATE,
+  SIMULATOR_TAX_RATE,
+  SIMULATOR_DEBT_SPIRAL_AMOUNT,
+  SIMULATOR_DEBT_SPIRAL_RATE,
+  SIMULATOR_BANKRUPTCY_RATIO,
+  SIMULATOR_EMERGENCY_FUND_INTEREST,
+  SIMULATOR_SAVINGS_INTEREST,
+  SIMULATOR_INVESTMENT_RETURN,
   SIMULATOR_INVESTMENT_VOLATILITY,
   SIMULATOR_STARTING_CREDIT_SCORE,
   SIMULATOR_MIN_CREDIT_SCORE,
@@ -53,81 +55,129 @@ function clamp(value: number, min: number, max: number): number {
 }
 
 // ---------------------------------------------------------------------------
+// Life Stage Calculation
+// ---------------------------------------------------------------------------
+
+/**
+ * Determines the player's life stage based on months survived and net worth.
+ *
+ * Life stages are like "achievement tiers" that give the player a sense
+ * of progression — similar to BitLife's age-based milestones but focused
+ * on financial growth rather than just time passing.
+ */
+export function getLifeStage(months: number, netWorth: number): string {
+  if (netWorth > 50000) return "Financial Wizard";
+  if (netWorth > 20000) return "Building Wealth";
+  if (months < 6) return "Just Starting Out";
+  if (months < 12) return "Finding My Footing";
+  if (months < 24 && netWorth > 0) return "Building Momentum";
+  if (months < 36 && netWorth > 5000) return "Getting Established";
+  return "Surviving";
+}
+
+// ---------------------------------------------------------------------------
 // Initial State Generation
 // ---------------------------------------------------------------------------
 
 /**
  * Generates the starting state for a new Life Simulator run.
  *
- * Uses the provided seed (or Date.now()) to deterministically pick an age,
- * salary, and starting balance. This models the real-world fact that
- * everyone starts from a different financial position.
+ * Takes a LifeScenario that defines the player's starting conditions.
+ * For the "surprise" scenario, values are randomized using the seed.
  *
- * @param seed  Optional seed for reproducibility. Defaults to Date.now().
- * @returns     A fresh SimulatorState ready for month 1.
+ * @param scenario  The selected life scenario defining starting conditions.
+ * @param seed      Optional seed for reproducibility. Defaults to Date.now().
+ * @returns         A fresh SimulatorState ready for month 1.
  */
-export function generateInitialState(seed?: number): SimulatorState {
+export function generateInitialState(
+  scenario: LifeScenario,
+  seed?: number
+): SimulatorState {
   const baseSeed = seed ?? Date.now();
 
-  // Use different offsets of the seed for each random value so they are
-  // independent of each other.
-  const ageRand = seededRandom(baseSeed);
-  const salaryRand = seededRandom(baseSeed + 1);
-  const balanceRand = seededRandom(baseSeed + 2);
+  let age = scenario.age;
+  let salary = scenario.salary;
+  let startingBalance = scenario.startingBalance;
+  let startingDebt = scenario.startingDebt;
+  let startingExpenses = scenario.startingExpenses;
+  let debtLabel = scenario.debtLabel;
+  let debtInterestRate = scenario.debtInterestRate;
 
-  /**
-   * Age range 22–45.
-   * Starting at 22 (post-college) keeps scenarios relatable.
-   * Capping at 45 keeps the game short enough to be fun.
-   */
-  const age = Math.floor(ageRand * (45 - 22 + 1)) + 22;
+  // For the "surprise" scenario, randomize all values
+  if (scenario.id === "surprise") {
+    const ageRand = seededRandom(baseSeed);
+    const salaryRand = seededRandom(baseSeed + 1);
+    const balanceRand = seededRandom(baseSeed + 2);
+    const debtRand = seededRandom(baseSeed + 3);
 
-  /**
-   * Monthly salary randomly chosen within the configured range.
-   * This teaches kids that different jobs pay different amounts.
-   */
-  const salary =
-    Math.round(
-      (salaryRand * (SIMULATOR_SALARY_MAX - SIMULATOR_SALARY_MIN) +
-        SIMULATOR_SALARY_MIN) /
-        100
-    ) * 100; // Round to nearest $100 for readability
+    age = Math.floor(ageRand * (45 - 22 + 1)) + 22;
+    salary =
+      Math.round(
+        (salaryRand * (6000 - 2000) + 2000) / 100
+      ) * 100;
+    startingBalance =
+      Math.round(
+        (balanceRand * (5000 - 500) + 500) / 100
+      ) * 100;
+    startingDebt =
+      Math.round(
+        (debtRand * (20000 - 0)) / 1000
+      ) * 1000;
 
-  /**
-   * Starting bank balance — the money you already have saved up.
-   * Having some savings at the start models the real advantage of
-   * starting adult life with an emergency fund.
-   */
-  const balance =
-    Math.round(
-      (balanceRand *
-        (SIMULATOR_STARTING_BALANCE_MAX - SIMULATOR_STARTING_BALANCE_MIN) +
-        SIMULATOR_STARTING_BALANCE_MIN) /
-        100
-    ) * 100;
+    startingExpenses = Math.round(salary * 0.4);
 
-  /**
-   * Monthly fixed expenses are a percentage of salary.
-   * In real life, essential expenses (rent, food, utilities, transport)
-   * typically consume 40-60% of income.
-   */
-  const monthlyExpenses = Math.round(salary * SIMULATOR_BASE_EXPENSES);
+    const debtTypes = [
+      { label: "Student Loans", rate: 0.0042 },
+      { label: "Car Loan", rate: 0.005 },
+      { label: "Credit Card Debt", rate: 0.015 },
+      { label: "Personal Loan", rate: 0.008 },
+    ];
+    const debtTypeIndex = Math.floor(seededRandom(baseSeed + 4) * debtTypes.length);
+    debtLabel = debtTypes[debtTypeIndex].label;
+    debtInterestRate = debtTypes[debtTypeIndex].rate;
+  }
+
+  const initialActivityLog: ActivityEntry[] = [
+    {
+      month: 0,
+      type: "milestone",
+      text: `Started a new financial journey as a ${scenario.label}!`,
+      emoji: scenario.emoji || "\uD83D\uDE80",
+      positivity: "positive",
+    },
+  ];
 
   return {
     age,
     month: 1,
     salary,
-    balance,
-    debt: 0,
+    balance: startingBalance,
+    debt: startingDebt,
     creditScore: SIMULATOR_STARTING_CREDIT_SCORE,
     happiness: SIMULATOR_STARTING_HAPPINESS,
-    monthlyExpenses,
+    monthlyExpenses: startingExpenses,
     savingsAllocation: 0,
     spendingAllocation: 0,
     investingAllocation: 0,
     investments: 0,
-    interestRate: SIMULATOR_SAVINGS_INTEREST_RATE,
+    interestRate: SIMULATOR_SAVINGS_INTEREST,
     events: [],
+
+    // New BitLife-inspired fields
+    emergencyFund: 0,
+    taxesWithheld: 0,
+    netWorthHistory: [],
+    activityLog: initialActivityLog,
+    scenarioId: scenario.id,
+    goalId: scenario.goalId,
+    temporaryIncomeMod: 1.0,
+    temporaryIncomeDuration: 0,
+    housingType: "renting",
+    pendingChoiceEvent: null,
+    lifeStage: "Just Starting Out",
+    debtLabel,
+    debtInterestRate,
+    startingBalance,
   };
 }
 
@@ -168,7 +218,12 @@ export function selectLifeEvent(
     cumulativeProbability += event.probability;
     if (roll < cumulativeProbability) {
       // Return a mutable copy so the caller can't mutate the catalog
-      return { ...event };
+      return {
+        ...event,
+        choices: event.choices
+          ? event.choices.map((c) => ({ ...c, effects: { ...c.effects } }))
+          : undefined,
+      };
     }
   }
 
@@ -185,42 +240,47 @@ export function selectLifeEvent(
  * their financial behavior.
  *
  * Simplified FICO-like model for educational purposes:
- * - Saving a good portion of income → positive signal (payment reliability)
- * - Overspending (high spending allocation) → negative signal (high utilization)
- * - Having debt → negative signal
- * - Having investments → slight positive signal (asset diversity)
+ * - Saving a good portion of income -> positive signal (payment reliability)
+ * - Overspending (high spending allocation) -> negative signal (high utilization)
+ * - Having debt -> negative signal
+ * - Having investments -> slight positive signal (asset diversity)
+ * - Debt repayment -> positive signal (each $100 repaid = +0.5 credit)
  *
  * Real FICO scores consider: payment history (35%), amounts owed (30%),
  * length of history (15%), new credit (10%), credit mix (10%).
- * We simplify this into saving vs spending behavior.
- *
- * @param state       Current simulator state.
- * @param allocation  How the player allocated their discretionary income.
- * @returns           Credit score change (positive or negative integer).
+ * We simplify this into saving vs spending behavior + debt repayment rewards.
  */
 export function calculateCreditScoreChange(
   state: SimulatorState,
   allocation: MonthAllocation
 ): number {
-  const discretionaryIncome = state.salary - state.monthlyExpenses;
+  const discretionaryIncome =
+    state.salary * (1 - SIMULATOR_TAX_RATE) - state.monthlyExpenses;
 
   // Guard against zero discretionary income to avoid division by zero
   if (discretionaryIncome <= 0) {
     return -5; // No discretionary income is a bad financial signal
   }
 
+  const totalAllocated =
+    allocation.savings +
+    allocation.spending +
+    allocation.investing +
+    allocation.emergencyFund;
+
   /**
-   * Savings ratio: fraction of discretionary income saved.
+   * Savings ratio: fraction of discretionary income saved (including emergency fund).
    * In real life, putting money aside shows lenders you're responsible.
-   * A ratio above 0.3 (30%) is excellent.
    */
-  const savingsRatio = allocation.savings / discretionaryIncome;
+  const savingsRatio =
+    (allocation.savings + allocation.emergencyFund) /
+    Math.max(1, totalAllocated);
 
   /**
    * Spending ratio: fraction of discretionary income spent on wants.
    * High discretionary spending signals potential financial risk.
    */
-  const spendingRatio = allocation.spending / discretionaryIncome;
+  const spendingRatio = allocation.spending / Math.max(1, totalAllocated);
 
   let scoreChange = 0;
 
@@ -259,6 +319,14 @@ export function calculateCreditScoreChange(
     scoreChange += 1;
   }
 
+  /**
+   * Debt repayment reward: each $100 of extra debt payment earns +0.5 credit.
+   * This teaches that actively paying down debt improves your credit.
+   */
+  if (allocation.debtPayment > 0) {
+    scoreChange += Math.floor(allocation.debtPayment / 100) * 0.5;
+  }
+
   return scoreChange;
 }
 
@@ -269,30 +337,33 @@ export function calculateCreditScoreChange(
 /**
  * Processes a single month in the Life Simulator.
  *
- * This is the core game loop step. Each month:
- *   1. Receive salary (income)
- *   2. Pay fixed expenses (rent, food, utilities)
- *   3. Allocate remaining money (savings / spending / investing)
- *   4. Earn interest on savings
- *   5. Earn (or lose) returns on investments
- *   6. Roll for a random life event
- *   7. Apply event effects
- *   8. Update credit score based on behavior
- *   9. Clamp all stats to valid ranges
- *   10. Check for bankruptcy (balance <= 0)
- *
- * This models a simplified version of real monthly personal finance:
- * income - expenses - choices + returns +/- surprises = new balance.
+ * This is the core game loop step — the BitLife-style "Age +" action.
+ * Each month:
+ *   1. Apply temporary income modifier (job loss, etc.)
+ *   2. Calculate gross income and withhold taxes (22%)
+ *   3. Deduct fixed expenses
+ *   4. Accrue interest on existing debt
+ *   5. Apply player's allocation (savings/spending/investing/emergency/debt)
+ *   6. Calculate interest on savings and emergency fund
+ *   7. Calculate investment returns (with volatility)
+ *   8. Roll for a life event (or resolve a pending choice)
+ *   9. Apply event/choice effects (emergency fund absorbs negative first)
+ *  10. Update credit score
+ *  11. Check for debt spiral / bankruptcy
+ *  12. Age up every 12 months
+ *  13. Update life stage and activity log
  *
  * @param state       Current simulator state at the start of the month.
  * @param allocation  How the player wants to split discretionary income.
  * @param eventSeed   Seed for deterministic event selection this month.
+ * @param choiceId    If resolving a pending choice event, the selected choice ID.
  * @returns           Updated state and a detailed result summary.
  */
 export function processMonth(
   state: SimulatorState,
   allocation: MonthAllocation,
-  eventSeed: number
+  eventSeed: number,
+  choiceId?: string
 ): { newState: SimulatorState; result: MonthResult } {
   // Snapshot "before" values for the result summary
   const balanceBefore = state.balance;
@@ -305,97 +376,278 @@ export function processMonth(
   let creditScore = state.creditScore;
   let happiness = state.happiness;
   let debt = state.debt;
+  let emergencyFund = state.emergencyFund;
+  let salary = state.salary;
+  let monthlyExpenses = state.monthlyExpenses;
+  let temporaryIncomeMod = state.temporaryIncomeMod;
+  let temporaryIncomeDuration = state.temporaryIncomeDuration;
+  let pendingChoiceEvent: LifeEvent | null = state.pendingChoiceEvent;
+  const activityLog: ActivityEntry[] = [...state.activityLog];
+  let debtLabel = state.debtLabel;
+  let debtInterestRate = state.debtInterestRate;
+  let emergencyFundUsed = 0;
+  let choiceExplanation: string | null = null;
+  let debtSpiral = false;
 
   // -----------------------------------------------------------------------
-  // Step 1: Receive salary
-  // "Income is the money you earn from your job each month."
+  // Step 0: If resolving a pending choice, apply it now
   // -----------------------------------------------------------------------
-  balance += state.salary;
+  if (choiceId && pendingChoiceEvent?.choices) {
+    const chosen = pendingChoiceEvent.choices.find((c) => c.id === choiceId);
+    if (chosen) {
+      // Apply choice effects
+      const fx = chosen.effects;
+      balance += fx.balance ?? 0;
+      debt += fx.debt ?? 0;
+
+      // Negative debt effect means paying off debt
+      if ((fx.debt ?? 0) < 0) {
+        debt = Math.max(0, debt);
+      }
+
+      creditScore += fx.creditScore ?? 0;
+      happiness += fx.happiness ?? 0;
+      investments += fx.investments ?? 0;
+      emergencyFund += fx.emergencyFund ?? 0;
+
+      if (fx.salaryMod) salary += fx.salaryMod;
+      if (fx.expensesMod) monthlyExpenses += fx.expensesMod;
+      if (fx.temporaryIncomeMod !== undefined) {
+        temporaryIncomeMod = fx.temporaryIncomeMod;
+        temporaryIncomeDuration = fx.temporaryIncomeDuration ?? 3;
+      }
+
+      choiceExplanation = chosen.explanation;
+
+      activityLog.push({
+        month: state.month,
+        type: "choice",
+        text: `${pendingChoiceEvent.name}: Chose "${chosen.label}" \u2014 ${chosen.explanation}`,
+        emoji: pendingChoiceEvent.category === "positive" ? "\u2705" : "\u26A0\uFE0F",
+        positivity:
+          (fx.balance ?? 0) + (fx.investments ?? 0) - (fx.debt ?? 0) >= 0
+            ? "positive"
+            : "negative",
+      });
+    }
+    pendingChoiceEvent = null;
+  }
 
   // -----------------------------------------------------------------------
-  // Step 2: Pay fixed expenses
+  // Step 1: Apply temporary income modifier (e.g., job loss)
+  // -----------------------------------------------------------------------
+  let effectiveSalary = salary;
+  if (temporaryIncomeDuration > 0) {
+    effectiveSalary = Math.round(salary * temporaryIncomeMod);
+    temporaryIncomeDuration -= 1;
+    if (temporaryIncomeDuration <= 0) {
+      temporaryIncomeMod = 1.0;
+
+      activityLog.push({
+        month: state.month,
+        type: "milestone",
+        text: "Income returned to normal!",
+        emoji: "\uD83C\uDF89",
+        positivity: "positive",
+      });
+    }
+  }
+
+  // -----------------------------------------------------------------------
+  // Step 2: Calculate gross income and withhold taxes
+  // "Taxes are money the government takes from your paycheck to pay for
+  //  schools, roads, hospitals, and other public services."
+  // -----------------------------------------------------------------------
+  const grossIncome = effectiveSalary;
+  const taxesThisMonth = Math.round(grossIncome * SIMULATOR_TAX_RATE);
+  const netIncome = grossIncome - taxesThisMonth;
+
+  // -----------------------------------------------------------------------
+  // Step 3: Pay fixed expenses
   // "Fixed expenses are bills you MUST pay every month — rent, food,
   //  electricity, water, and transportation."
   // -----------------------------------------------------------------------
-  balance -= state.monthlyExpenses;
+  const afterExpenses = netIncome - monthlyExpenses;
+
+  // Add income and subtract expenses from balance
+  balance += afterExpenses;
 
   // -----------------------------------------------------------------------
-  // Step 3: Apply player's allocation of discretionary income
-  // "Discretionary income is the money left over after paying your bills.
-  //  You choose how to split it between saving, spending, and investing."
+  // Step 4: Accrue interest on existing debt
+  // "When you owe money (debt), you're charged interest — a percentage
+  //  of what you owe, added to your total debt each month."
   // -----------------------------------------------------------------------
-  balance -= allocation.savings; // Money moves from checking to savings
-  balance -= allocation.investing; // Money moves from checking to investments
-  balance -= allocation.spending; // Money spent on wants (gone)
+  let debtInterestThisMonth = 0;
+  if (debt > 0) {
+    debtInterestThisMonth = Math.round(debt * debtInterestRate * 100) / 100;
+    debt += debtInterestThisMonth;
+  }
 
-  // Track savings separately through balance (simplified model)
-  // In this model, savings earn interest but stay in "balance"
-  balance += allocation.savings; // Add savings back — they stay accessible
+  // -----------------------------------------------------------------------
+  // Step 5: Apply player's allocation of discretionary income
+  // -----------------------------------------------------------------------
+  balance -= allocation.savings;
+  balance -= allocation.investing;
+  balance -= allocation.spending;
+  balance -= allocation.emergencyFund;
+  balance -= allocation.debtPayment;
 
-  // Investments are a separate bucket that grows (or shrinks) over time
+  // Savings return to balance (they're accessible money)
+  balance += allocation.savings;
+
+  // Emergency fund is a separate bucket
+  emergencyFund += allocation.emergencyFund;
+
+  // Investments grow separately
   investments += allocation.investing;
 
-  // Spending on wants provides a small happiness boost
-  // "Treating yourself can make you happier, but too much spending is risky!"
-  const discretionaryIncome = state.salary - state.monthlyExpenses;
-  if (discretionaryIncome > 0) {
+  // Debt repayment reduces outstanding debt
+  if (allocation.debtPayment > 0) {
+    debt = Math.max(0, debt - allocation.debtPayment);
+  }
+
+  // Spending provides happiness
+  const discretionaryIncome = Math.max(0, netIncome - monthlyExpenses);
+  if (discretionaryIncome > 0 && allocation.spending > 0) {
     const spendingRatio = allocation.spending / discretionaryIncome;
     happiness += Math.round(spendingRatio * 5); // Up to +5 happiness from spending
   }
 
   // -----------------------------------------------------------------------
-  // Step 4: Calculate savings interest
-  // "When you keep money in a savings account, the bank pays you interest —
-  //  a small percentage of your balance — as a reward for keeping it there."
+  // Step 6: Calculate savings interest
   // -----------------------------------------------------------------------
-  const monthlyInterestRate = SIMULATOR_SAVINGS_INTEREST_RATE / 12;
-  const interestEarned = Math.round(balance * monthlyInterestRate * 100) / 100;
-  balance += interestEarned;
+  const savingsInterest = Math.round(balance * SIMULATOR_SAVINGS_INTEREST * 100) / 100;
+  balance += Math.max(0, savingsInterest);
+
+  // Emergency fund earns interest too
+  if (emergencyFund > 0) {
+    const efInterest =
+      Math.round(emergencyFund * SIMULATOR_EMERGENCY_FUND_INTEREST * 100) / 100;
+    emergencyFund += efInterest;
+  }
+
+  const interestEarned = Math.max(0, savingsInterest);
 
   // -----------------------------------------------------------------------
-  // Step 5: Calculate investment returns
-  // "Investments like stocks can grow your money faster than savings, but
-  //  they can also lose value. The market goes up AND down."
+  // Step 7: Calculate investment returns
   // -----------------------------------------------------------------------
-  const baseMonthlyReturn = SIMULATOR_INVESTMENT_RETURN_RATE / 12;
+  const baseMonthlyReturn = SIMULATOR_INVESTMENT_RETURN;
   const volatilityRoll = seededRandom(eventSeed + 1000);
-  // Map [0,1) to [-VOLATILITY, +VOLATILITY] range
   const volatilityFactor =
     (volatilityRoll * 2 - 1) * SIMULATOR_INVESTMENT_VOLATILITY;
   const actualMonthlyReturn = baseMonthlyReturn + baseMonthlyReturn * volatilityFactor;
   const investmentReturn =
     Math.round(investments * actualMonthlyReturn * 100) / 100;
   investments += investmentReturn;
-
-  // Investments can't go below zero (you can't owe money on index funds)
   investments = Math.max(0, investments);
 
   // -----------------------------------------------------------------------
-  // Step 6: Roll for a random life event
-  // "Life is full of surprises! Some months, unexpected things happen —
-  //  your car breaks down, you get a bonus, or your pet needs the vet."
+  // Step 8: Roll for a life event (if no pending choice event)
   // -----------------------------------------------------------------------
-  const event = selectLifeEvent(state, eventSeed);
+  let event: LifeEvent | null = null;
+  let pendingChoice = false;
 
-  // -----------------------------------------------------------------------
-  // Step 7: Apply event effects
-  // -----------------------------------------------------------------------
-  if (event !== null) {
-    balance += event.balanceEffect;
-    creditScore += event.creditScoreEffect;
-    happiness += event.happinessEffect;
+  if (!pendingChoiceEvent) {
+    event = selectLifeEvent(state, eventSeed);
+
+    if (event !== null) {
+      if (event.choices && event.choices.length > 0) {
+        // Choice-based event: don't apply effects yet, wait for player
+        pendingChoiceEvent = event;
+        pendingChoice = true;
+
+        activityLog.push({
+          month: state.month,
+          type: "event",
+          text: `${event.name}: ${event.description}`,
+          emoji:
+            event.category === "positive"
+              ? "\uD83D\uDFE2"
+              : event.category === "negative"
+                ? "\uD83D\uDD34"
+                : "\uD83D\uDFE1",
+          positivity: event.category === "positive" ? "positive" : event.category === "negative" ? "negative" : "neutral",
+        });
+      } else {
+        // Auto-apply event
+        let eventBalanceEffect = event.balanceEffect;
+
+        // Special handling for job-loss events — apply temporary income mod
+        if (event.id === "job-loss") {
+          temporaryIncomeMod = 0.4;
+          temporaryIncomeDuration = 3;
+        }
+
+        // Special handling for investment crash — multiply investments
+        if (event.id === "investment-crash") {
+          const investmentLoss = Math.round(investments * 0.15);
+          investments -= investmentLoss;
+          investments = Math.max(0, investments);
+        }
+
+        // Special handling for student loan forgiveness — reduce debt
+        if (event.id === "student-loan-forgiveness" && debt > 0) {
+          debt = Math.max(0, debt - 2000);
+        }
+
+        // If event has a negative balance effect, try emergency fund first
+        if (eventBalanceEffect < 0) {
+          const absEffect = Math.abs(eventBalanceEffect);
+          if (emergencyFund >= absEffect) {
+            emergencyFund -= absEffect;
+            emergencyFundUsed = absEffect;
+            eventBalanceEffect = 0; // Emergency fund covered it!
+
+            activityLog.push({
+              month: state.month,
+              type: "event",
+              text: `Emergency fund covered the $${absEffect} expense from "${event.name}"!`,
+              emoji: "\uD83D\uDEE1\uFE0F",
+              positivity: "positive",
+            });
+          } else if (emergencyFund > 0) {
+            emergencyFundUsed = emergencyFund;
+            eventBalanceEffect += emergencyFund; // Partially covered
+            emergencyFund = 0;
+
+            activityLog.push({
+              month: state.month,
+              type: "event",
+              text: `Emergency fund covered $${emergencyFundUsed} of the "${event.name}" expense.`,
+              emoji: "\uD83D\uDEE1\uFE0F",
+              positivity: "neutral",
+            });
+          }
+        }
+
+        balance += eventBalanceEffect;
+        creditScore += event.creditScoreEffect;
+        happiness += event.happinessEffect;
+
+        activityLog.push({
+          month: state.month,
+          type: "event",
+          text: `${event.name}: ${event.description}`,
+          emoji:
+            event.category === "positive"
+              ? "\uD83D\uDFE2"
+              : event.category === "negative"
+                ? "\uD83D\uDD34"
+                : "\uD83D\uDFE1",
+          positivity: event.category === "positive" ? "positive" : event.category === "negative" ? "negative" : "neutral",
+        });
+      }
+    }
   }
 
   // -----------------------------------------------------------------------
-  // Step 8: Update credit score based on this month's financial behavior
-  // "Your credit score changes based on how responsibly you handle money.
-  //  Saving is good. Overspending is risky. Paying bills on time is key."
+  // Step 9: Update credit score based on this month's financial behavior
   // -----------------------------------------------------------------------
   const behaviorCreditChange = calculateCreditScoreChange(state, allocation);
   creditScore += behaviorCreditChange;
 
   // -----------------------------------------------------------------------
-  // Step 9: Clamp all stats to valid ranges
+  // Step 10: Clamp all stats to valid ranges
   // -----------------------------------------------------------------------
   creditScore = clamp(
     creditScore,
@@ -403,37 +655,115 @@ export function processMonth(
     SIMULATOR_MAX_CREDIT_SCORE
   );
   happiness = clamp(happiness, 0, 100);
+  emergencyFund = Math.max(0, emergencyFund);
 
-  // If balance goes negative, that's debt
+  // -----------------------------------------------------------------------
+  // Step 11: Check for debt spiral and bankruptcy
+  // -----------------------------------------------------------------------
+  let isBankrupt = false;
+
   if (balance < 0) {
-    debt += Math.abs(balance);
-    balance = 0;
+    // Try to cover with emergency fund
+    if (emergencyFund >= Math.abs(balance)) {
+      emergencyFund += balance; // balance is negative, so this subtracts
+      balance = 0;
+    } else if (emergencyFund > 0) {
+      balance += emergencyFund;
+      emergencyFund = 0;
+    }
+
+    // If still negative, enter debt spiral
+    if (balance < 0) {
+      debt += Math.abs(balance) + SIMULATOR_DEBT_SPIRAL_AMOUNT;
+      debtInterestRate = Math.max(debtInterestRate, SIMULATOR_DEBT_SPIRAL_RATE);
+      balance = SIMULATOR_DEBT_SPIRAL_AMOUNT; // Emergency credit
+      debtSpiral = true;
+
+      if (debtLabel === "" || debtLabel === "Student Loans" || debtLabel === "Car Loan") {
+        debtLabel = `${debtLabel}${debtLabel ? " + " : ""}Emergency Credit`;
+      }
+
+      activityLog.push({
+        month: state.month,
+        type: "event",
+        text: `Debt spiral! Borrowed $${SIMULATOR_DEBT_SPIRAL_AMOUNT} emergency credit at 24% APR.`,
+        emoji: "\uD83D\uDEA8",
+        positivity: "negative",
+      });
+    }
+
+    // True bankruptcy check: debt > 3x monthly salary
+    if (debt > salary * SIMULATOR_BANKRUPTCY_RATIO) {
+      isBankrupt = true;
+    }
   }
 
-  // Round balance to 2 decimal places (cents)
+  // Round financial values
   balance = Math.round(balance * 100) / 100;
   investments = Math.round(investments * 100) / 100;
+  emergencyFund = Math.round(emergencyFund * 100) / 100;
+  debt = Math.round(debt * 100) / 100;
 
   // -----------------------------------------------------------------------
-  // Step 10: Check bankruptcy
-  // "If your bank balance hits zero and you have debt, you're bankrupt —
-  //  that means you ran out of money and can't pay your bills."
+  // Step 12: Age up every 12 months
   // -----------------------------------------------------------------------
-  const isBankrupt = balance <= 0 && debt > 0;
+  const newAge = state.age + (state.month % 12 === 0 ? 1 : 0);
+
+  // Reset yearly tax counter every 12 months
+  const newTaxesWithheld =
+    state.month % 12 === 0 ? taxesThisMonth : state.taxesWithheld + taxesThisMonth;
+
+  // -----------------------------------------------------------------------
+  // Step 13: Calculate net worth and update life stage
+  // -----------------------------------------------------------------------
+  const netWorth = balance + emergencyFund + investments - debt;
+  const newNetWorthHistory = [...state.netWorthHistory, netWorth];
+  const lifeStage = getLifeStage(state.month, netWorth);
+
+  // Check for life stage milestone
+  if (lifeStage !== state.lifeStage) {
+    activityLog.push({
+      month: state.month,
+      type: "milestone",
+      text: `Reached life stage: ${lifeStage}!`,
+      emoji: "\u2B50",
+      positivity: "positive",
+    });
+  }
+
+  // Natural happiness decay toward 50 (equilibrium)
+  if (happiness > 55) {
+    happiness -= 1;
+  } else if (happiness < 45) {
+    happiness += 1;
+  }
 
   // Build the new state
   const newState: SimulatorState = {
     ...state,
+    age: newAge,
     month: state.month + 1,
+    salary,
     balance,
     debt,
     creditScore,
     happiness,
     investments,
+    monthlyExpenses,
     savingsAllocation: allocation.savings,
     spendingAllocation: allocation.spending,
     investingAllocation: allocation.investing,
     events: event !== null ? [...state.events, event] : [...state.events],
+    emergencyFund,
+    taxesWithheld: newTaxesWithheld,
+    netWorthHistory: newNetWorthHistory,
+    activityLog,
+    temporaryIncomeMod,
+    temporaryIncomeDuration,
+    pendingChoiceEvent,
+    lifeStage,
+    debtLabel,
+    debtInterestRate,
   };
 
   // Build the result summary
@@ -448,6 +778,13 @@ export function processMonth(
     interestEarned,
     investmentReturn,
     isBankrupt,
+    pendingChoice,
+    taxesThisMonth,
+    debtInterestThisMonth,
+    netWorth,
+    emergencyFundUsed,
+    choiceExplanation,
+    debtSpiral,
   };
 
   return { newState, result };

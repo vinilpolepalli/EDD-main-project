@@ -10,7 +10,6 @@ const DEFAULT_PROGRESS: UserProgress = {
   totalXp: 0,
   currentStreak: 0,
   lastActiveDate: new Date().toISOString().split("T")[0],
-  arcadeTokens: 0,
 };
 
 function loadProgress(): UserProgress {
@@ -28,8 +27,7 @@ function loadProgress(): UserProgress {
         "userId" in parsed &&
         "totalXp" in parsed &&
         "currentStreak" in parsed &&
-        "lastActiveDate" in parsed &&
-        "arcadeTokens" in parsed
+        "lastActiveDate" in parsed
       ) {
         return parsed as UserProgress;
       }
@@ -73,13 +71,6 @@ export function useGameState() {
     }));
   }, []);
 
-  const updateTokens = useCallback((amount: number) => {
-    setProgress((prev) => ({
-      ...prev,
-      arcadeTokens: Math.max(0, prev.arcadeTokens + amount),
-    }));
-  }, []);
-
   const updateStreak = useCallback(() => {
     setProgress((prev) => {
       const today = new Date().toISOString().split("T")[0];
@@ -114,7 +105,6 @@ export function useGameState() {
     progress,
     isLoaded,
     updateXp,
-    updateTokens,
     updateStreak,
     resetProgress,
   };
