@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LEVEL_XP_THRESHOLDS } from "@/lib/constants/game-balance";
 
@@ -12,6 +12,20 @@ interface XpBarProps {
   xpGain?: number;
   className?: string;
 }
+
+const LEVEL_NAMES = [
+  "Beginner",
+  "Saver",
+  "Earner",
+  "Investor",
+  "Trader",
+  "Banker",
+  "Analyst",
+  "Advisor",
+  "Mogul",
+  "Tycoon",
+  "Legend",
+] as const;
 
 function getLevel(xp: number): number {
   for (let i = LEVEL_XP_THRESHOLDS.length - 1; i >= 0; i--) {
@@ -33,6 +47,10 @@ function getXpForCurrentLevel(xp: number): { current: number; required: number }
   };
 }
 
+function getLevelName(level: number): string {
+  return LEVEL_NAMES[Math.min(level, LEVEL_NAMES.length - 1)];
+}
+
 const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
   const level = getLevel(totalXp);
   const { current, required } = getXpForCurrentLevel(totalXp);
@@ -48,29 +66,35 @@ const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
   }, [xpGain]);
 
   return (
-    <div className={cn("relative flex flex-col gap-2", className)}>
-      {/* Level + label */}
+    <div
+      className={cn(
+        "relative rounded-2xl bg-white p-5 shadow-sm",
+        className
+      )}
+    >
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-xp font-extrabold text-white text-sm shadow-sm">
-            {level}
-          </span>
-          <span className="text-sm font-bold text-foreground">
-            Level {level}
-          </span>
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100">
+            <Zap className="h-5 w-5 text-amber-500" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold text-foreground">
+              Level {level}
+            </span>
+            <span className="text-xs font-medium text-muted-foreground">
+              {getLevelName(level)}
+            </span>
+          </div>
         </div>
-        <div className="flex items-center gap-1.5 text-sm font-bold text-muted-foreground">
-          <Sparkles className="h-4 w-4 text-xp" />
-          <span className="tabular-nums">
-            {current} / {required} XP
-          </span>
-        </div>
+        <span className="text-sm font-bold tabular-nums text-muted-foreground">
+          {current} / {required} XP
+        </span>
       </div>
 
-      {/* Bar */}
-      <div className="relative h-4 w-full overflow-hidden rounded-full bg-xp-light">
+      {/* Progress Bar */}
+      <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-amber-100">
         <motion.div
-          className="h-full rounded-full bg-xp"
+          className="h-full rounded-full bg-amber-500"
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ type: "spring", stiffness: 80, damping: 18 }}
@@ -81,7 +105,7 @@ const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
       <AnimatePresence>
         {showGain && (
           <motion.span
-            className="absolute -top-2 right-0 rounded-full bg-xp px-2 py-0.5 text-xs font-extrabold text-white shadow-md"
+            className="absolute -top-2 right-4 rounded-full bg-amber-500 px-2.5 py-0.5 text-xs font-extrabold text-white shadow-md"
             initial={{ opacity: 0, y: 10, scale: 0.8 }}
             animate={{ opacity: 1, y: -8, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.6 }}
@@ -95,5 +119,5 @@ const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
   );
 };
 
-export { XpBar, getLevel, getXpForCurrentLevel };
+export { XpBar, getLevel, getXpForCurrentLevel, getLevelName };
 export type { XpBarProps };

@@ -3,133 +3,148 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BookOpen, TrendingUp, Gamepad2, ChevronRight } from "lucide-react";
+import { BookOpen, BarChart2, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Progress } from "@/components/ui/progress";
 
 interface ModuleCardData {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
   href: string;
+  buttonLabel: string;
   icon: React.ReactNode;
-  bgClass: string;
-  lightBgClass: string;
-  textClass: string;
-  progressColor: string;
+  gradientFrom: string;
+  gradientTo: string;
+  badges?: string[];
 }
 
 const modules: ModuleCardData[] = [
   {
     id: "learn",
     title: "Learn Path",
-    description: "Master credit, taxes, and budgeting with fun micro-lessons and quizzes!",
+    subtitle: "Financial Education",
+    description: "Master credit, taxes, and budgeting with bite-sized interactive lessons and quizzes.",
     href: "/learn",
-    icon: <BookOpen className="h-7 w-7" />,
-    bgClass: "bg-learn",
-    lightBgClass: "bg-learn-light",
-    textClass: "text-learn",
-    progressColor: "bg-learn",
+    buttonLabel: "Continue Learning",
+    icon: <BookOpen className="h-8 w-8" />,
+    gradientFrom: "from-emerald-500",
+    gradientTo: "to-emerald-600",
+    badges: ["Credit", "Taxes", "Budgeting"],
   },
   {
     id: "simulator",
     title: "Life Simulator",
-    description: "Live a virtual month! Earn a salary, pay bills, and survive random events.",
+    subtitle: "Real Financial Decisions",
+    description: "Live a virtual month! Earn a salary, handle expenses, and survive random life events.",
     href: "/simulator",
-    icon: <TrendingUp className="h-7 w-7" />,
-    bgClass: "bg-simulator",
-    lightBgClass: "bg-simulator-light",
-    textClass: "text-simulator",
-    progressColor: "bg-simulator",
-  },
-  {
-    id: "arcade",
-    title: "Mini-Game Arcade",
-    description: "Spend tokens on fast-paced money games! Earn XP and unlock cosmetics.",
-    href: "/arcade",
-    icon: <Gamepad2 className="h-7 w-7" />,
-    bgClass: "bg-arcade",
-    lightBgClass: "bg-arcade-light",
-    textClass: "text-arcade",
-    progressColor: "bg-arcade",
+    buttonLabel: "Play Now",
+    icon: <BarChart2 className="h-8 w-8" />,
+    gradientFrom: "from-indigo-500",
+    gradientTo: "to-indigo-600",
   },
 ];
 
 interface ModuleCardsProps {
-  /** Optional progress values 0-100 for each module, keyed by module id */
   progress?: Record<string, number>;
+  simulatorLastMonth?: number;
   className?: string;
 }
 
-const ModuleCards: React.FC<ModuleCardsProps> = ({ progress = {}, className }) => {
+const ModuleCards: React.FC<ModuleCardsProps> = ({
+  progress = {},
+  simulatorLastMonth,
+  className,
+}) => {
   return (
-    <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", className)}>
-      {modules.map((mod, index) => (
-        <motion.div
-          key={mod.id}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1, type: "spring", stiffness: 200, damping: 20 }}
-        >
-          <Link href={mod.href} className="block h-full">
-            <motion.div
-              className={cn(
-                "group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-transparent bg-card shadow-md transition-shadow hover:shadow-lg",
-                `hover:border-${mod.id === "learn" ? "learn" : mod.id === "simulator" ? "simulator" : "arcade"}`
-              )}
-              whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              {/* Icon strip */}
-              <div className={cn("flex items-center gap-3 p-5 pb-3", mod.lightBgClass)}>
-                <div
-                  className={cn(
-                    "flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-sm",
-                    mod.bgClass
-                  )}
-                >
-                  {mod.icon}
-                </div>
-                <h3 className={cn("text-lg font-extrabold", mod.textClass)}>
-                  {mod.title}
-                </h3>
-              </div>
+    <div className={cn("grid gap-5 sm:grid-cols-2", className)}>
+      {modules.map((mod, index) => {
+        const progressValue = progress[mod.id] ?? 0;
 
-              {/* Content */}
-              <div className="flex flex-1 flex-col gap-4 p-5 pt-3">
-                <p className="text-sm leading-relaxed text-muted-foreground">
+        return (
+          <motion.div
+            key={mod.id}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.1,
+              type: "spring",
+              stiffness: 200,
+              damping: 20,
+            }}
+          >
+            <Link href={mod.href} className="block h-full">
+              <motion.div
+                className={cn(
+                  "group relative flex h-full flex-col overflow-hidden rounded-2xl bg-gradient-to-br p-6 text-white shadow-lg transition-shadow hover:shadow-xl",
+                  mod.gradientFrom,
+                  mod.gradientTo
+                )}
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              >
+                {/* Decorative circles */}
+                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/10" />
+                <div className="absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-white/5" />
+
+                {/* Icon + Title */}
+                <div className="relative z-10 mb-4 flex items-start gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
+                    {mod.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="text-lg font-extrabold">{mod.title}</h3>
+                    <span className="text-sm font-medium text-white/80">
+                      {mod.subtitle}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="relative z-10 mb-4 text-sm leading-relaxed text-white/90">
                   {mod.description}
                 </p>
 
-                {/* Progress */}
-                <div className="mt-auto flex flex-col gap-1.5">
-                  <div className="flex items-center justify-between text-xs font-bold text-muted-foreground">
-                    <span>Progress</span>
-                    <span className="tabular-nums">{progress[mod.id] ?? 0}%</span>
-                  </div>
-                  <Progress
-                    value={progress[mod.id] ?? 0}
-                    color={mod.progressColor}
-                    height="h-2"
-                  />
+                {/* Progress or info */}
+                <div className="relative z-10 mb-4 mt-auto">
+                  {mod.id === "learn" && (
+                    <span className="text-sm font-semibold text-white/80">
+                      {progressValue}% completed
+                    </span>
+                  )}
+                  {mod.id === "simulator" && (
+                    <span className="text-sm font-semibold text-white/80">
+                      {simulatorLastMonth !== undefined && simulatorLastMonth > 0
+                        ? `Best: ${simulatorLastMonth} months survived`
+                        : "Start your first run"}
+                    </span>
+                  )}
                 </div>
 
-                {/* Play button area */}
-                <div
-                  className={cn(
-                    "flex min-h-[44px] items-center justify-center gap-1 rounded-lg py-2 text-sm font-bold text-white transition-colors",
-                    mod.bgClass,
-                    "group-hover:brightness-110"
-                  )}
-                >
-                  Play
+                {/* Badges */}
+                {mod.badges && (
+                  <div className="relative z-10 mb-4 flex flex-wrap gap-2">
+                    {mod.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="rounded-full bg-white/20 px-3 py-1 text-xs font-bold backdrop-blur-sm"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* CTA Button */}
+                <div className="relative z-10 flex min-h-[44px] items-center justify-center gap-1 rounded-xl bg-white/20 py-2.5 text-sm font-bold backdrop-blur-sm transition-colors group-hover:bg-white/30">
+                  {mod.buttonLabel}
                   <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </div>
-              </div>
-            </motion.div>
-          </Link>
-        </motion.div>
-      ))}
+              </motion.div>
+            </Link>
+          </motion.div>
+        );
+      })}
     </div>
   );
 };

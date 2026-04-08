@@ -10,53 +10,48 @@ interface StreakCounterProps {
   className?: string;
 }
 
+function getStreakMessage(streak: number): string {
+  if (streak === 0) return "Start your streak today!";
+  if (streak === 1) return "Great start! Come back tomorrow.";
+  if (streak < 5) return "Keep it going!";
+  if (streak < 10) return "You're on fire!";
+  if (streak < 30) return "Incredible dedication!";
+  return "Legendary streak!";
+}
+
 const StreakCounter: React.FC<StreakCounterProps> = ({ streak, className }) => {
-  const flameScale = Math.min(1 + streak * 0.05, 1.6);
-  const isHot = streak >= 7;
+  const flameScale = Math.min(1 + streak * 0.03, 1.4);
 
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-xl border border-border bg-card p-4 shadow-sm",
+        "flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm",
         className
       )}
     >
       <motion.div
-        className={cn(
-          "flex h-12 w-12 items-center justify-center rounded-xl shadow-sm",
-          isHot ? "bg-orange-500" : "bg-orange-400"
-        )}
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-100"
         animate={{
-          scale: [flameScale, flameScale * 0.92, flameScale],
+          scale: [flameScale, flameScale * 0.94, flameScale],
         }}
         transition={{
-          duration: 0.8,
+          duration: 1,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       >
-        <Flame className="h-6 w-6 text-white" />
+        <Flame className="h-6 w-6 text-orange-500" />
       </motion.div>
       <div className="flex flex-col">
         <span className="text-2xl font-extrabold tabular-nums text-foreground">
           {streak}
         </span>
-        <span className="text-xs font-bold text-muted-foreground">
-          {streak === 0
-            ? "Start your streak!"
-            : streak === 1
-              ? "1 day streak"
-              : `${streak} day streak`}
+        <span className="text-xs font-semibold text-muted-foreground">
+          {streak === 1 ? "day streak" : "day streak"}
         </span>
-        {streak >= 3 && (
-          <motion.span
-            className="mt-0.5 text-xs font-bold text-orange-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            Keep it going!
-          </motion.span>
-        )}
+        <span className="mt-0.5 text-xs font-medium text-orange-500">
+          {getStreakMessage(streak)}
+        </span>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
-import { Nav } from "@/components/shared/nav";
+import { Sidebar } from "@/components/shared/sidebar";
+import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 
 export default function GameLayout({
   children,
@@ -6,11 +7,16 @@ export default function GameLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
-      <Nav />
-      <div className="container mx-auto max-w-6xl px-4 py-6">
-        {children}
-      </div>
+    <div className="flex min-h-screen bg-background">
+      <Sidebar />
+      <main className="flex-1 pb-20 lg:ml-64 lg:pb-0">
+        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+          {children}
+        </div>
+        <div className="border-t border-border px-4 py-3">
+          <LegalDisclaimer />
+        </div>
+      </main>
     </div>
   );
 }
