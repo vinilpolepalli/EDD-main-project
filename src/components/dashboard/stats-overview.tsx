@@ -5,9 +5,7 @@ import { motion } from "framer-motion";
 import {
   Sparkles,
   Flame,
-  Coins,
   BookCheck,
-  Trophy,
   Target,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -23,20 +21,16 @@ interface StatItem {
 interface StatsOverviewProps {
   totalXp: number;
   currentStreak: number;
-  arcadeTokens: number;
   lessonsCompleted: number;
   simulatorBestMonths: number;
-  arcadeHighScore: number;
   className?: string;
 }
 
 const StatsOverview: React.FC<StatsOverviewProps> = ({
   totalXp,
   currentStreak,
-  arcadeTokens,
   lessonsCompleted,
   simulatorBestMonths,
-  arcadeHighScore,
   className,
 }) => {
   const stats: StatItem[] = [
@@ -55,13 +49,6 @@ const StatsOverview: React.FC<StatsOverviewProps> = ({
       bgColor: "bg-orange-100",
     },
     {
-      label: "Tokens",
-      value: arcadeTokens,
-      icon: <Coins className="h-5 w-5" />,
-      color: "text-arcade",
-      bgColor: "bg-arcade-light",
-    },
-    {
       label: "Lessons",
       value: lessonsCompleted,
       icon: <BookCheck className="h-5 w-5" />,
@@ -75,17 +62,10 @@ const StatsOverview: React.FC<StatsOverviewProps> = ({
       color: "text-simulator",
       bgColor: "bg-simulator-light",
     },
-    {
-      label: "High Score",
-      value: arcadeHighScore.toLocaleString(),
-      icon: <Trophy className="h-5 w-5" />,
-      color: "text-accent",
-      bgColor: "bg-arcade-light",
-    },
   ];
 
   return (
-    <div className={cn("grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6", className)}>
+    <div className={cn("grid grid-cols-2 gap-3 sm:grid-cols-4", className)}>
       {stats.map((stat, i) => (
         <motion.div
           key={stat.label}

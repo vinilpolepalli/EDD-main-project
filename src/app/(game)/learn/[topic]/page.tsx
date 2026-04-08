@@ -11,7 +11,6 @@ import {
   ChevronRight,
   ClipboardCheck,
   Lightbulb,
-  Lock,
   Sparkles,
   AlertTriangle,
 } from "lucide-react";
@@ -24,7 +23,7 @@ import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGameState } from "@/hooks/use-game-state";
 import { useLocalProgress } from "@/hooks/use-local-progress";
-import { XP_PER_LESSON_COMPLETE, TOKENS_PER_LESSON } from "@/lib/constants/game-balance";
+import { XP_PER_LESSON_COMPLETE } from "@/lib/constants/game-balance";
 import type { Topic, Lesson, LessonSection } from "@/types/game";
 
 import creditLessons from "@/content/lessons/credit.json";
@@ -158,7 +157,7 @@ export default function TopicLessonsPage() {
   const params = useParams();
   const topicParam = params.topic;
 
-  const { progress, updateXp, updateTokens, isLoaded: gameLoaded } = useGameState();
+  const { updateXp, isLoaded: gameLoaded } = useGameState();
   const {
     completedLessons,
     isLoaded: localLoaded,
@@ -234,10 +233,9 @@ export default function TopicLessonsPage() {
 
       markLessonComplete(topic, lessonId, 100);
       updateXp(XP_PER_LESSON_COMPLETE);
-      updateTokens(TOKENS_PER_LESSON);
       setRecentlyCompleted((prev) => new Set(prev).add(lessonId));
     },
-    [completedIds, markLessonComplete, topic, updateXp, updateTokens]
+    [completedIds, markLessonComplete, topic, updateXp]
   );
 
   return (
@@ -388,8 +386,7 @@ export default function TopicLessonsPage() {
                                   }
                                 >
                                   <CheckCircle className="mr-2 h-4 w-4" />
-                                  Mark Complete (+{XP_PER_LESSON_COMPLETE} XP, +
-                                  {TOKENS_PER_LESSON} Tokens)
+                                  Mark Complete (+{XP_PER_LESSON_COMPLETE} XP)
                                 </Button>
                               </motion.div>
                             ) : (

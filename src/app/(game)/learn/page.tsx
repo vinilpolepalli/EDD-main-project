@@ -119,7 +119,7 @@ export default function LearnPage() {
               Choose a Topic
             </h2>
             <p className="text-sm font-semibold text-muted-foreground">
-              Complete lessons and quizzes to earn XP and Arcade Tokens!
+              Complete lessons and quizzes to earn XP!
             </p>
           </motion.div>
 

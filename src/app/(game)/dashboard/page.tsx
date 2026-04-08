@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import {
   Sparkles,
   Rocket,
-  BookOpen,
   TrendingUp,
   Gamepad2,
 } from "lucide-react";
@@ -14,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { AvatarDisplay } from "@/components/shared/avatar-display";
 import { XpBar } from "@/components/dashboard/xp-bar";
 import { StreakCounter } from "@/components/dashboard/streak-counter";
-import { TokenDisplay } from "@/components/dashboard/token-display";
 import { ModuleCards } from "@/components/dashboard/module-cards";
 import { StatsOverview } from "@/components/dashboard/stats-overview";
 import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
@@ -79,7 +77,6 @@ export default function DashboardPage() {
   const {
     completedLessons,
     simulatorRuns,
-    arcadeScores,
     isLoaded: localLoaded,
     getTopicProgress,
     getSimulatorBest,
@@ -103,8 +100,7 @@ export default function DashboardPage() {
     isLoaded &&
     progress.totalXp === 0 &&
     completedLessons.length === 0 &&
-    simulatorRuns.length === 0 &&
-    arcadeScores.length === 0;
+    simulatorRuns.length === 0;
 
   // Calculate module progress percentages for ModuleCards
   const moduleProgress = useMemo(() => {
@@ -124,28 +120,15 @@ export default function DashboardPage() {
     const simPercent = simBest
       ? Math.min(Math.round((simBest.monthsSurvived / 24) * 100), 100)
       : 0;
-    // Arcade progress: based on total games played, max at 30 games
-    const arcadePercent = Math.min(
-      Math.round((arcadeScores.length / 30) * 100),
-      100
-    );
 
     return {
       learn: learnPercent,
       simulator: simPercent,
-      arcade: arcadePercent,
     };
-  }, [getTopicProgress, getSimulatorBest, arcadeScores.length]);
+  }, [getTopicProgress, getSimulatorBest]);
 
   // Stats for StatsOverview
   const simulatorBest = useMemo(() => getSimulatorBest(), [getSimulatorBest]);
-  const arcadeHighScore = useMemo(() => {
-    if (arcadeScores.length === 0) return 0;
-    return arcadeScores.reduce(
-      (max, s) => (s.score > max ? s.score : max),
-      0
-    );
-  }, [arcadeScores]);
 
   // Loading state
   if (!isLoaded) {
@@ -224,7 +207,7 @@ export default function DashboardPage() {
                     >
                       Learn Path
                     </Link>{" "}
-                    to earn XP and tokens. Then use your tokens in the Arcade!
+                    to earn XP and build your financial knowledge!
                   </p>
                 </div>
               </div>
@@ -239,13 +222,9 @@ export default function DashboardPage() {
             <XpBar totalXp={progress.totalXp} />
           </motion.div>
 
-          {/* Stats Row: Streak + Tokens */}
-          <motion.div
-            variants={item}
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-          >
+          {/* Stats Row: Streak */}
+          <motion.div variants={item}>
             <StreakCounter streak={progress.currentStreak} />
-            <TokenDisplay tokens={progress.arcadeTokens} />
           </motion.div>
 
           {/* Module Cards */}
@@ -266,10 +245,8 @@ export default function DashboardPage() {
             <StatsOverview
               totalXp={progress.totalXp}
               currentStreak={progress.currentStreak}
-              arcadeTokens={progress.arcadeTokens}
               lessonsCompleted={completedLessons.length}
               simulatorBestMonths={simulatorBest?.monthsSurvived ?? 0}
-              arcadeHighScore={arcadeHighScore}
             />
           </motion.div>
         </div>

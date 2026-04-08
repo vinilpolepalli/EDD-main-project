@@ -8,7 +8,6 @@ import {
   Coins,
   LayoutDashboard,
   BookOpen,
-  Gamepad2,
   TrendingUp,
   Menu,
   X,
@@ -40,12 +39,6 @@ const navLinks: NavLink[] = [
     label: "Simulator",
     icon: <TrendingUp className="h-5 w-5" />,
     color: "text-simulator",
-  },
-  {
-    href: "/arcade",
-    label: "Arcade",
-    icon: <Gamepad2 className="h-5 w-5" />,
-    color: "text-arcade",
   },
 ];
 

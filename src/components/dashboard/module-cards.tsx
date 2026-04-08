@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BookOpen, TrendingUp, Gamepad2, ChevronRight } from "lucide-react";
+import { BookOpen, TrendingUp, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress";
 
@@ -42,17 +42,6 @@ const modules: ModuleCardData[] = [
     textClass: "text-simulator",
     progressColor: "bg-simulator",
   },
-  {
-    id: "arcade",
-    title: "Mini-Game Arcade",
-    description: "Spend tokens on fast-paced money games! Earn XP and unlock cosmetics.",
-    href: "/arcade",
-    icon: <Gamepad2 className="h-7 w-7" />,
-    bgClass: "bg-arcade",
-    lightBgClass: "bg-arcade-light",
-    textClass: "text-arcade",
-    progressColor: "bg-arcade",
-  },
 ];
 
 interface ModuleCardsProps {
@@ -75,7 +64,7 @@ const ModuleCards: React.FC<ModuleCardsProps> = ({ progress = {}, className }) =
             <motion.div
               className={cn(
                 "group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-transparent bg-card shadow-md transition-shadow hover:shadow-lg",
-                `hover:border-${mod.id === "learn" ? "learn" : mod.id === "simulator" ? "simulator" : "arcade"}`
+                `hover:border-${mod.id === "learn" ? "learn" : "simulator"}`
               )}
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}

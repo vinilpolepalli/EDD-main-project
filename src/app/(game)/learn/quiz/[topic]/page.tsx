@@ -5,13 +5,11 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  CheckCircle,
   XCircle,
   ChevronRight,
   RotateCcw,
   Trophy,
   Sparkles,
-  Coins,
   BookOpen,
   AlertTriangle,
 } from "lucide-react";
@@ -23,11 +21,9 @@ import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGameState } from "@/hooks/use-game-state";
 import { useLocalProgress } from "@/hooks/use-local-progress";
-import { useTokens } from "@/hooks/use-tokens";
 import {
   calculateQuizScore,
   calculateXpEarned,
-  calculateTokensEarned,
 } from "@/lib/game-engine/learn";
 import type { Topic, QuizQuestion } from "@/types/game";
 
@@ -77,7 +73,6 @@ export default function QuizPage() {
 
   const { progress, updateXp, updateStreak, isLoaded: gameLoaded } = useGameState();
   const { isLoaded: localLoaded } = useLocalProgress();
-  const { earnTokens } = useTokens();
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -137,12 +132,10 @@ export default function QuizPage() {
       result.total,
       progress.currentStreak
     );
-    const tokensEarned = calculateTokensEarned(result.score, result.total);
 
     return {
       ...result,
       xpEarned,
-      tokensEarned,
     };
   }, [quizComplete, answers, questions, progress.currentStreak]);
 
@@ -173,12 +166,9 @@ export default function QuizPage() {
     if (quizResults.passed) {
       updateXp(quizResults.xpEarned);
       updateStreak();
-      if (quizResults.tokensEarned > 0) {
-        earnTokens(quizResults.tokensEarned);
-      }
     }
     setRewardsApplied(true);
-  }, [rewardsApplied, quizResults, updateXp, updateStreak, earnTokens]);
+  }, [rewardsApplied, quizResults, updateXp, updateStreak]);
 
   // Apply rewards when quiz completes
   if (quizComplete && quizResults && !rewardsApplied) {
@@ -373,36 +363,20 @@ export default function QuizPage() {
                       <h3 className="text-center text-sm font-extrabold text-muted-foreground">
                         REWARDS EARNED
                       </h3>
-                      <div className="grid grid-cols-2 gap-3">
-                        <motion.div
-                          className="flex flex-col items-center gap-2 rounded-xl bg-xp-light p-4"
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.5, type: "spring" }}
-                        >
-                          <Sparkles className="h-6 w-6 text-xp" />
-                          <span className="text-2xl font-extrabold text-foreground tabular-nums">
-                            +{quizResults.xpEarned}
-                          </span>
-                          <span className="text-xs font-bold text-muted-foreground">
-                            XP Earned
-                          </span>
-                        </motion.div>
-                        <motion.div
-                          className="flex flex-col items-center gap-2 rounded-xl bg-arcade-light p-4"
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.6, type: "spring" }}
-                        >
-                          <Coins className="h-6 w-6 text-arcade" />
-                          <span className="text-2xl font-extrabold text-foreground tabular-nums">
-                            +{quizResults.tokensEarned}
-                          </span>
-                          <span className="text-xs font-bold text-muted-foreground">
-                            Tokens
-                          </span>
-                        </motion.div>
-                      </div>
+                      <motion.div
+                        className="flex flex-col items-center gap-2 rounded-xl bg-xp-light p-4"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.5, type: "spring" }}
+                      >
+                        <Sparkles className="h-6 w-6 text-xp" />
+                        <span className="text-2xl font-extrabold text-foreground tabular-nums">
+                          +{quizResults.xpEarned}
+                        </span>
+                        <span className="text-xs font-bold text-muted-foreground">
+                          XP Earned
+                        </span>
+                      </motion.div>
                     </motion.div>
                   )}
 
