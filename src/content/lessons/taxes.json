@@ -16,142 +16,234 @@
         "type": "definition",
         "term": "Tax",
         "definition": "Money that people and businesses are required to pay to the government. The government uses this money to provide public services that benefit everyone.",
-        "content": "Taxes aren't optional — they're required by law. In the United States, the Internal Revenue Service (IRS) is the government agency that collects taxes."
+        "content": "Taxes aren't optional — they're required by law. In the United States, the Internal Revenue Service (IRS) is the government agency that collects federal taxes. There are also state and local taxes collected by your state and city."
       },
       {
         "type": "flashcard",
-        "title": "Why Do We Need Taxes?",
-        "content": "Without taxes, there would be no public schools (everyone would need private school!), no fire departments (your house is on fire? Good luck!), no police, no public roads (every road would be a toll road!), no military for national defense, no public parks or libraries, and no social safety nets for people who need help. Taxes make modern society possible!"
+        "title": "What Do Taxes Pay For?",
+        "content": "Without taxes, there would be no public schools (everyone would need private school!), no fire departments (your house is on fire? Good luck!), no police, no public roads (every road would be a toll road!), no military for national defense, no public parks or libraries, no social safety nets for people who need help, and no NASA or scientific research. Taxes make modern society possible! The total U.S. federal budget is about $6 trillion per year."
       },
       {
         "type": "text",
-        "title": "A Very Old Idea",
-        "content": "Taxes have been around for thousands of years! Ancient Egyptians taxed cooking oil, and ancient Romans taxed everything from land to slaves. The American Revolution even started partly because of taxes — the colonists were angry about paying taxes to Britain without having a say in how the money was spent. 'No taxation without representation' was their battle cry! Today, American citizens vote for representatives who decide how tax money is spent."
+        "title": "Types of Taxes: A Quick Overview",
+        "content": "There are several kinds of taxes you'll encounter: Income tax (on money you earn), Sales tax (added when you buy things), Property tax (paid by homeowners based on their home's value), Payroll tax (taken from your paycheck for Social Security and Medicare), and Capital gains tax (on profits from selling investments). Each type serves a different purpose and is collected by different levels of government."
       }
     ]
   },
   {
     "id": "taxes-2",
     "topic": "taxes",
-    "title": "Types of Taxes",
+    "title": "How Income Tax Works",
     "order": 2,
     "ceeStandard": "CEE.PF.5",
     "difficulty": "beginner",
     "sections": [
       {
         "type": "text",
-        "title": "Taxes Come in Many Flavors",
-        "content": "There isn't just one kind of tax — there are several! Different taxes apply to different things: earning money, buying stuff, owning property, and more. Understanding the different types helps you understand where your money goes."
+        "title": "The Progressive System",
+        "content": "The U.S. uses a 'progressive' income tax system. This doesn't mean it's modern or forward-thinking — it means the tax rate 'progresses' (increases) as your income goes up. People who earn more money pay a higher percentage in taxes on their additional income. Think of it like a video game with difficulty levels: as you earn more, the tax rate on each new dollar increases."
       },
       {
         "type": "definition",
-        "term": "Income Tax",
-        "definition": "A tax on the money you earn from your job (or other sources like investments). The more you earn, the higher percentage you usually pay.",
-        "content": "Income tax is the biggest tax most people pay. It's taken directly out of your paycheck before you even see the money — that's why your paycheck amount is less than your salary!"
+        "term": "Marginal vs Effective Tax Rate",
+        "definition": "Your marginal tax rate is the percentage on your LAST dollar earned. Your effective tax rate is the overall percentage of your total income that goes to taxes. The effective rate is always lower than the marginal rate.",
+        "content": "This is the #1 thing people get wrong about taxes! If you're in the '22% bracket,' you DON'T pay 22% on ALL your income — only on the income within that bracket."
       },
       {
         "type": "flashcard",
-        "title": "The Tax Family",
-        "content": "INCOME TAX: Paid on money you earn. Federal + state (most states). SALES TAX: Added when you buy things at stores. Usually 4-10% depending on your state. PROPERTY TAX: Paid by homeowners based on their home's value. Pays for local schools and services. PAYROLL TAX: Taken from your paycheck for Social Security and Medicare (programs that help older and disabled Americans). CAPITAL GAINS TAX: Paid when you sell an investment for a profit."
+        "title": "2024 Federal Tax Brackets (Single)",
+        "content": "Here are the 2024 federal income tax brackets: $0-$11,600: 10%. $11,601-$47,150: 12%. $47,151-$100,525: 22%. $100,526-$191,950: 24%. $191,951-$243,725: 32%. $243,726-$609,350: 35%. $609,351+: 37%. WORKED EXAMPLE: If you earn $45,000: First $11,600 taxed at 10% = $1,160. Next $33,400 ($11,601-$45,000) taxed at 12% = $4,008. TOTAL TAX = $5,168. EFFECTIVE RATE = $5,168 / $45,000 = 11.5%. See? You're 'in the 12% bracket' but only pay 11.5% overall!"
       },
       {
         "type": "text",
-        "title": "Tax Rates Aren't the Same for Everyone",
-        "content": "The U.S. uses a progressive tax system for income tax. This means people who earn more money pay a higher percentage. It's like a video game with difficulty levels: if you're earning at Level 1 ($0-$11,000), you pay 10%. At Level 2 ($11,001-$44,725), the extra money is taxed at 12%. And so on, up to 37% for the highest earners. This system is designed to be fair — people with more money can afford to contribute more."
+        "title": "Why Progressive Taxation?",
+        "content": "The idea behind progressive taxation is fairness: a person earning $30,000 needs almost all of it for basic living expenses, so taxing them heavily would be a real hardship. Someone earning $500,000 can more easily afford to contribute a larger share. It's the same principle as 'from each according to their ability' — those who benefit most from the economy can contribute more to its upkeep."
       }
     ]
   },
   {
     "id": "taxes-3",
     "topic": "taxes",
-    "title": "Where Do Taxes Go?",
+    "title": "Your Paycheck Decoded",
     "order": 3,
     "ceeStandard": "CEE.PF.5",
     "difficulty": "intermediate",
     "sections": [
       {
         "type": "text",
-        "title": "Follow the Money",
-        "content": "Ever wonder what happens to all that tax money? The government has a budget just like a family does. The federal government spends about $6 trillion every year! That's $6,000,000,000,000 — more zeros than a video game high score. Let's see where it all goes."
-      },
-      {
-        "type": "flashcard",
-        "title": "The Big Spending Categories",
-        "content": "Here's roughly how the federal government spends your tax dollars: SOCIAL SECURITY (21%) — Monthly payments to retired people and disabled Americans. HEALTH CARE (25%) — Medicare and Medicaid programs that help pay for medical care. DEFENSE (13%) — The military, keeping the country safe. SAFETY NET PROGRAMS (8%) — Help for families in need, food assistance, housing. INTEREST ON DEBT (10%) — Yes, the government borrows money too and has to pay interest! EVERYTHING ELSE (23%) — Education, transportation, science, NASA, parks, and more."
-      },
-      {
-        "type": "text",
-        "title": "State and Local Taxes",
-        "content": "It's not just the federal government that collects taxes. Your state and city have their own taxes and their own budgets. State taxes typically pay for highways, state universities, state police, and state parks. Local property taxes mostly fund your school district — that's right, the school you go to is largely paid for by taxes on local homes and businesses!"
+        "title": "Why Your Paycheck Is Less Than You Expected",
+        "content": "When you get your first job and see your paycheck, you're going to have a rude awakening. If your job pays $20/hour and you work 80 hours in two weeks, you might expect $1,600. But your actual paycheck might only be $1,250. Where did the other $350 go? The answer: taxes and deductions. Let's decode every line on a pay stub."
       },
       {
         "type": "definition",
-        "term": "Government Budget",
-        "definition": "A plan for how the government will spend the tax money it collects. Just like a family budget, it lists where every dollar goes.",
-        "content": "The President proposes a budget each year, and Congress (the Senate and House of Representatives) debates and votes on it. Citizens can influence the budget through voting!"
+        "term": "FICA Taxes",
+        "definition": "Federal Insurance Contributions Act taxes — a combination of Social Security tax (6.2% of your pay) and Medicare tax (1.45% of your pay), totaling 7.65%. Your employer pays a matching 7.65%.",
+        "content": "Social Security provides retirement income for older Americans and disability benefits. Medicare provides health insurance for people 65 and older. You're paying into these programs now so they'll be there for you later."
+      },
+      {
+        "type": "flashcard",
+        "title": "Paycheck Breakdown Example",
+        "content": "Let's say you earn $3,500/month ($42,000/year). Here's what happens: GROSS PAY: $3,500 (what you earned). MINUS Federal Income Tax: -$350 (based on your W-4 and bracket). MINUS Social Security (6.2%): -$217. MINUS Medicare (1.45%): -$50.75. MINUS State Income Tax: -$140 (varies by state; some states have none!). MINUS Health Insurance (pre-tax): -$150 (if your employer offers it). NET PAY (take-home): $2,592.25. That's about 74% of your gross pay. The difference between gross and net is something every worker needs to understand!"
+      },
+      {
+        "type": "text",
+        "title": "Pre-Tax vs Post-Tax Deductions",
+        "content": "Some deductions are taken out BEFORE taxes are calculated (pre-tax), which actually saves you money. Common pre-tax deductions include: 401(k) retirement contributions (you don't pay income tax on this money until you retire), health insurance premiums, and Health Savings Account (HSA) contributions. This is why financial experts always recommend contributing to your employer's 401(k) — you lower your taxable income AND save for retirement at the same time!"
       }
     ]
   },
   {
     "id": "taxes-4",
     "topic": "taxes",
-    "title": "Tax Filing Basics",
+    "title": "W-4: Your Withholding Form",
     "order": 4,
     "ceeStandard": "CEE.PF.5",
     "difficulty": "intermediate",
     "sections": [
       {
         "type": "text",
-        "title": "Tax Day: April 15th",
-        "content": "Every year by April 15th, most Americans have to file a tax return — a report to the government showing how much money they made and how much tax they owe. It sounds scary, but it's really just math! And the cool part? Sometimes you find out the government owes YOU money back (called a tax refund)."
+        "title": "Telling Your Employer How Much to Take",
+        "content": "When you start a new job, one of the first forms you'll fill out is the W-4. This form tells your employer how much federal income tax to withhold from each paycheck. Getting it right matters: withhold too little and you'll owe a big tax bill in April. Withhold too much and you're giving the government a free loan of YOUR money all year."
       },
       {
         "type": "definition",
-        "term": "W-2 Form",
-        "definition": "A form your employer gives you in January that shows exactly how much money you earned and how much tax was already taken out of your paychecks during the year.",
-        "content": "Your employer sends a copy of your W-2 to the IRS too, so the government already knows what you earned. Filing your tax return is your chance to make sure the math is right!"
+        "term": "W-4 Form",
+        "definition": "IRS Form W-4, 'Employee's Withholding Certificate.' This form tells your employer how much federal income tax to take out of each paycheck based on your filing status, dependents, and other factors.",
+        "content": "You can update your W-4 anytime — not just when you start a new job. Got married? Had a kid? Got a second job? Time to update your W-4."
       },
       {
         "type": "flashcard",
-        "title": "Filing Step by Step",
-        "content": "Step 1: Gather your documents (W-2 from your job, any other income records). Step 2: Choose your filing method (tax software like TurboTax, a tax professional, or fill out the forms yourself). Step 3: Report your income (how much you earned). Step 4: Claim deductions and credits (ways to lower what you owe — more on this next!). Step 5: Calculate what you owe or what you're owed. Step 6: Submit by April 15th!"
+        "title": "W-4: Getting It Right",
+        "content": "The W-4 asks for: FILING STATUS: Single, Married Filing Jointly, Head of Household. This determines your tax bracket boundaries. MULTIPLE JOBS: If you have more than one job (or your spouse works), you need to account for the combined income. DEPENDENTS: Kids and other dependents qualify for tax credits, which reduce your withholding. EXTRA WITHHOLDING: You can request extra money be withheld each pay period if you want a bigger refund (though this isn't financially optimal). WHY IT MATTERS: If you under-withhold by more than $1,000, the IRS can charge you a penalty. If you over-withhold, you get a refund — but that money could have been earning interest in YOUR account all year."
       },
       {
-        "type": "definition",
-        "term": "Tax Deduction",
-        "definition": "An expense that reduces the amount of income you're taxed on. For example, if you earned $50,000 and have $5,000 in deductions, you only pay tax on $45,000.",
-        "content": "Common deductions include student loan interest, charitable donations, and some medical expenses. Deductions are one reason why understanding taxes can save you money!"
+        "type": "text",
+        "title": "The Refund Myth",
+        "content": "Many people celebrate a big tax refund like it's free money. But here's the truth: a refund means you OVERPAID your taxes throughout the year. You gave the government an interest-free loan! If you got a $2,400 refund, that means $200/month was taken from your paycheck that could have been in your savings account earning interest. The ideal scenario is owing $0 and getting $0 back — your withholding perfectly matched your taxes."
       }
     ]
   },
   {
     "id": "taxes-5",
     "topic": "taxes",
-    "title": "Tax Tips for the Future",
+    "title": "Tax Refunds vs Tax Bills",
     "order": 5,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The April Surprise",
+        "content": "Every April, millions of Americans get either a pleasant surprise (a refund check!) or an unpleasant one (a bill from the IRS). Which one you get depends entirely on how much tax was withheld from your paychecks during the year compared to what you actually owe. Understanding this process helps you avoid nasty surprises."
+      },
+      {
+        "type": "definition",
+        "term": "Tax Refund",
+        "definition": "Money the government returns to you when you've paid MORE in taxes throughout the year than you actually owed. It's not free money — it's YOUR money being returned.",
+        "content": "The average American tax refund is about $3,000. That's $250/month that could have been earning interest in a savings account instead of sitting with the IRS!"
+      },
+      {
+        "type": "flashcard",
+        "title": "Refund vs Bill: What Happened?",
+        "content": "TAX REFUND: You overpaid during the year. Your employer took out more than needed. You get the difference back. Example: Owed $5,000 in taxes, $6,500 was withheld = $1,500 refund. TAX BILL: You underpaid during the year. Not enough was withheld. You owe the difference. Example: Owed $5,000 in taxes, $4,200 was withheld = $800 bill due by April 15. GIG WORKERS: If you freelance, drive for Uber, or sell things online, nobody withholds taxes for you. You need to make quarterly estimated tax payments (4 times per year) or face penalties."
+      },
+      {
+        "type": "text",
+        "title": "How to Adjust",
+        "content": "If you got a huge refund, consider updating your W-4 to withhold less — put that money to work for you throughout the year. If you owed a big bill, update your W-4 to withhold more, or set aside money each month in a 'tax savings' account. The IRS has a free Withholding Estimator tool on their website that helps you figure out the right amount. For gig workers and freelancers, the general rule is to save 25-30% of every payment you receive for taxes."
+      }
+    ]
+  },
+  {
+    "id": "taxes-6",
+    "topic": "taxes",
+    "title": "Deductions and Credits",
+    "order": 6,
     "ceeStandard": "CEE.PF.5",
     "difficulty": "advanced",
     "sections": [
       {
         "type": "text",
-        "title": "Smart Tax Strategies",
-        "content": "Here's a secret: wealthy people don't necessarily pay the highest tax rates. Why? Because they understand the tax code and use legal strategies to keep more of their money. You can learn these strategies too! Being smart about taxes is one of the most valuable financial skills you can develop."
-      },
-      {
-        "type": "flashcard",
-        "title": "Legal Ways to Save on Taxes",
-        "content": "RETIREMENT ACCOUNTS: Money put into a 401(k) or IRA isn't taxed until you withdraw it (in retirement). This can save you thousands! TAX CREDITS: Even better than deductions — credits directly reduce your tax bill dollar-for-dollar. EDUCATION CREDITS: Going to college? There are tax credits for that! CHARITABLE GIVING: Donating to charity can lower your taxable income. HEALTH SAVINGS ACCOUNTS: Money saved for medical expenses can be tax-free. The key: these are all 100% legal! The tax code WANTS you to save for retirement, give to charity, and invest in education."
+        "title": "Legal Ways to Lower Your Taxes",
+        "content": "The tax code is full of legal ways to reduce what you owe. The two main tools are deductions and credits. They sound similar but work very differently, and understanding the distinction can save you hundreds or thousands of dollars every year."
       },
       {
         "type": "definition",
-        "term": "Tax Credit",
-        "definition": "A dollar-for-dollar reduction in the tax you owe. A $1,000 tax credit saves you exactly $1,000 — even better than a deduction!",
-        "content": "If you owe $5,000 in taxes and have a $1,000 tax credit, you only pay $4,000. Some credits are even refundable, meaning you get money back even if you owe nothing!"
+        "term": "Standard Deduction",
+        "definition": "A flat amount you subtract from your income before calculating taxes. For 2024, it's $14,600 for single filers and $29,200 for married filing jointly. Most people take the standard deduction instead of itemizing.",
+        "content": "The standard deduction means the first $14,600 you earn is essentially tax-free! If you earn $45,000, you only pay taxes on $30,400. This is why many people with lower incomes end up paying very little in federal income tax."
+      },
+      {
+        "type": "flashcard",
+        "title": "Deductions vs Credits: The Big Difference",
+        "content": "TAX DEDUCTION: Reduces your TAXABLE INCOME. A $1,000 deduction saves you $120-$370 depending on your tax bracket. Example: In the 22% bracket, a $1,000 deduction saves you $220. TAX CREDIT: Reduces your actual TAX BILL dollar-for-dollar. A $1,000 credit saves you exactly $1,000 regardless of your bracket. Credits are WAY more valuable! COMMON CREDITS: Child Tax Credit ($2,000 per child), Earned Income Tax Credit (up to $7,430 for families), Education credits (up to $2,500/year for college), Clean vehicle credit (up to $7,500 for electric cars). Some credits are 'refundable' — you get money back even if you owe nothing!"
       },
       {
         "type": "text",
-        "title": "Start Thinking About Taxes Now",
-        "content": "Even though you probably won't file your own taxes for a few years, understanding how they work gives you a huge advantage. When you get your first job, you'll understand why your paycheck is less than your hourly rate times your hours. When you start saving for retirement, you'll know to use tax-advantaged accounts. And when tax day comes, you won't be stressed — you'll be prepared! Remember: paying taxes is part of being a responsible citizen. The goal isn't to avoid taxes — it's to understand them and use legal strategies wisely."
+        "title": "Itemizing vs Standard Deduction",
+        "content": "Most people take the standard deduction because it's simple and usually larger than the sum of their individual deductions. But if your specific deductions add up to more than $14,600 (things like mortgage interest, state taxes paid, charitable donations, and medical expenses above 7.5% of income), you should itemize instead. Only about 10% of taxpayers itemize since the standard deduction was raised in 2018."
+      }
+    ]
+  },
+  {
+    "id": "taxes-7",
+    "topic": "taxes",
+    "title": "Sales Tax and Other Taxes",
+    "order": 7,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Taxes Beyond Your Paycheck",
+        "content": "Income tax gets the most attention, but it's far from the only tax you'll encounter. Every time you buy something at a store, you're probably paying sales tax. If you ever own a home, you'll pay property tax. And if you invest in stocks, you'll deal with capital gains tax. Let's explore the taxes that affect your everyday life."
+      },
+      {
+        "type": "definition",
+        "term": "Sales Tax",
+        "definition": "A tax added to the purchase price of goods (and sometimes services) at the point of sale. It varies by state, ranging from 0% to 9.55%.",
+        "content": "Five states have NO sales tax: Oregon, Montana, Delaware, New Hampshire, and Alaska. Tennessee has the highest combined state and local sales tax rate at about 9.55%. That means a $100 purchase actually costs $109.55!"
+      },
+      {
+        "type": "flashcard",
+        "title": "Taxes You'll Encounter",
+        "content": "SALES TAX: Added when you buy things. Varies by state (0% in Oregon to 9.55% in Tennessee). Some states exempt groceries and medicine. PROPERTY TAX: Paid by homeowners, averaging about 1% of home value per year. A $300,000 home = ~$3,000/year in property tax. This money funds local schools and services. CAPITAL GAINS TAX: Paid when you sell an investment (stocks, real estate) for a profit. Short-term (held less than 1 year) = taxed as ordinary income. Long-term (held over 1 year) = lower rates of 0%, 15%, or 20%. ESTATE TAX: Tax on wealth transferred after someone dies. Only applies to estates over $13.61 million (very few people)."
+      },
+      {
+        "type": "text",
+        "title": "The Long-Term Capital Gains Advantage",
+        "content": "Here's a key investing tip: if you buy a stock and hold it for MORE than one year before selling, you pay the lower long-term capital gains rate (0%, 15%, or 20%). But if you sell within a year, you pay your regular income tax rate (potentially 22-37%). This is why financial advisors recommend 'buy and hold' investing — not just for better returns, but for lower taxes too! A person in the 24% income bracket would pay 24% on short-term gains but only 15% on long-term gains. That's a 9% savings just for being patient."
+      }
+    ]
+  },
+  {
+    "id": "taxes-8",
+    "topic": "taxes",
+    "title": "Filing Your Taxes",
+    "order": 8,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Tax Season: Your Annual Responsibility",
+        "content": "Every year, most Americans must file a federal tax return by April 15th. 'Filing' means reporting your income, deductions, and credits to the IRS on specific forms (mainly the Form 1040). This is how the government determines whether you've paid the right amount of tax — and whether you're owed a refund or owe additional taxes."
+      },
+      {
+        "type": "definition",
+        "term": "Form W-2",
+        "definition": "A tax document your employer sends you by January 31st each year, showing your total earnings and all taxes withheld during the previous year. You need this to file your tax return.",
+        "content": "Your employer also sends a copy to the IRS, so the government already knows how much you earned. Filing your return is your chance to claim deductions and credits that might reduce what you owe."
+      },
+      {
+        "type": "flashcard",
+        "title": "How to File: Step by Step",
+        "content": "STEP 1: Gather documents. W-2 from each job, 1099 forms for freelance/investment income, receipts for deductions. STEP 2: Choose your method. IRS Free File (FREE for income under $79,000), tax software (TurboTax, H&R Block — $0-$100+), tax professional ($150-$500+), or fill out forms yourself (free but complex). STEP 3: Complete Form 1040. Report income, subtract deductions, apply credits. STEP 4: Submit by April 15th. E-file for fastest processing (refund in 2-3 weeks) or mail paper forms (refund in 6-8 weeks). STEP 5: If you can't finish by April 15th, file Form 4868 for an automatic 6-month extension. But you must still PAY any taxes owed by April 15th!"
+      },
+      {
+        "type": "text",
+        "title": "Penalties for Not Filing",
+        "content": "Not filing your taxes is a big deal. The Failure to File penalty is 5% of unpaid taxes for each month you're late, up to 25%. The Failure to Pay penalty is 0.5% per month. If you owe $2,000 and don't file for 5 months, you'd owe an extra $500 in penalties — plus interest! The IRS can also file a 'substitute return' for you, but they won't include deductions or credits you're entitled to, so you'll likely owe more. Even if you can't afford to pay, ALWAYS file on time — the filing penalty is 10x worse than the payment penalty."
       }
     ]
   }

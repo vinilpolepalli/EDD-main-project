@@ -2,7 +2,7 @@
   {
     "id": "credit-1",
     "topic": "credit",
-    "title": "What Is Credit?",
+    "title": "What is Credit?",
     "order": 1,
     "ceeStandard": "CEE.PF.4",
     "difficulty": "beginner",
@@ -15,25 +15,25 @@
       {
         "type": "definition",
         "term": "Credit",
-        "definition": "An agreement where you receive money or goods now and promise to pay for them later.",
-        "content": "Credit is like a trust agreement. A lender trusts you enough to give you money now because they believe you'll pay it back."
+        "definition": "An agreement where you receive money or goods now and promise to pay for them later, usually with interest added.",
+        "content": "Credit is like a trust agreement. A lender trusts you enough to give you money now because they believe you'll pay it back. Your credit history is basically your 'financial reputation' — it follows you throughout your adult life."
       },
       {
         "type": "flashcard",
         "title": "Why Credit Exists",
-        "content": "Imagine you want to buy a bicycle that costs $200, but you only have $50 saved. Without credit, you'd have to wait months to save up. With credit, you could buy the bike now and pay the lender back a little bit each month. The lender charges interest (extra money) for letting you borrow — that's how they make money."
+        "content": "Imagine you want to buy a bicycle that costs $200, but you only have $50 saved. Without credit, you'd have to wait months to save up. With credit, you could buy the bike now and pay the lender back a little bit each month. The lender charges interest (extra money) for letting you borrow — that's how they make money. Credit makes it possible to buy expensive things (houses, cars, college education) that almost nobody could afford to pay for all at once."
       },
       {
         "type": "text",
         "title": "Real-World Credit",
-        "content": "Adults use credit all the time! When someone buys a house, they usually borrow money from a bank (called a mortgage) and spend 15-30 years paying it back. When someone swipes a credit card at the store, they're borrowing money from the credit card company. The important thing is to only borrow what you can afford to pay back!"
+        "content": "Adults use credit all the time! When someone buys a house, they usually borrow money from a bank (called a mortgage) and spend 15-30 years paying it back. When someone swipes a credit card at the store, they're borrowing money from the credit card company. Student loans help pay for college. Car loans help buy vehicles. The important thing is to only borrow what you can afford to pay back!"
       }
     ]
   },
   {
     "id": "credit-2",
     "topic": "credit",
-    "title": "Credit Scores Explained",
+    "title": "Your Credit Score",
     "order": 2,
     "ceeStandard": "CEE.PF.4",
     "difficulty": "beginner",
@@ -41,117 +41,209 @@
       {
         "type": "text",
         "title": "Your Financial Report Card",
-        "content": "Just like you get grades in school, adults get a \"grade\" for how well they handle borrowed money. This grade is called a credit score, and it's a number between 300 and 850. The higher your score, the more lenders trust you. Think of it like a video game reputation stat — the more responsible you are, the higher your score!"
+        "content": "Just like you get grades in school, adults get a 'grade' for how well they handle borrowed money. This grade is called a credit score, and it's a number between 300 and 850. The higher your score, the more lenders trust you. Think of it like a video game reputation stat — the more responsible you are, the higher your score!"
       },
       {
         "type": "definition",
-        "term": "Credit Score",
-        "definition": "A three-digit number (300-850) that shows how trustworthy you are with borrowed money. Higher is better!",
-        "content": "Banks and lenders check your credit score before deciding whether to lend you money. A high score means you'll get better deals."
+        "term": "FICO Score",
+        "definition": "The most widely used credit score system, created by the Fair Isaac Corporation. It ranges from 300 (worst) to 850 (best) and is used by 90% of top lenders.",
+        "content": "Your FICO score determines whether you can borrow money, how much interest you'll pay, and even whether you can rent an apartment or get certain jobs."
       },
       {
         "type": "flashcard",
-        "title": "What Affects Your Score?",
-        "content": "Five things affect your credit score: (1) Payment History (35%) — Do you pay on time? This is the BIGGEST factor! (2) How Much You Owe (30%) — Are you maxing out your credit? (3) How Long You've Had Credit (15%) — Longer history is better. (4) New Credit (10%) — Opening lots of new accounts at once looks risky. (5) Mix of Credit Types (10%) — Having different types shows you can handle them."
+        "title": "The 5 Factors That Decide Your Score",
+        "content": "Your credit score is based on five things, each with a different weight: (1) PAYMENT HISTORY — 35% — Do you pay on time? This is the BIGGEST factor! (2) AMOUNTS OWED — 30% — How much of your available credit are you using? (3) LENGTH OF CREDIT HISTORY — 15% — How long have you had credit accounts? Longer is better. (4) NEW CREDIT — 10% — Have you opened lots of new accounts recently? That looks risky. (5) CREDIT MIX — 10% — Do you have different types of credit (cards, loans)? A healthy mix is good."
       },
       {
         "type": "text",
-        "title": "Score Ranges",
-        "content": "Here's what the numbers mean: 300-579 is Poor (very hard to borrow money), 580-669 is Fair (some lenders will work with you), 670-739 is Good (most lenders will approve you), 740-799 is Very Good (you get great interest rates), and 800-850 is Excellent (the best deals available!). Most people start around 650-700 when they first build credit."
+        "title": "Score Ranges: What's Good?",
+        "content": "Here's what the numbers mean: 300-579 is Poor (very hard to borrow money), 580-669 is Fair (some lenders will work with you, but at high interest), 670-739 is Good (most lenders will approve you with decent rates), 740-799 is Very Good (you get great interest rates), and 800-850 is Exceptional (the best deals available, reserved for the most responsible borrowers). Most people start around 650-700 when they first build credit."
       }
     ]
   },
   {
     "id": "credit-3",
     "topic": "credit",
-    "title": "Types of Credit",
+    "title": "Credit Cards: Tool or Trap?",
     "order": 3,
     "ceeStandard": "CEE.PF.4",
     "difficulty": "intermediate",
     "sections": [
       {
         "type": "text",
-        "title": "Not All Credit Is the Same",
-        "content": "There are different ways to borrow money, and each type works a little differently. The three main types are credit cards, loans, and mortgages. Choosing the right type of credit for what you need is an important financial skill!"
+        "title": "The Double-Edged Sword",
+        "content": "Credit cards are the most common form of credit, and they can be your best financial friend or your worst enemy. Used wisely, they build your credit score, offer purchase protection, and earn rewards. Used carelessly, they can trap you in debt that takes years to escape. Understanding how they really work is essential."
       },
       {
         "type": "definition",
-        "term": "Credit Card",
-        "definition": "A card that lets you borrow money for purchases up to a certain limit. You must pay it back each month or you'll be charged interest.",
-        "content": "Credit cards are revolving credit — you can borrow, pay back, and borrow again up to your limit. They're convenient but can be dangerous if you don't pay the full balance each month."
+        "term": "APR (Annual Percentage Rate)",
+        "definition": "The yearly interest rate charged on unpaid credit card balances. The average credit card APR in 2024 is about 24% — one of the highest interest rates on any type of borrowing.",
+        "content": "If you carry a $1,000 balance at 24% APR, you're charged about $240 per year in interest — that's $20/month just for the privilege of owing money!"
       },
       {
         "type": "flashcard",
-        "title": "Loans vs. Credit Cards",
-        "content": "A LOAN gives you a big chunk of money all at once, and you pay it back in fixed monthly payments over a set time period. For example, a car loan might be $15,000 paid back over 5 years. A CREDIT CARD lets you borrow small amounts over and over. The key difference: loans have a fixed end date, but credit card debt can last forever if you only make minimum payments!"
+        "title": "The Minimum Payment Trap",
+        "content": "Credit cards only require a 'minimum payment' each month — usually around $25 or 2% of your balance, whichever is higher. This sounds great, right? WRONG. Here's the trap: if you owe $1,000 at 24% APR and only pay the minimum, it will take you over 4 YEARS to pay it off, and you'll pay more than $500 in interest. That $1,000 of stuff actually costs you $1,500+. CREDIT CARD vs DEBIT CARD: A debit card uses money you already have. A credit card borrows money. If you can't afford to pay off your credit card in full each month, you probably shouldn't use it for that purchase."
       },
       {
-        "type": "definition",
-        "term": "Mortgage",
-        "definition": "A special long-term loan used specifically to buy a house. It usually takes 15 to 30 years to pay back.",
-        "content": "Mortgages are the biggest loans most people ever take out. Because houses are so expensive, banks spread the payments over many years to make them affordable."
+        "type": "text",
+        "title": "The Grace Period Secret",
+        "content": "Here's the good news: if you pay your credit card balance IN FULL every month before the due date, you pay ZERO interest. This is called the 'grace period' — typically 21-25 days after your billing cycle ends. Smart credit card users treat their cards like debit cards: they only charge what they can pay off completely each month. This way, they build credit and earn rewards without ever paying a cent in interest."
       }
     ]
   },
   {
     "id": "credit-4",
     "topic": "credit",
-    "title": "Interest Rates",
+    "title": "Building Credit from Scratch",
     "order": 4,
     "ceeStandard": "CEE.PF.4",
     "difficulty": "intermediate",
     "sections": [
       {
         "type": "text",
-        "title": "The Cost of Borrowing",
-        "content": "When you borrow money, the lender charges you a fee for the privilege. This fee is called interest, and it's calculated as a percentage of what you owe. If you borrow $100 at 10% interest per year, you'd owe $110 after one year. That extra $10 is the lender's profit for trusting you with their money."
+        "title": "The Catch-22 of Credit",
+        "content": "Here's the frustrating part about credit: you need credit history to get credit, but you need credit to build credit history. It's like needing work experience to get a job, but needing a job to get work experience! Fortunately, there are several smart strategies specifically designed for first-time credit builders."
       },
       {
         "type": "definition",
-        "term": "Interest Rate",
-        "definition": "The percentage charged on borrowed money, usually calculated yearly. It's the 'price' of borrowing.",
-        "content": "Lower interest rates save you money. A 5% rate on $1,000 costs $50/year, while a 20% rate costs $200/year. That's why your credit score matters — better scores get lower rates!"
+        "term": "Secured Credit Card",
+        "definition": "A credit card where you put down a cash deposit (usually $200-500) that becomes your credit limit. The bank holds your deposit as security, making it less risky for them to give you a card.",
+        "content": "A secured card works just like a regular credit card — you make purchases, get a bill, and pay it off. The only difference is the deposit, which you get back when you upgrade to a regular card or close the account."
       },
       {
         "type": "flashcard",
-        "title": "The Snowball Effect",
-        "content": "Here's a scary math fact: if you have $1,000 on a credit card at 20% interest and only make minimum payments, it could take over 8 YEARS to pay off, and you'd pay more than $800 in interest alone! That means the $1,000 worth of stuff actually cost you $1,800. This is why paying off credit cards quickly is so important — interest piles up fast!"
+        "title": "Ways to Build Credit as a Beginner",
+        "content": "SECURED CREDIT CARD: Put down a $200-500 deposit, use the card for small purchases, pay in full each month. After 6-12 months of good behavior, upgrade to a regular card. AUTHORIZED USER: Ask a parent or trusted adult with good credit to add you as an authorized user on their card. Their good history appears on YOUR credit report! STUDENT CREDIT CARD: Some banks offer cards specifically for students with no credit history. Lower limits but easier approval. CREDIT-BUILDER LOAN: A small loan ($300-1000) where the money is held in a savings account while you make payments. After you finish paying, you get the money. WHAT NOT TO DO: Don't apply for 10 cards at once — each application temporarily lowers your score!"
       },
       {
         "type": "text",
-        "title": "Interest Can Work FOR You Too",
-        "content": "Here's the good news: interest isn't always bad! When you put money in a savings account, the BANK pays YOU interest for keeping your money there. The same math that makes credit card debt grow can make your savings grow. This is called compound interest, and Albert Einstein supposedly called it the 'eighth wonder of the world.' Start saving early and let interest work in your favor!"
+        "title": "Patience Is Key",
+        "content": "Building good credit takes time — usually 6-12 months of responsible use before you see a meaningful score. Think of it like leveling up in a video game: you can't skip to level 50 on day one. The most important habits are: always pay on time (set auto-pay!), keep your balance low, and don't open too many accounts at once. Start with one card, use it responsibly, and your score will grow steadily."
       }
     ]
   },
   {
     "id": "credit-5",
     "topic": "credit",
-    "title": "Building Good Credit",
+    "title": "Good Debt vs Bad Debt",
     "order": 5,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Not All Debt Is Equal",
+        "content": "You might think all debt is bad, but financial experts actually divide debt into two categories: 'good debt' and 'bad debt.' Good debt helps you build wealth or increase your earning power over time. Bad debt costs you money without giving you anything lasting in return. Knowing the difference is crucial for making smart borrowing decisions."
+      },
+      {
+        "type": "definition",
+        "term": "Debt-to-Income Ratio",
+        "definition": "The percentage of your monthly income that goes toward paying debts. Lenders want this under 36%. If you earn $4,000/month, your total debt payments shouldn't exceed $1,440.",
+        "content": "A high debt-to-income ratio means you're stretched too thin. Lenders see it as a red flag because it means you might not be able to handle another loan payment."
+      },
+      {
+        "type": "flashcard",
+        "title": "Good Debt vs Bad Debt Examples",
+        "content": "GOOD DEBT (builds value): Mortgage — you're building ownership of an asset (house) that typically grows in value. Student loans — investing in education that increases your lifetime earning potential by $1 million+ on average. Small business loan — investing in a business that can generate income. BAD DEBT (loses value): Credit card debt — you're paying 20%+ interest on things that are already used up or depreciating. Payday loans — extremely high interest (400%+ APR!), designed to trap you in a cycle of borrowing. Car loan on a luxury car — cars lose 20% of their value the moment you drive off the lot. A depreciating asset bought with debt = double loss."
+      },
+      {
+        "type": "text",
+        "title": "The Bottom Line",
+        "content": "The rule of thumb: if borrowing money will make you richer in the long run (education, home, business), it can be 'good debt' — as long as you can afford the payments. If borrowing money is just to buy stuff that loses value or gets consumed (fancy dinners, vacations, electronics), that's 'bad debt.' And even good debt becomes bad debt if you borrow more than you can reasonably pay back."
+      }
+    ]
+  },
+  {
+    "id": "credit-6",
+    "topic": "credit",
+    "title": "Credit Utilization",
+    "order": 6,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The 30% Rule",
+        "content": "Credit utilization is one of the most important factors in your credit score, making up 30% of the total. It measures how much of your available credit you're actually using. Think of it like a gas tank: lenders want to see that you have plenty of fuel left, not that you're running on empty."
+      },
+      {
+        "type": "definition",
+        "term": "Credit Utilization Ratio",
+        "definition": "The percentage of your total available credit that you're currently using. Calculated as: (Total Balances / Total Credit Limits) x 100. Keeping this under 30% is recommended; under 10% is ideal.",
+        "content": "Example: If your credit card has a $5,000 limit, try to keep your balance under $1,500 (30%). Even better, keep it under $500 (10%). High utilization suggests you're desperate for credit."
+      },
+      {
+        "type": "flashcard",
+        "title": "Pro Tips for Low Utilization",
+        "content": "PAY TWICE A MONTH: Instead of one big payment, make two smaller ones. This keeps your reported balance lower. REQUEST A LIMIT INCREASE: If your limit goes from $1,000 to $2,000, your $300 balance drops from 30% to 15% utilization — without changing your spending! THE AZEO STRATEGY: 'All Zero Except One.' Pay all cards to $0 except one, which carries a small balance. This shows activity while keeping overall utilization super low. DON'T CLOSE OLD CARDS: Closing a card reduces your total available credit, which increases your utilization percentage on remaining cards."
+      },
+      {
+        "type": "text",
+        "title": "Why It Matters So Much",
+        "content": "Here's a real-world example of how utilization affects you: Two people both have $10,000 in total credit limits. Person A carries a $8,000 balance (80% utilization) and Person B carries a $1,000 balance (10% utilization). Even if both pay on time, Person B will have a dramatically better credit score. When they go to buy a car, Person B might get a 5% interest rate while Person A gets 15%. On a $20,000 car loan over 5 years, Person A would pay $4,000 MORE in interest — just because of utilization."
+      }
+    ]
+  },
+  {
+    "id": "credit-7",
+    "topic": "credit",
+    "title": "Your Credit Report",
+    "order": 7,
     "ceeStandard": "CEE.PF.4",
     "difficulty": "advanced",
     "sections": [
       {
         "type": "text",
-        "title": "Start Early, Start Smart",
-        "content": "Building good credit is like leveling up a character in a video game — it takes time and consistent effort, but the rewards are worth it. People with good credit scores save thousands of dollars over their lifetime because they get lower interest rates on everything from car loans to mortgages."
-      },
-      {
-        "type": "flashcard",
-        "title": "The Golden Rules of Credit",
-        "content": "Rule 1: ALWAYS pay on time. Set reminders or automatic payments. Late payments are the #1 credit score killer. Rule 2: Don't use more than 30% of your credit limit. If your limit is $1,000, try to keep your balance under $300. Rule 3: Don't close old accounts. Length of credit history matters. Rule 4: Don't apply for lots of credit at once. Each application temporarily lowers your score."
+        "title": "The Document Behind the Score",
+        "content": "Your credit score is calculated from information in your credit report — a detailed document that tracks your entire borrowing history. Think of the credit report as your full exam paper and the credit score as your final grade. Sometimes errors appear on credit reports (about 1 in 5 reports has an error!), which is why checking yours regularly is so important."
       },
       {
         "type": "definition",
-        "term": "Credit Utilization",
-        "definition": "The percentage of your available credit that you're actually using. Keeping it under 30% is ideal for a healthy credit score.",
-        "content": "If you have a credit card with a $500 limit, try to never owe more than $150 at any time. This shows lenders you're not desperate for money."
+        "term": "Credit Bureau",
+        "definition": "A company that collects and maintains your credit information. There are three major bureaus in the U.S.: Equifax, Experian, and TransUnion. Each maintains its own version of your credit report.",
+        "content": "You can check your credit report for FREE once per year from each bureau at AnnualCreditReport.com — that's three free checks per year! This is the official, government-approved website."
+      },
+      {
+        "type": "flashcard",
+        "title": "What's on Your Credit Report?",
+        "content": "PERSONAL INFO: Name, address, Social Security Number, date of birth, employers. CREDIT ACCOUNTS: Every credit card, loan, and mortgage you've ever had — including when it was opened, the credit limit, current balance, and payment history. PUBLIC RECORDS: Bankruptcies (stay on report for 10 years), tax liens, civil judgments. INQUIRIES: A record of everyone who has checked your credit. 'Hard inquiries' (loan applications) stay for 2 years. HOW LONG NEGATIVES LAST: Late payments — 7 years. Collections — 7 years. Bankruptcy — 7-10 years. The good news? Positive information stays forever!"
       },
       {
         "type": "text",
-        "title": "Your Future Self Will Thank You",
-        "content": "Good credit unlocks so many doors: renting an apartment (landlords check credit), getting a cell phone plan, buying a car, and eventually buying a house. Some employers even check credit scores when hiring! The habits you build now — being responsible with money, paying what you owe, and not overspending — will set you up for financial success as an adult."
+        "title": "Checking for Errors",
+        "content": "About 20% of credit reports contain errors — wrong addresses, accounts that aren't yours, or payments marked late that were actually on time. These errors can seriously hurt your score. Check your reports annually and dispute any mistakes directly with the bureau. They're legally required to investigate within 30 days. Catching and fixing an error could boost your score by 25-100 points overnight."
+      }
+    ]
+  },
+  {
+    "id": "credit-8",
+    "topic": "credit",
+    "title": "Protecting Your Credit",
+    "order": 8,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Credit Theft Is Real",
+        "content": "Identity theft is one of the fastest-growing crimes in America. About 28% of Americans have been victims — that's nearly 1 in 3 people! Thieves can open credit cards, take out loans, and rack up debt in your name, destroying your credit score in the process. It can take months or even years to fully recover. But there are powerful tools to protect yourself."
+      },
+      {
+        "type": "definition",
+        "term": "Credit Freeze",
+        "definition": "A security measure that locks your credit report so no one (including you) can open new accounts in your name. You can temporarily lift the freeze when you need to apply for credit.",
+        "content": "Freezing your credit is FREE and is the single most effective way to prevent identity theft. You need to freeze your report at all three bureaus (Equifax, Experian, TransUnion) for full protection."
+      },
+      {
+        "type": "flashcard",
+        "title": "Protect Yourself: A Checklist",
+        "content": "FREEZE YOUR CREDIT at all 3 bureaus — it's free and blocks thieves from opening accounts. SET UP FRAUD ALERTS — the bureaus will notify you if someone tries to open an account in your name. MONITOR YOUR ACCOUNTS — check bank and credit card statements weekly for charges you don't recognize. USE STRONG, UNIQUE PASSWORDS — never reuse passwords across financial accounts. ENABLE TWO-FACTOR AUTHENTICATION — adds a second layer of security beyond just a password. SHRED SENSITIVE DOCUMENTS — don't just throw away bank statements or pre-approved credit card offers. BE CAREFUL ONLINE — never enter credit card info on unsecured websites (look for the lock icon and 'https')."
+      },
+      {
+        "type": "text",
+        "title": "What to Do If You're a Victim",
+        "content": "If you suspect identity theft: 1) Place a fraud alert with all three credit bureaus immediately. 2) File a report at IdentityTheft.gov (the FTC's official site). 3) Review your credit reports for unfamiliar accounts. 4) Contact any companies where fraudulent accounts were opened. 5) File a police report. 6) Consider a credit freeze to prevent further damage. Acting quickly is crucial — the faster you respond, the less damage thieves can do. All of these steps are free."
       }
     ]
   }

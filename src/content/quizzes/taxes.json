@@ -10,7 +10,7 @@
       "Fees for using the internet"
     ],
     "correctIndex": 1,
-    "explanation": "Taxes are money that citizens and businesses pay to the government. The government uses this money to fund public services like roads, schools, firefighters, and hospitals that everyone benefits from.",
+    "explanation": "Taxes are money that citizens and businesses pay to the government. The government uses this money to fund public services like roads, schools, firefighters, and hospitals. Unlike fines (penalties for breaking laws) or tips (voluntary), taxes are mandatory contributions that keep society running.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "beginner"
   },
@@ -25,7 +25,7 @@
       "Video games at the store"
     ],
     "correctIndex": 2,
-    "explanation": "Public schools, roads, firefighters, police, parks, and many other public services are all funded by taxes. These are things everyone in the community uses and benefits from!",
+    "explanation": "Public schools, roads, firefighters, police, parks, and many other public services are all funded by taxes. Netflix, groceries, and video games are private purchases you make with your own money. Property taxes specifically fund local schools — so your school is literally paid for by taxes!",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "beginner"
   },
@@ -40,7 +40,7 @@
       "A tax on your savings account"
     ],
     "correctIndex": 1,
-    "explanation": "Income tax is a tax on the money you earn from working (or other sources like investments). It's usually the biggest tax most people pay, and it's taken directly from your paycheck.",
+    "explanation": "Income tax is a tax on the money you earn from working (or from investments). It's usually the biggest tax most people pay. A tax on things you buy is 'sales tax,' a tax on your house is 'property tax,' and savings account interest is taxed as income but the account itself isn't taxed.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "beginner"
   },
@@ -55,7 +55,7 @@
       "$40.00"
     ],
     "correctIndex": 1,
-    "explanation": "Sales tax of 8% on $50 = $50 x 0.08 = $4.00. So you pay $50 + $4 = $54 total. This is why the price at the register is often more than the price on the tag!",
+    "explanation": "Sales tax of 8% on $50 = $50 x 0.08 = $4.00. So you pay $50 + $4 = $54 total. This is why the price at the register is often more than the price on the tag! $58 would be 16% tax, $40 would mean a discount, and $50 would only be correct in states with 0% sales tax.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "intermediate"
   },
@@ -65,12 +65,12 @@
     "question": "What does a 'progressive tax system' mean?",
     "options": [
       "Everyone pays the exact same amount of tax",
-      "People who earn more pay a higher percentage of their income",
+      "People who earn more pay a higher percentage on their additional income",
       "Taxes increase by 1% every year automatically",
       "Only people over 30 pay taxes"
     ],
     "correctIndex": 1,
-    "explanation": "In a progressive tax system, people who earn more money pay a higher percentage in taxes. This is designed to be fair — someone earning $500,000 can afford to contribute more than someone earning $30,000.",
+    "explanation": "In a progressive system, higher income is taxed at higher rates — but only the income WITHIN each bracket. Someone earning $50,000 doesn't pay 22% on ALL of it; only the portion above $47,150 is taxed at 22%. The system is designed so that those who earn more can contribute more.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "intermediate"
   },
@@ -85,9 +85,9 @@
       "An application for a credit card"
     ],
     "correctIndex": 1,
-    "explanation": "A W-2 is a form your employer gives you at the beginning of each year. It shows exactly how much you earned last year and how much tax was already taken out of your paychecks.",
+    "explanation": "A W-2 is a form your employer gives you by January 31st each year. It shows exactly how much you earned last year and how much tax was already taken out of your paychecks. You need it to file your tax return, and your employer sends a copy to the IRS too.",
     "ceeStandard": "CEE.PF.5",
-    "difficulty": "intermediate"
+    "difficulty": "beginner"
   },
   {
     "id": "taxes-q7",
@@ -100,7 +100,7 @@
       "December 31st"
     ],
     "correctIndex": 1,
-    "explanation": "Tax Day is April 15th! That's when your federal tax return must be filed (or you need to request an extension). Mark your calendar — being late can mean penalties and fees!",
+    "explanation": "Tax Day is April 15th! That's when your federal tax return must be filed (or you need to request an extension using Form 4868). Being late can mean penalties of 5% per month on unpaid taxes. You can file for a 6-month extension, but you still must PAY any taxes owed by April 15th.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "beginner"
   },
@@ -111,26 +111,26 @@
     "options": [
       "Money the government takes as a penalty",
       "An expense that reduces the amount of income you're taxed on",
-      "A bonus the government gives you for paying taxes",
+      "A bonus the government gives you for paying taxes on time",
       "The total amount of tax you owe"
     ],
     "correctIndex": 1,
-    "explanation": "A tax deduction reduces your taxable income. If you earned $50,000 and have $5,000 in deductions, you only pay tax on $45,000. Deductions are a legal way to lower your tax bill!",
+    "explanation": "A tax deduction reduces your taxable income. If you earned $50,000 and have $5,000 in deductions, you only pay tax on $45,000. Common deductions include student loan interest and charitable donations. It's different from a penalty (which you pay for breaking rules) or a credit (which directly reduces your tax bill).",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "intermediate"
   },
   {
     "id": "taxes-q9",
     "topic": "taxes",
-    "question": "Maria earned $40,000 this year but her paycheck showed $32,000 after taxes. What happened to the other $8,000?",
+    "question": "Maria earned $40,000 this year but her paychecks totaled $32,000 after deductions. What happened to the other $8,000?",
     "options": [
       "Her employer stole it",
       "It went to taxes (income tax, Social Security, Medicare, etc.)",
       "It was lost in a computer error",
-      "She donated it to charity"
+      "She donated it to charity automatically"
     ],
     "correctIndex": 1,
-    "explanation": "The $8,000 difference was withheld for taxes — including federal and state income tax, Social Security, and Medicare. This is why your 'take home pay' is less than your salary!",
+    "explanation": "The $8,000 difference was withheld for taxes — including federal and state income tax, Social Security (6.2%), and Medicare (1.45%). This is the difference between 'gross pay' (what you earn) and 'net pay' (what you take home). It's perfectly legal and expected!",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "intermediate"
   },
@@ -142,10 +142,10 @@
       "A fine for not paying enough taxes",
       "Money you get back if you paid MORE tax during the year than you actually owed",
       "A loan from the government",
-      "The total amount of tax you pay each year"
+      "Free money the government sends everyone"
     ],
     "correctIndex": 1,
-    "explanation": "If too much tax was taken out of your paychecks during the year, the government sends back the extra when you file your return. It's YOUR money being returned — not a gift!",
+    "explanation": "A tax refund means you overpaid your taxes during the year, and the government is returning YOUR money. It's not free money, a gift, or a loan — you're just getting back what you already overpaid. The average refund is about $3,000, which means $250/month that could have been earning interest in your account!",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "beginner"
   },
@@ -155,17 +155,122 @@
     "question": "Which is BETTER for reducing your tax bill: a $1,000 tax deduction or a $1,000 tax credit?",
     "options": [
       "They're exactly the same thing",
-      "The $1,000 deduction is better",
-      "The $1,000 credit is better because it reduces your tax bill dollar-for-dollar",
-      "Neither — you can't reduce your tax bill"
+      "The $1,000 deduction, because it reduces your income",
+      "The $1,000 credit, because it reduces your tax bill dollar-for-dollar",
+      "Neither helps reduce your taxes"
     ],
     "correctIndex": 2,
-    "explanation": "A tax credit is better! A $1,000 credit directly reduces your tax bill by $1,000. A $1,000 deduction only reduces your taxable income by $1,000, which might save you $200-$370 depending on your tax bracket.",
+    "explanation": "A tax credit is almost always better! A $1,000 credit directly reduces your tax bill by exactly $1,000. A $1,000 deduction only reduces your taxable income by $1,000, which might save you $120-$370 depending on your tax bracket. If you're in the 22% bracket, a $1,000 deduction saves $220, while a $1,000 credit saves $1,000.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "advanced"
   },
   {
     "id": "taxes-q12",
+    "topic": "taxes",
+    "question": "What is FICA and how much does it take from your paycheck?",
+    "options": [
+      "A retirement savings plan that takes 3% of your pay",
+      "Social Security (6.2%) + Medicare (1.45%) = 7.65% of your pay",
+      "Federal Income Collection Agency — it takes 15% of your pay",
+      "A health insurance program that takes 10% of your pay"
+    ],
+    "correctIndex": 1,
+    "explanation": "FICA stands for Federal Insurance Contributions Act. It includes Social Security tax (6.2%) and Medicare tax (1.45%), totaling 7.65% of your gross pay. Your employer also pays a matching 7.65%, so the total contribution is 15.3%. These programs provide retirement income and health insurance for older Americans.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q13",
+    "topic": "taxes",
+    "question": "Which states have NO sales tax?",
+    "options": [
+      "California, Texas, Florida",
+      "Oregon, Montana, Delaware, New Hampshire, Alaska",
+      "New York, New Jersey, Connecticut",
+      "Every state has sales tax"
+    ],
+    "correctIndex": 1,
+    "explanation": "Five states have no sales tax: Oregon, Montana, Delaware, New Hampshire, and Alaska. This means a $100 item costs exactly $100 in these states! Meanwhile, Tennessee has the highest combined rate at about 9.55%, meaning that $100 item costs $109.55. This is why some people shop across state lines.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q14",
+    "topic": "taxes",
+    "question": "If someone earns $45,000, why don't they pay 22% on ALL of it (even though they're 'in the 22% bracket')?",
+    "options": [
+      "Because the government gives everyone a discount",
+      "Because only the income within each bracket is taxed at that bracket's rate (marginal taxation)",
+      "Because you only pay the highest bracket rate on your last dollar earned",
+      "Both B and C are correct"
+    ],
+    "correctIndex": 3,
+    "explanation": "Both B and C describe how marginal taxation works! Your first $11,600 is taxed at 10%, the next chunk at 12%, and only the small portion above $47,150 (if any) is at 22%. The 22% rate only applies to your 'last dollars' earned in that bracket. Your effective (overall) tax rate ends up much lower than your marginal (bracket) rate.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q15",
+    "topic": "taxes",
+    "question": "What is the standard deduction for a single filer in 2024?",
+    "options": [
+      "$5,000",
+      "$10,000",
+      "$14,600",
+      "$25,000"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 2024 standard deduction for single filers is $14,600. This means the first $14,600 you earn is effectively tax-free! For married couples filing jointly, it's $29,200. Most people (about 90%) take the standard deduction rather than itemizing individual deductions.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q16",
+    "topic": "taxes",
+    "question": "What is the W-4 form used for?",
+    "options": [
+      "Filing your annual tax return",
+      "Telling your employer how much federal income tax to withhold from your paychecks",
+      "Reporting income from freelance work",
+      "Applying for a tax refund"
+    ],
+    "correctIndex": 1,
+    "explanation": "The W-4 tells your employer how much federal income tax to take out of each paycheck. Getting it right is important: too little withheld means you owe a tax bill in April, too much means you're giving the government a free loan. You fill it out when starting a new job and can update it anytime.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q17",
+    "topic": "taxes",
+    "question": "Why is a large tax refund NOT always a good thing?",
+    "options": [
+      "Because the government charges a fee for refunds",
+      "Because it means you overpaid all year — that money could have been earning interest",
+      "Because you have to pay taxes on your refund",
+      "Because refunds take years to process"
+    ],
+    "correctIndex": 1,
+    "explanation": "A big refund means you gave the government too much money throughout the year — it's an interest-free loan to the government! A $2,400 refund means $200/month was taken from your paychecks unnecessarily. That money could have been in YOUR savings account earning interest. Ideally, your refund (or amount owed) should be close to $0.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q18",
+    "topic": "taxes",
+    "question": "What is the difference between short-term and long-term capital gains tax?",
+    "options": [
+      "Short-term is for stocks, long-term is for real estate",
+      "Short-term (under 1 year) is taxed at higher ordinary income rates; long-term (over 1 year) gets lower special rates",
+      "Short-term has no tax; long-term has 50% tax",
+      "There is no difference — they're taxed the same"
+    ],
+    "correctIndex": 1,
+    "explanation": "If you sell an investment held LESS than 1 year, profits are taxed at your regular income rate (up to 37%). Investments held MORE than 1 year get the lower long-term rate of 0%, 15%, or 20%. In the 24% income bracket, you'd save 9% in taxes just by holding the investment for over a year!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q19",
     "topic": "taxes",
     "question": "Your friend starts a lemonade stand and earns $500 over the summer. They say 'I don't need to worry about taxes because I'm a kid.' Are they right?",
     "options": [
@@ -175,7 +280,22 @@
       "No — but only if they earn more than $10,000"
     ],
     "correctIndex": 2,
-    "explanation": "Surprise! There's no minimum age for paying taxes. If you earn income, you may owe taxes — even as a kid! However, most kids earn too little to actually owe anything. The standard deduction ($13,850 in 2023) means you'd need to earn more than that to owe federal income tax.",
+    "explanation": "There's no minimum age for paying taxes. If you earn income, you may owe taxes — even as a kid! However, most kids earn too little to actually owe anything. The standard deduction ($14,600 in 2024) means you'd need to earn more than that to owe federal income tax. So your friend probably won't owe taxes on $500, but saying 'kids don't pay taxes' is incorrect.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q20",
+    "topic": "taxes",
+    "question": "What is the penalty for not filing your tax return on time?",
+    "options": [
+      "No penalty as long as you eventually file",
+      "A flat $100 fee",
+      "5% of unpaid taxes for each month late, up to 25%",
+      "You go to jail immediately"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Failure to File penalty is 5% of unpaid taxes per month, up to 25% maximum. That's 10 times worse than the Failure to Pay penalty (0.5% per month)! If you owe $2,000 and don't file for 5 months, you'd owe an extra $500 in penalties plus interest. Even if you can't pay, ALWAYS file on time to avoid this steep penalty.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "advanced"
   }

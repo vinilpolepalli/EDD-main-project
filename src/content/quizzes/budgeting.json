@@ -10,7 +10,7 @@
       "A credit card bill"
     ],
     "correctIndex": 1,
-    "explanation": "A budget is a plan that shows your income (money coming in) and how you'll divide it among expenses (things you need to pay for) and savings. It helps you control your money instead of your money controlling you!",
+    "explanation": "A budget is a plan that shows your income (money coming in) and how you'll divide it among expenses (things you need to pay for) and savings. It's not just a wish list or a bill — it's your complete financial game plan. The other options describe specific financial tools, not a budget itself.",
     "ceeStandard": "CEE.PF.2",
     "difficulty": "beginner"
   },
@@ -25,7 +25,7 @@
       "Concert tickets"
     ],
     "correctIndex": 2,
-    "explanation": "Groceries are a need — you must eat to survive! The video game, music subscription, and concert tickets are all wants. They're fun, but you could live without them.",
+    "explanation": "Groceries are a need — you must eat to survive! The video game console, music subscription, and concert tickets are all wants. They're enjoyable, but you could live without them. Remember: you NEED food, but you don't NEED restaurant meals or fancy snacks.",
     "ceeStandard": "CEE.PF.2",
     "difficulty": "beginner"
   },
@@ -40,14 +40,14 @@
       "20% for taxes"
     ],
     "correctIndex": 2,
-    "explanation": "In the 50/30/20 rule, 20% of your after-tax income should go toward savings (like an emergency fund) and paying off debt. It's the 'future you' money — setting yourself up for financial security!",
+    "explanation": "In the 50/30/20 rule, 20% of your after-tax income should go toward savings (like an emergency fund or retirement) and paying off debt. The 50% covers needs and the 30% covers wants. Taxes are already taken out before you apply the rule — it uses after-tax income.",
     "ceeStandard": "CEE.PF.2",
     "difficulty": "beginner"
   },
   {
     "id": "budgeting-q4",
     "topic": "budgeting",
-    "question": "Alex earns $2,000 per month after taxes. Using the 50/30/20 rule, how much should Alex save?",
+    "question": "Sarah earns $2,000/month after taxes. Using the 50/30/20 rule, how much should she save?",
     "options": [
       "$200",
       "$400",
@@ -55,7 +55,7 @@
       "$1,000"
     ],
     "correctIndex": 1,
-    "explanation": "The 50/30/20 rule says save 20% of after-tax income. $2,000 x 0.20 = $400 per month. That adds up to $4,800 per year! Small consistent amounts grow into big savings.",
+    "explanation": "The 50/30/20 rule says to save 20% of after-tax income. 20% of $2,000 = $400 per month. $200 would only be 10%, $600 is 30% (the wants portion), and $1,000 is 50% (the needs portion). At $400/month, Sarah would save $4,800 in just one year!",
     "ceeStandard": "CEE.PF.3",
     "difficulty": "intermediate"
   },
@@ -66,26 +66,26 @@
     "options": [
       "Money saved to buy presents during holidays",
       "Money saved specifically for unexpected expenses like car repairs or medical bills",
-      "A special type of credit card",
+      "A special type of credit card for emergencies",
       "Money the government gives you in an emergency"
     ],
     "correctIndex": 1,
-    "explanation": "An emergency fund is money you set aside for life's surprises — a broken phone, car trouble, or a surprise medical bill. Experts suggest saving 3-6 months of expenses. It's your financial safety net!",
+    "explanation": "An emergency fund is money you set aside for life's surprises — a broken phone, car trouble, or a medical bill. It's not for planned spending like holidays, and it's definitely not a credit card (which charges interest). Experts recommend saving 3-6 months of living expenses.",
     "ceeStandard": "CEE.PF.3",
     "difficulty": "beginner"
   },
   {
     "id": "budgeting-q6",
     "topic": "budgeting",
-    "question": "You want to save $600 for a new gaming setup. You can save $75 per month. How many months will it take?",
+    "question": "According to a Federal Reserve study, what percentage of Americans can't cover a $400 emergency expense?",
     "options": [
-      "4 months",
-      "6 months",
-      "8 months",
-      "10 months"
+      "10%",
+      "25%",
+      "40%",
+      "75%"
     ],
     "correctIndex": 2,
-    "explanation": "$600 divided by $75 per month = 8 months. Breaking a big goal into monthly chunks makes it feel achievable! That's the power of goal-based saving.",
+    "explanation": "About 40% of Americans can't cover a $400 emergency without borrowing money or selling something. This shocking statistic shows why having an emergency fund is so important. Even a small cushion of $500-1,000 puts you ahead of nearly half the population!",
     "ceeStandard": "CEE.PF.3",
     "difficulty": "intermediate"
   },
@@ -100,7 +100,7 @@
       "Pay your own bills before helping friends"
     ],
     "correctIndex": 1,
-    "explanation": "'Pay yourself first' means moving money to savings as soon as you get paid — before spending on bills or wants. If you wait to save whatever's left at the end of the month, there's usually nothing left!",
+    "explanation": "'Pay yourself first' means moving money to savings as soon as you get paid — before spending on bills or wants. If you wait to save whatever's left at the end of the month, there's usually nothing left! Automating this with auto-transfers makes it even easier.",
     "ceeStandard": "CEE.PF.3",
     "difficulty": "intermediate"
   },
@@ -111,11 +111,11 @@
     "options": [
       "A purchase you carefully planned and saved for",
       "A purchase you make on the spot without thinking it through",
-      "Something you buy because a friend told you to",
-      "A purchase you make using a coupon"
+      "Something you buy because it's on sale",
+      "A purchase you make with a coupon"
     ],
     "correctIndex": 1,
-    "explanation": "An impulse buy is something you purchase on the spot without planning — often triggered by emotions, cool displays, or 'limited time' deals. The 24-hour rule (wait a day before buying) helps you avoid them!",
+    "explanation": "An impulse buy is something you purchase on the spot without planning — often triggered by emotions, flashy displays, or 'limited time' pressure. Buying something on sale or with a coupon CAN be planned and smart. The 24-hour rule (wait a day before buying) helps defeat impulse purchases.",
     "ceeStandard": "CEE.PF.2",
     "difficulty": "beginner"
   },
@@ -130,7 +130,7 @@
       "18 hours of work"
     ],
     "correctIndex": 2,
-    "explanation": "$180 divided by $12/hour = 15 hours of work. Thinking about purchases in work hours helps you decide if something is really worth it. Is 15 hours of work worth those headphones?",
+    "explanation": "$180 divided by $12/hour = 15 hours of work. That's almost two full workdays! Thinking about purchases in work hours helps you decide if something is truly worth your time. Would you work 15 hours just for headphones? Maybe — but at least now it's an informed decision.",
     "ceeStandard": "CEE.PF.2",
     "difficulty": "intermediate"
   },
@@ -141,28 +141,28 @@
     "options": [
       "Interest charged on a credit card",
       "Interest earned on both your original savings AND the interest you've already earned",
-      "A complicated math problem",
-      "Interest that compounds your problems"
+      "A complicated math formula only bankers understand",
+      "Interest that goes down over time"
     ],
     "correctIndex": 1,
-    "explanation": "Compound interest is interest earned on interest! If you save $100 and earn 5% ($5), next year you earn 5% on $105. Over time, this snowball effect makes your money grow faster and faster!",
+    "explanation": "Compound interest is interest earned on interest! If you save $100 and earn 5% ($5), next year you earn 5% on $105. Over time, this snowball effect makes your money grow exponentially. Credit cards DO charge compound interest, but the concept applies to savings and investments too — it's not just for bankers!",
     "ceeStandard": "CEE.PF.3",
     "difficulty": "intermediate"
   },
   {
     "id": "budgeting-q11",
     "topic": "budgeting",
-    "question": "Two friends each save $100/month. Maya starts at age 15 and stops at 25 (10 years). Leo starts at age 25 and saves until 65 (40 years). With 7% annual returns, who has more money at age 65?",
+    "question": "Using the Rule of 72, approximately how many years does it take to double your money at a 7% annual return?",
     "options": [
-      "Leo, because he saved for 4 times as many years",
-      "They'd have about the same amount",
-      "Maya, because starting earlier gives compound interest more time to work",
-      "Neither — $100/month doesn't add up to much"
+      "About 7 years",
+      "About 10 years",
+      "About 14 years",
+      "About 20 years"
     ],
-    "correctIndex": 2,
-    "explanation": "This is the magic of compound interest! Maya only saved for 10 years but started early, giving her money decades to grow. Even though Leo saved for 40 years, Maya's earlier start gives her more. Time is your greatest financial asset!",
+    "correctIndex": 1,
+    "explanation": "The Rule of 72: divide 72 by your interest rate. 72 / 7 = approximately 10.3 years to double your money. At 7%, $1,000 becomes $2,000 in about 10 years, then $4,000 in 20 years, then $8,000 in 30 years. Compare that to a 1% savings account: 72 / 1 = 72 years to double!",
     "ceeStandard": "CEE.PF.3",
-    "difficulty": "advanced"
+    "difficulty": "intermediate"
   },
   {
     "id": "budgeting-q12",
@@ -175,8 +175,128 @@
       "Buy it and return it later if you change your mind"
     ],
     "correctIndex": 2,
-    "explanation": "60% off something you don't need still costs you $40 you didn't plan to spend! You didn't 'save' $60 — you SPENT $40. If it's not in your budget and you don't truly need it, the smartest move is to walk away.",
+    "explanation": "60% off something you don't need still costs you $40 you didn't plan to spend! You didn't 'save' $60 — you SPENT $40. If it's not in your budget and you don't truly need it, the smartest move is to walk away. Stores use these sales tactics specifically to trigger impulse buys.",
     "ceeStandard": "CEE.PF.2",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "budgeting-q13",
+    "topic": "budgeting",
+    "question": "How much does the average American pay in subscriptions per month?",
+    "options": [
+      "About $50",
+      "About $100",
+      "About $219",
+      "About $500"
+    ],
+    "correctIndex": 2,
+    "explanation": "The average American pays about $219 per month in subscriptions — that's $2,628 per year! This includes streaming services, gym memberships, apps, cloud storage, and more. Most people don't realize how much they're spending because each individual subscription seems small. This is called 'subscription creep.'",
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q14",
+    "topic": "budgeting",
+    "question": "What is 'opportunity cost'?",
+    "options": [
+      "The cost of a missed opportunity to get a refund",
+      "What you give up when you choose one option over another",
+      "A fee charged for late payments",
+      "The cost of buying something at the wrong time"
+    ],
+    "correctIndex": 1,
+    "explanation": "Opportunity cost is what you sacrifice when you make a choice. If you spend $60 on a game, your opportunity cost is whatever else you could have done with that $60 — save it, buy something different, or invest it. Every financial decision has an opportunity cost, even if it's invisible.",
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q15",
+    "topic": "budgeting",
+    "question": "Where should you keep your emergency fund?",
+    "options": [
+      "Under your mattress",
+      "In a High-Yield Savings Account (HYSA)",
+      "Invested in stocks",
+      "On a gift card"
+    ],
+    "correctIndex": 1,
+    "explanation": "A High-Yield Savings Account earns 4-5% interest while keeping your money accessible for emergencies. Cash under a mattress earns nothing and could be lost to theft or fire. Stocks are too volatile — what if the market drops right when you need the money? Gift cards can be lost and don't earn interest.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q16",
+    "topic": "budgeting",
+    "question": "What does SMART stand for in SMART goals?",
+    "options": [
+      "Save Money And Reduce Taxes",
+      "Specific, Measurable, Achievable, Relevant, Time-bound",
+      "Simple Methods for Achieving Real Targets",
+      "Standard Method of Allocating Resources and Time"
+    ],
+    "correctIndex": 1,
+    "explanation": "SMART goals are Specific (what exactly?), Measurable (how much?), Achievable (is it realistic?), Relevant (does it matter to you?), and Time-bound (by when?). Instead of 'save money,' a SMART goal is 'save $500 for headphones by December by putting aside $50/month.' People with SMART goals save 2-3x more!",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "budgeting-q17",
+    "topic": "budgeting",
+    "question": "What is a 'sinking fund'?",
+    "options": [
+      "A savings account that's losing money",
+      "Money set aside each month for a specific future expense",
+      "A fund for fixing plumbing problems",
+      "An investment that went bad"
+    ],
+    "correctIndex": 1,
+    "explanation": "A sinking fund is money you save each month toward a specific goal. Want a $600 console in 6 months? That's a $100/month sinking fund. You can run multiple sinking funds at once — one for gifts, one for a trip, one for a big purchase. It's planned saving that prevents you from needing to use credit.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q18",
+    "topic": "budgeting",
+    "question": "What is a zero-based budget?",
+    "options": [
+      "A budget where you spend zero dollars",
+      "A budget where income minus ALL expenses (including savings) equals zero",
+      "A budget that starts over every day",
+      "A budget only for people with no income"
+    ],
+    "correctIndex": 1,
+    "explanation": "In a zero-based budget, every single dollar has a job assigned to it. Income minus all planned spending (needs, wants, savings, and debt payments) = exactly $0. This doesn't mean you spend everything — savings is one of the 'jobs' your money has. It's the most thorough budgeting method used by financial experts.",
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "budgeting-q19",
+    "topic": "budgeting",
+    "question": "Which budgeting mistake should you avoid?",
+    "options": [
+      "Including 'fun money' in your budget",
+      "Adjusting your budget each month based on what actually happened",
+      "Making a budget with zero room for entertainment or treats",
+      "Tracking your spending weekly"
+    ],
+    "correctIndex": 2,
+    "explanation": "A budget with zero fun money is a budget you'll abandon! Including entertainment is actually smart because it makes your budget sustainable. Adjusting monthly, including fun money, and tracking weekly are all GOOD budgeting practices. The best budget is one you'll actually stick to.",
+    "ceeStandard": "CEE.PF.2",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "budgeting-q20",
+    "topic": "budgeting",
+    "question": "Two friends each invest $100/month. Maya starts at 15 and stops at 25 (10 years). Leo starts at 25 and invests until 65 (40 years). With 7% annual returns, who likely has more at age 65?",
+    "options": [
+      "Leo — he invested for 4 times as many years",
+      "They'd have about the same amount",
+      "Maya — starting earlier gives compound interest more time to grow",
+      "Neither — $100/month isn't enough to matter"
+    ],
+    "correctIndex": 2,
+    "explanation": "This is the magic of compound interest! Maya invested only $12,000 total (10 years x $100/mo) but started early, giving her money 40+ years to compound. Leo invested $48,000 (40 years x $100/mo) but started later. Maya's early start often results in MORE money despite investing less. Time is your greatest financial asset!",
+    "ceeStandard": "CEE.PF.3",
     "difficulty": "advanced"
   }
 ]

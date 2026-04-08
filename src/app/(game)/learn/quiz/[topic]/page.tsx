@@ -5,31 +5,39 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  XCircle,
+  Check,
   ChevronRight,
+  Heart,
   RotateCcw,
   Trophy,
+  X,
   Sparkles,
+  Coins,
   BookOpen,
   AlertTriangle,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { GameLayout } from "@/components/shared/game-layout";
-import { QuizCard } from "@/components/game/quiz-card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 import { useGameState } from "@/hooks/use-game-state";
 import { useLocalProgress } from "@/hooks/use-local-progress";
 import {
   calculateQuizScore,
   calculateXpEarned,
+  calculateTokensEarned,
 } from "@/lib/game-engine/learn";
 import type { Topic, QuizQuestion } from "@/types/game";
 
 import creditQuiz from "@/content/quizzes/credit.json";
 import taxesQuiz from "@/content/quizzes/taxes.json";
 import budgetingQuiz from "@/content/quizzes/budgeting.json";
+
+/* -------------------------------------------------------------------------- */
+/*  Data                                                                      */
+/* -------------------------------------------------------------------------- */
 
 const quizMap: Record<Topic, QuizQuestion[]> = {
   credit: creditQuiz as QuizQuestion[],
@@ -43,29 +51,92 @@ const topicLabels: Record<Topic, string> = {
   budgeting: "Budgeting",
 };
 
-const topicColors: Record<Topic, { bg: string; light: string; text: string }> = {
+const topicColors: Record<
+  Topic,
+  { bg: string; light: string; text: string; headerBg: string }
+> = {
   credit: {
-    bg: "bg-emerald-500",
-    light: "bg-emerald-50",
-    text: "text-emerald-600",
+    bg: "bg-indigo-500",
+    light: "bg-indigo-500/10",
+    text: "text-indigo-400",
+    headerBg: "bg-indigo-500",
   },
   taxes: {
-    bg: "bg-teal-500",
-    light: "bg-teal-50",
-    text: "text-teal-600",
+    bg: "bg-amber-500",
+    light: "bg-amber-500/10",
+    text: "text-amber-400",
+    headerBg: "bg-amber-500",
   },
   budgeting: {
-    bg: "bg-green-500",
-    light: "bg-green-50",
-    text: "text-green-600",
+    bg: "bg-emerald-500",
+    light: "bg-emerald-500/10",
+    text: "text-emerald-400",
+    headerBg: "bg-emerald-500",
   },
 };
 
 const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting"];
+const MAX_LIVES = 3;
+const optionLabels = ["A", "B", "C", "D"];
 
 function isValidTopic(value: unknown): value is Topic {
   return typeof value === "string" && VALID_TOPICS.includes(value as Topic);
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Hearts Display                                                            */
+/* -------------------------------------------------------------------------- */
+
+function HeartsDisplay({ lives }: { lives: number }) {
+  return (
+    <div className="flex items-center gap-1">
+      {Array.from({ length: MAX_LIVES }).map((_, i) => (
+        <motion.div
+          key={i}
+          initial={false}
+          animate={
+            i >= lives
+              ? { scale: [1, 0.5, 0.5], opacity: [1, 0, 0] }
+              : { scale: 1, opacity: 1 }
+          }
+          transition={{ duration: 0.3 }}
+        >
+          <Heart
+            className={cn(
+              "h-5 w-5",
+              i < lives
+                ? "fill-red-500 text-red-500"
+                : "fill-gray-700 text-gray-700"
+            )}
+          />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  XP Float Animation                                                        */
+/* -------------------------------------------------------------------------- */
+
+function XpFloat({ amount }: { amount: number }) {
+  return (
+    <motion.div
+      className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center"
+      initial={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 0, y: -80 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+    >
+      <span className="text-3xl font-extrabold text-yellow-400">
+        +{amount} XP
+      </span>
+    </motion.div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Main Quiz Page                                                            */
+/* -------------------------------------------------------------------------- */
 
 export default function QuizPage() {
   const params = useParams();
@@ -82,30 +153,33 @@ export default function QuizPage() {
   );
   const [quizComplete, setQuizComplete] = useState(false);
   const [rewardsApplied, setRewardsApplied] = useState(false);
+  const [lives, setLives] = useState(MAX_LIVES);
+  const [gameOver, setGameOver] = useState(false);
+  const [showXpFloat, setShowXpFloat] = useState(false);
 
   const isLoaded = gameLoaded && localLoaded;
 
   // Validate topic
   if (!isValidTopic(topicParam)) {
     return (
-      <GameLayout title="Invalid Quiz" backHref="/learn">
-        <div className="flex flex-col items-center justify-center gap-4 py-20">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-100">
-            <AlertTriangle className="h-8 w-8 text-red-500" />
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900 px-4">
+        <div className="flex flex-col items-center gap-4 py-20">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-500/20">
+            <AlertTriangle className="h-8 w-8 text-red-400" />
           </div>
-          <h2 className="text-xl font-extrabold text-foreground">
+          <h2 className="text-xl font-extrabold text-white">
             Quiz Not Found
           </h2>
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm text-gray-400">
             The quiz for &quot;{String(topicParam)}&quot; doesn&apos;t exist.
           </p>
           <Link href="/learn">
-            <Button className="mt-2 min-h-[48px] rounded-xl font-extrabold">
+            <Button className="mt-2 min-h-[48px] rounded-xl bg-indigo-500 font-extrabold text-white hover:bg-indigo-600">
               Back to Learn Path
             </Button>
           </Link>
         </div>
-      </GameLayout>
+      </div>
     );
   }
 
@@ -118,26 +192,34 @@ export default function QuizPage() {
 
   const progressPercent =
     totalQuestions > 0
-      ? Math.round(((currentQuestionIndex + (quizComplete ? 1 : 0)) / totalQuestions) * 100)
+      ? Math.round(
+          ((currentQuestionIndex + (quizComplete || gameOver ? 1 : 0)) /
+            totalQuestions) *
+            100
+        )
       : 0;
 
   // Calculate results when quiz is complete
   const quizResults = useMemo(() => {
-    if (!quizComplete) return null;
+    if (!quizComplete && !gameOver) return null;
 
-    const correctAnswers = questions.map((q) => q.correctIndex);
+    const correctAnswers = questions
+      .slice(0, answers.length)
+      .map((q) => q.correctIndex);
     const result = calculateQuizScore(answers, correctAnswers);
     const xpEarned = calculateXpEarned(
       result.score,
       result.total,
       progress.currentStreak
     );
+    const tokensEarned = calculateTokensEarned(result.score, result.total);
 
     return {
       ...result,
       xpEarned,
+      tokensEarned,
     };
-  }, [quizComplete, answers, questions, progress.currentStreak]);
+  }, [quizComplete, gameOver, answers, questions, progress.currentStreak]);
 
   const handleAnswer = useCallback(
     (selectedIndex: number) => {
@@ -145,11 +227,27 @@ export default function QuizPage() {
       setSelectedAnswer(selectedIndex);
       setShowResult(true);
       setAnswers((prev) => [...prev, selectedIndex]);
+
+      const isCorrect = selectedIndex === currentQuestion.correctIndex;
+
+      if (isCorrect) {
+        setShowXpFloat(true);
+        setTimeout(() => setShowXpFloat(false), 1200);
+      } else {
+        const newLives = lives - 1;
+        setLives(newLives);
+        if (newLives <= 0) {
+          // Delay game over to show the wrong answer first
+          setTimeout(() => setGameOver(true), 1500);
+        }
+      }
     },
-    [showResult]
+    [showResult, currentQuestion.correctIndex, lives]
   );
 
   const handleNextQuestion = useCallback(() => {
+    if (gameOver) return;
+
     if (currentQuestionIndex + 1 >= totalQuestions) {
       setQuizComplete(true);
     } else {
@@ -157,21 +255,21 @@ export default function QuizPage() {
       setShowResult(false);
       setSelectedAnswer(undefined);
     }
-  }, [currentQuestionIndex, totalQuestions]);
+  }, [currentQuestionIndex, totalQuestions, gameOver]);
 
   // Apply rewards once when quiz results are calculated
   const handleApplyRewards = useCallback(() => {
     if (rewardsApplied || !quizResults) return;
 
-    if (quizResults.passed) {
+    if (quizResults.passed && !gameOver) {
       updateXp(quizResults.xpEarned);
       updateStreak();
     }
     setRewardsApplied(true);
-  }, [rewardsApplied, quizResults, updateXp, updateStreak]);
+  }, [rewardsApplied, quizResults, gameOver, updateXp, updateStreak]);
 
   // Apply rewards when quiz completes
-  if (quizComplete && quizResults && !rewardsApplied) {
+  if ((quizComplete || gameOver) && quizResults && !rewardsApplied) {
     handleApplyRewards();
   }
 
@@ -182,97 +280,219 @@ export default function QuizPage() {
     setSelectedAnswer(undefined);
     setQuizComplete(false);
     setRewardsApplied(false);
+    setLives(MAX_LIVES);
+    setGameOver(false);
   }, []);
+
+  // Get option styling
+  const getOptionState = (index: number) => {
+    if (!showResult || selectedAnswer === undefined) return "idle";
+    if (index === currentQuestion.correctIndex) return "correct";
+    if (index === selectedAnswer && index !== currentQuestion.correctIndex)
+      return "wrong";
+    return "dimmed";
+  };
 
   if (!isLoaded) {
     return (
-      <GameLayout title={`${topicLabel} Quiz`} module="learn" backHref={`/learn/${topic}`}>
-        <div className="flex flex-col gap-4">
-          <Skeleton className="h-6 w-full rounded-lg" />
-          <Skeleton className="h-32 w-full rounded-xl" />
-          <div className="grid grid-cols-2 gap-3">
-            <Skeleton className="h-14 rounded-xl" />
-            <Skeleton className="h-14 rounded-xl" />
-            <Skeleton className="h-14 rounded-xl" />
-            <Skeleton className="h-14 rounded-xl" />
+      <div className="flex min-h-screen flex-col bg-gray-900">
+        <div className="mx-auto w-full max-w-2xl px-4 py-8">
+          <Skeleton className="mb-4 h-6 w-full rounded-lg bg-gray-800" />
+          <Skeleton className="mb-4 h-32 w-full rounded-xl bg-gray-800" />
+          <div className="grid grid-cols-1 gap-3">
+            <Skeleton className="h-14 rounded-xl bg-gray-800" />
+            <Skeleton className="h-14 rounded-xl bg-gray-800" />
+            <Skeleton className="h-14 rounded-xl bg-gray-800" />
+            <Skeleton className="h-14 rounded-xl bg-gray-800" />
           </div>
         </div>
-      </GameLayout>
+      </div>
     );
   }
 
-  return (
-    <GameLayout
-      title={`${topicLabel} Quiz`}
-      module="learn"
-      backHref={`/learn/${topic}`}
-    >
-      <div className="flex flex-col gap-5">
-        {/* Progress Bar */}
-        {!quizComplete && (
-          <motion.div
-            className="flex flex-col gap-2"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <div className="flex items-center justify-between text-xs font-bold text-muted-foreground">
-              <span>
-                Question {currentQuestionIndex + 1} of {totalQuestions}
-              </span>
-              <span className="tabular-nums">{progressPercent}%</span>
-            </div>
-            <Progress
-              value={progressPercent}
-              color={colors.bg}
-              height="h-2.5"
-            />
-          </motion.div>
-        )}
+  const isFinished = quizComplete || gameOver;
 
-        {/* Quiz Content */}
+  return (
+    <div className="flex min-h-screen flex-col bg-gray-900">
+      {/* XP Float */}
+      <AnimatePresence>
+        {showXpFloat && <XpFloat amount={25} />}
+      </AnimatePresence>
+
+      {/* Header */}
+      <motion.header
+        className="sticky top-0 z-30 border-b border-gray-800 bg-gray-900/95 backdrop-blur-sm"
+        initial={{ y: -60 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      >
+        <div className="mx-auto flex h-14 max-w-2xl items-center justify-between px-4">
+          <Link
+            href={`/learn/${topic}`}
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-800 hover:text-white"
+            aria-label="Back to lessons"
+          >
+            <X className="h-5 w-5" />
+          </Link>
+
+          {/* Progress bar in header */}
+          {!isFinished && (
+            <div className="flex-1 px-4">
+              <Progress
+                value={progressPercent}
+                color="bg-emerald-500"
+                height="h-3"
+              />
+            </div>
+          )}
+
+          {/* Hearts */}
+          <HeartsDisplay lives={lives} />
+        </div>
+      </motion.header>
+
+      {/* Content */}
+      <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-6">
         <AnimatePresence mode="wait">
-          {!quizComplete ? (
+          {!isFinished ? (
+            /* ---------- Active Quiz ---------- */
             <motion.div
               key={`question-${currentQuestionIndex}`}
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ type: "spring", stiffness: 200, damping: 22 }}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-6"
             >
-              {/* Question Card */}
-              <QuizCard
-                question={currentQuestion}
-                onAnswer={handleAnswer}
-                showResult={showResult}
-                selectedIndex={selectedAnswer}
-              />
+              {/* Question counter */}
+              <p className="text-center text-xs font-bold text-gray-500">
+                Question {currentQuestionIndex + 1} of {totalQuestions}
+              </p>
 
-              {/* Next Button */}
+              {/* Question Card */}
+              <motion.div
+                className="rounded-2xl border border-gray-700 bg-gray-800/80 p-6 shadow-lg"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <p className="text-center text-lg font-bold leading-relaxed text-white">
+                  {currentQuestion.question}
+                </p>
+              </motion.div>
+
+              {/* Answer Options — full width, stacked */}
+              <div className="flex flex-col gap-3">
+                {currentQuestion.options.map((option, index) => {
+                  const state = getOptionState(index);
+                  return (
+                    <motion.button
+                      key={index}
+                      type="button"
+                      className={cn(
+                        "relative flex min-h-[56px] items-center gap-3 rounded-xl border-2 px-4 py-3 text-left text-sm font-bold transition-all",
+                        state === "idle" &&
+                          "border-gray-700 bg-gray-800/80 text-gray-200 hover:border-gray-500 hover:bg-gray-700/80",
+                        state === "correct" &&
+                          "border-emerald-500 bg-emerald-500/15 text-emerald-400",
+                        state === "wrong" &&
+                          "border-red-500 bg-red-500/15 text-red-400",
+                        state === "dimmed" &&
+                          "border-gray-700 bg-gray-800/40 text-gray-600 opacity-50",
+                        showResult && "pointer-events-none"
+                      )}
+                      onClick={() => handleAnswer(index)}
+                      disabled={showResult}
+                      whileHover={!showResult ? { scale: 1.01 } : undefined}
+                      whileTap={!showResult ? { scale: 0.98 } : undefined}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: index * 0.05,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 20,
+                      }}
+                      aria-label={`Option ${optionLabels[index]}: ${option}`}
+                    >
+                      <span
+                        className={cn(
+                          "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold",
+                          state === "correct" && "bg-emerald-500 text-white",
+                          state === "wrong" && "bg-red-500 text-white",
+                          (state === "idle" || state === "dimmed") &&
+                            "bg-gray-700 text-gray-400"
+                        )}
+                      >
+                        {state === "correct" ? (
+                          <Check className="h-4 w-4" />
+                        ) : state === "wrong" ? (
+                          <X className="h-4 w-4" />
+                        ) : (
+                          optionLabels[index]
+                        )}
+                      </span>
+                      <span className="flex-1">{option}</span>
+                    </motion.button>
+                  );
+                })}
+              </div>
+
+              {/* Result feedback + explanation */}
               {showResult && (
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col gap-4"
                 >
-                  <Button
+                  {/* Correct/Wrong banner */}
+                  <div
                     className={cn(
-                      "min-h-[52px] w-full rounded-xl text-base font-extrabold text-white",
-                      colors.bg,
-                      "hover:brightness-110"
+                      "rounded-xl p-4",
+                      selectedAnswer === currentQuestion.correctIndex
+                        ? "bg-emerald-500/15 border border-emerald-500/30"
+                        : "bg-red-500/15 border border-red-500/30"
                     )}
-                    onClick={handleNextQuestion}
                   >
-                    {currentQuestionIndex + 1 >= totalQuestions
-                      ? "See Results"
-                      : "Next Question"}
-                    <ChevronRight className="ml-1 h-5 w-5" />
-                  </Button>
+                    <p
+                      className={cn(
+                        "text-sm font-extrabold",
+                        selectedAnswer === currentQuestion.correctIndex
+                          ? "text-emerald-400"
+                          : "text-red-400"
+                      )}
+                    >
+                      {selectedAnswer === currentQuestion.correctIndex
+                        ? "Correct!"
+                        : "Not quite..."}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-400">
+                      {currentQuestion.explanation}
+                    </p>
+                  </div>
+
+                  {/* Continue button */}
+                  {!gameOver && (
+                    <Button
+                      className={cn(
+                        "min-h-[52px] w-full rounded-xl text-base font-extrabold text-white",
+                        selectedAnswer === currentQuestion.correctIndex
+                          ? "bg-emerald-500 hover:bg-emerald-600"
+                          : "bg-gray-600 hover:bg-gray-500"
+                      )}
+                      onClick={handleNextQuestion}
+                    >
+                      {currentQuestionIndex + 1 >= totalQuestions
+                        ? "See Results"
+                        : "Continue"}
+                      <ChevronRight className="ml-1 h-5 w-5" />
+                    </Button>
+                  )}
                 </motion.div>
               )}
             </motion.div>
           ) : (
-            /* Results Screen */
+            /* ---------- Results / Game Over Screen ---------- */
             <motion.div
               key="results"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -285,15 +505,15 @@ export default function QuizPage() {
                   {/* Score Card */}
                   <div
                     className={cn(
-                      "flex flex-col items-center gap-4 rounded-2xl border-2 p-6 shadow-lg",
-                      quizResults.passed
-                        ? "border-learn bg-learn-light"
-                        : "border-red-300 bg-red-50"
+                      "flex flex-col items-center gap-4 rounded-2xl border-2 p-8 shadow-lg",
+                      quizResults.passed && !gameOver
+                        ? "border-emerald-500/50 bg-emerald-500/10"
+                        : "border-red-500/50 bg-red-500/10"
                     )}
                   >
                     <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -301,82 +521,106 @@ export default function QuizPage() {
                         delay: 0.2,
                       }}
                       className={cn(
-                        "flex h-20 w-20 items-center justify-center rounded-full",
-                        quizResults.passed ? "bg-learn" : "bg-red-400"
+                        "flex h-24 w-24 items-center justify-center rounded-full",
+                        quizResults.passed && !gameOver
+                          ? "bg-emerald-500"
+                          : "bg-red-500"
                       )}
                     >
-                      {quizResults.passed ? (
-                        <Trophy className="h-10 w-10 text-white" />
+                      {quizResults.passed && !gameOver ? (
+                        <Trophy className="h-12 w-12 text-white" />
                       ) : (
-                        <XCircle className="h-10 w-10 text-white" />
+                        <X className="h-12 w-12 text-white" />
                       )}
                     </motion.div>
 
                     <div className="flex flex-col items-center gap-1">
-                      <h2 className="text-2xl font-extrabold text-foreground">
-                        {quizResults.passed ? "Awesome Job!" : "Keep Studying!"}
+                      <h2 className="text-2xl font-extrabold text-white">
+                        {gameOver
+                          ? "Out of Hearts!"
+                          : quizResults.passed
+                            ? "Awesome Job!"
+                            : "Keep Studying!"}
                       </h2>
-                      <p className="text-sm font-semibold text-muted-foreground">
-                        {quizResults.passed
-                          ? "You passed the quiz!"
-                          : "You need 70% to pass. Review the lessons and try again."}
+                      <p className="text-sm font-semibold text-gray-400">
+                        {gameOver
+                          ? "You ran out of lives. Review the lessons and try again!"
+                          : quizResults.passed
+                            ? "You passed the quiz!"
+                            : "You need 70% to pass. Review the lessons and try again."}
                       </p>
                     </div>
 
                     {/* Score Display */}
                     <div className="flex items-center gap-6">
                       <div className="flex flex-col items-center gap-1">
-                        <span className="text-4xl font-extrabold text-foreground tabular-nums">
+                        <span className="text-4xl font-extrabold text-white tabular-nums">
                           {quizResults.score}/{quizResults.total}
                         </span>
-                        <span className="text-xs font-bold text-muted-foreground">
+                        <span className="text-xs font-bold text-gray-500">
                           Correct
                         </span>
                       </div>
-                      <div className="h-12 w-px bg-border" />
+                      <div className="h-12 w-px bg-gray-700" />
                       <div className="flex flex-col items-center gap-1">
                         <span
                           className={cn(
                             "text-4xl font-extrabold tabular-nums",
-                            quizResults.passed
-                              ? "text-learn"
-                              : "text-red-500"
+                            quizResults.passed && !gameOver
+                              ? "text-emerald-400"
+                              : "text-red-400"
                           )}
                         >
                           {quizResults.percentage}%
                         </span>
-                        <span className="text-xs font-bold text-muted-foreground">
+                        <span className="text-xs font-bold text-gray-500">
                           Score
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Rewards (only if passed) */}
-                  {quizResults.passed && (
+                  {/* Rewards (only if passed and not game over) */}
+                  {quizResults.passed && !gameOver && (
                     <motion.div
                       className="flex flex-col gap-3"
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      <h3 className="text-center text-sm font-extrabold text-muted-foreground">
+                      <h3 className="text-center text-sm font-extrabold tracking-wider text-gray-500">
                         REWARDS EARNED
                       </h3>
-                      <motion.div
-                        className="flex flex-col items-center gap-2 rounded-xl bg-xp-light p-4"
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.5, type: "spring" }}
-                      >
-                        <Sparkles className="h-6 w-6 text-xp" />
-                        <span className="text-2xl font-extrabold text-foreground tabular-nums">
-                          +{quizResults.xpEarned}
-                        </span>
-                        <span className="text-xs font-bold text-muted-foreground">
-                          XP Earned
-                        </span>
-                      </motion.div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <motion.div
+                          className="flex flex-col items-center gap-2 rounded-xl border border-gray-700 bg-gray-800/80 p-4"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.5, type: "spring" }}
+                        >
+                          <Zap className="h-6 w-6 text-yellow-500" />
+                          <span className="text-2xl font-extrabold text-white tabular-nums">
+                            +{quizResults.xpEarned}
+                          </span>
+                          <span className="text-xs font-bold text-gray-500">
+                            XP Earned
+                          </span>
+                        </motion.div>
+                        <motion.div
+                          className="flex flex-col items-center gap-2 rounded-xl border border-gray-700 bg-gray-800/80 p-4"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.6, type: "spring" }}
+                        >
+                          <Coins className="h-6 w-6 text-amber-500" />
+                          <span className="text-2xl font-extrabold text-white tabular-nums">
+                            +{quizResults.tokensEarned}
+                          </span>
+                          <span className="text-xs font-bold text-gray-500">
+                            Tokens
+                          </span>
+                        </motion.div>
+                      </div>
                     </motion.div>
                   )}
 
@@ -387,7 +631,7 @@ export default function QuizPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
                   >
-                    {!quizResults.passed && (
+                    {(!quizResults.passed || gameOver) && (
                       <>
                         <Link href={`/learn/${topic}`}>
                           <Button
@@ -403,7 +647,7 @@ export default function QuizPage() {
                         </Link>
                         <Button
                           variant="outline"
-                          className="min-h-[48px] w-full rounded-xl font-extrabold"
+                          className="min-h-[48px] w-full rounded-xl border-gray-700 bg-gray-800/80 font-extrabold text-gray-300 hover:bg-gray-700"
                           onClick={handleRetry}
                         >
                           <RotateCcw className="mr-2 h-4 w-4" />
@@ -412,26 +656,24 @@ export default function QuizPage() {
                       </>
                     )}
 
-                    {quizResults.passed && (
-                      <>
-                        <Button
-                          variant="outline"
-                          className="min-h-[48px] w-full rounded-xl font-extrabold"
-                          onClick={handleRetry}
-                        >
-                          <RotateCcw className="mr-2 h-4 w-4" />
-                          Retake Quiz
-                        </Button>
-                      </>
+                    {quizResults.passed && !gameOver && (
+                      <Button
+                        variant="outline"
+                        className="min-h-[48px] w-full rounded-xl border-gray-700 bg-gray-800/80 font-extrabold text-gray-300 hover:bg-gray-700"
+                        onClick={handleRetry}
+                      >
+                        <RotateCcw className="mr-2 h-4 w-4" />
+                        Retake Quiz
+                      </Button>
                     )}
 
                     <Link href="/learn">
                       <Button
-                        variant={quizResults.passed ? "default" : "outline"}
                         className={cn(
                           "min-h-[48px] w-full rounded-xl font-extrabold",
-                          quizResults.passed &&
-                            cn(colors.bg, "text-white hover:brightness-110")
+                          quizResults.passed && !gameOver
+                            ? cn(colors.bg, "text-white hover:brightness-110")
+                            : "border border-gray-700 bg-gray-800/80 text-gray-300 hover:bg-gray-700"
                         )}
                       >
                         Back to Learn Path
@@ -444,6 +686,11 @@ export default function QuizPage() {
           )}
         </AnimatePresence>
       </div>
-    </GameLayout>
+
+      {/* Legal disclaimer */}
+      <div className="border-t border-gray-800 px-4 py-3">
+        <LegalDisclaimer className="text-gray-600" />
+      </div>
+    </div>
   );
 }
