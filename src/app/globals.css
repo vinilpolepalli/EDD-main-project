@@ -49,7 +49,7 @@
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: transparent;
   }
 
   body {

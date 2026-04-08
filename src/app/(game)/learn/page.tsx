@@ -179,7 +179,7 @@ function SectionHeader({
           </span>
           <span className="tabular-nums">{progressPercent}%</span>
         </div>
-        <Progress value={progressPercent} color={section.bgColor} height="h-2" />
+        <Progress value={progressPercent} color={section.bgColor} height="h-2" className="bg-gray-700" />
       </div>
     </motion.div>
   );
