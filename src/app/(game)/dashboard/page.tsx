@@ -6,52 +6,42 @@ import { motion } from "framer-motion";
 import {
   Sparkles,
   Rocket,
-  TrendingUp,
-  Gamepad2,
+  Lightbulb,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { AvatarDisplay } from "@/components/shared/avatar-display";
 import { XpBar } from "@/components/dashboard/xp-bar";
 import { StreakCounter } from "@/components/dashboard/streak-counter";
 import { ModuleCards } from "@/components/dashboard/module-cards";
 import { StatsOverview } from "@/components/dashboard/stats-overview";
-import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGameState } from "@/hooks/use-game-state";
 import { useLocalProgress } from "@/hooks/use-local-progress";
-import type { AvatarConfig } from "@/types/game";
 
-const DEFAULT_AVATAR: AvatarConfig = {
-  skinColor: "#F5D0A9",
-  hairStyle: "short",
-  hairColor: "#4A2C0A",
-  outfit: "t-shirt",
-  accessory: "none",
-};
+/** Financial tips that rotate daily */
+const DAILY_TIPS = [
+  "The earlier you start saving, the more your money grows thanks to compound interest!",
+  "A budget is a plan for your money — it tells every dollar where to go.",
+  "Your credit score is like a report card for how you handle money.",
+  "Paying bills on time is one of the best ways to build a strong credit score.",
+  "An emergency fund is money saved for unexpected expenses, like a flat tire.",
+  "The difference between needs and wants is key to smart spending.",
+  "Investing means putting money to work so it can grow over time.",
+  "Taxes help pay for schools, roads, and other public services we all use.",
+  "A good rule of thumb: save at least 20% of your income each month.",
+  "Diversifying investments means not putting all your eggs in one basket!",
+] as const;
 
-const AVATAR_STORAGE_KEY = "cashquest-avatar";
+function getDailyTip(): string {
+  const dayOfYear = Math.floor(
+    (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
+  );
+  return DAILY_TIPS[dayOfYear % DAILY_TIPS.length];
+}
 
-function loadAvatar(): AvatarConfig {
-  if (typeof window === "undefined") return DEFAULT_AVATAR;
-
-  try {
-    const stored = localStorage.getItem(AVATAR_STORAGE_KEY);
-    if (stored) {
-      const parsed: unknown = JSON.parse(stored);
-      if (
-        parsed !== null &&
-        typeof parsed === "object" &&
-        "skinColor" in parsed &&
-        "hairStyle" in parsed
-      ) {
-        return parsed as AvatarConfig;
-      }
-    }
-  } catch {
-    // Corrupted storage
-  }
-
-  return DEFAULT_AVATAR;
+function getGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 17) return "Good afternoon";
+  return "Good evening";
 }
 
 /** Staggered child animation variants */
@@ -77,16 +67,13 @@ export default function DashboardPage() {
   const {
     completedLessons,
     simulatorRuns,
+    arcadeScores,
     isLoaded: localLoaded,
     getTopicProgress,
     getSimulatorBest,
   } = useLocalProgress();
 
-  const [avatar, setAvatar] = useState<AvatarConfig>(DEFAULT_AVATAR);
-
-  useEffect(() => {
-    setAvatar(loadAvatar());
-  }, []);
+  const [dailyTip] = useState(getDailyTip);
 
   // Update streak on dashboard visit
   useEffect(() => {
@@ -100,14 +87,15 @@ export default function DashboardPage() {
     isLoaded &&
     progress.totalXp === 0 &&
     completedLessons.length === 0 &&
-    simulatorRuns.length === 0;
+    simulatorRuns.length === 0 &&
+    arcadeScores.length === 0;
 
-  // Calculate module progress percentages for ModuleCards
+  // Calculate module progress
   const moduleProgress = useMemo(() => {
     const creditProgress = getTopicProgress("credit");
     const taxesProgress = getTopicProgress("taxes");
     const budgetingProgress = getTopicProgress("budgeting");
-    const totalLessonCount = 5; // 5 lessons per topic
+    const totalLessonCount = 5;
     const learnPercent = Math.round(
       ((creditProgress.completedCount +
         taxesProgress.completedCount +
@@ -116,7 +104,6 @@ export default function DashboardPage() {
         100
     );
     const simBest = getSimulatorBest();
-    // Simulator progress: percentage of 24 months (2 years) survived
     const simPercent = simBest
       ? Math.min(Math.round((simBest.monthsSurvived / 24) * 100), 100)
       : 0;
@@ -127,135 +114,142 @@ export default function DashboardPage() {
     };
   }, [getTopicProgress, getSimulatorBest]);
 
-  // Stats for StatsOverview
   const simulatorBest = useMemo(() => getSimulatorBest(), [getSimulatorBest]);
+  const arcadeHighScore = useMemo(() => {
+    if (arcadeScores.length === 0) return 0;
+    return arcadeScores.reduce(
+      (max, s) => (s.score > max ? s.score : max),
+      0
+    );
+  }, [arcadeScores]);
 
   // Loading state
   if (!isLoaded) {
     return (
-      <div className="flex min-h-screen flex-col">
-        <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-6">
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-4">
-              <Skeleton className="h-16 w-16 rounded-full" />
-              <div className="flex flex-col gap-2">
-                <Skeleton className="h-6 w-48" />
-                <Skeleton className="h-4 w-32" />
-              </div>
-            </div>
-            <Skeleton className="h-16 w-full rounded-xl" />
-            <div className="grid grid-cols-2 gap-4">
-              <Skeleton className="h-24 rounded-xl" />
-              <Skeleton className="h-24 rounded-xl" />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <Skeleton className="h-56 rounded-2xl" />
-              <Skeleton className="h-56 rounded-2xl" />
-              <Skeleton className="h-56 rounded-2xl" />
-            </div>
-          </div>
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
+          <Skeleton className="h-8 w-64 rounded-xl" />
+          <Skeleton className="h-5 w-40 rounded-lg" />
+        </div>
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <Skeleton className="h-20 rounded-2xl" />
+          <Skeleton className="h-20 rounded-2xl" />
+          <Skeleton className="h-20 rounded-2xl" />
+          <Skeleton className="h-20 rounded-2xl" />
+        </div>
+        <Skeleton className="h-20 rounded-2xl" />
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Skeleton className="h-72 rounded-2xl" />
+          <Skeleton className="h-72 rounded-2xl" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <motion.div
-        className="mx-auto w-full max-w-4xl flex-1 px-4 py-6"
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <div className="flex flex-col gap-6">
-          {/* Greeting Section */}
-          <motion.div
-            variants={item}
-            className="flex items-center gap-4"
-          >
-            <AvatarDisplay config={avatar} size="lg" />
-            <div className="flex flex-col gap-1">
-              <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
-                Hey there!
-              </h1>
-              <p className="text-sm font-bold text-muted-foreground sm:text-base">
-                Ready to level up?{" "}
-                <Sparkles className="inline h-4 w-4 text-xp" />
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Welcome Banner for first-time users */}
-          {isFirstVisit && (
-            <motion.div
-              variants={item}
-              className="relative overflow-hidden rounded-2xl border-2 border-learn bg-learn-light p-5 shadow-md"
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-learn text-white shadow-sm">
-                  <Rocket className="h-5 w-5" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h2 className="text-lg font-extrabold text-foreground">
-                    Welcome to CashQuest!
-                  </h2>
-                  <p className="text-sm font-semibold leading-relaxed text-muted-foreground">
-                    Start with the{" "}
-                    <Link
-                      href="/learn"
-                      className="font-extrabold text-learn underline decoration-2 underline-offset-2 hover:text-learn/80"
-                    >
-                      Learn Path
-                    </Link>{" "}
-                    to earn XP and build your financial knowledge!
-                  </p>
-                </div>
-              </div>
-              {/* Decorative dots */}
-              <div className="absolute -right-3 -top-3 h-16 w-16 rounded-full bg-learn/10" />
-              <div className="absolute -bottom-2 right-8 h-10 w-10 rounded-full bg-learn/10" />
-            </motion.div>
-          )}
-
-          {/* XP Bar */}
-          <motion.div variants={item}>
-            <XpBar totalXp={progress.totalXp} />
-          </motion.div>
-
-          {/* Stats Row: Streak */}
-          <motion.div variants={item}>
-            <StreakCounter streak={progress.currentStreak} />
-          </motion.div>
-
-          {/* Module Cards */}
-          <motion.div variants={item}>
-            <h2 className="mb-3 flex items-center gap-2 text-lg font-extrabold text-foreground">
-              <Gamepad2 className="h-5 w-5 text-arcade" />
-              Game Modes
-            </h2>
-            <ModuleCards progress={moduleProgress} />
-          </motion.div>
-
-          {/* Stats Overview */}
-          <motion.div variants={item}>
-            <h2 className="mb-3 flex items-center gap-2 text-lg font-extrabold text-foreground">
-              <TrendingUp className="h-5 w-5 text-simulator" />
-              Your Stats
-            </h2>
-            <StatsOverview
-              totalXp={progress.totalXp}
-              currentStreak={progress.currentStreak}
-              lessonsCompleted={completedLessons.length}
-              simulatorBestMonths={simulatorBest?.monthsSurvived ?? 0}
-            />
-          </motion.div>
-        </div>
+    <motion.div
+      className="flex flex-col gap-6"
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      {/* Welcome Banner */}
+      <motion.div variants={item}>
+        <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
+          {getGreeting()}! <span className="inline-block">&#x1F44B;</span>
+        </h1>
+        {progress.currentStreak > 0 ? (
+          <p className="mt-1 text-sm font-medium text-muted-foreground">
+            You are on a {progress.currentStreak}-day streak!{" "}
+            <Sparkles className="inline h-4 w-4 text-amber-500" />
+          </p>
+        ) : (
+          <p className="mt-1 text-sm font-medium text-muted-foreground">
+            Ready to start learning?
+          </p>
+        )}
       </motion.div>
 
-      {/* Legal Disclaimer */}
-      <div className="border-t border-border px-4 py-3">
-        <LegalDisclaimer />
-      </div>
-    </div>
+      {/* First Visit Welcome */}
+      {isFirstVisit && (
+        <motion.div
+          variants={item}
+          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-indigo-600 p-6 text-white shadow-lg"
+        >
+          <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-white/10" />
+          <div className="absolute -bottom-2 right-12 h-12 w-12 rounded-full bg-white/5" />
+          <div className="relative z-10 flex items-start gap-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
+              <Rocket className="h-6 w-6" />
+            </div>
+            <div className="flex flex-col gap-1">
+              <h2 className="text-lg font-extrabold">
+                Welcome to CashQuest!
+              </h2>
+              <p className="text-sm leading-relaxed text-white/90">
+                Start with the{" "}
+                <Link
+                  href="/learn"
+                  className="font-extrabold underline decoration-2 underline-offset-2 hover:text-white"
+                >
+                  Learn Path
+                </Link>{" "}
+                to earn XP and level up your financial skills.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Quick Stats Grid */}
+      <motion.div variants={item}>
+        <StatsOverview
+          totalXp={progress.totalXp}
+          currentStreak={progress.currentStreak}
+          lessonsCompleted={completedLessons.length}
+          simulatorBestMonths={simulatorBest?.monthsSurvived ?? 0}
+        />
+      </motion.div>
+
+      {/* XP + Streak Row */}
+      <motion.div
+        variants={item}
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+      >
+        <XpBar totalXp={progress.totalXp} />
+        <StreakCounter streak={progress.currentStreak} />
+      </motion.div>
+
+      {/* Module Cards */}
+      <motion.div variants={item}>
+        <h2 className="mb-3 text-lg font-extrabold text-foreground">
+          Continue Learning
+        </h2>
+        <ModuleCards
+          progress={moduleProgress}
+          simulatorLastMonth={simulatorBest?.monthsSurvived}
+        />
+      </motion.div>
+
+      {/* Financial Tip of the Day */}
+      <motion.div
+        variants={item}
+        className="rounded-2xl bg-amber-50 p-5 shadow-sm"
+      >
+        <div className="flex items-start gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100">
+            <Lightbulb className="h-5 w-5 text-amber-600" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <h3 className="text-sm font-bold text-amber-900">
+              Did you know?
+            </h3>
+            <p className="text-sm leading-relaxed text-amber-800">
+              {dailyTip}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
