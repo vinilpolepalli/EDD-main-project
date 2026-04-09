@@ -17,14 +17,18 @@
     "clsx": "2.1.1",
     "framer-motion": "12.6.3",
     "lucide-react": "0.469.0",
-    "next": "15.1.6",
+    "next": "16.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tailwind-merge": "2.6.0",
     "zod": "3.24.1"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["sharp", "unrs-resolver", "@tailwindcss/oxide"],
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver",
+      "@tailwindcss/oxide"
+    ],
     "overrides": {
       "motion-dom": "12.6.3",
       "motion-utils": "12.6.3"
