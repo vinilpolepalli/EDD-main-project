@@ -13,7 +13,7 @@ export default function GameLayout({
         <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
           {children}
         </div>
-        <div className="border-t border-border px-4 py-3">
+        <div className="px-4 py-3 opacity-60">
           <LegalDisclaimer />
         </div>
       </main>

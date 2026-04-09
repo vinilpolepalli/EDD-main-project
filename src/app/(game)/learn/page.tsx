@@ -507,7 +507,7 @@ export default function LearnPage() {
 
   if (!isLoaded) {
     return (
-      <div className="flex min-h-screen flex-col bg-gray-900">
+      <div className="flex min-h-screen flex-col bg-gray-900 -mx-4 -my-6 sm:-mx-6">
         <div className="mx-auto w-full max-w-5xl px-4 py-8">
           <div className="flex flex-col gap-6">
             {[0, 1, 2].map((i) => (
@@ -523,7 +523,7 @@ export default function LearnPage() {
   let globalNodeIndex = 0;
 
   return (
-    <div className="flex min-h-screen flex-col bg-gray-900">
+    <div className="flex min-h-screen flex-col bg-gray-900 -mx-4 -my-6 sm:-mx-6">
       {/* Header */}
       <motion.header
         className="sticky top-0 z-30 border-b border-gray-800 bg-gray-900/95 backdrop-blur-sm"

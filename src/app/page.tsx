@@ -3,401 +3,455 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
+  ArrowRight,
   BookOpen,
   BarChart2,
-  ChevronRight,
-  TrendingUp,
-  Zap,
-  Shield,
   CheckCircle,
+  Zap,
+  TrendingUp,
+  Shield,
   Flame,
 } from "lucide-react";
 import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
+/* ── animation helpers ── */
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+});
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen overflow-hidden bg-[#0A0E1A]">
-      {/* ── NAV ─────────────────────────────────────────────── */}
-      <nav className="flex items-center justify-between px-6 py-5 sm:px-10">
-        <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-500 text-lg">
+    <div
+      className="min-h-screen overflow-x-hidden"
+      style={{ fontFamily: "'Nunito', sans-serif", background: "#FAFBFF" }}
+    >
+      {/* ─── NAV ──────────────────────────────────────────── */}
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-10">
+        <div className="flex items-center gap-2.5">
+          <div
+            className="flex h-9 w-9 items-center justify-center rounded-xl text-base"
+            style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+          >
             💰
           </div>
-          <span className="text-lg font-extrabold text-white">CashQuest</span>
+          <span className="text-[17px] font-extrabold tracking-tight text-slate-900">
+            CashQuest
+          </span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-6">
+          <Link
+            href="/dashboard"
+            className="hidden text-sm font-semibold text-slate-500 transition hover:text-slate-900 sm:block"
+          >
+            Dashboard
+          </Link>
           <Link
             href="/login"
-            className="text-sm font-semibold text-slate-400 transition hover:text-white"
+            className="text-sm font-semibold text-slate-500 transition hover:text-slate-900"
           >
             Log in
           </Link>
           <Link
-            href="/signup"
-            className="rounded-xl bg-indigo-500 px-5 py-2 text-sm font-bold text-white transition hover:bg-indigo-400"
+            href="/dashboard"
+            className="rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-indigo-200 transition-all hover:scale-105 hover:shadow-indigo-300 active:scale-100"
+            style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
           >
             Get Started
           </Link>
         </div>
       </nav>
 
-      {/* ── HERO ────────────────────────────────────────────── */}
-      <section className="relative px-6 pb-24 pt-16 text-center sm:px-10 sm:pt-24">
-        {/* Glow blobs */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-indigo-600/20 blur-[120px]" />
-          <div className="absolute left-[10%] top-1/2 h-64 w-64 rounded-full bg-emerald-500/10 blur-[80px]" />
-          <div className="absolute right-[10%] top-1/3 h-64 w-64 rounded-full bg-purple-500/10 blur-[80px]" />
+      {/* ─── HERO ─────────────────────────────────────────── */}
+      <section className="relative mx-auto max-w-6xl px-6 pb-8 pt-14 sm:px-10 sm:pt-20">
+        {/* background accent blobs */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div
+            className="absolute -right-32 -top-16 h-[480px] w-[480px] rounded-full opacity-30 blur-3xl"
+            style={{ background: "radial-gradient(circle,#818CF8,transparent 70%)" }}
+          />
+          <div
+            className="absolute -left-20 top-40 h-72 w-72 rounded-full opacity-20 blur-3xl"
+            style={{ background: "radial-gradient(circle,#34D399,transparent 70%)" }}
+          />
         </div>
 
-        <motion.div
-          className="relative z-10 mx-auto max-w-4xl"
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-        >
-          {/* Pill badge */}
-          <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-bold text-indigo-300">
-              <Zap className="h-3.5 w-3.5" />
-              The Duolingo for Finance
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            className="mt-4 text-5xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl"
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-          >
-            Learn Money.
-            <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent">
-              Play Life.
-            </span>
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            className="mx-auto mt-6 max-w-xl text-lg text-slate-400 sm:text-xl"
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-          >
-            Bite-sized lessons, real-life simulations, and choice-based events
-            that teach kids aged 10–14 how money actually works.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-            variants={fadeUp}
-            transition={{ duration: 0.5 }}
-          >
-            <Link
-              href="/dashboard"
-              className="group flex items-center gap-2 rounded-2xl bg-indigo-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-indigo-500/30 transition-all hover:bg-indigo-400 hover:shadow-indigo-400/40 hover:scale-105 active:scale-100"
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* Left — copy */}
+          <div>
+            <motion.span
+              {...fadeUp(0)}
+              className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold tracking-widest uppercase"
+              style={{ background: "#EEF2FF", color: "#4F46E5" }}
             >
-              Start for Free
-              <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/login"
-              className="rounded-2xl border border-white/10 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition hover:bg-white/10"
+              <Zap className="h-3 w-3" /> Financial Literacy for Ages 10–14
+            </motion.span>
+
+            <motion.h1
+              {...fadeUp(0.08)}
+              className="mt-2 text-[52px] font-extrabold leading-[1.05] tracking-tight text-slate-900 sm:text-[64px]"
             >
-              I Have an Account
-            </Link>
-          </motion.div>
+              Learn Money.{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(135deg,#4F46E5 30%,#7C3AED)",
+                }}
+              >
+                Play Life.
+              </span>
+            </motion.h1>
 
-          {/* Social proof */}
-          <motion.p
-            className="mt-5 text-xs font-medium text-slate-600"
-            variants={fadeUp}
-            transition={{ duration: 0.4 }}
-          >
-            Free forever · No credit card needed · CEE-aligned curriculum
-          </motion.p>
-        </motion.div>
+            <motion.p
+              {...fadeUp(0.16)}
+              className="mt-5 max-w-md text-[17px] leading-relaxed text-slate-500"
+            >
+              Duolingo-style lessons on credit, taxes, and budgeting — plus a
+              BitLife-inspired simulator where every choice has real financial
+              consequences.
+            </motion.p>
 
-        {/* ── FLOATING PREVIEW CARDS ── */}
-        <motion.div
-          className="relative z-10 mx-auto mt-20 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3"
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-        >
-          {[
-            {
-              icon: "🎓",
-              label: "Lesson complete",
-              sub: "+100 XP earned",
-              accent: "border-emerald-500/30 bg-emerald-500/10",
-              textAccent: "text-emerald-400",
-            },
-            {
-              icon: "🔥",
-              label: "7-day streak!",
-              sub: "Keep it going",
-              accent: "border-indigo-500/30 bg-indigo-500/10",
-              textAccent: "text-indigo-400",
-            },
-            {
-              icon: "💡",
-              label: "Life event",
-              sub: "Car broke down — what do you do?",
-              accent: "border-amber-500/30 bg-amber-500/10",
-              textAccent: "text-amber-400",
-            },
-          ].map((card) => (
             <motion.div
-              key={card.label}
-              variants={fadeUp}
-              transition={{ duration: 0.5 }}
-              className={`rounded-2xl border p-5 text-left backdrop-blur-sm ${card.accent}`}
+              {...fadeUp(0.24)}
+              className="mt-9 flex flex-wrap items-center gap-4"
             >
-              <div className="mb-2 text-2xl">{card.icon}</div>
-              <p className={`text-sm font-bold ${card.textAccent}`}>
-                {card.label}
-              </p>
-              <p className="mt-0.5 text-xs text-slate-500">{card.sub}</p>
+              <Link
+                href="/dashboard"
+                className="group flex items-center gap-2 rounded-2xl px-7 py-4 text-[15px] font-bold text-white shadow-lg shadow-indigo-300/50 transition-all hover:scale-105 hover:shadow-indigo-400/50 active:scale-100"
+                style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+              >
+                Start for Free
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/login"
+                className="rounded-2xl border border-slate-200 bg-white px-7 py-4 text-[15px] font-bold text-slate-700 shadow-sm transition hover:border-indigo-200 hover:bg-indigo-50"
+              >
+                I have an account
+              </Link>
             </motion.div>
-          ))}
-        </motion.div>
+
+            <motion.div
+              {...fadeUp(0.32)}
+              className="mt-8 flex items-center gap-6"
+            >
+              {[
+                { icon: CheckCircle, text: "Free forever" },
+                { icon: Shield, text: "CEE-aligned" },
+                { icon: Flame, text: "No ads" },
+              ].map(({ icon: Icon, text }) => (
+                <div key={text} className="flex items-center gap-1.5">
+                  <Icon className="h-4 w-4 text-emerald-500" />
+                  <span className="text-sm font-semibold text-slate-500">{text}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right — product preview cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative hidden lg:block"
+          >
+            {/* Main card — lesson */}
+            <div
+              className="relative rounded-3xl p-6 shadow-2xl shadow-indigo-100"
+              style={{ background: "#111827" }}
+            >
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500">
+                  <BookOpen className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-emerald-400">
+                    Budgeting · Lesson 3
+                  </p>
+                  <p className="text-sm font-extrabold text-white">
+                    The 50/30/20 Rule
+                  </p>
+                </div>
+              </div>
+              <div className="rounded-xl bg-gray-800 p-4">
+                <p className="text-xs font-medium text-gray-400">
+                  If you earn{" "}
+                  <span className="font-bold text-white">$3,000/month</span>,
+                  the 50/30/20 rule says:
+                </p>
+                <div className="mt-3 flex flex-col gap-2">
+                  {[
+                    { label: "Needs (50%)", value: "$1,500", color: "#4F46E5", w: "w-1/2" },
+                    { label: "Wants (30%)", value: "$900", color: "#7C3AED", w: "w-[30%]" },
+                    { label: "Savings (20%)", value: "$600", color: "#10B981", w: "w-1/5" },
+                  ].map((row) => (
+                    <div key={row.label}>
+                      <div className="mb-1 flex justify-between text-[11px] font-semibold text-gray-400">
+                        <span>{row.label}</span>
+                        <span className="text-white">{row.value}</span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-gray-700">
+                        <div
+                          className={`h-full rounded-full ${row.w}`}
+                          style={{ background: row.color }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xs font-semibold text-gray-500">+100 XP on completion</span>
+                <span className="rounded-lg bg-indigo-500/20 px-3 py-1 text-xs font-bold text-indigo-300">
+                  Continue →
+                </span>
+              </div>
+            </div>
+
+            {/* Floating stat chips */}
+            <div
+              className="absolute -left-8 top-8 rounded-2xl p-4 shadow-xl"
+              style={{ background: "white" }}
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🔥</span>
+                <div>
+                  <p className="text-lg font-extrabold text-slate-900">7</p>
+                  <p className="text-[10px] font-bold text-slate-400">Day Streak</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="absolute -bottom-4 -right-4 rounded-2xl p-4 shadow-xl"
+              style={{ background: "white" }}
+            >
+              <div className="flex items-center gap-2">
+                <div
+                  className="flex h-8 w-8 items-center justify-center rounded-lg"
+                  style={{ background: "#EEF2FF" }}
+                >
+                  <Zap className="h-4 w-4 text-indigo-600" />
+                </div>
+                <div>
+                  <p className="text-base font-extrabold text-slate-900">1,250 XP</p>
+                  <p className="text-[10px] font-bold text-slate-400">Total Earned</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* ── STATS BAND ──────────────────────────────────────── */}
-      <section className="border-y border-white/5 bg-white/[0.03] px-6 py-12">
-        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 sm:grid-cols-4">
+      {/* ─── STATS BAR ────────────────────────────────────── */}
+      <section
+        className="mt-16 py-10"
+        style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+      >
+        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 px-8 sm:grid-cols-4">
           {[
-            { value: "24", label: "Financial lessons", icon: BookOpen },
-            { value: "60+", label: "Quiz questions", icon: CheckCircle },
-            { value: "45+", label: "Life events", icon: Flame },
-            { value: "100%", label: "CEE-aligned", icon: Shield },
-          ].map((s) => (
+            { value: "24", label: "Lessons" },
+            { value: "60+", label: "Quiz Questions" },
+            { value: "45+", label: "Life Events" },
+            { value: "3", label: "Topics" },
+          ].map((s, i) => (
             <motion.div
               key={s.label}
-              className="flex flex-col items-center gap-1 text-center"
-              initial={{ opacity: 0, y: 16 }}
+              className="text-center"
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.45 }}
             >
-              <s.icon className="mb-1 h-5 w-5 text-indigo-400" />
-              <span className="text-3xl font-extrabold text-white">
-                {s.value}
-              </span>
-              <span className="text-xs font-medium text-slate-500">
-                {s.label}
-              </span>
+              <p className="text-4xl font-extrabold text-white">{s.value}</p>
+              <p className="mt-1 text-sm font-semibold text-indigo-200">{s.label}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* ── FEATURES ────────────────────────────────────────── */}
-      <section className="px-6 py-24 sm:px-10">
-        <div className="mx-auto max-w-5xl">
+      {/* ─── FEATURES ─────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
+        <motion.div
+          className="mb-14 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-4xl font-extrabold tracking-tight text-slate-900">
+            Two ways to build wealth IQ
+          </h2>
+          <p className="mx-auto mt-3 max-w-lg text-base text-slate-500">
+            Both modes teach concepts straight from the Council for Economic
+            Education curriculum — but actually feel fun.
+          </p>
+        </motion.div>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          {/* Learn card */}
           <motion.div
-            className="mb-16 text-center"
+            className="group rounded-3xl p-8 transition-shadow hover:shadow-xl"
+            style={{ background: "#F0FDF4", border: "1.5px solid #BBF7D0" }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-              Two ways to get smarter with money
-            </h2>
-            <p className="mx-auto mt-3 max-w-lg text-base text-slate-400">
-              Every mode is built around real financial concepts — no fluff.
+            <div
+              className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl shadow-md"
+              style={{ background: "linear-gradient(135deg,#10B981,#059669)" }}
+            >
+              <BookOpen className="h-7 w-7 text-white" />
+            </div>
+            <h3 className="mb-2 text-2xl font-extrabold text-slate-900">
+              Learn Path
+            </h3>
+            <p className="mb-6 text-sm leading-relaxed text-slate-600">
+              Duolingo-style winding path. Complete lessons in order, flip
+              flashcards, and test yourself with quizzes that explain every
+              answer — right or wrong.
             </p>
+            <div className="grid grid-cols-2 gap-2">
+              {["Credit & FICO scores", "Tax brackets", "Budgeting rules", "Compound interest"].map(
+                (item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <CheckCircle className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                    <span className="text-xs font-semibold text-slate-600">{item}</span>
+                  </div>
+                )
+              )}
+            </div>
+            <div className="mt-6 flex items-center gap-2 text-sm font-bold text-emerald-600">
+              Start learning <ArrowRight className="h-4 w-4" />
+            </div>
           </motion.div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {/* Learn card — big */}
-            <motion.div
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/5 p-8 ring-1 ring-emerald-500/20"
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500 shadow-lg shadow-emerald-500/30">
-                <BookOpen className="h-7 w-7 text-white" />
-              </div>
-              <h3 className="mb-2 text-2xl font-extrabold text-white">
-                Learn Path
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-slate-400">
-                Duolingo-style lessons on Credit, Taxes, and Budgeting. Unlock
-                each lesson in order, take quizzes with a 3-heart lives system,
-                and earn XP for every correct answer.
-              </p>
-              <ul className="flex flex-col gap-2">
-                {[
-                  "8 lessons per topic",
-                  "20 quiz questions each",
-                  "Flashcard flip cards",
-                  "CEE curriculum-aligned",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 text-sm font-medium text-slate-300"
-                  >
-                    <CheckCircle className="h-4 w-4 shrink-0 text-emerald-400" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-emerald-500/5 blur-3xl" />
-            </motion.div>
-
-            {/* Simulator card */}
-            <motion.div
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/5 p-8 ring-1 ring-indigo-500/20"
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-500 shadow-lg shadow-indigo-500/30">
-                <BarChart2 className="h-7 w-7 text-white" />
-              </div>
-              <h3 className="mb-2 text-2xl font-extrabold text-white">
-                Life Simulator
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-slate-400">
-                BitLife meets personal finance. Pick a life scenario, manage
-                your salary, handle surprise events, make real choices — and
-                try not to go bankrupt.
-              </p>
-              <ul className="flex flex-col gap-2">
-                {[
-                  "4 life scenarios",
-                  "45+ random life events",
-                  "Choice-based consequences",
-                  "Net worth tracking",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 text-sm font-medium text-slate-300"
-                  >
-                    <CheckCircle className="h-4 w-4 shrink-0 text-indigo-400" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="pointer-events-none absolute right-0 top-0 h-40 w-40 rounded-full bg-indigo-500/5 blur-3xl" />
-            </motion.div>
-          </div>
-
-          {/* Bottom feature strip */}
+          {/* Simulator card */}
           <motion.div
-            className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
+            className="group rounded-3xl p-8 transition-shadow hover:shadow-xl"
+            style={{ background: "#EEF2FF", border: "1.5px solid #C7D2FE" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {[
-              {
-                icon: TrendingUp,
-                title: "Track Progress",
-                desc: "XP, streaks, and life stages show your growth over time.",
-                color: "text-violet-400",
-                ring: "ring-violet-500/20",
-                bg: "bg-violet-500/10",
-              },
-              {
-                icon: Zap,
-                title: "Earn XP",
-                desc: "Every lesson and quiz answer rewards you with experience points.",
-                color: "text-amber-400",
-                ring: "ring-amber-500/20",
-                bg: "bg-amber-500/10",
-              },
-              {
-                icon: Shield,
-                title: "Real Knowledge",
-                desc: "Content aligns with Council for Economic Education standards.",
-                color: "text-emerald-400",
-                ring: "ring-emerald-500/20",
-                bg: "bg-emerald-500/10",
-              },
-            ].map((f) => (
-              <motion.div
-                key={f.title}
-                variants={fadeUp}
-                transition={{ duration: 0.5 }}
-                className={`rounded-2xl p-5 ring-1 ${f.ring} ${f.bg}`}
-              >
-                <f.icon className={`mb-3 h-6 w-6 ${f.color}`} />
-                <h4 className="mb-1 font-bold text-white">{f.title}</h4>
-                <p className="text-sm text-slate-500">{f.desc}</p>
-              </motion.div>
-            ))}
+            <div
+              className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl shadow-md"
+              style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+            >
+              <BarChart2 className="h-7 w-7 text-white" />
+            </div>
+            <h3 className="mb-2 text-2xl font-extrabold text-slate-900">
+              Life Simulator
+            </h3>
+            <p className="mb-6 text-sm leading-relaxed text-slate-600">
+              Pick a life scenario — Fresh Grad, Young Pro, or Mid-Career.
+              Manage salary, handle 45+ surprise events, make choices with real
+              consequences, and watch your net worth grow or crash.
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {["4 life scenarios", "Choice-based events", "Debt & interest", "Net worth tracking"].map(
+                (item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <CheckCircle className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                    <span className="text-xs font-semibold text-slate-600">{item}</span>
+                  </div>
+                )
+              )}
+            </div>
+            <div className="mt-6 flex items-center gap-2 text-sm font-bold text-indigo-600">
+              Play simulator <ArrowRight className="h-4 w-4" />
+            </div>
           </motion.div>
         </div>
-      </section>
 
-      {/* ── BOTTOM CTA ──────────────────────────────────────── */}
-      <section className="px-6 pb-24 sm:px-10">
+        {/* Bottom 3 pills */}
         <motion.div
-          className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-600 p-12 text-center shadow-2xl shadow-indigo-500/20"
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
-            <div className="absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-white/5 blur-2xl" />
-          </div>
+          {[
+            { icon: TrendingUp, title: "XP & Streaks", desc: "Level up with every lesson. Keep a streak to multiply rewards.", color: "#7C3AED" },
+            { icon: Zap, title: "Instant Feedback", desc: "Every quiz answer includes a detailed explanation — not just right/wrong.", color: "#F59E0B" },
+            { icon: Shield, title: "CEE Curriculum", desc: "Every lesson maps to Council for Economic Education standards.", color: "#10B981" },
+          ].map((f) => (
+            <div
+              key={f.title}
+              className="rounded-2xl bg-white p-5 shadow-sm"
+              style={{ border: "1.5px solid #E2E8F0" }}
+            >
+              <div
+                className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl"
+                style={{ background: f.color + "18" }}
+              >
+                <f.icon className="h-4.5 w-4.5" style={{ color: f.color }} />
+              </div>
+              <h4 className="mb-1 text-sm font-extrabold text-slate-900">{f.title}</h4>
+              <p className="text-xs leading-relaxed text-slate-500">{f.desc}</p>
+            </div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ─── CTA ──────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-24 sm:px-10">
+        <motion.div
+          className="relative overflow-hidden rounded-3xl px-10 py-16 text-center shadow-2xl shadow-indigo-200"
+          style={{ background: "linear-gradient(135deg,#4F46E5 0%,#7C3AED 60%,#6D28D9 100%)" }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* decorative circles */}
+          <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white/10" />
+          <div className="pointer-events-none absolute -bottom-8 left-16 h-32 w-32 rounded-full bg-white/5" />
+
           <div className="relative z-10">
-            <div className="mb-4 text-4xl">🚀</div>
+            <p className="mb-3 text-4xl">🚀</p>
             <h2 className="mb-3 text-3xl font-extrabold text-white sm:text-4xl">
-              Ready for Your Quest?
+              Your financial future starts today.
             </h2>
-            <p className="mx-auto mb-8 max-w-sm text-base text-white/70">
-              Free forever. No ads. Just real financial knowledge that will
-              last a lifetime.
+            <p className="mx-auto mb-8 max-w-sm text-base text-indigo-200">
+              Free forever. No ads. Real knowledge that lasts a lifetime.
             </p>
             <Link
               href="/dashboard"
-              className="group inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-bold text-indigo-600 shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-100"
+              className="group inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-bold text-indigo-600 shadow-lg transition-all hover:scale-105 active:scale-100"
             >
-              Start Learning Now
-              <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              Start for Free
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </motion.div>
       </section>
 
-      {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer className="border-t border-white/5 px-6 py-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-500 text-sm">
-                💰
-              </div>
-              <span className="text-sm font-bold text-white">CashQuest</span>
+      {/* ─── FOOTER ───────────────────────────────────────── */}
+      <footer
+        className="border-t px-6 py-8 sm:px-10"
+        style={{ borderColor: "#E2E8F0" }}
+      >
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex items-center gap-2">
+            <div
+              className="flex h-7 w-7 items-center justify-center rounded-lg text-sm"
+              style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+            >
+              💰
             </div>
-            <p className="text-xs text-slate-600">
-              © 2026 CashQuest. Built for financial literacy education.
-            </p>
+            <span className="text-sm font-bold text-slate-700">CashQuest</span>
           </div>
-          <div className="mt-4">
-            <LegalDisclaimer />
-          </div>
+          <p className="text-xs text-slate-400">
+            © 2026 CashQuest · Team #4 · Built for financial literacy education
+          </p>
+        </div>
+        <div className="mx-auto mt-4 max-w-6xl">
+          <LegalDisclaimer />
         </div>
       </footer>
     </div>
