@@ -60,8 +60,8 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
       <Card
         className={`cursor-pointer border-2 transition-all ${
           isSelected
-            ? "border-purple-500 shadow-lg shadow-purple-200 ring-2 ring-purple-300"
-            : "border-border hover:border-purple-300 hover:shadow-md"
+            ? "border-green-500 shadow-lg shadow-green-200 ring-2 ring-green-300"
+            : "border-border hover:border-green-300 hover:shadow-md"
         }`}
         onClick={onSelect}
         role="radio"
@@ -102,7 +102,7 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
           {!isSurprise && (
             <div className="grid grid-cols-2 gap-2">
               <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
-                <Briefcase className="h-3.5 w-3.5 text-purple-500" />
+                <Briefcase className="h-3.5 w-3.5 text-green-600" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold text-muted-foreground">
                     Age
@@ -149,8 +149,8 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
           )}
 
           {isSurprise && (
-            <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-purple-300 bg-purple-50 p-4">
-              <p className="text-center text-sm font-bold text-purple-600">
+            <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-green-300 bg-green-50 p-4">
+              <p className="text-center text-sm font-bold text-green-700">
                 Random age, salary, debt, and life situation!
               </p>
             </div>
@@ -159,8 +159,8 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
           {/* Goal badge */}
           {goal && (
             <div className="flex items-center gap-2">
-              <Target className="h-3.5 w-3.5 text-purple-500" />
-              <span className="text-xs font-bold text-purple-600">
+              <Target className="h-3.5 w-3.5 text-green-600" />
+              <span className="text-xs font-bold text-green-700">
                 Goal: {goal.label}
               </span>
             </div>
@@ -243,7 +243,7 @@ export default function SimulatorSetupPage() {
         >
           <Button
             size="lg"
-            className="w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white hover:from-purple-700 hover:to-violet-700 disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 disabled:opacity-50"
             onClick={handleBegin}
             disabled={!selectedId}
           >

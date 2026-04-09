@@ -174,7 +174,7 @@ export default function DashboardPage() {
       {isFirstVisit && (
         <motion.div
           variants={item}
-          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-indigo-600 p-6 text-white shadow-lg"
+          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-green-500 to-green-600 p-6 text-white shadow-lg"
         >
           <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-white/10" />
           <div className="absolute -bottom-2 right-12 h-12 w-12 rounded-full bg-white/5" />

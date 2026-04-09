@@ -40,8 +40,8 @@ const modules: ModuleCardData[] = [
     href: "/simulator",
     buttonLabel: "Play Now",
     icon: <BarChart2 className="h-8 w-8" />,
-    gradientFrom: "from-indigo-500",
-    gradientTo: "to-indigo-600",
+    gradientFrom: "from-green-600",
+    gradientTo: "to-green-700",
   },
 ];
 

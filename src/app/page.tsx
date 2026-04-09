@@ -32,7 +32,7 @@ export default function LandingPage() {
         <div className="flex items-center gap-2.5">
           <div
             className="flex h-9 w-9 items-center justify-center rounded-xl text-base"
-            style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+            style={{ background: "linear-gradient(135deg,#16A34A,#15803D)" }}
           >
             💰
           </div>
@@ -55,8 +55,8 @@ export default function LandingPage() {
           </Link>
           <Link
             href="/dashboard"
-            className="rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-indigo-200 transition-all hover:scale-105 hover:shadow-indigo-300 active:scale-100"
-            style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+            className="rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-green-200 transition-all hover:scale-105 hover:shadow-green-300 active:scale-100"
+            style={{ background: "linear-gradient(135deg,#16A34A,#15803D)" }}
           >
             Get Started
           </Link>
@@ -69,7 +69,7 @@ export default function LandingPage() {
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div
             className="absolute -right-32 -top-16 h-[480px] w-[480px] rounded-full opacity-30 blur-3xl"
-            style={{ background: "radial-gradient(circle,#818CF8,transparent 70%)" }}
+            style={{ background: "radial-gradient(circle,#86EFAC,transparent 70%)" }}
           />
           <div
             className="absolute -left-20 top-40 h-72 w-72 rounded-full opacity-20 blur-3xl"
@@ -83,7 +83,7 @@ export default function LandingPage() {
             <motion.span
               {...fadeUp(0)}
               className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold tracking-widest uppercase"
-              style={{ background: "#EEF2FF", color: "#4F46E5" }}
+              style={{ background: "#DCFCE7", color: "#16A34A" }}
             >
               <Zap className="h-3 w-3" /> Financial Literacy for Ages 10–14
             </motion.span>
@@ -96,7 +96,7 @@ export default function LandingPage() {
               <span
                 className="bg-clip-text text-transparent"
                 style={{
-                  backgroundImage: "linear-gradient(135deg,#4F46E5 30%,#7C3AED)",
+                  backgroundImage: "linear-gradient(135deg,#16A34A 30%,#15803D)",
                 }}
               >
                 Play Life.
@@ -108,7 +108,7 @@ export default function LandingPage() {
               className="mt-5 max-w-md text-[17px] leading-relaxed text-slate-500"
             >
               Duolingo-style lessons on credit, taxes, and budgeting — plus a
-              BitLife-inspired simulator where every choice has real financial
+              life simulator where every choice has real financial
               consequences.
             </motion.p>
 
@@ -118,15 +118,15 @@ export default function LandingPage() {
             >
               <Link
                 href="/dashboard"
-                className="group flex items-center gap-2 rounded-2xl px-7 py-4 text-[15px] font-bold text-white shadow-lg shadow-indigo-300/50 transition-all hover:scale-105 hover:shadow-indigo-400/50 active:scale-100"
-                style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+                className="group flex items-center gap-2 rounded-2xl px-7 py-4 text-[15px] font-bold text-white shadow-lg shadow-green-300/50 transition-all hover:scale-105 hover:shadow-green-400/50 active:scale-100"
+                style={{ background: "linear-gradient(135deg,#16A34A,#15803D)" }}
               >
                 Start for Free
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/login"
-                className="rounded-2xl border border-slate-200 bg-white px-7 py-4 text-[15px] font-bold text-slate-700 shadow-sm transition hover:border-indigo-200 hover:bg-indigo-50"
+                className="rounded-2xl border border-slate-200 bg-white px-7 py-4 text-[15px] font-bold text-slate-700 shadow-sm transition hover:border-green-200 hover:bg-green-50"
               >
                 I have an account
               </Link>
@@ -158,7 +158,7 @@ export default function LandingPage() {
           >
             {/* Main card — lesson */}
             <div
-              className="relative rounded-3xl p-6 shadow-2xl shadow-indigo-100"
+              className="relative rounded-3xl p-6 shadow-2xl shadow-green-100"
               style={{ background: "#111827" }}
             >
               <div className="mb-4 flex items-center gap-3">
@@ -182,8 +182,8 @@ export default function LandingPage() {
                 </p>
                 <div className="mt-3 flex flex-col gap-2">
                   {[
-                    { label: "Needs (50%)", value: "$1,500", color: "#4F46E5", w: "w-1/2" },
-                    { label: "Wants (30%)", value: "$900", color: "#7C3AED", w: "w-[30%]" },
+                    { label: "Needs (50%)", value: "$1,500", color: "#16A34A", w: "w-1/2" },
+                    { label: "Wants (30%)", value: "$900", color: "#15803D", w: "w-[30%]" },
                     { label: "Savings (20%)", value: "$600", color: "#10B981", w: "w-1/5" },
                   ].map((row) => (
                     <div key={row.label}>
@@ -203,7 +203,7 @@ export default function LandingPage() {
               </div>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-xs font-semibold text-gray-500">+100 XP on completion</span>
-                <span className="rounded-lg bg-indigo-500/20 px-3 py-1 text-xs font-bold text-indigo-300">
+                <span className="rounded-lg bg-green-500/20 px-3 py-1 text-xs font-bold text-green-300">
                   Continue →
                 </span>
               </div>
@@ -230,9 +230,9 @@ export default function LandingPage() {
               <div className="flex items-center gap-2">
                 <div
                   className="flex h-8 w-8 items-center justify-center rounded-lg"
-                  style={{ background: "#EEF2FF" }}
+                  style={{ background: "#DCFCE7" }}
                 >
-                  <Zap className="h-4 w-4 text-indigo-600" />
+                  <Zap className="h-4 w-4 text-green-600" />
                 </div>
                 <div>
                   <p className="text-base font-extrabold text-slate-900">1,250 XP</p>
@@ -247,7 +247,7 @@ export default function LandingPage() {
       {/* ─── STATS BAR ────────────────────────────────────── */}
       <section
         className="mt-16 py-10"
-        style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+        style={{ background: "linear-gradient(135deg,#16A34A,#15803D)" }}
       >
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 px-8 sm:grid-cols-4">
           {[
@@ -265,7 +265,7 @@ export default function LandingPage() {
               transition={{ delay: i * 0.08, duration: 0.45 }}
             >
               <p className="text-4xl font-extrabold text-white">{s.value}</p>
-              <p className="mt-1 text-sm font-semibold text-indigo-200">{s.label}</p>
+              <p className="mt-1 text-sm font-semibold text-green-200">{s.label}</p>
             </motion.div>
           ))}
         </div>
@@ -331,7 +331,7 @@ export default function LandingPage() {
           {/* Simulator card */}
           <motion.div
             className="group rounded-3xl p-8 transition-shadow hover:shadow-xl"
-            style={{ background: "#EEF2FF", border: "1.5px solid #C7D2FE" }}
+            style={{ background: "#F0FDF4", border: "1.5px solid #BBF7D0" }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -339,7 +339,7 @@ export default function LandingPage() {
           >
             <div
               className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl shadow-md"
-              style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+              style={{ background: "linear-gradient(135deg,#16A34A,#15803D)" }}
             >
               <BarChart2 className="h-7 w-7 text-white" />
             </div>
@@ -355,13 +355,13 @@ export default function LandingPage() {
               {["4 life scenarios", "Choice-based events", "Debt & interest", "Net worth tracking"].map(
                 (item) => (
                   <div key={item} className="flex items-center gap-2">
-                    <CheckCircle className="h-3.5 w-3.5 shrink-0 text-indigo-500" />
+                    <CheckCircle className="h-3.5 w-3.5 shrink-0 text-green-500" />
                     <span className="text-xs font-semibold text-slate-600">{item}</span>
                   </div>
                 )
               )}
             </div>
-            <div className="mt-6 flex items-center gap-2 text-sm font-bold text-indigo-600">
+            <div className="mt-6 flex items-center gap-2 text-sm font-bold text-green-600">
               Play simulator <ArrowRight className="h-4 w-4" />
             </div>
           </motion.div>
@@ -376,7 +376,7 @@ export default function LandingPage() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           {[
-            { icon: TrendingUp, title: "XP & Streaks", desc: "Level up with every lesson. Keep a streak to multiply rewards.", color: "#7C3AED" },
+            { icon: TrendingUp, title: "XP & Streaks", desc: "Level up with every lesson. Keep a streak to multiply rewards.", color: "#16A34A" },
             { icon: Zap, title: "Instant Feedback", desc: "Every quiz answer includes a detailed explanation — not just right/wrong.", color: "#F59E0B" },
             { icon: Shield, title: "CEE Curriculum", desc: "Every lesson maps to Council for Economic Education standards.", color: "#10B981" },
           ].map((f) => (
@@ -402,7 +402,7 @@ export default function LandingPage() {
       <section className="mx-auto max-w-6xl px-6 pb-24 sm:px-10">
         <motion.div
           className="relative overflow-hidden rounded-3xl px-10 py-16 text-center shadow-2xl shadow-indigo-200"
-          style={{ background: "linear-gradient(135deg,#4F46E5 0%,#7C3AED 60%,#6D28D9 100%)" }}
+          style={{ background: "linear-gradient(135deg,#16A34A 0%,#15803D 60%,#14532D 100%)" }}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -417,12 +417,12 @@ export default function LandingPage() {
             <h2 className="mb-3 text-3xl font-extrabold text-white sm:text-4xl">
               Your financial future starts today.
             </h2>
-            <p className="mx-auto mb-8 max-w-sm text-base text-indigo-200">
+            <p className="mx-auto mb-8 max-w-sm text-base text-green-200">
               Free forever. No ads. Real knowledge that lasts a lifetime.
             </p>
             <Link
               href="/dashboard"
-              className="group inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-bold text-indigo-600 shadow-lg transition-all hover:scale-105 active:scale-100"
+              className="group inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-bold text-green-700 shadow-lg transition-all hover:scale-105 active:scale-100"
             >
               Start for Free
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -440,7 +440,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <div
               className="flex h-7 w-7 items-center justify-center rounded-lg text-sm"
-              style={{ background: "linear-gradient(135deg,#4F46E5,#7C3AED)" }}
+              style={{ background: "linear-gradient(135deg,#16A34A,#15803D)" }}
             >
               💰
             </div>
