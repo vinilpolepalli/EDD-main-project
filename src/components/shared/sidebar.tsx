@@ -61,21 +61,21 @@ const Sidebar: React.FC = () => {
         <div className="flex h-full flex-col">
           {/* Logo */}
           <div className="flex items-center gap-3 px-6 py-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-md shadow-primary/30">
               <Coins className="h-5 w-5" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-extrabold text-white">
+              <span className="text-lg font-extrabold text-green-900">
                 CashQuest
               </span>
-              <span className="text-xs font-medium text-slate-400">
+              <span className="text-xs font-medium text-green-600">
                 Finance for the Future
               </span>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="mx-4 border-t border-slate-700/50" />
+          <div className="mx-4 border-t border-green-200" />
 
           {/* Navigation Links */}
           <nav className="mt-4 flex flex-1 flex-col gap-1 px-3" aria-label="Main navigation">
@@ -89,7 +89,7 @@ const Sidebar: React.FC = () => {
                     "relative flex min-h-[44px] items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200",
                     active
                       ? "bg-primary text-white shadow-lg shadow-primary/25"
-                      : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                      : "text-green-700 hover:bg-green-200 hover:text-green-900"
                   )}
                   aria-current={active ? "page" : undefined}
                 >
@@ -104,15 +104,15 @@ const Sidebar: React.FC = () => {
           {isLoaded && (
             <div className="mx-3 mb-4 flex flex-col gap-3">
               {/* Streak Badge */}
-              <div className="flex items-center gap-3 rounded-xl bg-slate-800/50 px-4 py-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500/20">
-                  <Flame className="h-4 w-4 text-orange-400" />
+              <div className="flex items-center gap-3 rounded-xl bg-green-100 px-4 py-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-100">
+                  <Flame className="h-4 w-4 text-orange-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-bold tabular-nums text-white">
+                  <span className="text-sm font-bold tabular-nums text-green-900">
                     {progress.currentStreak} day streak
                   </span>
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-green-600">
                     {progress.currentStreak === 0
                       ? "Start today!"
                       : "Keep it going!"}
@@ -121,16 +121,16 @@ const Sidebar: React.FC = () => {
               </div>
 
               {/* XP Progress */}
-              <div className="rounded-xl bg-slate-800/50 px-4 py-3">
+              <div className="rounded-xl bg-green-100 px-4 py-3">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-400">
+                  <span className="text-xs font-semibold text-green-700">
                     Level {level}
                   </span>
-                  <span className="text-xs font-semibold tabular-nums text-slate-400">
+                  <span className="text-xs font-semibold tabular-nums text-green-700">
                     {current} / {required} XP
                   </span>
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-slate-700">
+                <div className="h-2 w-full overflow-hidden rounded-full bg-green-200">
                   <motion.div
                     className="h-full rounded-full bg-primary"
                     initial={{ width: 0 }}

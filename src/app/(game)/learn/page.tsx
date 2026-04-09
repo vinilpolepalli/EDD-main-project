@@ -163,23 +163,23 @@ function SectionHeader({
           {section.icon}
         </div>
         <div className="flex-1">
-          <p className="text-xs font-extrabold tracking-widest text-gray-400">
+          <p className="text-xs font-extrabold tracking-widest text-gray-500">
             SECTION {sectionIndex + 1}
           </p>
           <h2 className={cn("text-lg font-extrabold", section.textColor)}>
             {section.title}
           </h2>
-          <p className="text-xs font-semibold text-gray-400">{section.subtitle}</p>
+          <p className="text-xs font-semibold text-gray-500">{section.subtitle}</p>
         </div>
       </div>
       <div className="mt-3 flex flex-col gap-1.5">
-        <div className="flex items-center justify-between text-xs font-bold text-gray-500">
+        <div className="flex items-center justify-between text-xs font-bold text-gray-600">
           <span>
             {completedCount} / {totalNodes} complete
           </span>
           <span className="tabular-nums">{progressPercent}%</span>
         </div>
-        <Progress value={progressPercent} color={section.bgColor} height="h-2" className="bg-gray-700" />
+        <Progress value={progressPercent} color={section.bgColor} height="h-2" className="bg-gray-200" />
       </div>
     </motion.div>
   );
@@ -229,7 +229,7 @@ function LessonNode({
               section.glowColor
             ),
           status === "locked" &&
-            "border-gray-600 bg-gray-700 text-gray-500"
+            "border-gray-300 bg-gray-100 text-gray-400"
         )}
         whileHover={status !== "locked" ? { scale: 1.1 } : undefined}
         whileTap={status !== "locked" ? { scale: 0.95 } : undefined}
@@ -237,9 +237,9 @@ function LessonNode({
           status === "current"
             ? {
                 boxShadow: [
-                  "0 0 0 0 rgba(99, 102, 241, 0)",
-                  "0 0 20px 4px rgba(99, 102, 241, 0.3)",
-                  "0 0 0 0 rgba(99, 102, 241, 0)",
+                  "0 0 0 0 rgba(22, 163, 74, 0)",
+                  "0 0 20px 4px rgba(22, 163, 74, 0.3)",
+                  "0 0 0 0 rgba(22, 163, 74, 0)",
                 ],
               }
             : undefined
@@ -263,7 +263,7 @@ function LessonNode({
       <span
         className={cn(
           "max-w-[5rem] text-center text-[10px] font-bold leading-tight",
-          status === "locked" ? "text-gray-600" : "text-gray-300"
+          status === "locked" ? "text-gray-400" : "text-gray-700"
         )}
       >
         {lesson.title}
@@ -315,7 +315,7 @@ function QuizNode({
           status === "current" &&
             "border-amber-300 bg-amber-500 text-white ring-4 ring-amber-400 shadow-lg shadow-amber-500/40",
           status === "locked" &&
-            "border-gray-600 bg-gray-700 text-gray-500"
+            "border-gray-300 bg-gray-100 text-gray-400"
         )}
         whileHover={status !== "locked" ? { scale: 1.1 } : undefined}
         whileTap={status !== "locked" ? { scale: 0.95 } : undefined}
@@ -347,7 +347,7 @@ function QuizNode({
       <span
         className={cn(
           "text-center text-[10px] font-extrabold tracking-wide",
-          status === "locked" ? "text-gray-600" : "text-amber-400"
+          status === "locked" ? "text-gray-400" : "text-amber-500"
         )}
       >
         UNIT QUIZ
@@ -379,72 +379,72 @@ function Sidebar({
     <div className="flex flex-col gap-4">
       {/* Streak */}
       <motion.div
-        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2 }}
       >
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/20">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100">
             <Flame className="h-7 w-7 text-orange-500" />
           </div>
           <div>
-            <p className="text-2xl font-extrabold text-white tabular-nums">
+            <p className="text-2xl font-extrabold text-gray-900 tabular-nums">
               {streak}
             </p>
-            <p className="text-xs font-bold text-gray-400">Day Streak</p>
+            <p className="text-xs font-bold text-gray-500">Day Streak</p>
           </div>
         </div>
       </motion.div>
 
       {/* XP */}
       <motion.div
-        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3 }}
       >
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/20">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100">
             <Zap className="h-7 w-7 text-yellow-500" />
           </div>
           <div>
-            <p className="text-2xl font-extrabold text-white tabular-nums">
+            <p className="text-2xl font-extrabold text-gray-900 tabular-nums">
               {totalXp.toLocaleString()}
             </p>
-            <p className="text-xs font-bold text-gray-400">Total XP</p>
+            <p className="text-xs font-bold text-gray-500">Total XP</p>
           </div>
         </div>
       </motion.div>
 
       {/* Daily Goal */}
       <motion.div
-        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.4 }}
       >
         <div className="flex items-center gap-2 mb-2">
-          <Target className="h-4 w-4 text-emerald-400" />
-          <p className="text-xs font-extrabold text-emerald-400">DAILY GOAL</p>
+          <Target className="h-4 w-4 text-green-600" />
+          <p className="text-xs font-extrabold text-green-600">DAILY GOAL</p>
         </div>
-        <p className="text-sm font-bold text-gray-300">
+        <p className="text-sm font-bold text-gray-700">
           Complete 1 lesson today
         </p>
       </motion.div>
 
       {/* Fun Fact */}
       <motion.div
-        className="rounded-2xl border border-gray-700 bg-gray-800/80 p-4"
+        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5 }}
       >
         <div className="flex items-center gap-2 mb-2">
-          <Lightbulb className="h-4 w-4 text-yellow-400" />
-          <p className="text-xs font-extrabold text-yellow-400">DID YOU KNOW?</p>
+          <Lightbulb className="h-4 w-4 text-yellow-500" />
+          <p className="text-xs font-extrabold text-yellow-600">DID YOU KNOW?</p>
         </div>
-        <p className="text-sm font-semibold leading-relaxed text-gray-300">
+        <p className="text-sm font-semibold leading-relaxed text-gray-600">
           {funFact}
         </p>
       </motion.div>
@@ -458,9 +458,9 @@ function Sidebar({
       >
         <Link
           href="/dashboard"
-          className="flex min-h-[44px] items-center gap-2 rounded-xl border border-gray-700 bg-gray-800/60 px-4 py-2.5 text-sm font-bold text-gray-300 transition-colors hover:bg-gray-700/60"
+          className="flex min-h-[44px] items-center gap-2 rounded-xl border border-green-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:bg-green-50"
         >
-          <Sparkles className="h-4 w-4 text-gray-400" />
+          <Sparkles className="h-4 w-4 text-green-600" />
           Dashboard
         </Link>
       </motion.div>
@@ -507,11 +507,11 @@ export default function LearnPage() {
 
   if (!isLoaded) {
     return (
-      <div className="flex min-h-screen flex-col bg-gray-900 -mx-4 -my-6 sm:-mx-6">
+      <div className="flex min-h-screen flex-col bg-green-50 -mx-4 -my-6 sm:-mx-6">
         <div className="mx-auto w-full max-w-5xl px-4 py-8">
           <div className="flex flex-col gap-6">
             {[0, 1, 2].map((i) => (
-              <Skeleton key={i} className="h-48 w-full rounded-2xl bg-gray-800" />
+              <Skeleton key={i} className="h-48 w-full rounded-2xl bg-green-100" />
             ))}
           </div>
         </div>
@@ -523,10 +523,10 @@ export default function LearnPage() {
   let globalNodeIndex = 0;
 
   return (
-    <div className="flex min-h-screen flex-col bg-gray-900 -mx-4 -my-6 sm:-mx-6">
+    <div className="flex min-h-screen flex-col bg-green-50 -mx-4 -my-6 sm:-mx-6">
       {/* Header */}
       <motion.header
-        className="sticky top-0 z-30 border-b border-gray-800 bg-gray-900/95 backdrop-blur-sm"
+        className="sticky top-0 z-30 border-b border-green-200 bg-white/95 backdrop-blur-sm shadow-sm"
         initial={{ y: -60 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -535,7 +535,7 @@ export default function LearnPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/dashboard"
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-800 hover:text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-green-100 hover:text-green-800"
               aria-label="Back to dashboard"
             >
               <svg
@@ -551,7 +551,7 @@ export default function LearnPage() {
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-lg font-extrabold tracking-tight text-white">
+            <h1 className="text-lg font-extrabold tracking-tight text-gray-900">
               Learn Path
             </h1>
           </div>
@@ -560,7 +560,7 @@ export default function LearnPage() {
               <Flame className="h-4 w-4" />
               <span className="tabular-nums">{progress.currentStreak}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-sm font-bold text-yellow-500">
+            <div className="flex items-center gap-1.5 text-sm font-bold text-yellow-600">
               <Zap className="h-4 w-4" />
               <span className="tabular-nums">
                 {progress.totalXp.toLocaleString()}
@@ -622,7 +622,7 @@ export default function LearnPage() {
                   {/* Lesson nodes */}
                   <div className="relative flex flex-col items-center gap-4 px-4">
                     {/* Vertical path line */}
-                    <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-gray-700 via-gray-700 to-gray-800" />
+                    <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-green-300 via-green-200 to-green-100" />
 
                     {section.lessons.map((lesson, lessonIdx) => {
                       const delay = 0.05 * globalNodeIndex;
@@ -673,8 +673,8 @@ export default function LearnPage() {
       </div>
 
       {/* Legal disclaimer */}
-      <div className="border-t border-gray-800 px-4 py-3">
-        <LegalDisclaimer className="text-gray-500" />
+      <div className="border-t border-green-200 px-4 py-3 bg-white">
+        <LegalDisclaimer className="text-gray-400" />
       </div>
     </div>
   );
