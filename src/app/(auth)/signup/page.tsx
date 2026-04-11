@@ -11,6 +11,8 @@ import {
   Lock,
   ShieldCheck,
   UserRound,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +24,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { createClient } from "@/lib/supabase/client";
 
 interface FormErrors {
   displayName?: string;
@@ -36,7 +39,10 @@ export default function SignupPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [errors, setErrors] = React.useState<FormErrors>({});
+  const [serverError, setServerError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
   function validate(): boolean {
@@ -63,18 +69,32 @@ export default function SignupPage() {
     return Object.keys(newErrors).length === 0;
   }
 
-  function handleSignup(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSignup(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!validate()) return;
 
+    setServerError(null);
     setIsLoading(true);
 
-    // Store in localStorage and redirect to avatar creation (no Supabase yet)
-    localStorage.setItem("cashquest-email", email);
+    const supabase = createClient();
+    const { error: authError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { display_name: displayName.trim() },
+      },
+    });
+
+    if (authError) {
+      setServerError(authError.message);
+      setIsLoading(false);
+      return;
+    }
+
+    // Store display name for avatar page
     localStorage.setItem("cashquest-display-name", displayName.trim());
-    localStorage.removeItem("cashquest-guest");
-    document.cookie = "cashquest-guest=true; path=/; max-age=31536000";
     router.push("/avatar");
+    router.refresh();
   }
 
   function handleGuest() {
@@ -170,13 +190,21 @@ export default function SignupPage() {
                 <Lock className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   id="signup-password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="At least 6 characters"
                   autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 pr-10"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
               </div>
               {errors.password && (
                 <p className="text-xs font-semibold text-destructive">
@@ -197,13 +225,21 @@ export default function SignupPage() {
                 <ShieldCheck className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   id="signup-confirm"
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Type your password again"
                   autoComplete="new-password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 pr-10"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                >
+                  {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
               </div>
               {errors.confirmPassword && (
                 <p className="text-xs font-semibold text-destructive">
@@ -211,6 +247,13 @@ export default function SignupPage() {
                 </p>
               )}
             </div>
+
+            {/* Server error */}
+            {serverError && (
+              <p className="rounded-lg bg-destructive/10 px-3 py-2 text-sm font-semibold text-destructive">
+                {serverError}
+              </p>
+            )}
 
             {/* Signup button */}
             <Button type="submit" className="mt-2 w-full" disabled={isLoading}>

@@ -10,10 +10,51 @@ import {
   BarChart2,
   Flame,
   Coins,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGameState } from "@/hooks/use-game-state";
 import { getLevel, getXpForCurrentLevel } from "@/components/dashboard/xp-bar";
+import { createClient } from "@/lib/supabase/client";
+
+function useDisplayName() {
+  const [displayName, setDisplayName] = React.useState<string | null>(null);
+  const [isGuest, setIsGuest] = React.useState(false);
+
+  React.useEffect(() => {
+    async function load() {
+      try {
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const name =
+            (user.user_metadata?.display_name as string | undefined) ??
+            user.email?.split("@")[0] ??
+            "Player";
+          setDisplayName(name);
+          return;
+        }
+      } catch {
+        // Supabase unavailable — fall through to localStorage
+      }
+      // Guest / localStorage fallback
+      const stored = localStorage.getItem("cashquest-display-name");
+      setDisplayName(stored ?? "Guest Player");
+      setIsGuest(true);
+    }
+    load();
+  }, []);
+
+  return { displayName, isGuest };
+}
+
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
+}
 
 interface SidebarLink {
   href: string;
@@ -42,6 +83,7 @@ const sidebarLinks: SidebarLink[] = [
 const Sidebar: React.FC = () => {
   const pathname = usePathname();
   const { progress, isLoaded } = useGameState();
+  const { displayName, isGuest } = useDisplayName();
 
   const isActive = (href: string) => {
     if (href === "/dashboard") return pathname === "/dashboard";
@@ -99,6 +141,37 @@ const Sidebar: React.FC = () => {
               );
             })}
           </nav>
+
+          {/* User Profile */}
+          {displayName && (
+            <div className="mx-3 mb-2 flex items-center gap-3 rounded-xl bg-green-100 px-4 py-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white shadow-sm">
+                {getInitials(displayName)}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-bold text-green-900">
+                  {displayName}
+                </p>
+                <p className="text-xs text-green-600">
+                  {isGuest ? "Guest" : `Level ${isLoaded ? getLevel(progress.totalXp) : 1}`}
+                </p>
+              </div>
+              {!isGuest && (
+                <button
+                  type="button"
+                  aria-label="Sign out"
+                  onClick={async () => {
+                    const supabase = createClient();
+                    await supabase.auth.signOut();
+                    window.location.href = "/login";
+                  }}
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-green-500 transition-colors hover:bg-green-200 hover:text-green-800"
+                >
+                  <LogOut className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Bottom Section: XP + Streak */}
           {isLoaded && (

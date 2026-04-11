@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Coins, Mail, Lock, Sparkles, UserRound } from "lucide-react";
+import { Coins, Mail, Lock, Sparkles, UserRound, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,22 +15,35 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
     setIsLoading(true);
 
-    // Store email in localStorage and set guest cookie for middleware
-    localStorage.setItem("cashquest-email", email);
-    localStorage.removeItem("cashquest-guest");
-    document.cookie = "cashquest-guest=true; path=/; max-age=31536000";
+    const supabase = createClient();
+    const { error: authError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (authError) {
+      setError("Incorrect email or password. Please try again.");
+      setIsLoading(false);
+      return;
+    }
+
     router.push("/dashboard");
+    router.refresh();
   }
 
   function handleGuest() {
@@ -95,16 +108,38 @@ export default function LoginPage() {
                 <Lock className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   id="login-password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Your secret password"
                   required
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 pr-10"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
               </div>
             </div>
+
+            {/* Forgot password */}
+            <div className="flex justify-end">
+              <Link href="#" className="text-sm font-medium text-primary hover:underline">
+                Forgot Password?
+              </Link>
+            </div>
+
+            {/* Error message */}
+            {error && (
+              <p className="rounded-lg bg-destructive/10 px-3 py-2 text-sm font-semibold text-destructive">
+                {error}
+              </p>
+            )}
 
             {/* Login button */}
             <Button type="submit" className="mt-2 w-full" disabled={isLoading}>
