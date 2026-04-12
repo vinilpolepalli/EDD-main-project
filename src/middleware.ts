@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
 const isPublicRoute = createRouteMatcher([
   "/",
@@ -9,8 +10,17 @@ const isPublicRoute = createRouteMatcher([
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
-    await auth.protect();
+    await auth.protect({
+      unauthenticatedUrl: new URL("/login", request.url).toString(),
+    });
   }
+
+  // Clear legacy guest cookie so old sessions don't linger
+  const response = NextResponse.next();
+  if (request.cookies.has("cashquest-guest")) {
+    response.cookies.delete("cashquest-guest");
+  }
+  return response;
 });
 
 export const config = {
