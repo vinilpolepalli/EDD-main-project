@@ -1,11 +1,19 @@
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import { Sidebar } from "@/components/shared/sidebar";
 import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 
-export default function GameLayout({
+export default async function GameLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    redirect("/login");
+  }
+
   return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
