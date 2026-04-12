@@ -246,5 +246,98 @@
         "content": "If you suspect identity theft: 1) Place a fraud alert with all three credit bureaus immediately. 2) File a report at IdentityTheft.gov (the FTC's official site). 3) Review your credit reports for unfamiliar accounts. 4) Contact any companies where fraudulent accounts were opened. 5) File a police report. 6) Consider a credit freeze to prevent further damage. Acting quickly is crucial — the faster you respond, the less damage thieves can do. All of these steps are free."
       }
     ]
+  },
+  {
+    "id": "credit-9",
+    "topic": "credit",
+    "title": "Student Loans: Borrow Smart for College",
+    "order": 9,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The $1.7 Trillion Problem",
+        "content": "Americans collectively owe $1.7 trillion in student loan debt — more than credit card debt or auto loan debt combined. The average borrower graduates with $37,574 in student loans. While a college degree can be a great investment (graduates earn about $1 million more over their lifetime), borrowing too much for the wrong degree can saddle you with debt that takes decades to repay. Smart borrowing starts before you even apply."
+      },
+      {
+        "type": "definition",
+        "term": "Federal vs. Private Student Loans",
+        "definition": "Federal student loans come from the U.S. government with fixed, lower interest rates and flexible repayment plans. Private loans come from banks and may have higher, variable rates with fewer protections.",
+        "content": "Always exhaust federal loan options before turning to private loans. Federal loans have income-driven repayment plans, forgiveness programs, and deferment options that private lenders don't offer. Apply for federal aid by filling out the FAFSA (Free Application for Federal Student Aid)."
+      },
+      {
+        "type": "flashcard",
+        "title": "Student Loan Must-Knows",
+        "content": "FAFSA: The Free Application for Federal Student Aid — fill this out every year to access grants, work-study, and federal loans. It's free and you must complete it to get any federal financial aid. SUBSIDIZED vs UNSUBSIDIZED: Subsidized loans don't accrue interest while you're in school (government pays it). Unsubsidized loans accrue interest from day one. Always prefer subsidized! THE 10% RULE: Financial experts say your monthly loan payment after graduation shouldn't exceed 10% of your expected monthly gross income. If you're studying to be a teacher (avg $45,000/year = $3,750/month), don't borrow more than $375 worth of payments = roughly $35,000 total in loans. GRANTS > LOANS: Grants (like Pell Grants) are FREE money — you don't pay them back. Scholarships are also free. Always try grants and scholarships first!"
+      },
+      {
+        "type": "text",
+        "title": "Repayment: Life After Graduation",
+        "content": "Federal loan repayment starts 6 months after you graduate (or leave school). On the standard plan, you pay the same amount each month for 10 years. But there are income-driven repayment plans where your payment is based on what you earn — as low as 5-10% of discretionary income. Some careers offer Public Service Loan Forgiveness (PSLF): work for a government or nonprofit for 10 years while making payments, and the remainder is forgiven. Teachers, nurses, and social workers often qualify. Before borrowing for college, research what graduates in your intended field typically earn — and make sure your loan payments will be manageable."
+      }
+    ]
+  },
+  {
+    "id": "credit-10",
+    "topic": "credit",
+    "title": "Mortgages: Buying Your First Home",
+    "order": 10,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Biggest Purchase of Your Life",
+        "content": "For most people, buying a home is the largest financial decision they'll ever make. The average U.S. home costs about $412,000 — far more than anyone can pay in cash. That's where mortgages come in. A mortgage is a loan specifically for real estate, usually paid back over 15-30 years. Understanding how mortgages work BEFORE you need one is one of the most valuable financial skills you can have."
+      },
+      {
+        "type": "definition",
+        "term": "Mortgage",
+        "definition": "A loan used to purchase real estate (land or a home), where the property itself serves as collateral. If you stop making payments, the lender can take the property through a legal process called foreclosure.",
+        "content": "A 30-year mortgage on a $400,000 home at 7% interest means your monthly payment is about $2,661 — and you'll pay roughly $558,000 total ($400k principal + $158k interest!). Your credit score dramatically affects the interest rate you qualify for."
+      },
+      {
+        "type": "flashcard",
+        "title": "Mortgage Terms You Must Know",
+        "content": "DOWN PAYMENT: The cash you pay upfront. Conventional loans typically require 5-20%. 20% down ($80,000 on a $400k home) avoids PMI. PMI (Private Mortgage Insurance): If you put less than 20% down, you pay an extra $100-300/month until you have 20% equity. It protects the lender, not you! FIXED vs ADJUSTABLE RATE: Fixed rate stays the same for 30 years — predictable. Adjustable rate (ARM) starts low but can rise significantly after a few years — risky! 15-YEAR vs 30-YEAR: A 15-year mortgage has higher payments but you pay far less interest and own the home faster. A 30-year has lower payments but costs much more overall. PRE-APPROVAL: Before house hunting, get pre-approved to know how much you can borrow and signal to sellers you're serious."
+      },
+      {
+        "type": "text",
+        "title": "How Your Credit Score Affects Your Mortgage",
+        "content": "This is where good credit really pays off — literally. Consider a $350,000 30-year mortgage: With a 760+ credit score, you might get 6.5% interest — monthly payment $2,212, total interest paid $446,000. With a 620 credit score, you might get 8.0% — monthly payment $2,568, total interest $574,000. The difference? $128,000 MORE paid just because of a lower credit score! That's why building good credit in your teens and 20s is so important. Start now, and a decade from now when you're ready to buy a home, you'll qualify for the best rates."
+      }
+    ]
+  },
+  {
+    "id": "credit-11",
+    "topic": "credit",
+    "title": "Predatory Lenders: Avoiding the Traps",
+    "order": 11,
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "When Lenders Prey on Desperation",
+        "content": "Not all lenders are on your side. Some financial companies specifically target people who are desperate for cash, charging obscenely high interest rates and fees that trap borrowers in cycles of debt. These are called predatory lenders, and they're legal — but they're also extremely dangerous. The #1 defense against them is knowing they exist and recognizing their warning signs before you need emergency money."
+      },
+      {
+        "type": "definition",
+        "term": "Payday Loan",
+        "definition": "A short-term, high-cost loan where you borrow against your next paycheck. APRs can exceed 400% — meaning a $300 loan might cost $50 in fees for just 2 weeks.",
+        "content": "A $300 payday loan with a $50 fee has an APR of 434%. Most payday borrowers can't repay on time and roll over the loan repeatedly, paying $50 every 2 weeks. $300 borrowed could end up costing over $600 in fees alone within just a few months."
+      },
+      {
+        "type": "flashcard",
+        "title": "Predatory Lending Red Flags",
+        "content": "RED FLAG #1 — GUARANTEED APPROVAL: Legit lenders check your credit. 'No credit check, guaranteed approval!' means they don't care if you can repay — because the fees will make them money regardless. RED FLAG #2 — TRIPLE-DIGIT APR: Any loan above 36% APR is considered predatory by most consumer advocates. 400% APR payday loans, 300% title loans — these are traps. RED FLAG #3 — ROLLOVER FEES: 'Just pay a fee to extend your loan another 2 weeks!' This is how payday lenders trap people. RED FLAG #4 — COLLATERAL REQUIRED FOR SMALL LOANS: 'Pawn your car title for $500!' If you can't repay, they take your car. RED FLAG #5 — RENT-TO-OWN: Pay $30/week for 52 weeks to own a $400 TV? That's $1,560 for a $400 item — a 290% effective APR!"
+      },
+      {
+        "type": "text",
+        "title": "Better Alternatives When You Need Emergency Cash",
+        "content": "Before turning to predatory lenders, try these options in order: 1) Emergency fund (this is why you build one!). 2) Ask family or friends for a short-term loan. 3) Negotiate a payment plan with whoever you owe. 4) Credit union personal loans (often 6-18% APR, much lower than payday). 5) 0% intro APR credit cards (you need decent credit). 6) Employer payroll advance (some employers offer this for free). 7) Nonprofit emergency assistance — many local charities help with rent, utilities, and food. Predatory lenders should be an absolute last resort because the cure often becomes worse than the disease."
+      }
+    ]
   }
 ]

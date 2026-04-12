@@ -298,5 +298,80 @@
     "explanation": "This is the magic of compound interest! Maya invested only $12,000 total (10 years x $100/mo) but started early, giving her money 40+ years to compound. Leo invested $48,000 (40 years x $100/mo) but started later. Maya's early start often results in MORE money despite investing less. Time is your greatest financial asset!",
     "ceeStandard": "CEE.PF.3",
     "difficulty": "advanced"
+  },
+  {
+    "id": "budgeting-q21",
+    "topic": "budgeting",
+    "question": "What is a stock?",
+    "options": [
+      "A loan you give to a company",
+      "A share of ownership in a company",
+      "A type of bank account",
+      "Government savings bond"
+    ],
+    "correctIndex": 1,
+    "explanation": "A stock represents partial ownership of a company. When you buy one share of Apple, you become a tiny part-owner of Apple Inc. If Apple grows and earns more profit, your share grows in value. If it struggles, your share may lose value. Stocks historically return about 10% per year on average, far outpacing savings accounts.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q22",
+    "topic": "budgeting",
+    "question": "What is an index fund?",
+    "options": [
+      "A fund that only invests in one company",
+      "A fund that tracks a market index like the S&P 500, spreading money across many companies",
+      "A savings account with a fixed interest rate",
+      "A government bond with guaranteed returns"
+    ],
+    "correctIndex": 1,
+    "explanation": "An index fund tracks a market index (like the S&P 500 — the 500 largest U.S. companies) and automatically invests in all the companies in that index. This gives you diversification across hundreds of companies with very low fees. Warren Buffett famously recommends index funds for most investors. The S&P 500 has historically returned about 10.5% per year.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q23",
+    "topic": "budgeting",
+    "question": "What is a Roth IRA and why is it especially good for young people?",
+    "options": [
+      "A high-interest savings account — good because the bank pays you more",
+      "A retirement account where you pay taxes now but all growth and withdrawals are tax-free — good because you're in a low bracket now",
+      "A type of checking account with no fees",
+      "A government-issued bond for people under 25"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Roth IRA lets you invest after-tax money now, and all future growth and withdrawals are completely tax-free. Since young people are typically in low tax brackets, paying taxes now (at a low rate) and never paying taxes again on decades of growth is a fantastic deal. $7,000 invested at age 20 in a Roth IRA could become $200,000+ tax-free by retirement.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "budgeting-q24",
+    "topic": "budgeting",
+    "question": "Your employer offers a 401(k) match: they'll match 50% of your contributions up to 6% of your $50,000 salary. What is the employer's maximum annual contribution?",
+    "options": [
+      "$1,500",
+      "$3,000",
+      "$1,000",
+      "$6,000"
+    ],
+    "correctIndex": 0,
+    "explanation": "6% of $50,000 = $3,000 (your maximum eligible contribution). The employer matches 50% of that = $1,500. So contributing $3,000 yourself earns you a free $1,500 from your employer — a guaranteed 50% return before the market does anything! Always contribute at least enough to get the full employer match.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "budgeting-q25",
+    "topic": "budgeting",
+    "question": "What is an insurance deductible?",
+    "options": [
+      "The monthly fee you pay to keep insurance active",
+      "The amount you pay out-of-pocket before insurance starts covering costs",
+      "A discount on insurance for good behavior",
+      "The maximum amount insurance will ever pay"
+    ],
+    "correctIndex": 1,
+    "explanation": "A deductible is what you pay first before insurance kicks in. If your health insurance has a $1,000 deductible and you have a $5,000 surgery, you pay the first $1,000 and insurance covers the rest. Higher deductibles usually mean lower monthly premiums (you take more risk). Lower deductibles mean higher premiums (insurance takes more risk). Choose based on how much you can afford to pay in a worst-case scenario.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate"
   }
 ]

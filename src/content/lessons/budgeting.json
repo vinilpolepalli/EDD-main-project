@@ -246,5 +246,98 @@
         "content": "THE PERFECTION TRAP: Your budget won't be perfect the first month. Or the second. That's normal! Adjust it each month based on what actually happened. FORGETTING FUN: A budget with zero fun money is a budget you'll abandon. Always include some 'guilt-free' spending. IGNORING IRREGULAR EXPENSES: Things like birthday gifts, school supplies, or holiday shopping happen every year but not every month. Spread these costs across all 12 months in your budget. NOT TRACKING: A budget you never look at is useless. Check in weekly — it takes 2 minutes."
       }
     ]
+  },
+  {
+    "id": "budgeting-9",
+    "topic": "budgeting",
+    "title": "Investing Basics: Growing Your Money",
+    "order": 9,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Your Money Can Work For You",
+        "content": "Saving money in a bank account is great, but there's an even more powerful strategy: investing. When you invest, you put your money into something with the expectation it will grow over time. Instead of your money just sitting there earning a tiny amount of interest, it actively grows. The stock market has historically returned an average of about 10% per year — that's roughly 100 times better than a typical savings account!"
+      },
+      {
+        "type": "definition",
+        "term": "Stock",
+        "definition": "A share of ownership in a company. When you buy a stock, you become a part-owner of that business. If the company does well, your stock grows in value. If it struggles, your stock may lose value.",
+        "content": "Buying one share of Apple stock means you own a tiny piece of Apple Inc. As Apple grows and earns profits, your share becomes more valuable. This is how people build wealth — by owning pieces of successful businesses."
+      },
+      {
+        "type": "flashcard",
+        "title": "Stocks vs Bonds vs Index Funds",
+        "content": "STOCKS: Ownership in one company. Higher risk, higher potential reward. A single bad year for that company could hurt you badly. BONDS: Loans you make to companies or governments. Lower risk, lower reward — you earn steady interest. MUTUAL FUNDS: A pool of many investors' money spread across dozens or hundreds of stocks. More diversified = less risky than one stock. INDEX FUNDS: Like mutual funds, but they track a market index (like the S&P 500 — the 500 biggest U.S. companies). Very low fees, great long-term returns. Warren Buffett recommends these for most people! DIVERSIFICATION: 'Don't put all your eggs in one basket.' Spreading money across many investments reduces risk."
+      },
+      {
+        "type": "text",
+        "title": "The S&P 500: America's Report Card",
+        "content": "The S&P 500 is an index that tracks the 500 largest publicly traded U.S. companies — Apple, Google, Amazon, Microsoft, and 496 others. When people say 'the stock market went up 10% this year,' they usually mean the S&P 500 went up 10%. Index funds that track the S&P 500 are one of the best long-term investments available. Since 1957, the S&P 500 has returned an average of about 10.5% per year. $10,000 invested in an S&P 500 index fund 30 years ago would be worth over $175,000 today — without you doing anything else!"
+      }
+    ]
+  },
+  {
+    "id": "budgeting-10",
+    "topic": "budgeting",
+    "title": "Retirement Accounts: Start Now",
+    "order": 10,
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Why Care About Retirement at Your Age?",
+        "content": "Retirement seems impossibly far away when you're 12. But here's the wild truth: the single most powerful financial decision you'll ever make is how early you start saving for retirement. A 15-year-old who invests just $100/month could retire with over $1 million — while someone who waits until 35 and invests the same amount would end up with less than half that. Time is the secret ingredient that makes retirement accounts so incredibly powerful."
+      },
+      {
+        "type": "definition",
+        "term": "401(k)",
+        "definition": "A retirement savings account offered by employers. You contribute pre-tax money (reducing your taxable income), it grows tax-free, and you pay taxes when you withdraw in retirement. Many employers 'match' your contributions — essentially free money!",
+        "content": "If your employer offers a 3% match and you earn $50,000, they'll add $1,500 per year to your retirement just for participating. Not taking the full employer match is like turning down free money."
+      },
+      {
+        "type": "flashcard",
+        "title": "401k vs Traditional IRA vs Roth IRA",
+        "content": "401(k): Offered by employer. 2024 contribution limit: $23,000. Taxes paid when you withdraw in retirement (traditional) or upfront (Roth 401k). Employer may match! TRADITIONAL IRA: Individual account you open yourself. 2024 limit: $7,000/year. Tax deductible now, taxed when you withdraw. ROTH IRA: Individual account, $7,000/year limit. No tax deduction now, but ALL growth and withdrawals are TAX-FREE in retirement! For young people, Roth is usually best — you're in a low tax bracket now, and your money has decades to grow tax-free. BEST STRATEGY: 1) Get full employer match in 401k, 2) Max out Roth IRA, 3) If more to invest, go back to 401k."
+      },
+      {
+        "type": "text",
+        "title": "The Employer Match: Literally Free Money",
+        "content": "Here's why you should ALWAYS contribute enough to get your full employer 401(k) match — it's an instant 50-100% return. If your employer matches 50% of your contributions up to 6% of salary: you earn $60,000/year, contribute 6% = $3,600/year, employer adds $1,800 instantly. That's a 50% return before the market even does anything! No investment, no savings account, nothing else gives you a guaranteed 50% return. The moment you get a job with a 401(k) match, contribute enough to get all of it."
+      }
+    ]
+  },
+  {
+    "id": "budgeting-11",
+    "topic": "budgeting",
+    "title": "Insurance: Your Financial Safety Shield",
+    "order": 11,
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Protecting Everything You've Worked For",
+        "content": "You've learned how to earn, budget, save, and invest. But there's one more piece of the financial puzzle: protecting what you have. Insurance is how you transfer risk — you pay a small, predictable amount (your premium) so that if something catastrophic happens, you're covered and won't lose everything you've worked for. Without insurance, one bad accident or illness could wipe out years of savings."
+      },
+      {
+        "type": "definition",
+        "term": "Insurance Premium",
+        "definition": "The amount you pay (usually monthly or annually) to keep your insurance coverage active. In exchange, the insurance company agrees to cover certain costs if something bad happens.",
+        "content": "Think of insurance like a club membership for catastrophes. You pay dues every month, and if disaster strikes, the 'club' covers the huge costs. If nothing bad happens, your premiums still protected your peace of mind."
+      },
+      {
+        "type": "flashcard",
+        "title": "Types of Insurance Everyone Needs",
+        "content": "HEALTH INSURANCE: Covers doctor visits, hospital stays, prescriptions. Without it, a hospital stay can cost $30,000+ per day. Most people get this through employers or parents until age 26. CAR INSURANCE: Required by law in almost every state. Covers accidents, theft, and damage. Even a minor fender-bender can cost $5,000+ without it. RENTERS INSURANCE: If you ever rent an apartment, this covers your belongings if they're stolen or damaged. Only costs $15-30/month! LIFE INSURANCE: Pays your family if you die. Critical when people depend on your income. DISABILITY INSURANCE: Replaces income if you can't work due to injury or illness. Your income is your most valuable asset! DEDUCTIBLE: The amount you pay out-of-pocket before insurance kicks in. Higher deductible = lower premium."
+      },
+      {
+        "type": "text",
+        "title": "The Cost of Being Uninsured",
+        "content": "Here's why insurance is worth every penny: the average emergency room visit costs $1,500-2,000 without insurance. A broken arm can cost $7,500+ to treat. A single night in a hospital averages $11,700. A serious car accident can easily rack up $50,000 in medical and vehicle costs. Compare that to paying $200-400/month in health and auto insurance. Insurance feels expensive until you need it — then it feels like the best decision you ever made. Always carry at least the minimum required coverage, and add more as your assets grow."
+      }
+    ]
   }
 ]

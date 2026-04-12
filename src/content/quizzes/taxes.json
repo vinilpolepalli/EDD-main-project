@@ -298,5 +298,80 @@
     "explanation": "The Failure to File penalty is 5% of unpaid taxes per month, up to 25% maximum. That's 10 times worse than the Failure to Pay penalty (0.5% per month)! If you owe $2,000 and don't file for 5 months, you'd owe an extra $500 in penalties plus interest. Even if you can't pay, ALWAYS file on time to avoid this steep penalty.",
     "ceeStandard": "CEE.PF.5",
     "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q21",
+    "topic": "taxes",
+    "question": "You drive for a rideshare app and earn $8,000 this year. How much should you save for taxes?",
+    "options": [
+      "Nothing — you don't make enough to owe taxes",
+      "About $800 (10%)",
+      "About $2,000-2,400 (25-30%)",
+      "About $4,000 (50%)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gig workers should save 25-30% of earnings for taxes. As a self-employed person, you pay both employee AND employer Social Security/Medicare (15.3% combined), plus regular income tax. On $8,000, that's roughly $1,224 in self-employment tax alone plus income tax — so $2,000-2,400 is a solid estimate. Never spend all gig income without setting aside your tax share first!",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q22",
+    "topic": "taxes",
+    "question": "What is the main benefit of a Health Savings Account (HSA)?",
+    "options": [
+      "You can use it to buy anything, not just healthcare",
+      "It has triple tax advantages: tax-deductible contributions, tax-free growth, and tax-free withdrawals for medical use",
+      "The government matches your contributions",
+      "There's no annual contribution limit"
+    ],
+    "correctIndex": 1,
+    "explanation": "An HSA is the only triple-tax-advantaged account: 1) Contributions are tax-deductible, 2) Money grows tax-free, 3) Withdrawals for qualified medical expenses are tax-free. After age 65, you can withdraw for anything (taxed like a regular 401k). You must have a high-deductible health plan to qualify. Maxing out an HSA ($4,150/year individual in 2024) is one of the best tax strategies available.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "taxes-q23",
+    "topic": "taxes",
+    "question": "What is a 1099 form?",
+    "options": [
+      "A tax form from your employer showing your annual wages",
+      "A form used to report freelance, gig work, or investment income where no taxes were withheld",
+      "An IRS penalty notice for late filing",
+      "A form to claim a tax refund"
+    ],
+    "correctIndex": 1,
+    "explanation": "A 1099 is sent to you (and the IRS) when you earn $600+ from a source other than a regular employer — like freelance work, Uber driving, Etsy sales, or investment dividends. Unlike a W-2, a 1099 shows income with NO taxes withheld, meaning you owe everything. Keep track of all your 1099s each year and save for taxes accordingly.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q24",
+    "topic": "taxes",
+    "question": "Which state has NO state income tax, meaning residents keep more of every dollar they earn?",
+    "options": [
+      "California",
+      "New York",
+      "Texas",
+      "Oregon"
+    ],
+    "correctIndex": 2,
+    "explanation": "Texas is one of nine states with no state income tax (alongside Florida, Nevada, Wyoming, and others). California has one of the highest state income tax rates in the country (up to 13.3%). For a high earner, moving from California to Texas could mean saving tens of thousands of dollars per year in state income taxes alone — which is why many people and businesses have relocated.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "taxes-q25",
+    "topic": "taxes",
+    "question": "You invest $5,000 in a Roth IRA vs. a regular taxable account, both earning 8% for 30 years. Approximately how much more will the Roth IRA be worth?",
+    "options": [
+      "About the same — the tax savings don't matter much",
+      "About $5,000 more",
+      "About $20,000 more",
+      "About $60,000+ more, because all the compound growth is tax-free"
+    ],
+    "correctIndex": 3,
+    "explanation": "In a taxable account, you'd pay taxes on dividends and gains each year, significantly reducing compound growth. In a Roth IRA, all growth is completely tax-free. On $5,000 at 8% for 30 years: taxable account yields roughly $35,000 (after ongoing taxes). Roth IRA yields roughly $50,000-60,000+ (fully tax-free). The tax-free compounding makes a massive difference over decades — one of the best reasons to use tax-advantaged accounts.",
+    "ceeStandard": "CEE.PF.5",
+    "difficulty": "advanced"
   }
 ]

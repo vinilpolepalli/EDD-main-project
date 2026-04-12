@@ -298,5 +298,80 @@
     "explanation": "About 20% (1 in 5) of credit reports contain errors! These could be wrong addresses, accounts that aren't yours, or payments incorrectly marked as late. These errors can seriously hurt your score. That's why you should check your free credit reports annually at AnnualCreditReport.com and dispute any mistakes.",
     "ceeStandard": "CEE.PF.4",
     "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q21",
+    "topic": "credit",
+    "question": "Which type of student loan is generally better — subsidized or unsubsidized?",
+    "options": [
+      "Unsubsidized — they have lower interest rates",
+      "Subsidized — the government pays the interest while you're in school",
+      "They're exactly the same",
+      "Private loans are always better than both"
+    ],
+    "correctIndex": 1,
+    "explanation": "Subsidized federal loans are better because the government pays the interest while you're enrolled in school at least half-time. With unsubsidized loans, interest starts accruing immediately — so by the time you graduate, you owe more than you borrowed. Always accept subsidized loans first! Private loans typically have fewer protections, higher or variable rates, and no forgiveness options.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "credit-q22",
+    "topic": "credit",
+    "question": "According to the '10% rule' for student loans, if you expect to earn $40,000/year after graduation, how much should you borrow total?",
+    "options": [
+      "Up to $100,000",
+      "Up to $60,000",
+      "Up to $35,000",
+      "As much as you need, regardless of income"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 10% rule says your monthly loan payment shouldn't exceed 10% of your gross monthly income. $40,000/year = $3,333/month. 10% = $333/month. On a standard 10-year repayment plan, $333/month corresponds to roughly $30,000-35,000 in loans. Borrowing $100,000 for a $40,000/year job is a common but painful mistake that takes decades to repay.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q23",
+    "topic": "credit",
+    "question": "What is PMI (Private Mortgage Insurance) and when is it required?",
+    "options": [
+      "Insurance that protects you if you lose your job",
+      "Extra coverage added to your homeowner's insurance",
+      "A fee charged when you make less than a 20% down payment on a home",
+      "A type of life insurance required by all mortgage lenders"
+    ],
+    "correctIndex": 2,
+    "explanation": "PMI is charged by lenders when your down payment is less than 20% of the home's purchase price. It protects the LENDER (not you!) if you default. PMI typically costs $100-300/month and is added to your mortgage payment until you reach 20% equity in your home. Making a 20% down payment eliminates this extra cost — one more reason to save aggressively before buying a home.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q24",
+    "topic": "credit",
+    "question": "A payday lender offers you $300 for 2 weeks with a $50 fee. What is the approximate APR of this loan?",
+    "options": [
+      "About 17%",
+      "About 50%",
+      "About 100%",
+      "About 434%"
+    ],
+    "correctIndex": 3,
+    "explanation": "$50 fee on $300 for 2 weeks. There are 26 two-week periods in a year. $50 × 26 = $1,300 in annual fees on a $300 loan. $1,300 / $300 = 433% APR. This is why payday loans are so dangerous — they look cheap for a short period but have astronomical annual rates. Most consumer advocates say any loan above 36% APR is predatory.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "credit-q25",
+    "topic": "credit",
+    "question": "Which is the BEST alternative if you need emergency cash quickly?",
+    "options": [
+      "A payday loan — fast and easy",
+      "A pawn shop — quick cash for your valuables",
+      "Your emergency fund or a credit union personal loan",
+      "A title loan using your car as collateral"
+    ],
+    "correctIndex": 2,
+    "explanation": "Your emergency fund is the #1 reason you build one — to avoid predatory options. If you don't have one, a credit union personal loan is a much better option (typically 6-18% APR vs 400%+ for payday loans). Payday loans, pawn shops, and title loans all charge extremely high effective rates and can trap you in debt cycles or cost you valuable possessions.",
+    "ceeStandard": "CEE.PF.4",
+    "difficulty": "intermediate"
   }
 ]
