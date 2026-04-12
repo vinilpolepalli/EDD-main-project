@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useSignUp } from "@clerk/nextjs/legacy";
 import {
   Rocket,
   User,
@@ -24,7 +25,6 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/lib/supabase/client";
 
 interface FormErrors {
   displayName?: string;
@@ -35,6 +35,7 @@ interface FormErrors {
 
 export default function SignupPage() {
   const router = useRouter();
+  const { signUp, setActive, isLoaded } = useSignUp();
   const [displayName, setDisplayName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -57,8 +58,8 @@ export default function SignupPage() {
       newErrors.email = "Please enter a valid email address";
     }
 
-    if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    if (password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
     }
 
     if (password !== confirmPassword) {
@@ -71,30 +72,36 @@ export default function SignupPage() {
 
   async function handleSignup(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!validate()) return;
+    if (!isLoaded || !validate()) return;
 
     setServerError(null);
     setIsLoading(true);
 
-    const supabase = createClient();
-    const { error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { display_name: displayName.trim() },
-      },
-    });
+    try {
+      const result = await signUp.create({
+        emailAddress: email,
+        password,
+        firstName: displayName.trim(),
+      });
 
-    if (authError) {
-      setServerError(authError.message);
+      if (result.status === "complete") {
+        await setActive({ session: result.createdSessionId });
+        localStorage.setItem("cashquest-display-name", displayName.trim());
+        router.push("/avatar");
+      } else {
+        // Email verification required — tell the user
+        setServerError("Check your email for a verification link, then log in.");
+        setIsLoading(false);
+      }
+    } catch (err: unknown) {
+      const clerkError = err as { errors?: { longMessage?: string; message?: string }[] };
+      const msg =
+        clerkError?.errors?.[0]?.longMessage ??
+        clerkError?.errors?.[0]?.message ??
+        "Something went wrong. Please try again.";
+      setServerError(msg);
       setIsLoading(false);
-      return;
     }
-
-    // Store display name for avatar page
-    localStorage.setItem("cashquest-display-name", displayName.trim());
-    router.push("/avatar");
-    router.refresh();
   }
 
   function handleGuest() {
@@ -191,7 +198,7 @@ export default function SignupPage() {
                 <Input
                   id="signup-password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="At least 6 characters"
+                  placeholder="At least 8 characters"
                   autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -256,7 +263,7 @@ export default function SignupPage() {
             )}
 
             {/* Signup button */}
-            <Button type="submit" className="mt-2 w-full" disabled={isLoading}>
+            <Button type="submit" className="mt-2 w-full" disabled={isLoading || !isLoaded}>
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <Rocket className="h-5 w-5 animate-bounce" />

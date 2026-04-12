@@ -15,38 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useGameState } from "@/hooks/use-game-state";
 import { getLevel, getXpForCurrentLevel } from "@/components/dashboard/xp-bar";
-import { createClient } from "@/lib/supabase/client";
-
-function useDisplayName() {
-  const [displayName, setDisplayName] = React.useState<string | null>(null);
-  const [isGuest, setIsGuest] = React.useState(false);
-
-  React.useEffect(() => {
-    async function load() {
-      try {
-        const supabase = createClient();
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const name =
-            (user.user_metadata?.display_name as string | undefined) ??
-            user.email?.split("@")[0] ??
-            "Player";
-          setDisplayName(name);
-          return;
-        }
-      } catch {
-        // Supabase unavailable — fall through to localStorage
-      }
-      // Guest / localStorage fallback
-      const stored = localStorage.getItem("cashquest-display-name");
-      setDisplayName(stored ?? "Guest Player");
-      setIsGuest(true);
-    }
-    load();
-  }, []);
-
-  return { displayName, isGuest };
-}
+import { useUser, useClerk } from "@clerk/nextjs";
 
 function getInitials(name: string): string {
   return name
@@ -83,7 +52,11 @@ const sidebarLinks: SidebarLink[] = [
 const Sidebar: React.FC = () => {
   const pathname = usePathname();
   const { progress, isLoaded } = useGameState();
-  const { displayName, isGuest } = useDisplayName();
+  const { user } = useUser();
+  const { signOut } = useClerk();
+
+  const displayName = user?.firstName ?? user?.emailAddresses?.[0]?.emailAddress?.split("@")[0] ?? null;
+  const isGuest = !user;
 
   const isActive = (href: string) => {
     if (href === "/dashboard") return pathname === "/dashboard";
@@ -160,11 +133,7 @@ const Sidebar: React.FC = () => {
                 <button
                   type="button"
                   aria-label="Sign out"
-                  onClick={async () => {
-                    const supabase = createClient();
-                    await supabase.auth.signOut();
-                    window.location.href = "/login";
-                  }}
+                  onClick={() => signOut({ redirectUrl: "/login" })}
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-green-500 transition-colors hover:bg-green-200 hover:text-green-800"
                 >
                   <LogOut className="h-4 w-4" />

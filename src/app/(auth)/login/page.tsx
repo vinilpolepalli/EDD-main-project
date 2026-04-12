@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useSignIn } from "@clerk/nextjs/legacy";
 import { Coins, Mail, Lock, Sparkles, UserRound, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,10 +16,10 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { signIn, setActive, isLoaded } = useSignIn();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
@@ -27,23 +28,30 @@ export default function LoginPage() {
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!isLoaded) return;
     setError(null);
     setIsLoading(true);
 
-    const supabase = createClient();
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const result = await signIn.create({
+        identifier: email,
+        password,
+      });
 
-    if (authError) {
-      setError("Incorrect email or password. Please try again.");
+      if (result.status === "complete") {
+        await setActive({ session: result.createdSessionId });
+        router.push("/dashboard");
+      }
+    } catch (err: unknown) {
+      const clerkError = err as { errors?: { longMessage?: string; message?: string }[] };
+      const msg =
+        clerkError?.errors?.[0]?.longMessage ??
+        clerkError?.errors?.[0]?.message ??
+        "Incorrect email or password. Please try again.";
+      setError(msg);
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    router.push("/dashboard");
-    router.refresh();
   }
 
   function handleGuest() {
@@ -142,7 +150,7 @@ export default function LoginPage() {
             )}
 
             {/* Login button */}
-            <Button type="submit" className="mt-2 w-full" disabled={isLoading}>
+            <Button type="submit" className="mt-2 w-full" disabled={isLoading || !isLoaded}>
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <Sparkles className="h-5 w-5 animate-spin" />
