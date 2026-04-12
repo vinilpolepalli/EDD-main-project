@@ -133,7 +133,7 @@ const Sidebar: React.FC = () => {
                 <button
                   type="button"
                   aria-label="Sign out"
-                  onClick={() => signOut({ redirectUrl: "/login" })}
+                  onClick={() => signOut({ redirectUrl: "/" })}
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-green-500 transition-colors hover:bg-green-200 hover:text-green-800"
                 >
                   <LogOut className="h-4 w-4" />
