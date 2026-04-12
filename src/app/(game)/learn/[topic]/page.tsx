@@ -70,27 +70,27 @@ const topicColors: Record<
 > = {
   credit: {
     bg: "bg-indigo-500",
-    light: "bg-indigo-500/10",
-    text: "text-indigo-400",
-    border: "border-indigo-500/30",
+    light: "bg-indigo-50",
+    text: "text-indigo-600",
+    border: "border-indigo-200",
     headerBg: "bg-indigo-500",
     progressBg: "bg-indigo-500",
     ringColor: "ring-indigo-400",
   },
   taxes: {
     bg: "bg-amber-500",
-    light: "bg-amber-500/10",
-    text: "text-amber-400",
-    border: "border-amber-500/30",
+    light: "bg-amber-50",
+    text: "text-amber-600",
+    border: "border-amber-200",
     headerBg: "bg-amber-500",
     progressBg: "bg-amber-500",
     ringColor: "ring-amber-400",
   },
   budgeting: {
     bg: "bg-emerald-500",
-    light: "bg-emerald-500/10",
-    text: "text-emerald-400",
-    border: "border-emerald-500/30",
+    light: "bg-emerald-50",
+    text: "text-emerald-600",
+    border: "border-emerald-200",
     headerBg: "bg-emerald-500",
     progressBg: "bg-emerald-500",
     ringColor: "ring-emerald-400",
@@ -125,19 +125,19 @@ function SectionRenderer({
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
         {section.title && (
-          <h4 className="flex items-center gap-2 text-sm font-extrabold text-gray-200">
-            <BookOpen className="h-4 w-4 text-gray-500" />
+          <h4 className="flex items-center gap-2 text-sm font-extrabold text-gray-900">
+            <BookOpen className="h-4 w-4 text-gray-400" />
             {section.title}
           </h4>
         )}
-        <p className="text-sm leading-relaxed text-gray-400">
+        <p className="text-sm leading-relaxed text-gray-600">
           {section.content}
         </p>
 
         {/* Key takeaway callout for text sections */}
         {section.content.length > 200 && (
-          <div className="mt-2 rounded-xl border border-gray-700 bg-gray-800/60 p-3">
-            <p className="text-xs font-bold text-gray-400">
+          <div className="mt-2 rounded-xl border border-gray-200 bg-gray-50 p-3">
+            <p className="text-xs font-bold text-gray-600">
               <span className={cn("font-extrabold", colors.text)}>
                 Key Takeaway:
               </span>{" "}
@@ -158,7 +158,7 @@ function SectionRenderer({
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
         {section.title && (
-          <h4 className="flex items-center gap-2 text-sm font-extrabold text-gray-200">
+          <h4 className="flex items-center gap-2 text-sm font-extrabold text-gray-900">
             <Lightbulb className="h-4 w-4 text-yellow-500" />
             {section.title}
           </h4>
@@ -185,17 +185,17 @@ function SectionRenderer({
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
         <div className="flex items-center gap-2">
-          <BookOpen className="h-4 w-4 text-gray-400" />
+          <BookOpen className="h-4 w-4 text-gray-500" />
           <span className={cn("text-sm font-extrabold", colors.text)}>
             {section.term}
           </span>
         </div>
         {section.definition && (
-          <p className="text-sm font-bold leading-relaxed text-gray-200">
+          <p className="text-sm font-bold leading-relaxed text-gray-900">
             {section.definition}
           </p>
         )}
-        <p className="text-sm leading-relaxed text-gray-400">
+        <p className="text-sm leading-relaxed text-gray-600">
           {section.content}
         </p>
       </motion.div>
@@ -231,19 +231,19 @@ export default function TopicLessonsPage() {
   // Validate topic
   if (!isValidTopic(topicParam)) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900 px-4">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-4">
         <div className="flex flex-col items-center gap-4 py-20">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-500/20">
-            <AlertTriangle className="h-8 w-8 text-red-400" />
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-100">
+            <AlertTriangle className="h-8 w-8 text-red-500" />
           </div>
-          <h2 className="text-xl font-extrabold text-white">
+          <h2 className="text-xl font-extrabold text-gray-900">
             Topic Not Found
           </h2>
-          <p className="text-center text-sm text-gray-400">
+          <p className="text-center text-sm text-gray-500">
             The topic &quot;{String(topicParam)}&quot; doesn&apos;t exist.
           </p>
           <Link href="/learn">
-            <Button className="mt-2 min-h-[48px] rounded-xl bg-indigo-500 font-extrabold text-white hover:bg-indigo-600">
+            <Button className="mt-2 min-h-[48px] rounded-xl bg-green-600 font-extrabold text-white hover:bg-green-700">
               Back to Learn Path
             </Button>
           </Link>
@@ -296,11 +296,11 @@ export default function TopicLessonsPage() {
 
   if (!isLoaded) {
     return (
-      <div className="flex min-h-screen flex-col bg-gray-900">
+      <div className="flex min-h-screen flex-col bg-gray-50">
         <div className="mx-auto w-full max-w-2xl px-4 py-8">
-          <Skeleton className="mb-4 h-8 w-full rounded-lg bg-gray-800" />
+          <Skeleton className="mb-4 h-8 w-full rounded-lg bg-gray-200" />
           {[0, 1, 2, 3, 4].map((i) => (
-            <Skeleton key={i} className="mb-3 h-20 w-full rounded-xl bg-gray-800" />
+            <Skeleton key={i} className="mb-3 h-20 w-full rounded-xl bg-gray-200" />
           ))}
         </div>
       </div>
@@ -308,7 +308,7 @@ export default function TopicLessonsPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gray-900">
+    <div className="flex min-h-screen flex-col bg-gray-50">
       {/* Header */}
       <motion.header
         className={cn("sticky top-0 z-30 shadow-md", colors.headerBg)}
@@ -355,8 +355,8 @@ export default function TopicLessonsPage() {
           transition={{ duration: 0.3 }}
         >
           {/* Breadcrumb */}
-          <div className="flex items-center gap-1.5 text-xs font-bold text-gray-500">
-            <Link href="/learn" className="transition-colors hover:text-gray-300">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-gray-400">
+            <Link href="/learn" className="transition-colors hover:text-gray-700">
               Learn
             </Link>
             <ChevronRight className="h-3 w-3" />
@@ -364,7 +364,7 @@ export default function TopicLessonsPage() {
           </div>
 
           {/* Progress Header */}
-          <div className="flex flex-col gap-3 rounded-xl border border-gray-700 bg-gray-800/80 p-4">
+          <div className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className={cn("flex h-8 w-8 items-center justify-center rounded-lg text-white", colors.bg)}>
@@ -409,15 +409,15 @@ export default function TopicLessonsPage() {
                 >
                   <div
                     className={cn(
-                      "overflow-hidden rounded-xl border-2 bg-gray-800/80 shadow-sm transition-colors",
-                      isCompleted ? "border-emerald-500/50" : "border-gray-700",
+                      "overflow-hidden rounded-xl border-2 bg-white shadow-sm transition-colors",
+                      isCompleted ? "border-emerald-400" : "border-gray-200",
                       isExpanded && "shadow-md"
                     )}
                   >
                     {/* Lesson Header (clickable) */}
                     <button
                       type="button"
-                      className="flex w-full items-center gap-3 p-4 text-left transition-colors hover:bg-gray-700/50"
+                      className="flex w-full items-center gap-3 p-4 text-left transition-colors hover:bg-gray-50"
                       onClick={() => handleToggleLesson(lesson.id)}
                       aria-expanded={isExpanded}
                       aria-label={`${lesson.title}${isCompleted ? " (completed)" : ""}`}
@@ -435,7 +435,7 @@ export default function TopicLessonsPage() {
                         )}
                       </div>
                       <div className="flex flex-1 flex-col gap-0.5">
-                        <span className="text-sm font-extrabold text-gray-200">
+                        <span className="text-sm font-extrabold text-gray-900">
                           {lesson.title}
                         </span>
                         <span className="text-xs text-gray-500">
@@ -449,7 +449,7 @@ export default function TopicLessonsPage() {
                         animate={{ rotate: isExpanded ? 180 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <ChevronDown className="h-5 w-5 text-gray-500" />
+                        <ChevronDown className="h-5 w-5 text-gray-400" />
                       </motion.div>
                     </button>
 
@@ -463,9 +463,9 @@ export default function TopicLessonsPage() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="flex flex-col gap-5 border-t border-gray-700 px-4 py-5">
+                          <div className="flex flex-col gap-5 border-t border-gray-100 px-4 py-5">
                             {/* CEE Standard Badge */}
-                            <Badge className="w-fit bg-gray-700 text-xs font-bold text-gray-300">
+                            <Badge className="w-fit bg-gray-100 text-xs font-bold text-gray-600">
                               {lesson.ceeStandard}
                             </Badge>
 
@@ -501,7 +501,7 @@ export default function TopicLessonsPage() {
                               </motion.div>
                             ) : (
                               <motion.div
-                                className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-4 py-3"
+                                className="flex items-center gap-2 rounded-xl bg-emerald-50 px-4 py-3"
                                 initial={
                                   isJustCompleted
                                     ? { scale: 0.9, opacity: 0 }
@@ -514,12 +514,12 @@ export default function TopicLessonsPage() {
                                   damping: 20,
                                 }}
                               >
-                                <CheckCircle className="h-5 w-5 text-emerald-400" />
-                                <span className="text-sm font-extrabold text-emerald-400">
+                                <CheckCircle className="h-5 w-5 text-emerald-600" />
+                                <span className="text-sm font-extrabold text-emerald-700">
                                   Lesson Complete!
                                 </span>
                                 {isJustCompleted && (
-                                  <span className="ml-auto text-xs font-bold text-emerald-400">
+                                  <span className="ml-auto text-xs font-bold text-emerald-600">
                                     +{XP_PER_LESSON_COMPLETE} XP{" "}
                                     <Sparkles className="inline h-3 w-3" />
                                   </span>
@@ -548,7 +548,7 @@ export default function TopicLessonsPage() {
                   "flex min-h-[56px] items-center justify-center gap-2 rounded-2xl border-2 p-4 text-center shadow-md transition-all hover:shadow-lg",
                   allLessonsComplete
                     ? cn(colors.bg, "border-transparent text-white")
-                    : "border-gray-700 bg-gray-800/80 text-gray-300 hover:border-gray-600"
+                    : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
                 )}
               >
                 <ClipboardCheck className="h-5 w-5" />
@@ -561,7 +561,7 @@ export default function TopicLessonsPage() {
               </div>
             </Link>
             {!allLessonsComplete && (
-              <p className="mt-2 text-center text-xs font-semibold text-gray-600">
+              <p className="mt-2 text-center text-xs font-semibold text-gray-500">
                 Complete all lessons first for the best quiz score!
               </p>
             )}
@@ -570,8 +570,8 @@ export default function TopicLessonsPage() {
       </div>
 
       {/* Legal disclaimer */}
-      <div className="border-t border-gray-800 px-4 py-3">
-        <LegalDisclaimer className="text-gray-600" />
+      <div className="border-t border-gray-200 px-4 py-3">
+        <LegalDisclaimer className="text-gray-500" />
       </div>
     </div>
   );
