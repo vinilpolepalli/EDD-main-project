@@ -71,6 +71,21 @@ export const SCENARIOS: readonly LifeScenario[] = [
     startingExpenses: 0,
     goalId: "survive-24",
   },
+  {
+    id: "gig-worker",
+    label: "Gig Economy Worker",
+    description:
+      "DoorDash, Uber, freelance \u2014 variable income, no benefits, self-employment taxes.",
+    emoji: "\uD83D\uDE97",
+    age: 24,
+    salary: 3200,
+    startingBalance: 800,
+    startingDebt: 2000,
+    debtLabel: "Credit Card",
+    debtInterestRate: 0.018,
+    startingExpenses: 1400,
+    goalId: "build-emergency-fund",
+  },
 ] as const;
 
 /**
@@ -115,5 +130,13 @@ export const SIMULATOR_GOALS: readonly SimulatorGoal[] = [
     progressValue: (state: SimulatorState) =>
       Math.min(100, Math.round((state.month / 24) * 100)),
     isComplete: (state: SimulatorState) => state.month >= 24,
+  },
+  {
+    id: "build-emergency-fund",
+    label: "Build 3-Month Emergency Fund",
+    description: "Save enough to cover 3 months of your $1,400/mo expenses ($4,200)",
+    progressValue: (state: SimulatorState) =>
+      Math.min(100, Math.round((state.emergencyFund / 4200) * 100)),
+    isComplete: (state: SimulatorState) => state.emergencyFund >= 4200,
   },
 ] as const;

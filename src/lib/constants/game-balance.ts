@@ -160,6 +160,13 @@ export const TOKEN_COST_ARCADE: Record<GameId, number> = {
   "budget-blitz": 2,
   "tax-dash": 2,
   "credit-rush": 3,
+  "need-or-want": 1,
+  "credit-climb": 2,
+  "budget-blitz-v2": 2,
+  "tax-trivia": 3,
+  "savings-race": 1,
+  "stock-surge": 3,
+  "comic-adventure": 2,
 };
 
 /**

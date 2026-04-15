@@ -13,11 +13,15 @@ import {
   CreditCard,
   Lightbulb,
   Lock,
+  PiggyBank,
+  Play,
   Receipt,
   Sparkles,
+  TrendingUp,
   Wallet,
   AlertTriangle,
 } from "lucide-react";
+import { VideoEmbed } from "@/components/learn/video-embed";
 import { cn } from "@/lib/utils";
 import { Flashcard } from "@/components/game/flashcard";
 import { Button } from "@/components/ui/button";
@@ -33,6 +37,8 @@ import type { Topic, Lesson, LessonSection } from "@/types/game";
 import creditLessons from "@/content/lessons/credit.json";
 import taxesLessons from "@/content/lessons/taxes.json";
 import budgetingLessons from "@/content/lessons/budgeting.json";
+import savingLessons from "@/content/lessons/saving.json";
+import investingLessons from "@/content/lessons/investing.json";
 
 /* -------------------------------------------------------------------------- */
 /*  Data Maps                                                                 */
@@ -42,18 +48,27 @@ const lessonMap: Record<Topic, Lesson[]> = {
   credit: creditLessons as Lesson[],
   taxes: taxesLessons as Lesson[],
   budgeting: budgetingLessons as Lesson[],
+  saving: savingLessons as Lesson[],
+  investing: investingLessons as Lesson[],
+  insurance: [],
 };
 
 const topicLabels: Record<Topic, string> = {
   credit: "Credit",
   taxes: "Taxes",
   budgeting: "Budgeting",
+  saving: "Saving",
+  investing: "Investing",
+  insurance: "Insurance",
 };
 
 const topicIcons: Record<Topic, React.ReactNode> = {
   credit: <CreditCard className="h-5 w-5" />,
   taxes: <Receipt className="h-5 w-5" />,
   budgeting: <Wallet className="h-5 w-5" />,
+  saving: <PiggyBank className="h-5 w-5" />,
+  investing: <TrendingUp className="h-5 w-5" />,
+  insurance: <BookOpen className="h-5 w-5" />,
 };
 
 const topicColors: Record<
@@ -95,9 +110,36 @@ const topicColors: Record<
     progressBg: "bg-emerald-500",
     ringColor: "ring-emerald-400",
   },
+  saving: {
+    bg: "bg-cyan-500",
+    light: "bg-cyan-50",
+    text: "text-cyan-600",
+    border: "border-cyan-200",
+    headerBg: "bg-cyan-500",
+    progressBg: "bg-cyan-500",
+    ringColor: "ring-cyan-400",
+  },
+  investing: {
+    bg: "bg-violet-500",
+    light: "bg-violet-50",
+    text: "text-violet-600",
+    border: "border-violet-200",
+    headerBg: "bg-violet-500",
+    progressBg: "bg-violet-500",
+    ringColor: "ring-violet-400",
+  },
+  insurance: {
+    bg: "bg-rose-500",
+    light: "bg-rose-50",
+    text: "text-rose-600",
+    border: "border-rose-200",
+    headerBg: "bg-rose-500",
+    progressBg: "bg-rose-500",
+    ringColor: "ring-rose-400",
+  },
 };
 
-const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting"];
+const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting", "saving", "investing"];
 
 function isValidTopic(value: unknown): value is Topic {
   return typeof value === "string" && VALID_TOPICS.includes(value as Topic);
@@ -477,6 +519,19 @@ export default function TopicLessonsPage() {
                                 topic={topic}
                               />
                             ))}
+
+                            {/* Watch & Learn Videos */}
+                            {lesson.videos && lesson.videos.length > 0 && (
+                              <div className="flex flex-col gap-3">
+                                <h4 className="flex items-center gap-2 text-sm font-extrabold text-foreground">
+                                  <Play className="h-4 w-4 text-red-500" />
+                                  Watch &amp; Learn
+                                </h4>
+                                {lesson.videos.map((video) => (
+                                  <VideoEmbed key={video.youtubeId} video={video} />
+                                ))}
+                              </div>
+                            )}
 
                             {/* Mark Complete Button */}
                             {!isCompleted ? (

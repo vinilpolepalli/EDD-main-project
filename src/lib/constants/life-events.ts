@@ -897,4 +897,140 @@ export const LIFE_EVENTS: readonly LifeEvent[] = [
     minAge: 18,
     maxAge: 65,
   },
+
+  // =========================================================================
+  // ADDITIONAL CHOICE-BASED EVENTS
+  // =========================================================================
+
+  {
+    id: "freelance-gig",
+    name: "Freelance Side Gig",
+    description:
+      "A former coworker needs help with a project and offers to pay you $600 for a weekend of work.",
+    category: "positive",
+    balanceEffect: 0,
+    creditScoreEffect: 0,
+    happinessEffect: 5,
+    probability: 0.05,
+    minAge: 22,
+    maxAge: 55,
+    choices: [
+      {
+        id: "take-gig",
+        label: "Take the gig ($600)",
+        explanation:
+          "Side income is a powerful tool for paying down debt or building savings faster.",
+        effects: { balance: 600, happiness: 8 },
+      },
+      {
+        id: "decline-gig",
+        label: "Decline — need the rest",
+        explanation:
+          "Rest and avoiding burnout has real value. Work-life balance matters.",
+        effects: { happiness: 10 },
+      },
+    ],
+  },
+
+  {
+    id: "identity-theft",
+    name: "Identity Theft Alert",
+    description:
+      "You receive a fraud alert. Someone opened a credit card in your name and ran up $500 in charges.",
+    category: "negative",
+    balanceEffect: 0,
+    creditScoreEffect: 0,
+    happinessEffect: -20,
+    probability: 0.025,
+    minAge: 18,
+    maxAge: 65,
+    choices: [
+      {
+        id: "freeze-credit",
+        label: "Freeze your credit immediately",
+        explanation:
+          "A credit freeze is free and prevents further fraudulent accounts. Best first step.",
+        effects: { creditScore: 5, happiness: -5 },
+      },
+      {
+        id: "dispute-charges",
+        label: "Dispute the charges + file police report",
+        explanation:
+          "Disputing fraudulent charges and filing a report creates a paper trail and often gets the charges removed.",
+        effects: { balance: 500, creditScore: -15, happiness: -10 },
+      },
+    ],
+  },
+
+  {
+    id: "layoff",
+    name: "Layoff",
+    description:
+      "Your company just announced layoffs. You\u2019re let go effective next month. You qualify for unemployment benefits (40% of salary).",
+    category: "negative",
+    balanceEffect: 0,
+    creditScoreEffect: 0,
+    happinessEffect: -25,
+    probability: 0.02,
+    minAge: 22,
+    maxAge: 60,
+    choices: [
+      {
+        id: "file-unemployment",
+        label: "File for unemployment + job search",
+        explanation:
+          "Unemployment insurance exists for exactly this situation. File immediately and don\u2019t delay.",
+        effects: {
+          temporaryIncomeMod: 0.4,
+          temporaryIncomeDuration: 4,
+          happiness: -15,
+          creditScore: -5,
+        },
+      },
+      {
+        id: "use-emergency-fund",
+        label: "Live off emergency fund while job hunting",
+        explanation:
+          "If your emergency fund covers 3+ months of expenses, using it avoids paperwork.",
+        effects: { emergencyFund: -2000, happiness: -10 },
+      },
+    ],
+  },
+
+  {
+    id: "bonus-received",
+    name: "Performance Bonus",
+    description:
+      "Great quarter! Your employer gives you a $1,500 performance bonus.",
+    category: "positive",
+    balanceEffect: 0,
+    creditScoreEffect: 0,
+    happinessEffect: 15,
+    probability: 0.04,
+    minAge: 22,
+    maxAge: 65,
+    choices: [
+      {
+        id: "invest-bonus",
+        label: "Invest the entire bonus",
+        explanation:
+          "Treating windfalls as investment opportunities accelerates wealth building exponentially.",
+        effects: { investments: 1500, happiness: 8, creditScore: 2 },
+      },
+      {
+        id: "debt-paydown",
+        label: "Put it toward debt",
+        explanation:
+          "Paying down high-interest debt has a guaranteed return equal to the interest rate.",
+        effects: { debt: -1500, creditScore: 10, happiness: 10 },
+      },
+      {
+        id: "split-bonus",
+        label: "Split: 50% savings, 50% fun",
+        explanation:
+          "Balanced approach \u2014 reward yourself while still being responsible.",
+        effects: { balance: 750, emergencyFund: 750, happiness: 12 },
+      },
+    ],
+  },
 ] as const;

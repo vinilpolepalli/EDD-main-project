@@ -10,6 +10,7 @@ import {
   BarChart2,
   Flame,
   Coins,
+  Gamepad2,
   LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -46,6 +47,11 @@ const sidebarLinks: SidebarLink[] = [
     href: "/simulator",
     label: "Life Simulator",
     icon: <BarChart2 className="h-5 w-5" />,
+  },
+  {
+    href: "/minigames",
+    label: "Mini-Games",
+    icon: <Gamepad2 className="h-5 w-5" />,
   },
 ];
 

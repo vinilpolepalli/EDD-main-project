@@ -10,12 +10,18 @@ const topicBorderColor: Record<Topic, string> = {
   credit: "border-arcade",
   taxes: "border-simulator",
   budgeting: "border-learn",
+  saving: "border-cyan-400",
+  investing: "border-violet-400",
+  insurance: "border-rose-400",
 };
 
 const topicBgColor: Record<Topic, string> = {
   credit: "bg-arcade-light",
   taxes: "bg-simulator-light",
   budgeting: "bg-learn-light",
+  saving: "bg-cyan-50",
+  investing: "bg-violet-50",
+  insurance: "bg-rose-50",
 };
 
 interface FlashcardProps {

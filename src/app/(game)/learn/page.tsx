@@ -9,10 +9,12 @@ import {
   CreditCard,
   Flame,
   Lock,
+  PiggyBank,
   Receipt,
   Sparkles,
   Star,
   Trophy,
+  TrendingUp,
   Wallet,
   Zap,
   Lightbulb,
@@ -29,6 +31,8 @@ import type { Topic, Lesson } from "@/types/game";
 import creditLessons from "@/content/lessons/credit.json";
 import taxesLessons from "@/content/lessons/taxes.json";
 import budgetingLessons from "@/content/lessons/budgeting.json";
+import savingLessons from "@/content/lessons/saving.json";
+import investingLessons from "@/content/lessons/investing.json";
 
 /* -------------------------------------------------------------------------- */
 /*  Types & Constants                                                         */
@@ -87,6 +91,32 @@ const SECTIONS: SectionConfig[] = [
     glowColor: "shadow-amber-500/40",
     bannerBg: "bg-amber-500/15",
     bannerBorder: "border-amber-500/30",
+  },
+  {
+    topic: "saving",
+    title: "SAVING",
+    subtitle: "Build Your Safety Net",
+    icon: <PiggyBank className="h-5 w-5" />,
+    lessons: (savingLessons as Lesson[]).sort((a, b) => a.order - b.order),
+    bgColor: "bg-cyan-500",
+    ringColor: "ring-cyan-400",
+    textColor: "text-cyan-400",
+    glowColor: "shadow-cyan-500/40",
+    bannerBg: "bg-cyan-500/15",
+    bannerBorder: "border-cyan-500/30",
+  },
+  {
+    topic: "investing",
+    title: "INVESTING",
+    subtitle: "Make Money Work for You",
+    icon: <TrendingUp className="h-5 w-5" />,
+    lessons: (investingLessons as Lesson[]).sort((a, b) => a.order - b.order),
+    bgColor: "bg-violet-500",
+    ringColor: "ring-violet-400",
+    textColor: "text-violet-400",
+    glowColor: "shadow-violet-500/40",
+    bannerBg: "bg-violet-500/15",
+    bannerBorder: "border-violet-500/30",
   },
 ];
 
@@ -496,6 +526,9 @@ export default function LearnPage() {
       budgeting: new Set<string>(),
       credit: new Set<string>(),
       taxes: new Set<string>(),
+      saving: new Set<string>(),
+      investing: new Set<string>(),
+      insurance: new Set<string>(),
     };
 
     for (const lc of completedLessons) {

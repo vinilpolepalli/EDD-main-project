@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BookOpen, BarChart2, ChevronRight } from "lucide-react";
+import { BookOpen, BarChart2, ChevronRight, Gamepad2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ModuleCardData {
@@ -43,6 +43,18 @@ const modules: ModuleCardData[] = [
     gradientFrom: "from-green-600",
     gradientTo: "to-green-700",
   },
+  {
+    id: "minigames",
+    title: "Mini-Games",
+    subtitle: "Quick Finance Challenges",
+    description: "7 fast-paced games covering budgeting, credit, taxes, saving, and investing.",
+    href: "/minigames",
+    buttonLabel: "Play Now",
+    icon: <Gamepad2 className="h-8 w-8" />,
+    gradientFrom: "from-amber-500",
+    gradientTo: "to-orange-500",
+    badges: ["Credit", "Taxes", "Budgeting", "Investing"],
+  },
 ];
 
 interface ModuleCardsProps {
@@ -57,7 +69,7 @@ const ModuleCards: React.FC<ModuleCardsProps> = ({
   className,
 }) => {
   return (
-    <div className={cn("grid gap-5 sm:grid-cols-2", className)}>
+    <div className={cn("grid gap-5 sm:grid-cols-2 lg:grid-cols-3", className)}>
       {modules.map((mod, index) => {
         const progressValue = progress[mod.id] ?? 0;
 

@@ -42,12 +42,18 @@ const quizMap: Record<Topic, QuizQuestion[]> = {
   credit: creditQuiz as QuizQuestion[],
   taxes: taxesQuiz as QuizQuestion[],
   budgeting: budgetingQuiz as QuizQuestion[],
+  saving: [],
+  investing: [],
+  insurance: [],
 };
 
 const topicLabels: Record<Topic, string> = {
   credit: "Credit",
   taxes: "Taxes",
   budgeting: "Budgeting",
+  saving: "Saving",
+  investing: "Investing",
+  insurance: "Insurance",
 };
 
 const topicColors: Record<
@@ -72,9 +78,27 @@ const topicColors: Record<
     text: "text-emerald-400",
     headerBg: "bg-emerald-500",
   },
+  saving: {
+    bg: "bg-cyan-500",
+    light: "bg-cyan-500/10",
+    text: "text-cyan-400",
+    headerBg: "bg-cyan-500",
+  },
+  investing: {
+    bg: "bg-violet-500",
+    light: "bg-violet-500/10",
+    text: "text-violet-400",
+    headerBg: "bg-violet-500",
+  },
+  insurance: {
+    bg: "bg-rose-500",
+    light: "bg-rose-500/10",
+    text: "text-rose-400",
+    headerBg: "bg-rose-500",
+  },
 };
 
-const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting"];
+const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting", "saving", "investing"];
 const MAX_LIVES = 3;
 const optionLabels = ["A", "B", "C", "D"];
 

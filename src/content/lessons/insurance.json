@@ -1,0 +1,157 @@
+[
+  {
+    "id": "insurance-1",
+    "topic": "insurance",
+    "title": "Why Insurance Exists",
+    "order": 1,
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Big Problem Insurance Solves",
+        "content": "Imagine you've saved $3,000 over two years — then your car gets totaled in an accident and you owe $15,000 in repairs. Or you break your arm and the hospital bill is $9,000. One unlucky event can erase years of hard work. This is the problem insurance solves. Instead of one person bearing an enormous, random cost alone, thousands of people each pay a small predictable amount (a premium). That pool of money covers whoever gets unlucky. Insurance transforms unpredictable catastrophic costs into predictable small monthly payments."
+      },
+      {
+        "type": "definition",
+        "term": "Insurance",
+        "definition": "A financial product where you pay regular premiums to an insurance company, and in exchange, they agree to cover certain large costs if a specified event (accident, illness, death) occurs.",
+        "content": "The insurance company bets that most people WON'T have a catastrophic event. You bet that you MIGHT. The company collects premiums from thousands of policyholders and pays out claims from that pool. Everyone wins: the company profits from the healthy majority; unlucky individuals don't go bankrupt."
+      },
+      {
+        "type": "flashcard",
+        "title": "Must-Know Insurance Terms",
+        "content": "PREMIUM: The amount you pay (usually monthly) to maintain coverage. DEDUCTIBLE: What you pay out-of-pocket before insurance kicks in. Higher deductible = lower premium. CLAIM: A request to the insurance company to pay for a covered loss. COVERAGE LIMIT: The maximum amount insurance will pay. If your limit is $100,000 and your hospital bill is $150,000, you owe the remaining $50,000. CO-PAY: A fixed amount you pay for each visit/service (e.g., $30 per doctor visit) — your insurance pays the rest. CO-INSURANCE: After the deductible, you pay a percentage of costs (e.g., 20%) while insurance pays the rest (80%). OUT-OF-POCKET MAXIMUM: The most you'll pay in a year. After this cap, insurance pays 100%."
+      },
+      {
+        "type": "text",
+        "title": "Risk Pooling: The Mathematics of Insurance",
+        "content": "Here's why insurance is brilliant math: say a $5,000 surgery has a 1 in 100 chance of happening to any given person. If you're that 1 person, you owe $5,000 — devastating. But if 100 people each pay $60/month ($720/year = $720 total per person), they collectively create $72,000 in the pool. That covers multiple surgeries and gives the insurer a small profit. Each person traded a certain small cost ($720) for protection against an uncertain large cost ($5,000). That trade is almost always worth it — especially when the potential cost could be $50,000 or $500,000."
+      }
+    ]
+  },
+  {
+    "id": "insurance-2",
+    "topic": "insurance",
+    "title": "Health Insurance: The Most Important",
+    "order": 2,
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Why Health Insurance is Non-Negotiable",
+        "content": "Healthcare in the U.S. is extraordinarily expensive. The average cost of a single night in a hospital is $11,700. An ER visit averages $1,500-2,000. A serious illness like cancer or a car accident could generate bills of $100,000 or more. Without health insurance, these costs can lead to medical bankruptcy — which is the #1 cause of personal bankruptcy in America. Until age 26, most Americans can stay on a parent's health plan. After that, getting your own health insurance is one of the most important financial decisions you'll make."
+      },
+      {
+        "type": "definition",
+        "term": "Out-of-Pocket Maximum",
+        "definition": "The most you'll pay in covered medical costs in a calendar year. After reaching this limit, your insurance covers 100% of eligible costs for the rest of the year. For 2024, the maximum for an individual plan is $9,450.",
+        "content": "The out-of-pocket maximum is your ultimate protection against catastrophic medical costs. Even if you have a $200,000 surgery, you'd only pay up to your out-of-pocket max — often $3,000-9,000 — and insurance covers the rest. This is why health insurance is so critical even for healthy people."
+      },
+      {
+        "type": "flashcard",
+        "title": "HMO vs PPO vs HDHP",
+        "content": "HMO (Health Maintenance Organization): Lower premiums, must see doctors in-network, need referrals to see specialists. Good for people who don't need much specialist care. PPO (Preferred Provider Organization): Higher premiums, more flexibility to see any doctor, no referral needed. Good if you have specific doctors or need specialists. HDHP (High Deductible Health Plan): Very low premiums but high deductible ($1,600+ for individuals). Qualifies you for an HSA. Best for healthy people who rarely use healthcare and want to invest in an HSA. PREMIUM vs DEDUCTIBLE TRADE-OFF: Low premium + high deductible = you pay more when sick but less monthly. High premium + low deductible = you pay more monthly but less when sick. Choose based on how often you use healthcare."
+      },
+      {
+        "type": "text",
+        "title": "The Truly Uninsured: What Happens",
+        "content": "If you end up uninsured and face a major medical event, you're not completely out of options — but the options are painful. Hospital bills are negotiable (hospitals often accept 30-50% of the stated price for uninsured patients). Nonprofit hospitals are required to provide charity care. Community health clinics offer sliding-scale fees. But waiting to negotiate AFTER a health crisis is stressful and unreliable. The much better strategy: always maintain health insurance, even if it's a catastrophic-only (HDHP) plan. Being covered for a $200,000 hospital stay is worth even $100-200/month in premiums."
+      }
+    ]
+  },
+  {
+    "id": "insurance-3",
+    "topic": "insurance",
+    "title": "Auto Insurance: Required by Law",
+    "order": 3,
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Drive Without It and Face the Consequences",
+        "content": "Auto insurance is legally required in almost every U.S. state — and for good reason. Car accidents kill about 40,000 Americans per year and injure millions more. A serious accident can easily cause $50,000-500,000 in damage, injuries, and legal liability. Driving uninsured doesn't just risk your finances — it risks your license, your freedom (some states criminalize it), and your ability to compensate people you might hurt. The minimum required by law is usually just liability coverage, but you may need more to fully protect yourself."
+      },
+      {
+        "type": "definition",
+        "term": "Liability Coverage",
+        "definition": "Insurance that covers damage or injury you cause to OTHER people and their property in an accident. Most states require a minimum amount. It does NOT cover damage to your own car or your injuries — only the other person's.",
+        "content": "State minimums are often dangerously low. A state requiring only $25,000 in bodily injury liability might not cover a serious accident that causes $100,000+ in medical bills. If you don't have enough liability coverage, YOU pay the difference — potentially losing your savings, car, and future earnings."
+      },
+      {
+        "type": "flashcard",
+        "title": "Types of Auto Coverage",
+        "content": "LIABILITY: Covers others' injuries and property damage when you're at fault. REQUIRED in almost all states. COLLISION: Covers damage to YOUR car from an accident, regardless of fault. Required by lenders if you have a car loan. COMPREHENSIVE: Covers non-accident damage — theft, vandalism, hail, hitting a deer. Also required by most lenders. UNINSURED/UNDERINSURED MOTORIST: If the other driver hits you and has no insurance (1 in 8 drivers is uninsured!), this covers you. PERSONAL INJURY PROTECTION (PIP): Covers YOUR medical bills regardless of fault. Required in 'no-fault' states. TIPS FOR LOWER PREMIUMS: Higher deductible, good student discount, safe driver discount, bundle with renters/home insurance, comparison shop every year."
+      },
+      {
+        "type": "text",
+        "title": "How Much Coverage Do You Actually Need?",
+        "content": "The legal minimum is rarely enough. Financial advisors recommend: liability limits of at least $100,000/$300,000 (covers $100k per person, $300k total per accident). Add collision and comprehensive if your car is worth more than $4,000 (below that, the premium might not be worth it). Always carry uninsured motorist coverage — 1 in 8 drivers has none. For a teenager or young adult, rates are higher but there are discounts: good grades, driver's ed courses, vehicles with safety features, and staying on parents' policy (usually much cheaper than a separate policy)."
+      }
+    ]
+  },
+  {
+    "id": "insurance-4",
+    "topic": "insurance",
+    "title": "Renters and Home Insurance",
+    "order": 4,
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Your Stuff Isn't Covered by Your Landlord",
+        "content": "One of the most common misconceptions among young renters: 'My landlord's insurance covers me.' It doesn't. A landlord's insurance policy covers the building and the landlord's liability — not your possessions. If your apartment floods, burns, or gets broken into, your laptop, TV, clothes, and everything else you own is YOUR problem. Renters insurance covers your belongings AND provides liability protection if someone gets hurt in your apartment. And it costs almost nothing — typically $15-30 per month, often less than a streaming subscription."
+      },
+      {
+        "type": "definition",
+        "term": "Replacement Cost vs. Actual Cash Value",
+        "definition": "Replacement Cost coverage pays what it costs to replace an item with a new equivalent today. Actual Cash Value (ACV) pays the depreciated value of the item — what it's worth NOW, not what it costs to replace.",
+        "content": "Example: Your 3-year-old laptop worth $800 new is now worth $300 (ACV) after depreciation. With Replacement Cost coverage, you get $800 for a new laptop. With ACV coverage, you get $300 — not enough to replace it. Replacement Cost coverage costs slightly more but is almost always worth it."
+      },
+      {
+        "type": "flashcard",
+        "title": "What Renters Insurance Covers",
+        "content": "COVERED: Theft of your belongings (even outside your home — your laptop stolen from a cafe is covered!), Fire and smoke damage, Water damage from burst pipes or neighbor overflow, Vandalism, Liability if someone is injured in your apartment (they trip and sue you — covered!). NOT COVERED: Flooding from outside (requires separate flood insurance), Earthquake damage (requires separate coverage), Your car (auto insurance covers that), Roommate's belongings (they need their own policy), Intentional damage you cause. TYPICAL COVERAGE AMOUNT: $20,000-30,000 for personal property. Take a home inventory (photos of everything) so you know what you own and can prove it to the insurer."
+      },
+      {
+        "type": "text",
+        "title": "Homeowners Insurance: The Bigger Version",
+        "content": "When you own a home, homeowners insurance is required by your mortgage lender. It covers the structure of your home (fire, storm, theft), your personal belongings (similar to renters insurance), liability if someone is hurt on your property, and additional living expenses if you're displaced by a covered event. The average homeowners insurance costs about $1,200-2,000 per year. Note that standard policies do NOT cover flooding or earthquakes — those require separate policies. In flood-prone areas, flood insurance through the National Flood Insurance Program (NFIP) is critical."
+      }
+    ]
+  },
+  {
+    "id": "insurance-5",
+    "topic": "insurance",
+    "title": "Life and Disability Insurance",
+    "order": 5,
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "advanced",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Your Income Is Your Most Valuable Asset",
+        "content": "Think about this: if you earn $50,000 per year and work for 40 years, your total lifetime income is $2 million — and that's without raises. Your ability to earn money is your single most valuable financial asset. What happens if that's taken away? That's exactly what life and disability insurance protect. Life insurance replaces your income for your dependents if you die. Disability insurance replaces a portion of your income if you're injured or ill and can't work. Most people massively underestimate how important disability insurance is — a 20-year-old has a 1 in 4 chance of becoming disabled before retirement."
+      },
+      {
+        "type": "definition",
+        "term": "Term Life Insurance",
+        "definition": "Life insurance that provides coverage for a specific time period (term), typically 10, 20, or 30 years. If you die during the term, your beneficiaries receive the death benefit. If you outlive the term, coverage ends and you paid premiums for protection you didn't end up needing.",
+        "content": "Term life insurance is almost always the best choice for most people. It's inexpensive (a healthy 30-year-old can get $500,000 of coverage for $20-30/month), straightforward, and provides pure protection. Whole life insurance, which covers you forever and includes a savings component, costs 5-15x more and is rarely worth it for most people."
+      },
+      {
+        "type": "flashcard",
+        "title": "Life Insurance vs. Disability Insurance",
+        "content": "LIFE INSURANCE — Who needs it: Anyone with dependents (spouse, kids, parents who rely on your income). How much: Generally 10-12x your annual income. When to buy: When you have dependents. Young single people rarely need it. Cost: Very affordable for young, healthy people. DISABILITY INSURANCE — Who needs it: EVERYONE who works and needs their income. Stats: You're 3x more likely to be disabled than to die during your working years. Types: Short-term (covers weeks to months), Long-term (covers years to decades). How much: Usually replaces 60-70% of your income. Where to get it: Many employers offer group disability insurance — enroll if available! Social Security disability exists but is hard to qualify for and pays very little."
+      },
+      {
+        "type": "text",
+        "title": "Do You Need Life Insurance Right Now?",
+        "content": "If you're a teenager or young adult with no dependents (no one relying on your income), you probably don't need life insurance yet. But here's the case for buying young: term life insurance premiums are based on your age and health at the time you buy. A 22-year-old in good health might pay $15-20/month for $500,000 in coverage. A 45-year-old with health issues might pay $150-200/month for the same coverage. If you're planning to have a family someday, locking in low premiums while young is smart. And if you have student loans with a co-signer (like a parent), their financial wellbeing could depend on you — making life insurance worth considering even before you have dependents."
+      }
+    ]
+  }
+]

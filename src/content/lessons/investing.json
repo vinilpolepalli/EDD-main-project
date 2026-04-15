@@ -1,0 +1,166 @@
+[
+  {
+    "id": "investing-1",
+    "topic": "investing",
+    "title": "What is Investing?",
+    "order": 1,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner",
+    "videos": [
+      {
+        "youtubeId": "3af9Fhb8DVk",
+        "title": "What is Investing?",
+        "channelName": "Khan Academy",
+        "durationMinutes": 5,
+        "ceeStandard": "CEE.PF.3"
+      }
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Make Your Money Work For You",
+        "content": "Saving money is smart — but investing is how people actually build wealth. When you save, your money sits in a bank earning a tiny amount of interest (often 0.01–5%). When you invest, you put money into assets that have the potential to grow much faster over time. The stock market has returned an average of about 10% per year historically — that's 100–1,000 times better than a typical savings account. Investing is how ordinary people become millionaires."
+      },
+      {
+        "type": "definition",
+        "term": "Investment",
+        "definition": "Putting money into something (like stocks, bonds, or real estate) with the expectation that it will grow in value or generate income over time.",
+        "content": "Unlike saving, investing involves risk — your money could lose value. But with smart choices and time, the potential rewards are dramatically higher. The #1 rule of investing: start as early as possible, because time is your biggest advantage."
+      },
+      {
+        "type": "flashcard",
+        "title": "Return on Investment (ROI)",
+        "content": "ROI measures how much profit an investment generates relative to its cost. FORMULA: ROI = (Gain – Cost) / Cost × 100%. EXAMPLE: You invest $1,000 in a stock. A year later it's worth $1,100. ROI = ($1,100 – $1,000) / $1,000 × 100% = 10%. REAL RETURNS: $1,000 invested at 10% per year for 30 years = $17,449. Same $1,000 in a 1% savings account for 30 years = $1,348. INFLATION: If inflation is 3% per year and your investment returns 3%, your real return is roughly 0%. You need to beat inflation to actually grow wealth!"
+      },
+      {
+        "type": "text",
+        "title": "Risk vs. Reward: The Core Trade-Off",
+        "content": "Every investment involves a trade-off between risk and potential reward. Low risk = low potential reward (bank savings account). Medium risk = medium potential reward (bonds). High risk = high potential reward (individual stocks). The key to investing smartly is matching your risk level to your time horizon. If you need the money in 2 years, keep it safe. If you won't need it for 20 years, you can afford to take more risk — because even if markets drop, they've always recovered historically and then gone higher."
+      }
+    ]
+  },
+  {
+    "id": "investing-2",
+    "topic": "investing",
+    "title": "The Stock Market Explained",
+    "order": 2,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner",
+    "sections": [
+      {
+        "type": "text",
+        "title": "What Exactly Is Wall Street?",
+        "content": "The stock market is basically a giant marketplace where people buy and sell ownership shares in companies. When a company needs money to grow, it can sell pieces of ownership (called shares or stocks) to the public. People buy those shares hoping the company will grow and make their shares more valuable. The New York Stock Exchange (NYSE) and NASDAQ are the two biggest stock markets in the U.S., trading trillions of dollars worth of shares every single day."
+      },
+      {
+        "type": "definition",
+        "term": "Bull vs. Bear Market",
+        "definition": "A bull market is a period when stock prices are rising (generally up 20%+ from a recent low). A bear market is when prices are falling (down 20%+ from a recent high). Bulls charge upward; bears swipe downward — that's the memory trick!",
+        "content": "Since 1929, the U.S. stock market has gone through many bear markets but has ALWAYS eventually recovered and reached new highs. Bear markets last an average of about 9 months. Bull markets last an average of about 2.7 years. Patient investors who don't panic during bear markets always win in the long run."
+      },
+      {
+        "type": "flashcard",
+        "title": "Key Stock Market Terms",
+        "content": "SHARE: One unit of ownership in a company. DIVIDEND: Some companies pay shareholders a portion of their profits regularly (quarterly). MARKET CAP: Total value of a company = share price × number of shares. Apple's market cap is over $3 trillion! IPO (Initial Public Offering): When a private company sells shares to the public for the first time. S&P 500: An index tracking the 500 largest U.S. public companies. It's the standard benchmark for 'how the market is doing.' DOW JONES: Index of just 30 major U.S. companies — less representative than the S&P 500. VOLATILITY: How dramatically prices move up and down. Higher volatility = higher risk AND potential reward."
+      },
+      {
+        "type": "text",
+        "title": "The S&P 500: The Best Benchmark",
+        "content": "When people say 'the stock market went up 15% this year,' they're usually talking about the S&P 500. It includes Apple, Microsoft, Amazon, Nvidia, Google, and 495 other large companies. Since 1957, the S&P 500 has returned an average of about 10.5% per year — including some terrible years (2008: -38%, 2020: -34%) and some amazing ones (2019: +29%, 2023: +24%). The key insight: if you had invested $10,000 in an S&P 500 index fund in 1980 and never touched it, you'd have over $800,000 today. Time in the market beats timing the market."
+      }
+    ]
+  },
+  {
+    "id": "investing-3",
+    "topic": "investing",
+    "title": "Index Funds: The Simple Path to Wealth",
+    "order": 3,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Why Most Experts Beat by a Simple Fund",
+        "content": "Here's a mind-blowing fact: over any 15-year period, more than 90% of professionally managed funds UNDERPERFORM a simple S&P 500 index fund. These are teams of brilliant analysts, armed with research and technology, losing to a fund that just passively copies the market. Why? High fees eat into returns, and predicting the market consistently is nearly impossible even for the pros. Warren Buffett has publicly stated that most investors — including his own heirs — should just buy a low-cost S&P 500 index fund."
+      },
+      {
+        "type": "definition",
+        "term": "Expense Ratio",
+        "definition": "The annual fee a fund charges, expressed as a percentage of your investment. A 0.03% expense ratio means you pay $0.30 per year on a $1,000 investment. A 1% expense ratio costs $10/year — but compounded over decades, that difference is huge.",
+        "content": "Over 30 years, the difference between a 0.03% expense ratio (Vanguard/Fidelity index fund) and a 1% expense ratio (typical managed fund) on a $10,000 investment can mean $30,000+ MORE in your pocket. Low fees are one of the most important factors in long-term investing success."
+      },
+      {
+        "type": "flashcard",
+        "title": "Index Funds vs. Active Funds",
+        "content": "INDEX FUND: Automatically tracks a market index (like the S&P 500). No fund manager trying to pick stocks. Expense ratios as low as 0.01%-0.03%. Historically beats 90%+ of managed funds over long periods. Examples: Vanguard Total Stock Market (VTI), Fidelity Zero Index (FZROX). ACTIVELY MANAGED FUND: A team of analysts tries to beat the market by picking the best stocks. Average expense ratio: 0.5-1.5%. Most underperform the index they're trying to beat, especially after fees. ETF (Exchange-Traded Fund): Like an index fund but trades on the stock market throughout the day (index funds price once daily). Very popular, low fees. Great for beginners!"
+      },
+      {
+        "type": "text",
+        "title": "How to Actually Start Investing",
+        "content": "Starting is simpler than most people think: 1) Open a brokerage account (Fidelity, Vanguard, Charles Schwab, or Robinhood are popular). If you're under 18, a parent can open a custodial account for you. 2) Start with as little as $1 — many brokers allow fractional shares. 3) Buy a broad index fund like VTI (total U.S. market) or VOO (S&P 500). 4) Set up automatic contributions — even $25/week adds up. 5) Don't panic when markets drop — stay invested. The biggest investing mistake is selling during a downturn and missing the recovery. Consistency beats perfection."
+      }
+    ]
+  },
+  {
+    "id": "investing-4",
+    "topic": "investing",
+    "title": "Bonds: The Steady Investment",
+    "order": 4,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Lending Money for a Profit",
+        "content": "While stocks make you an owner of a company, bonds make you a lender. When governments or corporations need to borrow money, they issue bonds. You buy the bond, and they pay you regular interest (called a coupon) and return your original investment at the end of a set period (called maturity). Bonds are generally safer than stocks but offer lower returns. The U.S. government bond (Treasury bond) is considered one of the safest investments in the world."
+      },
+      {
+        "type": "definition",
+        "term": "Bond",
+        "definition": "A loan made by an investor to a borrower (corporation or government). The bond specifies the interest rate paid and the date when the loan must be repaid (maturity date).",
+        "content": "Example: You buy a $1,000 U.S. Treasury bond with a 4% coupon and 10-year maturity. Every year for 10 years, you receive $40 in interest. At the end of 10 years, you get your $1,000 back. Total earned: $400 in interest + original $1,000."
+      },
+      {
+        "type": "flashcard",
+        "title": "Bonds: Key Facts",
+        "content": "TYPES OF BONDS: Treasury bonds (issued by U.S. government, safest), Municipal bonds (issued by states/cities, often tax-exempt), Corporate bonds (issued by companies, higher risk + higher yield). BOND RATINGS: AAA = highest quality (almost zero risk of default). BB and below = 'junk bonds' (high risk, high yield). INTEREST RATE RELATIONSHIP: When interest rates go UP, bond prices go DOWN (and vice versa). This is the #1 counterintuitive thing about bonds! WHEN TO USE BONDS: As you get closer to needing your money (retirement, big purchase), shifting from stocks to bonds reduces risk. A 60-year-old might have 40% bonds, 60% stocks. A 20-year-old might have 90% stocks, 10% bonds."
+      },
+      {
+        "type": "text",
+        "title": "When Bonds Make Sense",
+        "content": "Bonds aren't exciting, but they serve a crucial role in a well-rounded investment portfolio. They provide stability when stocks are falling — often rising in value during stock market crashes because investors seek safety. A simple rule: subtract your age from 110 to get your stock percentage. At 20, that's 90% stocks, 10% bonds. At 60, that's 50% stocks, 50% bonds. As you get older and closer to needing your money, bonds protect what you've built. For young investors, a mostly-stock portfolio is appropriate because you have time to ride out market downturns."
+      }
+    ]
+  },
+  {
+    "id": "investing-5",
+    "topic": "investing",
+    "title": "Diversification: Don't Gamble on One Stock",
+    "order": 5,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Golden Rule of Investing",
+        "content": "The most important risk management strategy in investing is diversification — spreading your money across many different investments so that no single failure can wipe you out. Imagine putting your entire $5,000 savings into one company's stock. If that company goes bankrupt (it happens — Enron, Toys R Us, Blockbuster), you lose everything. But if that $5,000 is spread across 500 companies (like in an S&P 500 index fund), even if 10 fail completely, the other 490 still keep your portfolio alive."
+      },
+      {
+        "type": "definition",
+        "term": "Portfolio",
+        "definition": "The complete collection of investments owned by a person or institution — including all stocks, bonds, cash, real estate, and other assets.",
+        "content": "A well-diversified portfolio might include: U.S. stocks (S&P 500 index fund), international stocks (for exposure to other economies), bonds (for stability), real estate (through REITs — Real Estate Investment Trusts), and some cash. Each category behaves differently in various economic conditions."
+      },
+      {
+        "type": "flashcard",
+        "title": "Asset Allocation by Life Stage",
+        "content": "TEENS & 20s (aggressive growth): 90% stocks (60% U.S., 30% international), 10% bonds. You have 40+ years — ride out volatility! 30s-40s (growth): 80% stocks, 20% bonds. Starting to build in some stability. 50s (balanced): 60% stocks, 40% bonds. Protecting gains as retirement approaches. 60s+ (conservative): 40-50% stocks, 50-60% bonds. Capital preservation matters most. TARGET-DATE FUNDS: These automatically adjust your allocation as you age — a 2065 Target Date Fund is aggressive now but will automatically shift to conservative as 2065 approaches. Great set-it-and-forget-it option!"
+      },
+      {
+        "type": "text",
+        "title": "Rebalancing: Keeping Your Plan on Track",
+        "content": "Over time, your asset mix will drift away from your target as different investments grow at different rates. If stocks have a great year, your portfolio might shift from 80/20 stocks-bonds to 90/10. Rebalancing means selling some of the winner and buying more of the laggard to get back to your target. Most experts recommend rebalancing once per year. It's also a good opportunity to review your contributions and make sure you're still on track toward your financial goals. For young investors just starting out, the most important thing is simply to keep contributing regularly — don't overthink the allocation."
+      }
+    ]
+  }
+]

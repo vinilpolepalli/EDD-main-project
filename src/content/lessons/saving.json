@@ -1,0 +1,129 @@
+[
+  {
+    "id": "saving-1",
+    "topic": "saving",
+    "title": "Why Save Money?",
+    "order": 1,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner",
+    "videos": [
+      {
+        "youtubeId": "MJHJuXmTK7M",
+        "title": "Why Save Money",
+        "channelName": "Khan Academy",
+        "durationMinutes": 4,
+        "ceeStandard": "CEE.PF.3"
+      }
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Future You Says Thank You",
+        "content": "Saving money is like sending a gift to your future self. When you skip a $5 coffee today and save it instead, future you has $5 for something that matters more. Multiply that by a year and you've saved $1,825 — enough for a plane ticket, a laptop, or 3 months of rent."
+      },
+      {
+        "type": "definition",
+        "term": "Savings",
+        "definition": "Money set aside from current income for future use, rather than spent immediately.",
+        "content": "Savings act as a financial buffer. Without them, any unexpected expense — a flat tire, a medical bill — becomes a crisis."
+      },
+      {
+        "type": "flashcard",
+        "title": "The 3 Reasons People Save",
+        "content": "1. EMERGENCIES: Life is unpredictable. Most experts recommend 3–6 months of expenses saved in an emergency fund. 2. GOALS: A car, college, travel — big purchases require saving up over time. 3. RETIREMENT: Money saved and invested now grows exponentially by the time you need it at 65+."
+      },
+      {
+        "type": "text",
+        "title": "The 50/30/20 Rule",
+        "content": "A simple framework: spend 50% of take-home pay on needs (rent, food, bills), 30% on wants (entertainment, restaurants), and save 20%. If you can't save 20%, start with 5% and increase by 1% each month. The habit matters more than the amount."
+      }
+    ]
+  },
+  {
+    "id": "saving-2",
+    "topic": "saving",
+    "title": "Compound Interest: The 8th Wonder",
+    "order": 2,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner",
+    "videos": [
+      {
+        "youtubeId": "wf91rEGw9rM",
+        "title": "Compound Interest",
+        "channelName": "Khan Academy",
+        "durationMinutes": 6,
+        "ceeStandard": "CEE.PF.3"
+      }
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "title": "Your Money Making Money",
+        "content": "Compound interest means you earn interest on your interest. If you save $1,000 at 5% interest: Year 1 you earn $50 (total: $1,050). Year 2 you earn $52.50 on $1,050 (total: $1,102.50). The interest keeps growing. After 30 years, your $1,000 becomes $4,322 — without adding a single extra dollar."
+      },
+      {
+        "type": "definition",
+        "term": "Compound Interest",
+        "definition": "Interest calculated on both the initial principal and the accumulated interest from previous periods.",
+        "content": "Simple interest would give you the same $50 every year. Compound interest gives you more each year because the base keeps growing."
+      },
+      {
+        "type": "flashcard",
+        "title": "The Rule of 72",
+        "content": "Want to know how long it takes your money to double? Divide 72 by the interest rate. At 6% interest: 72 ÷ 6 = 12 years to double. At 10%: 72 ÷ 10 = 7.2 years. This is why starting early matters so much — you get more doublings."
+      }
+    ]
+  },
+  {
+    "id": "saving-3",
+    "topic": "saving",
+    "title": "Types of Savings Accounts",
+    "order": 3,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "Not All Savings Are Equal",
+        "content": "A regular bank savings account earns about 0.01% interest — basically nothing. A high-yield savings account (HYSA) from an online bank earns 4–5% APY. That's 400–500x more interest on the same money. The only difference is where you bank."
+      },
+      {
+        "type": "definition",
+        "term": "APY (Annual Percentage Yield)",
+        "definition": "The real rate of return on a savings account over a year, including compound interest.",
+        "content": "APY accounts for compounding, so it's always slightly higher than the stated interest rate. Always compare APY, not just the interest rate."
+      },
+      {
+        "type": "flashcard",
+        "title": "Savings Account Types",
+        "content": "REGULAR SAVINGS: Low interest (0.01%), easy access, FDIC-insured. HIGH-YIELD SAVINGS (HYSA): 4–5% APY, online banks (Marcus, Ally, SoFi). Best for emergency funds. MONEY MARKET ACCOUNT: Slightly higher yield, may have check-writing. CDs (Certificate of Deposit): Locked in for 6–60 months, highest guaranteed rate. Great for money you won't need soon."
+      }
+    ]
+  },
+  {
+    "id": "saving-4",
+    "topic": "saving",
+    "title": "Emergency Fund: Your Financial Safety Net",
+    "order": 4,
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate",
+    "sections": [
+      {
+        "type": "text",
+        "title": "The Fund That Changes Everything",
+        "content": "An emergency fund is 3–6 months of living expenses kept in an accessible, high-yield savings account. When your car breaks down, your landlord raises rent, or you lose a job, this money means you don't have to go into debt. It's the foundation of all personal finance."
+      },
+      {
+        "type": "definition",
+        "term": "Emergency Fund",
+        "definition": "Money set aside specifically for unexpected, urgent expenses — not goals, not vacations, only true emergencies.",
+        "content": "The 3–6 month range depends on your situation. Stable job with one income source: 3 months. Freelancer or variable income: 6 months."
+      },
+      {
+        "type": "flashcard",
+        "title": "How to Build Yours",
+        "content": "STEP 1: Set a goal. Monthly expenses × 3 = your target. STEP 2: Open a separate HYSA so you're not tempted to spend it. STEP 3: Automate a transfer from your checking account each payday. STEP 4: Only touch it for actual emergencies. STEP 5: Rebuild it immediately after using it."
+      }
+    ]
+  }
+]

@@ -1,5 +1,15 @@
-export type Topic = "credit" | "taxes" | "budgeting";
-export type GameId = "budget-blitz" | "tax-dash" | "credit-rush";
+export type Topic = "credit" | "taxes" | "budgeting" | "investing" | "insurance" | "saving";
+export type GameId =
+  | "budget-blitz"
+  | "tax-dash"
+  | "credit-rush"
+  | "need-or-want"
+  | "credit-climb"
+  | "budget-blitz-v2"
+  | "tax-trivia"
+  | "savings-race"
+  | "stock-surge"
+  | "comic-adventure";
 export type Difficulty = "beginner" | "intermediate" | "advanced";
 
 export interface AvatarConfig {
@@ -32,6 +42,14 @@ export interface LessonSection {
   definition?: string;
 }
 
+export interface LessonVideo {
+  youtubeId: string;
+  title: string;
+  channelName: string;
+  durationMinutes: number;
+  ceeStandard: string;
+}
+
 export interface Lesson {
   id: string;
   topic: Topic;
@@ -40,6 +58,7 @@ export interface Lesson {
   sections: LessonSection[];
   ceeStandard: string;
   difficulty: Difficulty;
+  videos?: LessonVideo[];
 }
 
 export interface QuizQuestion {
@@ -103,7 +122,7 @@ export interface LifeEvent {
 // Life Scenario system
 // ---------------------------------------------------------------------------
 
-export type ScenarioId = "fresh-grad" | "young-pro" | "mid-career" | "surprise";
+export type ScenarioId = "fresh-grad" | "young-pro" | "mid-career" | "surprise" | "gig-worker";
 
 export interface LifeScenario {
   id: ScenarioId;

@@ -437,62 +437,77 @@ export default function SimulatorPlayPage() {
         </motion.div>
 
         {/* Stats Row - BitLife style */}
-        <motion.div
-          className="grid grid-cols-2 gap-3 sm:grid-cols-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
-        >
-          {/* Balance */}
-          <div className="flex flex-col items-center gap-1 rounded-xl bg-emerald-50 p-3">
-            <DollarSign className="h-4 w-4 text-emerald-500" />
-            <span className="text-lg font-extrabold tabular-nums text-foreground">
-              {formatMoney(state.balance)}
-            </span>
-            <span className="text-[10px] font-bold text-muted-foreground">
-              Balance
-            </span>
-          </div>
-
-          {/* Emergency Fund */}
-          <div
-            className={`flex flex-col items-center gap-1 rounded-xl p-3 ${efStatus.bgColor}`}
-          >
-            <ShieldAlert className={`h-4 w-4 ${efStatus.color}`} />
-            <span className="text-lg font-extrabold tabular-nums text-foreground">
-              {formatMoney(state.emergencyFund)}
-            </span>
-            <span
-              className={`text-[10px] font-bold ${efStatus.color}`}
+        {(() => {
+          const monthlyNetFlow = Math.round(netIncome - state.monthlyExpenses - debtInterest);
+          const isPositiveFlow = monthlyNetFlow >= 0;
+          return (
+            <motion.div
+              className="grid grid-cols-2 gap-3 sm:grid-cols-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
             >
-              {efStatus.label}
-            </span>
-          </div>
+              {/* Balance */}
+              <div className="flex flex-col items-center gap-1 rounded-xl bg-emerald-50 p-3">
+                <DollarSign className="h-4 w-4 text-emerald-500" />
+                <span className="text-lg font-extrabold tabular-nums text-foreground">
+                  {formatMoney(state.balance)}
+                </span>
+                <span className="text-[10px] font-bold text-muted-foreground">
+                  Balance
+                </span>
+              </div>
 
-          {/* Credit Score */}
-          <div className="flex flex-col items-center gap-1 rounded-xl bg-purple-50 p-3">
-            <CreditCard className="h-4 w-4 text-purple-500" />
-            <span
-              className={`text-lg font-extrabold tabular-nums ${getCreditScoreColor(state.creditScore)}`}
-            >
-              {state.creditScore}
-            </span>
-            <span className="text-[10px] font-bold text-muted-foreground">
-              {getCreditScoreLabel(state.creditScore)}
-            </span>
-          </div>
+              {/* Emergency Fund */}
+              <div
+                className={`flex flex-col items-center gap-1 rounded-xl p-3 ${efStatus.bgColor}`}
+              >
+                <ShieldAlert className={`h-4 w-4 ${efStatus.color}`} />
+                <span className="text-lg font-extrabold tabular-nums text-foreground">
+                  {formatMoney(state.emergencyFund)}
+                </span>
+                <span className={`text-[10px] font-bold ${efStatus.color}`}>
+                  {efStatus.label}
+                </span>
+              </div>
 
-          {/* Happiness */}
-          <div className="flex flex-col items-center gap-1 rounded-xl bg-yellow-50 p-3">
-            <Smile className="h-4 w-4 text-yellow-500" />
-            <span className="text-lg font-extrabold tabular-nums text-foreground">
-              {state.happiness}%
-            </span>
-            <span className="text-[10px] font-bold text-muted-foreground">
-              Happiness
-            </span>
-          </div>
-        </motion.div>
+              {/* Credit Score */}
+              <div className="flex flex-col items-center gap-1 rounded-xl bg-purple-50 p-3">
+                <CreditCard className="h-4 w-4 text-purple-500" />
+                <span
+                  className={`text-lg font-extrabold tabular-nums ${getCreditScoreColor(state.creditScore)}`}
+                >
+                  {state.creditScore}
+                </span>
+                <span className="text-[10px] font-bold text-muted-foreground">
+                  {getCreditScoreLabel(state.creditScore)}
+                </span>
+              </div>
+
+              {/* Happiness */}
+              <div className="flex flex-col items-center gap-1 rounded-xl bg-yellow-50 p-3">
+                <Smile className="h-4 w-4 text-yellow-500" />
+                <span className="text-lg font-extrabold tabular-nums text-foreground">
+                  {state.happiness}%
+                </span>
+                <span className="text-[10px] font-bold text-muted-foreground">
+                  Happiness
+                </span>
+              </div>
+
+              {/* Monthly Net Flow — spans full width on mobile */}
+              <div className={`col-span-2 sm:col-span-2 flex flex-col items-center gap-1 rounded-xl p-3 ${isPositiveFlow ? "bg-blue-50" : "bg-orange-50"}`}>
+                <TrendingUp className={`h-4 w-4 ${isPositiveFlow ? "text-blue-500" : "text-orange-500"}`} />
+                <span className={`text-lg font-extrabold tabular-nums ${isPositiveFlow ? "text-blue-600" : "text-orange-600"}`}>
+                  {isPositiveFlow ? "+" : ""}{formatMoney(monthlyNetFlow)}
+                </span>
+                <span className="text-[10px] font-bold text-muted-foreground">
+                  Monthly Net Flow
+                </span>
+              </div>
+            </motion.div>
+          );
+        })()}
 
         {/* Credit Score & Happiness bars */}
         <motion.div
