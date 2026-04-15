@@ -1,0 +1,152 @@
+[
+  {
+    "id": "saving-q1",
+    "topic": "saving",
+    "question": "What is the main purpose of saving money?",
+    "options": [
+      "To spend it all at once on something expensive",
+      "To set aside money now so you can use it later for goals or emergencies",
+      "To give it all to a bank permanently",
+      "To avoid paying taxes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Saving means setting aside money you earn today so it's available later — whether for a planned goal (like a car or college) or an unexpected emergency (like a medical bill). Saving is not the same as never spending; it's about making your money available when you really need it.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "saving-q2",
+    "topic": "saving",
+    "question": "What is compound interest?",
+    "options": [
+      "Interest you pay on a credit card",
+      "A one-time bonus from your bank",
+      "Interest earned on both your original savings AND the interest already earned",
+      "A fee for opening a bank account"
+    ],
+    "correctIndex": 2,
+    "explanation": "Compound interest means you earn interest on your interest! For example, if you save $100 at 5% annual interest, after year 1 you have $105. In year 2 you earn 5% on $105 — not just $100 — giving you $110.25. Over time, this snowball effect can grow your savings dramatically.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "saving-q3",
+    "topic": "saving",
+    "question": "What is an emergency fund?",
+    "options": [
+      "Money saved to buy luxury items",
+      "A government program that pays your bills",
+      "Money set aside specifically to cover unexpected expenses like car repairs or medical bills",
+      "A type of credit card with a low interest rate"
+    ],
+    "correctIndex": 2,
+    "explanation": "An emergency fund is your financial safety net — money you keep in savings that you only touch during true emergencies. Without one, people often go into debt when something unexpected happens. With one, you can handle surprises without borrowing money.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "saving-q4",
+    "topic": "saving",
+    "question": "Most financial experts recommend having how much in an emergency fund?",
+    "options": [
+      "One week of expenses",
+      "One month of expenses",
+      "3 to 6 months of living expenses",
+      "10 years of expenses"
+    ],
+    "correctIndex": 2,
+    "explanation": "The standard recommendation is 3–6 months of living expenses. This amount covers most job losses or major unexpected costs without forcing you into debt. Start small if you need to — even $500 is a huge improvement over nothing. Build toward the full amount over time.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "saving-q5",
+    "topic": "saving",
+    "question": "What is the difference between a checking account and a savings account?",
+    "options": [
+      "There is no difference — they work exactly the same",
+      "Checking accounts earn higher interest than savings accounts",
+      "Checking accounts are for everyday spending; savings accounts are for storing money and earning interest",
+      "Savings accounts let you write checks; checking accounts don't"
+    ],
+    "correctIndex": 2,
+    "explanation": "A checking account is designed for frequent transactions — you use it to pay bills, buy groceries, and make everyday purchases. A savings account is meant for money you want to keep and grow. Savings accounts usually earn interest (though often small) and are better for money you don't need immediately.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "saving-q6",
+    "topic": "saving",
+    "question": "What is a high-yield savings account?",
+    "options": [
+      "A savings account that lets you invest in stocks",
+      "A savings account that earns significantly more interest than a regular savings account",
+      "A savings account that charges high fees",
+      "A savings account only available to wealthy adults"
+    ],
+    "correctIndex": 1,
+    "explanation": "High-yield savings accounts (HYSAs) offer much higher interest rates than traditional savings accounts — often 10–20x more. They're typically offered by online banks that have lower costs than physical branches. They're just as safe as regular savings accounts (FDIC insured) but your money grows faster.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "saving-q7",
+    "topic": "saving",
+    "question": "In the 50/30/20 budgeting rule, what percentage goes toward savings?",
+    "options": [
+      "5%",
+      "10%",
+      "20%",
+      "30%"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 50/30/20 rule suggests: 50% of your income for needs (rent, food, utilities), 30% for wants (entertainment, eating out), and 20% for savings and paying off debt. The 20% savings goal is a guideline — even saving 10% is great if you're just starting out!",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "saving-q8",
+    "topic": "saving",
+    "question": "What is the Rule of 72?",
+    "options": [
+      "You should save $72 per month minimum",
+      "You must wait 72 months before withdrawing savings",
+      "Divide 72 by your annual interest rate to estimate how many years it takes to double your money",
+      "72% of your income should go to savings"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Rule of 72 is a quick mental math trick. If your money grows at 6% per year, divide 72 ÷ 6 = 12 years to double. At 4%, it takes 72 ÷ 4 = 18 years. At 8%, only 72 ÷ 8 = 9 years! This shows why higher interest rates and early saving matter so much.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "saving-q9",
+    "topic": "saving",
+    "question": "What does FDIC insurance protect?",
+    "options": [
+      "Your car from accidents",
+      "Your health from illness",
+      "Bank deposits up to $250,000 if your bank fails",
+      "Stock market investments from losses"
+    ],
+    "correctIndex": 2,
+    "explanation": "The FDIC (Federal Deposit Insurance Corporation) insures deposits in U.S. banks up to $250,000 per depositor per bank. If your bank goes bankrupt, you won't lose your savings. This is why putting money in a bank is safer than keeping cash under your mattress — FDIC is a government guarantee.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "saving-q10",
+    "topic": "saving",
+    "question": "Which savings strategy helps you save automatically without thinking about it?",
+    "options": [
+      "Saving only when you have leftover money at the end of the month",
+      "Paying yourself first — moving money to savings as soon as you get paid",
+      "Waiting until you want to buy something to start saving",
+      "Only saving during the holidays"
+    ],
+    "correctIndex": 1,
+    "explanation": "\"Pay yourself first\" means treating savings like a bill you must pay before spending on anything else. The moment money arrives (a paycheck, allowance, etc.), transfer a set amount to savings. This removes the temptation to spend it first. It's the #1 habit of consistent savers — automation makes it effortless.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  }
+]

@@ -98,7 +98,7 @@ const topicColors: Record<
   },
 };
 
-const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting", "saving", "investing"];
+const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting", "saving", "investing", "insurance"];
 const MAX_LIVES = 3;
 const optionLabels = ["A", "B", "C", "D"];
 

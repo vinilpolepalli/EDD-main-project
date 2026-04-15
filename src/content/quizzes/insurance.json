@@ -1,0 +1,152 @@
+[
+  {
+    "id": "insurance-q1",
+    "topic": "insurance",
+    "question": "What is insurance?",
+    "options": [
+      "A loan from the government for emergencies",
+      "A system where you pay regular fees in exchange for financial protection against specific losses",
+      "A savings account that earns extra interest",
+      "A type of investment that always makes money"
+    ],
+    "correctIndex": 1,
+    "explanation": "Insurance is a way to protect yourself from large financial losses. You pay a relatively small amount regularly (called a premium), and in return, the insurance company agrees to pay for certain big expenses if they happen — like a car accident, medical bill, or house fire. You're essentially pooling risk with thousands of other people.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "insurance-q2",
+    "topic": "insurance",
+    "question": "What is a premium?",
+    "options": [
+      "The amount you pay when you visit the doctor",
+      "The regular payment (monthly, quarterly, or yearly) you make to keep your insurance active",
+      "The maximum amount insurance will pay you",
+      "A bonus payment for being a loyal customer"
+    ],
+    "correctIndex": 1,
+    "explanation": "A premium is the cost of your insurance — what you pay to the insurance company to maintain coverage. Think of it like a subscription fee. If you stop paying premiums, your insurance gets cancelled and you lose protection. Premiums vary based on the type of coverage, your age, health, and many other factors.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "insurance-q3",
+    "topic": "insurance",
+    "question": "What is a deductible?",
+    "options": [
+      "The monthly fee you pay for insurance",
+      "The amount the insurance company pays you",
+      "The amount YOU must pay out-of-pocket before insurance kicks in",
+      "A discount on your premium for good behavior"
+    ],
+    "correctIndex": 2,
+    "explanation": "A deductible is your share of the cost before insurance starts paying. For example, if you have a $500 deductible on car insurance and get in a $2,000 accident, you pay the first $500 and insurance covers the remaining $1,500. Higher deductibles = lower premiums (you take on more risk). Lower deductibles = higher premiums.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "insurance-q4",
+    "topic": "insurance",
+    "question": "What does health insurance cover?",
+    "options": [
+      "Only emergency room visits",
+      "Only prescription medications",
+      "Medical expenses like doctor visits, hospital stays, surgeries, and prescriptions",
+      "Only dental and vision care"
+    ],
+    "correctIndex": 2,
+    "explanation": "Health insurance helps pay for medical costs. Depending on your plan, it can cover doctor visits, urgent care, hospital stays, surgeries, lab tests, mental health services, and prescriptions. Without health insurance, a single hospital stay can cost tens of thousands of dollars — an amount that could financially devastate a family.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "insurance-q5",
+    "topic": "insurance",
+    "question": "What is a copay?",
+    "options": [
+      "Your total monthly insurance bill",
+      "A fixed fee you pay each time you use a specific healthcare service",
+      "The total amount insurance covers per year",
+      "A penalty for missing a premium payment"
+    ],
+    "correctIndex": 1,
+    "explanation": "A copay is a fixed amount you pay every time you use a specific service — like $20 per doctor visit or $10 for generic prescriptions. After paying the copay, your insurance covers the rest of the cost. Copays are different from deductibles: deductibles are yearly totals you must meet first, while copays are per-visit fees.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "insurance-q6",
+    "topic": "insurance",
+    "question": "Why is auto (car) insurance required by law in most U.S. states?",
+    "options": [
+      "To raise money for road construction",
+      "To ensure that if you cause an accident, you can pay for the damage to others",
+      "Because car companies require it to sell cars",
+      "To track how much people drive"
+    ],
+    "correctIndex": 1,
+    "explanation": "Auto insurance is legally required because if you cause an accident, you could injure people and damage their property — costing hundreds of thousands of dollars. Without insurance, many drivers couldn't afford to pay victims. Mandatory insurance protects everyone on the road, not just you. Driving without it is illegal and can result in fines or license suspension.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "insurance-q7",
+    "topic": "insurance",
+    "question": "What is renters insurance?",
+    "options": [
+      "Insurance that pays your rent if you lose your job",
+      "Insurance that protects your landlord's building",
+      "Insurance that covers your personal belongings and liability when you rent a home",
+      "Insurance for people who rent out their homes to others"
+    ],
+    "correctIndex": 2,
+    "explanation": "Renters insurance protects your personal stuff — furniture, electronics, clothing, jewelry — from theft, fire, or water damage. It also covers liability if someone gets hurt in your apartment. Many people skip it, but it's usually very affordable ($15–30/month). Your landlord's insurance only covers the building itself, not what's inside your unit.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "insurance-q8",
+    "topic": "insurance",
+    "question": "What is an insurance claim?",
+    "options": [
+      "A request to cancel your insurance policy",
+      "A formal request to your insurance company to pay for a covered loss or expense",
+      "A premium discount after a year without incidents",
+      "A list of everything your insurance covers"
+    ],
+    "correctIndex": 1,
+    "explanation": "When something covered by your insurance happens — your car is damaged, you need surgery, your apartment is burglarized — you file a claim. The insurance company reviews it to confirm it's covered, then pays out according to your policy. Filing too many small claims can sometimes raise your premiums, so it's often better to use insurance for major losses.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "insurance-q9",
+    "topic": "insurance",
+    "question": "What is life insurance designed to do?",
+    "options": [
+      "Protect you from getting sick",
+      "Help you live longer",
+      "Provide financial support to people who depend on you after you die",
+      "Pay for your retirement expenses"
+    ],
+    "correctIndex": 2,
+    "explanation": "Life insurance pays money to your chosen beneficiaries (like your family) when you die. It's most important if others depend on your income — like a spouse, children, or aging parents. If you died unexpectedly, life insurance ensures your family can pay bills, mortgages, and living expenses. Young people without dependents typically need it less.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "insurance-q10",
+    "topic": "insurance",
+    "question": "What is the main benefit of having insurance even if you never use it?",
+    "options": [
+      "You get a refund if you don't file claims",
+      "Peace of mind — knowing you're protected against financially devastating events",
+      "Your premium payments earn interest like a savings account",
+      "Insurance companies pay you bonuses for staying healthy"
+    ],
+    "correctIndex": 1,
+    "explanation": "The biggest value of insurance is peace of mind — protection against worst-case scenarios. If you pay $100/month for car insurance for 5 years and never have an accident, you might feel like you \"wasted\" $6,000. But if you DO have a $30,000 accident in year 6, that $6,000 investment was worth it. Insurance isn't gambling — it's risk management.",
+    "ceeStandard": "CEE.PF.6",
+    "difficulty": "beginner"
+  }
+]

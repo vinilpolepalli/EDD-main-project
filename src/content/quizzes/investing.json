@@ -1,0 +1,152 @@
+[
+  {
+    "id": "investing-q1",
+    "topic": "investing",
+    "question": "What does it mean to invest money?",
+    "options": [
+      "To spend money as fast as possible",
+      "To hide money in a safe place so no one can touch it",
+      "To put money into something with the expectation it will grow in value over time",
+      "To lend money to friends"
+    ],
+    "correctIndex": 2,
+    "explanation": "Investing means putting your money to work so it can grow. Unlike saving (which earns small, predictable interest), investing involves buying assets — like stocks, bonds, or real estate — that can increase in value. Investing comes with risk (your money can also decrease), but over long periods of time, investing has historically grown wealth significantly.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "investing-q2",
+    "topic": "investing",
+    "question": "What is a stock?",
+    "options": [
+      "A loan you give to a company",
+      "A small ownership share in a company",
+      "A type of bank account",
+      "Cash stored at a company's headquarters"
+    ],
+    "correctIndex": 1,
+    "explanation": "When you buy a stock, you're buying a tiny piece of ownership in a company. If the company grows and becomes more valuable, your stock is worth more. If the company struggles, your stock loses value. Stockholders can also receive dividends — a portion of the company's profits paid out regularly.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "investing-q3",
+    "topic": "investing",
+    "question": "What is a bond?",
+    "options": [
+      "A share of ownership in a company",
+      "A loan you give to a company or government that pays you back with interest",
+      "A type of stock with extra voting rights",
+      "A savings account at a brokerage"
+    ],
+    "correctIndex": 1,
+    "explanation": "When you buy a bond, you're lending money to a company or government. They promise to pay you back the full amount after a set period of time, plus regular interest payments along the way. Bonds are generally less risky than stocks but also offer lower returns. They're like the steady tortoise in the race.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "investing-q4",
+    "topic": "investing",
+    "question": "What is diversification in investing?",
+    "options": [
+      "Putting all your money into one great investment",
+      "Only investing in companies from one country",
+      "Spreading investments across many different assets to reduce risk",
+      "Selling all your investments when the market goes down"
+    ],
+    "correctIndex": 2,
+    "explanation": "Diversification means \"don't put all your eggs in one basket.\" If you invest in 50 different companies, and one goes bankrupt, you only lose 2% of your portfolio. If you invested everything in one company and it fails, you lose everything. Diversification reduces the impact of any single bad investment.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "investing-q5",
+    "topic": "investing",
+    "question": "What is an index fund?",
+    "options": [
+      "A fund that tries to beat the stock market by picking the best stocks",
+      "A fund that automatically tracks a market index (like the S&P 500) by owning all its stocks",
+      "A savings account with a guaranteed return",
+      "A fund that only invests in government bonds"
+    ],
+    "correctIndex": 1,
+    "explanation": "An index fund buys every stock in a specific market index — like the S&P 500 (the 500 largest U.S. companies). Instead of trying to pick winners, you own a tiny piece of all of them. Index funds are cheap to manage and, historically, they've outperformed most actively managed funds over the long term.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "investing-q6",
+    "topic": "investing",
+    "question": "What is the general relationship between risk and return in investing?",
+    "options": [
+      "Higher risk investments always guarantee higher returns",
+      "Lower risk investments always have higher returns",
+      "Investments with higher potential returns usually come with higher risk",
+      "Risk and return have no relationship"
+    ],
+    "correctIndex": 2,
+    "explanation": "The risk-return tradeoff is a fundamental investment principle: the more risk you take (chance of losing money), the more potential return (profit) you could earn. A savings account is very safe but earns little. Stocks have more risk but historically grow much more. Smart investors choose a mix based on their goals and timeline.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "investing-q7",
+    "topic": "investing",
+    "question": "What is a 401(k)?",
+    "options": [
+      "A type of student loan",
+      "A tax-advantaged retirement savings account offered by employers",
+      "A government benefit paid to retired people",
+      "A 401-day savings challenge"
+    ],
+    "correctIndex": 1,
+    "explanation": "A 401(k) is a retirement savings account offered through your employer. You contribute money from your paycheck before it's taxed (so you pay less tax now). Many employers match your contributions — free money! The money grows tax-deferred until you withdraw it in retirement. It's one of the most powerful wealth-building tools available.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "investing-q8",
+    "topic": "investing",
+    "question": "Why is starting to invest early so important?",
+    "options": [
+      "Young people get better stock prices",
+      "Compound growth over more years results in dramatically more wealth",
+      "The government requires people to invest before age 18",
+      "Early investors pay lower taxes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Time is your greatest investing superpower. A 15-year-old who invests $1,000 at 8% annual return will have about $21,700 by age 55. A 35-year-old investing the same $1,000 would only have about $4,660 by 55. That's 40 years vs 20 years of compounding. Starting earlier means your money has more time to snowball.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "investing-q9",
+    "topic": "investing",
+    "question": "What does \"buy low, sell high\" mean?",
+    "options": [
+      "Buy cheap groceries, sell expensive ones",
+      "Purchase investments when prices are low, sell when prices rise for a profit",
+      "Only buy stocks that are priced under $10",
+      "Sell investments whenever the price drops"
+    ],
+    "correctIndex": 1,
+    "explanation": "\"Buy low, sell high\" is the basic goal of investing — buy an investment when it's undervalued, hold it, and sell it after the price increases to make a profit. In practice, it's very hard to time the market perfectly. That's why many experts recommend simply investing consistently over time (a strategy called dollar-cost averaging) rather than trying to predict price movements.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "investing-q10",
+    "topic": "investing",
+    "question": "What is the stock market?",
+    "options": [
+      "A grocery store that sells company merchandise",
+      "A place where only very wealthy people can buy things",
+      "A marketplace where buyers and sellers trade shares of companies",
+      "A government-run bank for large corporations"
+    ],
+    "correctIndex": 2,
+    "explanation": "The stock market is a marketplace — think of it like eBay but for company ownership. Buyers and sellers agree on prices for shares of publicly traded companies. Major U.S. stock markets include the NYSE (New York Stock Exchange) and NASDAQ. When you hear \"the stock market went up today,\" it means share prices generally increased across many companies.",
+    "ceeStandard": "CEE.PF.3",
+    "difficulty": "beginner"
+  }
+]

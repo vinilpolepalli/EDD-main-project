@@ -11,6 +11,7 @@ import {
   Lock,
   PiggyBank,
   Receipt,
+  Shield,
   Sparkles,
   Star,
   Trophy,
@@ -33,6 +34,7 @@ import taxesLessons from "@/content/lessons/taxes.json";
 import budgetingLessons from "@/content/lessons/budgeting.json";
 import savingLessons from "@/content/lessons/saving.json";
 import investingLessons from "@/content/lessons/investing.json";
+import insuranceLessons from "@/content/lessons/insurance.json";
 
 /* -------------------------------------------------------------------------- */
 /*  Types & Constants                                                         */
@@ -117,6 +119,19 @@ const SECTIONS: SectionConfig[] = [
     glowColor: "shadow-violet-500/40",
     bannerBg: "bg-violet-500/15",
     bannerBorder: "border-violet-500/30",
+  },
+  {
+    topic: "insurance",
+    title: "INSURANCE",
+    subtitle: "Protect What Matters",
+    icon: <Shield className="h-5 w-5" />,
+    lessons: (insuranceLessons as Lesson[]).sort((a, b) => a.order - b.order),
+    bgColor: "bg-rose-500",
+    ringColor: "ring-rose-400",
+    textColor: "text-rose-400",
+    glowColor: "shadow-rose-500/40",
+    bannerBg: "bg-rose-500/15",
+    bannerBorder: "border-rose-500/30",
   },
 ];
 

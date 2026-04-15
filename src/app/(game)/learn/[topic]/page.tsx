@@ -139,7 +139,7 @@ const topicColors: Record<
   },
 };
 
-const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting", "saving", "investing"];
+const VALID_TOPICS: Topic[] = ["credit", "taxes", "budgeting", "saving", "investing", "insurance"];
 
 function isValidTopic(value: unknown): value is Topic {
   return typeof value === "string" && VALID_TOPICS.includes(value as Topic);
