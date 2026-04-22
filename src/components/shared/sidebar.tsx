@@ -130,8 +130,13 @@ const Sidebar: React.FC = () => {
           {/* User Profile */}
           {displayName && (
             <div className="mx-3 mb-2 flex items-center gap-3 rounded-xl bg-green-100 px-4 py-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white shadow-sm">
-                {getInitials(displayName)}
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white shadow-sm overflow-hidden">
+                {user?.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={user.imageUrl} alt={displayName} className="h-full w-full object-cover" />
+                ) : (
+                  getInitials(displayName)
+                )}
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-bold text-green-900">
