@@ -12,6 +12,7 @@ import {
   Coins,
   Gamepad2,
   LogOut,
+  HelpCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGameState } from "@/hooks/use-game-state";
@@ -52,6 +53,11 @@ const sidebarLinks: SidebarLink[] = [
     href: "/minigames",
     label: "Mini-Games",
     icon: <Gamepad2 className="h-5 w-5" />,
+  },
+  {
+    href: "/guide",
+    label: "How to Play",
+    icon: <HelpCircle className="h-5 w-5" />,
   },
 ];
 
