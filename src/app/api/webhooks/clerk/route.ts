@@ -2,8 +2,6 @@ import { headers } from "next/headers";
 import { Webhook } from "svix";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
   if (!WEBHOOK_SECRET) {
@@ -38,6 +36,7 @@ export async function POST(req: Request) {
     const firstName = event.data.first_name ?? "Explorer";
 
     if (email) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
         from: "CashQuest <onboarding@resend.dev>",
         to: email,
