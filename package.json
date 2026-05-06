@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test:e2e": "playwright test"
   },
   "packageManager": "pnpm@10.32.1",
   "dependencies": {
@@ -21,6 +22,8 @@
     "next": "16.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "resend": "^6.12.3",
+    "svix": "^1.92.2",
     "tailwind-merge": "2.6.0",
     "zod": "3.24.1"
   },
@@ -36,6 +39,7 @@
     }
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "4.1.7",
     "@types/node": "22.12.0",
     "@types/react": "19.0.8",

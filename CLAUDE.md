@@ -244,3 +244,54 @@ Rules:
 - Confirm legal disclaimer is present on all pages
 - Run full `pnpm lint && pnpm type-check && pnpm test` suite
 - Check that no PII beyond email is stored
+
+---
+
+## Landing page (rogo style)
+
+A separate parent-facing marketing landing page lives at `/landing`. It uses an editorial serif aesthetic (Newsreader + Inter, ink/paper palette) and is intentionally independent from the kid-facing game UI at `/`.
+
+### Where the files live
+
+```
+src/app/
+├── layout.tsx                        # Slim root: <html><body><ClerkProvider> only
+├── (site)/                           # Route group wrapping the existing kid-facing app
+│   ├── layout.tsx                    # Nunito + flex column + global disclaimer footer
+│   ├── page.tsx                      # Existing home
+│   ├── (auth)/, (game)/, (minigames)/  # Existing routes
+└── landing/                          # New rogo-style marketing route
+    ├── layout.tsx                    # Newsreader + Inter font loaders, scoped to /landing
+    ├── page.tsx                      # Composes the sections below
+    └── _components/
+        ├── _primitives/              # section, eyebrow, button, fade-up
+        ├── navbar.tsx                # Client; IntersectionObserver scroll-flip + mobile sheet
+        ├── hero.tsx                  # CSS-rendered architectural composition (no real photo yet)
+        ├── logo-marquee.tsx          # Pure CSS keyframes, reduced-motion-aware
+        ├── testimonials-section.tsx
+        ├── why-section.tsx
+        ├── pricing-section.tsx
+        ├── stats-section.tsx
+        ├── security-section.tsx
+        ├── cta-section.tsx
+        └── footer.tsx
+```
+
+### Token convention
+
+Landing-only color and font tokens are prefixed `--color-rogo-*` / `--font-rogo-*` in `src/app/globals.css` to avoid collision with the existing `--color-muted` and other shared tokens. Any new landing token MUST use the `rogo-` prefix. Tailwind utilities resolve to `bg-rogo-ink`, `text-rogo-muted`, `font-rogo-serif`, etc.
+
+### Hero composition
+
+The hero right column is a layered CSS/SVG composition (gradient sky + radial sun glow + neoclassical column SVG + vignette) that evokes the rogo.ai institutional architecture mood without shipping any image asset. To swap to a real photo later, replace the `<ArchitectureComposition />` block inside `landing/_components/hero.tsx` — the rest of the layout is independent.
+
+### Auth
+
+`/landing` is added to the public-route matcher in `src/proxy.ts` so unauthenticated visitors see it directly.
+
+### Tests
+
+A single Playwright e2e covers the highest-value behaviors (hero render, scroll-flip, mobile menu open/Escape, pricing copy):
+- `tests/e2e/landing.spec.ts`
+- `playwright.config.ts` at repo root
+- `pnpm test:e2e` to run

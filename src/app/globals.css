@@ -45,6 +45,17 @@
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   --radius-full: 9999px;
+
+  /* Rogo landing page tokens (scoped via --color-rogo-* prefix to avoid global collisions) */
+  --color-rogo-ink: #0A0A0A;
+  --color-rogo-paper: #F5F4F0;
+  --color-rogo-paper-2: #ECEAE3;
+  --color-rogo-line: #E5E2DA;
+  --color-rogo-muted: #6B6B6B;
+  --color-rogo-muted-dark: #A8A8A8;
+
+  --font-rogo-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-rogo-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
