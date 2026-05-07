@@ -1,6 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
 import { Sidebar } from "@/components/shared/sidebar";
-import { LegalDisclaimer } from "@/components/shared/legal-disclaimer";
 
 export default async function GameLayout({
   children,
@@ -10,14 +9,11 @@ export default async function GameLayout({
   await auth.protect();
 
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-paper text-ink">
       <Sidebar />
-      <main className="flex-1 pb-20 lg:ml-64 lg:pb-0">
-        <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+      <main className="flex-1 pb-24 lg:ml-16 lg:pb-0">
+        <div className="mx-auto w-full max-w-6xl px-6 py-10 sm:px-8">
           {children}
-        </div>
-        <div className="px-4 py-3 opacity-60">
-          <LegalDisclaimer />
         </div>
       </main>
     </div>

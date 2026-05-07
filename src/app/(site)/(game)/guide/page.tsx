@@ -30,10 +30,10 @@ const sections: Section[] = [
     title: "Getting Into CashQuest",
     intro:
       "Everything starts at cashquest-two.vercel.app. From the landing page you can sign up, log in, or jump straight to the dashboard.",
-    borderClass: "border-emerald-400",
-    bgClass: "bg-emerald-50",
-    badgeClass: "bg-emerald-600 text-white",
-    titleColorClass: "text-emerald-700",
+    borderClass: "border-accent",
+    bgClass: "bg-accent-soft",
+    badgeClass: "bg-accent text-white",
+    titleColorClass: "text-accent",
     steps: [
       {
         title: "Open the landing page",
@@ -57,10 +57,10 @@ const sections: Section[] = [
     title: "Creating Your Account",
     intro:
       "CashQuest uses Clerk to handle authentication. You can sign up with email + password, or with Google or Apple — we recommend Google or Apple since we don't yet have 2-factor auth.",
-    borderClass: "border-teal-400",
-    bgClass: "bg-teal-50",
-    badgeClass: "bg-teal-600 text-white",
-    titleColorClass: "text-teal-700",
+    borderClass: "border-accent",
+    bgClass: "bg-accent-soft",
+    badgeClass: "bg-accent text-white",
+    titleColorClass: "text-accent",
     steps: [
       {
         title: "Pick a sign-up method",
@@ -87,10 +87,10 @@ const sections: Section[] = [
     title: "Your Dashboard",
     intro:
       "The dashboard is your home base. It shows your XP, streak, level, and lessons done, and gives you two ways to jump into any module.",
-    borderClass: "border-emerald-400",
-    bgClass: "bg-emerald-50",
-    badgeClass: "bg-emerald-600 text-white",
-    titleColorClass: "text-emerald-700",
+    borderClass: "border-accent",
+    bgClass: "bg-accent-soft",
+    badgeClass: "bg-accent text-white",
+    titleColorClass: "text-accent",
     steps: [
       {
         title: "Use the sidebar for fast navigation",
@@ -113,10 +113,10 @@ const sections: Section[] = [
     title: "Learn Path",
     intro:
       "The Learn Path is your Duolingo-style track of micro-lessons. Each topic is a row of circles you click through in order — and every unit ends with a quiz.",
-    borderClass: "border-emerald-400",
-    bgClass: "bg-emerald-50",
-    badgeClass: "bg-emerald-600 text-white",
-    titleColorClass: "text-emerald-700",
+    borderClass: "border-accent",
+    bgClass: "bg-accent-soft",
+    badgeClass: "bg-accent text-white",
+    titleColorClass: "text-accent",
     steps: [
       {
         title: "Pick a lesson circle",
@@ -143,10 +143,10 @@ const sections: Section[] = [
     title: "Life Simulator",
     intro:
       "Life Simulator drops you into a fictional adult life and asks you to budget month by month. Every choice changes your balance, debt, and credit score.",
-    borderClass: "border-purple-400",
-    bgClass: "bg-purple-50",
-    badgeClass: "bg-purple-600 text-white",
-    titleColorClass: "text-purple-700",
+    borderClass: "border-paper-2",
+    bgClass: "bg-paper-2",
+    badgeClass: "bg-ink text-white",
+    titleColorClass: "text-ink",
     steps: [
       {
         title: "Open the Life Simulator",
@@ -177,10 +177,10 @@ const sections: Section[] = [
     title: "Mini-Game Arcade",
     intro:
       "The arcade is where you spend the Arcade Tokens you earned in Learn Path. There are 7 fast 60-second games covering different finance concepts.",
-    borderClass: "border-amber-400",
-    bgClass: "bg-amber-50",
-    badgeClass: "bg-amber-600 text-white",
-    titleColorClass: "text-amber-700",
+    borderClass: "border-paper-2",
+    bgClass: "bg-paper-2",
+    badgeClass: "bg-accent text-white",
+    titleColorClass: "text-accent",
     steps: [
       {
         title: "Browse the arcade",
@@ -244,7 +244,7 @@ export default function GuidePage() {
           <a
             key={s.id}
             href={`#${s.id}`}
-            className="flex min-h-[44px] items-center gap-2 rounded-full border-2 border-gray-200 bg-white px-4 py-2 text-xs font-bold text-gray-700 shadow-sm transition-colors hover:border-emerald-400 hover:text-emerald-700"
+            className="flex min-h-[44px] items-center gap-2 rounded-full border-2 border-gray-200 bg-white px-4 py-2 text-xs font-bold text-gray-700 shadow-sm transition-colors hover:border-accent hover:text-accent"
           >
             <span className="text-base">{s.emoji}</span>
             {s.title}
@@ -320,9 +320,9 @@ export default function GuidePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ type: "spring", stiffness: 200, damping: 22 }}
-        className="rounded-2xl border-2 border-sky-300 bg-sky-50 p-6"
+        className="rounded-2xl border-2 border-paper-2 bg-paper-2 p-6"
       >
-        <h2 className="mb-4 flex items-center gap-2 text-xl font-extrabold text-sky-700">
+        <h2 className="mb-4 flex items-center gap-2 text-xl font-extrabold text-ink">
           <span className="text-2xl">💡</span>
           Pro Tips
         </h2>
@@ -354,19 +354,19 @@ export default function GuidePage() {
       >
         <Link
           href="/learn"
-          className="flex min-h-[44px] items-center rounded-xl bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white shadow transition-colors hover:bg-emerald-700"
+          className="flex min-h-[44px] items-center rounded-xl bg-accent px-6 py-2.5 text-sm font-bold text-white shadow transition-colors hover:bg-accent"
         >
           Start Learning →
         </Link>
         <Link
           href="/simulator"
-          className="flex min-h-[44px] items-center rounded-xl bg-purple-600 px-6 py-2.5 text-sm font-bold text-white shadow transition-colors hover:bg-purple-700"
+          className="flex min-h-[44px] items-center rounded-xl bg-ink px-6 py-2.5 text-sm font-bold text-white shadow transition-colors hover:bg-ink"
         >
           Try the Simulator →
         </Link>
         <Link
           href="/minigames"
-          className="flex min-h-[44px] items-center rounded-xl bg-amber-500 px-6 py-2.5 text-sm font-bold text-white shadow transition-colors hover:bg-amber-600"
+          className="flex min-h-[44px] items-center rounded-xl bg-accent px-6 py-2.5 text-sm font-bold text-white shadow transition-colors hover:bg-accent"
         >
           Hit the Arcade →
         </Link>

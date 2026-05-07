@@ -84,49 +84,49 @@ const topicColors: Record<
   }
 > = {
   credit: {
-    bg: "bg-indigo-500",
-    light: "bg-indigo-50",
-    text: "text-indigo-600",
-    border: "border-indigo-200",
-    headerBg: "bg-indigo-500",
-    progressBg: "bg-indigo-500",
-    ringColor: "ring-indigo-400",
+    bg: "bg-ink",
+    light: "bg-paper-2",
+    text: "text-ink",
+    border: "border-paper-2",
+    headerBg: "bg-ink",
+    progressBg: "bg-ink",
+    ringColor: "ring-paper-2",
   },
   taxes: {
-    bg: "bg-amber-500",
-    light: "bg-amber-50",
-    text: "text-amber-600",
-    border: "border-amber-200",
-    headerBg: "bg-amber-500",
-    progressBg: "bg-amber-500",
-    ringColor: "ring-amber-400",
+    bg: "bg-accent",
+    light: "bg-paper-2",
+    text: "text-accent",
+    border: "border-paper-2",
+    headerBg: "bg-accent",
+    progressBg: "bg-accent",
+    ringColor: "ring-paper-2",
   },
   budgeting: {
-    bg: "bg-emerald-500",
-    light: "bg-emerald-50",
-    text: "text-emerald-600",
-    border: "border-emerald-200",
-    headerBg: "bg-emerald-500",
-    progressBg: "bg-emerald-500",
-    ringColor: "ring-emerald-400",
+    bg: "bg-accent",
+    light: "bg-accent-soft",
+    text: "text-accent",
+    border: "border-accent-soft",
+    headerBg: "bg-accent",
+    progressBg: "bg-accent",
+    ringColor: "ring-accent",
   },
   saving: {
-    bg: "bg-cyan-500",
-    light: "bg-cyan-50",
-    text: "text-cyan-600",
-    border: "border-cyan-200",
-    headerBg: "bg-cyan-500",
-    progressBg: "bg-cyan-500",
-    ringColor: "ring-cyan-400",
+    bg: "bg-ink",
+    light: "bg-paper-2",
+    text: "text-ink",
+    border: "border-paper-2",
+    headerBg: "bg-ink",
+    progressBg: "bg-ink",
+    ringColor: "ring-paper-2",
   },
   investing: {
-    bg: "bg-violet-500",
-    light: "bg-violet-50",
-    text: "text-violet-600",
-    border: "border-violet-200",
-    headerBg: "bg-violet-500",
-    progressBg: "bg-violet-500",
-    ringColor: "ring-violet-400",
+    bg: "bg-ink",
+    light: "bg-paper-2",
+    text: "text-ink",
+    border: "border-paper-2",
+    headerBg: "bg-ink",
+    progressBg: "bg-ink",
+    ringColor: "ring-paper-2",
   },
   insurance: {
     bg: "bg-rose-500",
@@ -201,7 +201,7 @@ function SectionRenderer({
       >
         {section.title && (
           <h4 className="flex items-center gap-2 text-sm font-extrabold text-gray-900">
-            <Lightbulb className="h-4 w-4 text-yellow-500" />
+            <Lightbulb className="h-4 w-4 text-accent" />
             {section.title}
           </h4>
         )}
@@ -285,7 +285,7 @@ export default function TopicLessonsPage() {
             The topic &quot;{String(topicParam)}&quot; doesn&apos;t exist.
           </p>
           <Link href="/learn">
-            <Button className="mt-2 min-h-[48px] rounded-xl bg-green-600 font-extrabold text-white hover:bg-green-700">
+            <Button className="mt-2 min-h-[48px] rounded-xl bg-accent font-extrabold text-white hover:bg-accent">
               Back to Learn Path
             </Button>
           </Link>
@@ -452,7 +452,7 @@ export default function TopicLessonsPage() {
                   <div
                     className={cn(
                       "overflow-hidden rounded-xl border-2 bg-white shadow-sm transition-colors",
-                      isCompleted ? "border-emerald-400" : "border-gray-200",
+                      isCompleted ? "border-accent" : "border-gray-200",
                       isExpanded && "shadow-md"
                     )}
                   >
@@ -467,7 +467,7 @@ export default function TopicLessonsPage() {
                       <div
                         className={cn(
                           "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-extrabold text-white shadow-sm",
-                          isCompleted ? "bg-emerald-500" : colors.bg
+                          isCompleted ? "bg-accent" : colors.bg
                         )}
                       >
                         {isCompleted ? (
@@ -556,7 +556,7 @@ export default function TopicLessonsPage() {
                               </motion.div>
                             ) : (
                               <motion.div
-                                className="flex items-center gap-2 rounded-xl bg-emerald-50 px-4 py-3"
+                                className="flex items-center gap-2 rounded-xl bg-accent-soft px-4 py-3"
                                 initial={
                                   isJustCompleted
                                     ? { scale: 0.9, opacity: 0 }
@@ -569,12 +569,12 @@ export default function TopicLessonsPage() {
                                   damping: 20,
                                 }}
                               >
-                                <CheckCircle className="h-5 w-5 text-emerald-600" />
-                                <span className="text-sm font-extrabold text-emerald-700">
+                                <CheckCircle className="h-5 w-5 text-accent" />
+                                <span className="text-sm font-extrabold text-accent">
                                   Lesson Complete!
                                 </span>
                                 {isJustCompleted && (
-                                  <span className="ml-auto text-xs font-bold text-emerald-600">
+                                  <span className="ml-auto text-xs font-bold text-accent">
                                     +{XP_PER_LESSON_COMPLETE} XP{" "}
                                     <Sparkles className="inline h-3 w-3" />
                                   </span>

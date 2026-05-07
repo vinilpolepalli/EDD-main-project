@@ -74,8 +74,8 @@ const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100">
-            <Zap className="h-5 w-5 text-amber-500" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-paper-2">
+            <Zap className="h-5 w-5 text-accent" />
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-bold text-foreground">
@@ -92,9 +92,9 @@ const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
       </div>
 
       {/* Progress Bar */}
-      <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-amber-100">
+      <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-paper-2">
         <motion.div
-          className="h-full rounded-full bg-amber-500"
+          className="h-full rounded-full bg-accent"
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ type: "spring", stiffness: 80, damping: 18 }}
@@ -105,7 +105,7 @@ const XpBar: React.FC<XpBarProps> = ({ totalXp, xpGain = 0, className }) => {
       <AnimatePresence>
         {showGain && (
           <motion.span
-            className="absolute -top-2 right-4 rounded-full bg-amber-500 px-2.5 py-0.5 text-xs font-extrabold text-white shadow-md"
+            className="absolute -top-2 right-4 rounded-full bg-accent px-2.5 py-0.5 text-xs font-extrabold text-white shadow-md"
             initial={{ opacity: 0, y: 10, scale: 0.8 }}
             animate={{ opacity: 1, y: -8, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.6 }}

@@ -216,7 +216,7 @@ export default function TaxTriviaPage() {
                       className={cn(
                         "min-h-[64px] rounded-2xl border-2 p-3 text-sm font-bold transition-colors text-left",
                         showReveal && isCorrect
-                          ? "border-emerald-400 bg-emerald-50 text-emerald-800"
+                          ? "border-accent bg-accent-soft text-ink"
                           : showReveal && isSelected && !isCorrect
                             ? "border-red-400 bg-red-50 text-red-800"
                             : "border-border bg-card hover:bg-muted"
@@ -235,7 +235,7 @@ export default function TaxTriviaPage() {
                     className={cn(
                       "rounded-xl border-2 p-3 text-sm font-semibold leading-relaxed",
                       selected === q.correctIndex
-                        ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+                        ? "border-accent-soft bg-accent-soft text-ink"
                         : "border-red-300 bg-red-50 text-red-800"
                     )}
                     initial={{ opacity: 0, height: 0 }}
@@ -272,7 +272,7 @@ export default function TaxTriviaPage() {
                   {wrongAnswers.map((q, i) => (
                     <div key={i} className="mb-3 border-b border-border pb-3 last:border-0 last:pb-0">
                       <p className="text-xs font-bold text-foreground">{q.question}</p>
-                      <p className="mt-1 text-xs font-semibold text-emerald-700">
+                      <p className="mt-1 text-xs font-semibold text-accent">
                         ✓ {q.options[q.correctIndex]}
                       </p>
                       <p className="mt-0.5 text-xs text-muted-foreground">{q.explanation}</p>

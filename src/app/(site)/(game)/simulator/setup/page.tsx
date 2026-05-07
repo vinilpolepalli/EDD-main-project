@@ -60,8 +60,8 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
       <Card
         className={`cursor-pointer border-2 transition-all ${
           isSelected
-            ? "border-green-500 shadow-lg shadow-green-200 ring-2 ring-green-300"
-            : "border-border hover:border-green-300 hover:shadow-md"
+            ? "border-accent shadow-lg  ring-2 ring-accent-soft"
+            : "border-border hover:border-accent-soft hover:shadow-md"
         }`}
         onClick={onSelect}
         role="radio"
@@ -102,7 +102,7 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
           {!isSurprise && (
             <div className="grid grid-cols-2 gap-2">
               <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
-                <Briefcase className="h-3.5 w-3.5 text-green-600" />
+                <Briefcase className="h-3.5 w-3.5 text-accent" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold text-muted-foreground">
                     Age
@@ -113,7 +113,7 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
                 </div>
               </div>
               <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
-                <DollarSign className="h-3.5 w-3.5 text-emerald-500" />
+                <DollarSign className="h-3.5 w-3.5 text-accent" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold text-muted-foreground">
                     Salary
@@ -124,7 +124,7 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
                 </div>
               </div>
               <div className="flex items-center gap-2 rounded-lg bg-muted px-2.5 py-1.5">
-                <PiggyBank className="h-3.5 w-3.5 text-blue-500" />
+                <PiggyBank className="h-3.5 w-3.5 text-ink" />
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold text-muted-foreground">
                     Savings
@@ -149,8 +149,8 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
           )}
 
           {isSurprise && (
-            <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-green-300 bg-green-50 p-4">
-              <p className="text-center text-sm font-bold text-green-700">
+            <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-accent-soft bg-accent-soft p-4">
+              <p className="text-center text-sm font-bold text-accent">
                 Random age, salary, debt, and life situation!
               </p>
             </div>
@@ -159,8 +159,8 @@ function ScenarioCard({ scenario, isSelected, onSelect }: ScenarioCardProps) {
           {/* Goal badge */}
           {goal && (
             <div className="flex items-center gap-2">
-              <Target className="h-3.5 w-3.5 text-green-600" />
-              <span className="text-xs font-bold text-green-700">
+              <Target className="h-3.5 w-3.5 text-accent" />
+              <span className="text-xs font-bold text-accent">
                 Goal: {goal.label}
               </span>
             </div>
@@ -243,7 +243,7 @@ export default function SimulatorSetupPage() {
         >
           <Button
             size="lg"
-            className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 disabled:opacity-50"
+            className="w-full bg-paper-2 from-accent to-accent text-white hover:from-accent hover:to-ink disabled:opacity-50"
             onClick={handleBegin}
             disabled={!selectedId}
           >

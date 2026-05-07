@@ -105,9 +105,9 @@ export default function SavingsRacePage() {
               exit={{ opacity: 0 }}
             >
               {/* Balance display */}
-              <div className="flex flex-col items-center gap-1 rounded-2xl border-2 border-cyan-200 bg-cyan-50 p-4 text-center">
-                <p className="text-xs font-bold text-cyan-600">Current Balance</p>
-                <p className="text-4xl font-extrabold text-cyan-700 tabular-nums">
+              <div className="flex flex-col items-center gap-1 rounded-2xl border-2 border-paper-2 bg-paper-2 p-4 text-center">
+                <p className="text-xs font-bold text-ink">Current Balance</p>
+                <p className="text-4xl font-extrabold text-ink tabular-nums">
                   {formatDollar(balance)}
                 </p>
                 <p className="text-xs text-muted-foreground">Year {year - 1} complete</p>
@@ -118,7 +118,7 @@ export default function SavingsRacePage() {
                 {history.map((h) => (
                   <motion.div
                     key={h.year}
-                    className="flex-1 rounded-t-sm bg-cyan-400"
+                    className="flex-1 rounded-t-sm bg-paper-2"
                     style={{ height: `${Math.max(4, (h.balance / maxBarValue) * 100)}%` }}
                     layout
                     title={`Year ${h.year}: ${formatDollar(h.balance)}`}
@@ -146,7 +146,7 @@ export default function SavingsRacePage() {
                       className={cn(
                         "flex min-h-[64px] items-center justify-between rounded-2xl border-2 px-5 py-3 text-left font-bold transition-colors",
                         isSelected
-                          ? "border-cyan-400 bg-cyan-50 text-cyan-800"
+                          ? "border-paper-2 bg-paper-2 text-ink"
                           : "border-border bg-card hover:bg-muted"
                       )}
                       whileHover={{ scale: 1.02 }}
@@ -176,18 +176,18 @@ export default function SavingsRacePage() {
             >
               <span className="text-6xl">🐷</span>
               <div>
-                <h2 className="text-4xl font-extrabold text-cyan-600">{formatDollar(balance)}</h2>
+                <h2 className="text-4xl font-extrabold text-ink">{formatDollar(balance)}</h2>
                 <p className="font-bold text-muted-foreground">After 10 years</p>
               </div>
 
               <div className="w-full rounded-2xl border-2 border-border bg-card p-4 text-left">
                 <div className="flex items-center justify-between py-2">
                   <span className="text-sm font-bold">Your ending balance</span>
-                  <span className="font-extrabold text-cyan-600">{formatDollar(balance)}</span>
+                  <span className="font-extrabold text-ink">{formatDollar(balance)}</span>
                 </div>
                 <div className="flex items-center justify-between py-2 border-t border-border">
                   <span className="text-sm font-bold">Inflation-adjusted need</span>
-                  <span className="font-extrabold text-orange-500">{formatDollar(inflationAdjusted)}</span>
+                  <span className="font-extrabold text-accent">{formatDollar(inflationAdjusted)}</span>
                 </div>
                 <div className="flex items-center justify-between py-2 border-t border-border">
                   <span className="text-sm font-bold">You started with</span>

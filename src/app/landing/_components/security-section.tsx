@@ -14,7 +14,7 @@ export function SecuritySection() {
     <Section variant="paper" className="!py-20 md:!py-24">
       <FadeUp>
         <h3
-          className="mx-auto max-w-[42rem] text-center font-rogo-serif font-normal text-rogo-ink"
+          className="mx-auto max-w-[42rem] text-center font-serif font-normal text-ink"
           style={{
             fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
             letterSpacing: "-0.02em",
@@ -30,11 +30,11 @@ export function SecuritySection() {
           {BADGES.map((badge, idx) => (
             <li
               key={badge}
-              className="flex items-center gap-6 font-rogo-sans text-[0.75rem] font-medium uppercase tracking-[0.1em] text-rogo-muted"
+              className="flex items-center gap-6 font-sans text-[0.75rem] font-medium uppercase tracking-[0.1em] text-muted"
             >
               <span>{badge}</span>
               {idx < BADGES.length - 1 && (
-                <span aria-hidden className="text-rogo-line">
+                <span aria-hidden className="text-line">
                   •
                 </span>
               )}

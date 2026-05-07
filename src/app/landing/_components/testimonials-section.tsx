@@ -47,24 +47,24 @@ function TestimonialCard({
 }) {
   return (
     <div
-      className={`relative flex h-full flex-col rounded-2xl bg-rogo-paper-2 p-8 md:p-10 ${className ?? ""}`}
+      className={`relative flex h-full flex-col rounded-2xl bg-paper-2 p-8 md:p-10 ${className ?? ""}`}
     >
-      <div className="font-rogo-serif text-[0.875rem] uppercase tracking-[0.12em] text-rogo-muted/70">
+      <div className="font-serif text-[0.875rem] uppercase tracking-[0.12em] text-muted/70">
         {data.partner}
       </div>
 
       <blockquote
-        className="mt-6 font-rogo-serif text-rogo-ink"
+        className="mt-6 font-serif text-ink"
         style={{ fontSize: quoteSize, lineHeight: 1.4 }}
       >
         “{data.quote}”
       </blockquote>
 
       <div className="mt-auto pt-8">
-        <div className="font-rogo-sans text-[0.875rem] font-medium text-rogo-ink">
+        <div className="font-sans text-[0.875rem] font-medium text-ink">
           {data.name}
         </div>
-        <div className="font-rogo-sans text-[0.875rem] text-rogo-muted">
+        <div className="font-sans text-[0.875rem] text-muted">
           {data.role}
         </div>
       </div>
@@ -72,7 +72,7 @@ function TestimonialCard({
       {showPlus && (
         <div
           aria-hidden
-          className="absolute bottom-6 right-6 flex h-10 w-10 items-center justify-center rounded-md border border-rogo-line bg-rogo-paper text-rogo-ink"
+          className="absolute bottom-6 right-6 flex h-10 w-10 items-center justify-center rounded-md border border-line bg-paper text-ink"
         >
           <Plus className="h-4 w-4" />
         </div>
@@ -86,7 +86,7 @@ export function TestimonialsSection() {
     <Section variant="paper">
       <FadeUp>
         <h2
-          className="mx-auto max-w-[36rem] text-center font-rogo-serif font-normal text-rogo-ink"
+          className="mx-auto max-w-[36rem] text-center font-serif font-normal text-ink"
           style={{
             fontSize: "clamp(2.25rem, 5vw, 4rem)",
             letterSpacing: "-0.02em",

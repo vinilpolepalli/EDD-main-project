@@ -61,12 +61,12 @@ const SECTIONS: SectionConfig[] = [
     subtitle: "Master the 50/30/20 Rule",
     icon: <Wallet className="h-5 w-5" />,
     lessons: (budgetingLessons as Lesson[]).sort((a, b) => a.order - b.order),
-    bgColor: "bg-emerald-500",
-    ringColor: "ring-emerald-400",
-    textColor: "text-emerald-400",
-    glowColor: "shadow-emerald-500/40",
-    bannerBg: "bg-emerald-500/15",
-    bannerBorder: "border-emerald-500/30",
+    bgColor: "bg-accent",
+    ringColor: "ring-accent",
+    textColor: "text-muted",
+    glowColor: "",
+    bannerBg: "bg-accent/15",
+    bannerBorder: "border-accent/30",
   },
   {
     topic: "credit",
@@ -74,12 +74,12 @@ const SECTIONS: SectionConfig[] = [
     subtitle: "Build Your Credit Score",
     icon: <CreditCard className="h-5 w-5" />,
     lessons: (creditLessons as Lesson[]).sort((a, b) => a.order - b.order),
-    bgColor: "bg-indigo-500",
-    ringColor: "ring-indigo-400",
-    textColor: "text-indigo-400",
-    glowColor: "shadow-indigo-500/40",
-    bannerBg: "bg-indigo-500/15",
-    bannerBorder: "border-indigo-500/30",
+    bgColor: "bg-ink",
+    ringColor: "ring-paper-2",
+    textColor: "text-muted",
+    glowColor: "",
+    bannerBg: "bg-ink/15",
+    bannerBorder: "border-ink/30",
   },
   {
     topic: "taxes",
@@ -87,12 +87,12 @@ const SECTIONS: SectionConfig[] = [
     subtitle: "Understand Your Paycheck",
     icon: <Receipt className="h-5 w-5" />,
     lessons: (taxesLessons as Lesson[]).sort((a, b) => a.order - b.order),
-    bgColor: "bg-amber-500",
-    ringColor: "ring-amber-400",
-    textColor: "text-amber-400",
-    glowColor: "shadow-amber-500/40",
-    bannerBg: "bg-amber-500/15",
-    bannerBorder: "border-amber-500/30",
+    bgColor: "bg-accent",
+    ringColor: "ring-paper-2",
+    textColor: "text-muted",
+    glowColor: "",
+    bannerBg: "bg-accent/15",
+    bannerBorder: "border-accent/30",
   },
   {
     topic: "saving",
@@ -100,12 +100,12 @@ const SECTIONS: SectionConfig[] = [
     subtitle: "Build Your Safety Net",
     icon: <PiggyBank className="h-5 w-5" />,
     lessons: (savingLessons as Lesson[]).sort((a, b) => a.order - b.order),
-    bgColor: "bg-cyan-500",
-    ringColor: "ring-cyan-400",
-    textColor: "text-cyan-400",
-    glowColor: "shadow-cyan-500/40",
-    bannerBg: "bg-cyan-500/15",
-    bannerBorder: "border-cyan-500/30",
+    bgColor: "bg-ink",
+    ringColor: "ring-paper-2",
+    textColor: "text-muted",
+    glowColor: "",
+    bannerBg: "bg-ink/15",
+    bannerBorder: "border-ink/30",
   },
   {
     topic: "investing",
@@ -113,12 +113,12 @@ const SECTIONS: SectionConfig[] = [
     subtitle: "Make Money Work for You",
     icon: <TrendingUp className="h-5 w-5" />,
     lessons: (investingLessons as Lesson[]).sort((a, b) => a.order - b.order),
-    bgColor: "bg-violet-500",
-    ringColor: "ring-violet-400",
-    textColor: "text-violet-400",
-    glowColor: "shadow-violet-500/40",
-    bannerBg: "bg-violet-500/15",
-    bannerBorder: "border-violet-500/30",
+    bgColor: "bg-ink",
+    ringColor: "ring-paper-2",
+    textColor: "text-muted",
+    glowColor: "",
+    bannerBg: "bg-ink/15",
+    bannerBorder: "border-ink/30",
   },
   {
     topic: "insurance",
@@ -263,7 +263,7 @@ function LessonNode({
         className={cn(
           "relative flex h-16 w-16 items-center justify-center rounded-full border-4 transition-all",
           status === "completed" &&
-            "border-emerald-400 bg-emerald-500 text-white",
+            "border-accent bg-accent text-white",
           status === "current" &&
             cn(
               "border-white/80",
@@ -356,9 +356,9 @@ function QuizNode({
         className={cn(
           "relative flex h-20 w-20 items-center justify-center rounded-full border-4 transition-all",
           status === "completed" &&
-            "border-amber-400 bg-amber-500 text-white",
+            "border-paper-2 bg-accent text-white",
           status === "current" &&
-            "border-amber-300 bg-amber-500 text-white ring-4 ring-amber-400 shadow-lg shadow-amber-500/40",
+            "border-paper-2 bg-accent text-white ring-4 ring-paper-2 shadow-lg ",
           status === "locked" &&
             "border-gray-300 bg-gray-100 text-gray-400"
         )}
@@ -392,7 +392,7 @@ function QuizNode({
       <span
         className={cn(
           "text-center text-[10px] font-extrabold tracking-wide",
-          status === "locked" ? "text-gray-400" : "text-amber-500"
+          status === "locked" ? "text-gray-400" : "text-accent"
         )}
       >
         UNIT QUIZ
@@ -424,14 +424,14 @@ function Sidebar({
     <div className="flex flex-col gap-4">
       {/* Streak */}
       <motion.div
-        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
+        className="rounded-2xl border border-accent-soft bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2 }}
       >
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100">
-            <Flame className="h-7 w-7 text-orange-500" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-paper-2">
+            <Flame className="h-7 w-7 text-accent" />
           </div>
           <div>
             <p className="text-2xl font-extrabold text-gray-900 tabular-nums">
@@ -444,14 +444,14 @@ function Sidebar({
 
       {/* XP */}
       <motion.div
-        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
+        className="rounded-2xl border border-accent-soft bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3 }}
       >
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100">
-            <Zap className="h-7 w-7 text-yellow-500" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-paper-2">
+            <Zap className="h-7 w-7 text-accent" />
           </div>
           <div>
             <p className="text-2xl font-extrabold text-gray-900 tabular-nums">
@@ -464,14 +464,14 @@ function Sidebar({
 
       {/* Daily Goal */}
       <motion.div
-        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
+        className="rounded-2xl border border-accent-soft bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.4 }}
       >
         <div className="flex items-center gap-2 mb-2">
-          <Target className="h-4 w-4 text-green-600" />
-          <p className="text-xs font-extrabold text-green-600">DAILY GOAL</p>
+          <Target className="h-4 w-4 text-accent" />
+          <p className="text-xs font-extrabold text-accent">DAILY GOAL</p>
         </div>
         <p className="text-sm font-bold text-gray-700">
           Complete 1 lesson today
@@ -480,14 +480,14 @@ function Sidebar({
 
       {/* Fun Fact */}
       <motion.div
-        className="rounded-2xl border border-green-200 bg-white p-4 shadow-sm"
+        className="rounded-2xl border border-accent-soft bg-white p-4 shadow-sm"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5 }}
       >
         <div className="flex items-center gap-2 mb-2">
-          <Lightbulb className="h-4 w-4 text-yellow-500" />
-          <p className="text-xs font-extrabold text-yellow-600">DID YOU KNOW?</p>
+          <Lightbulb className="h-4 w-4 text-accent" />
+          <p className="text-xs font-extrabold text-accent">DID YOU KNOW?</p>
         </div>
         <p className="text-sm font-semibold leading-relaxed text-gray-600">
           {funFact}
@@ -503,9 +503,9 @@ function Sidebar({
       >
         <Link
           href="/dashboard"
-          className="flex min-h-[44px] items-center gap-2 rounded-xl border border-green-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:bg-green-50"
+          className="flex min-h-[44px] items-center gap-2 rounded-xl border border-accent-soft bg-white px-4 py-2.5 text-sm font-bold text-gray-700 transition-colors hover:bg-accent-soft"
         >
-          <Sparkles className="h-4 w-4 text-green-600" />
+          <Sparkles className="h-4 w-4 text-accent" />
           Dashboard
         </Link>
       </motion.div>
@@ -555,11 +555,11 @@ export default function LearnPage() {
 
   if (!isLoaded) {
     return (
-      <div className="flex min-h-screen flex-col bg-green-50 -mx-4 -my-6 sm:-mx-6">
+      <div className="flex min-h-screen flex-col bg-accent-soft -mx-4 -my-6 sm:-mx-6">
         <div className="mx-auto w-full max-w-5xl px-4 py-8">
           <div className="flex flex-col gap-6">
             {[0, 1, 2].map((i) => (
-              <Skeleton key={i} className="h-48 w-full rounded-2xl bg-green-100" />
+              <Skeleton key={i} className="h-48 w-full rounded-2xl bg-accent-soft" />
             ))}
           </div>
         </div>
@@ -571,10 +571,10 @@ export default function LearnPage() {
   let globalNodeIndex = 0;
 
   return (
-    <div className="flex min-h-screen flex-col bg-green-50 -mx-4 -my-6 sm:-mx-6">
+    <div className="flex min-h-screen flex-col bg-accent-soft -mx-4 -my-6 sm:-mx-6">
       {/* Header */}
       <motion.header
-        className="sticky top-0 z-30 border-b border-green-200 bg-white/95 backdrop-blur-sm shadow-sm"
+        className="sticky top-0 z-30 border-b border-accent-soft bg-white/95 backdrop-blur-sm shadow-sm"
         initial={{ y: -60 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -583,7 +583,7 @@ export default function LearnPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/dashboard"
-              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-green-100 hover:text-green-800"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-accent-soft hover:text-ink"
               aria-label="Back to dashboard"
             >
               <svg
@@ -604,11 +604,11 @@ export default function LearnPage() {
             </h1>
           </div>
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 text-sm font-bold text-orange-500">
+            <div className="flex items-center gap-1.5 text-sm font-bold text-accent">
               <Flame className="h-4 w-4" />
               <span className="tabular-nums">{progress.currentStreak}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-sm font-bold text-yellow-600">
+            <div className="flex items-center gap-1.5 text-sm font-bold text-accent">
               <Zap className="h-4 w-4" />
               <span className="tabular-nums">
                 {progress.totalXp.toLocaleString()}
@@ -670,7 +670,7 @@ export default function LearnPage() {
                   {/* Lesson nodes */}
                   <div className="relative flex flex-col items-center gap-4 px-4">
                     {/* Vertical path line */}
-                    <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-green-300 via-green-200 to-green-100" />
+                    <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-paper-2 from-accent-soft via-accent-soft to-accent-soft" />
 
                     {section.lessons.map((lesson, lessonIdx) => {
                       const delay = 0.05 * globalNodeIndex;
@@ -721,7 +721,7 @@ export default function LearnPage() {
       </div>
 
       {/* Legal disclaimer */}
-      <div className="border-t border-green-200 px-4 py-3 bg-white">
+      <div className="border-t border-accent-soft px-4 py-3 bg-white">
         <LegalDisclaimer className="text-gray-400" />
       </div>
     </div>

@@ -25,7 +25,7 @@ export function StatsSection() {
         {STATS.map((stat, idx) => (
           <FadeUp key={stat.label} delay={idx * 0.06} className="md:flex-1">
             <div
-              className="font-rogo-serif font-normal text-white"
+              className="font-serif font-normal text-white"
               style={{
                 fontSize: "clamp(3rem, 6vw, 5rem)",
                 letterSpacing: "-0.02em",
@@ -34,7 +34,7 @@ export function StatsSection() {
             >
               {stat.number}
             </div>
-            <div className="mt-4 max-w-[18rem] font-rogo-sans text-[0.9375rem] text-rogo-muted-dark">
+            <div className="mt-4 max-w-[18rem] font-sans text-[0.9375rem] text-muted-dark">
               {stat.label}
             </div>
           </FadeUp>

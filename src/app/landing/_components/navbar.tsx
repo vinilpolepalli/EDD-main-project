@@ -7,11 +7,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "./_primitives/button";
 
 const NAV_LINKS = [
-  { label: "Product", href: "#" },
-  { label: "Learn", href: "#" },
+  { label: "Learn", href: "/learn" },
   { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#" },
-  { label: "Blog", href: "#" },
+  { label: "Guide", href: "/guide" },
+  { label: "Dashboard", href: "/dashboard" },
 ];
 
 export function Navbar() {
@@ -76,7 +75,7 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-colors duration-200 ease-out",
           scrolled
-            ? "border-b border-rogo-line bg-rogo-paper/95 backdrop-blur-md"
+            ? "border-b border-line bg-paper/95 backdrop-blur-md"
             : "border-b border-transparent bg-transparent",
         )}
         aria-label="Primary"
@@ -85,8 +84,8 @@ export function Navbar() {
           <Link
             href="/landing"
             className={cn(
-              "font-rogo-serif text-[1.25rem] lowercase tracking-tight transition-colors",
-              scrolled ? "text-rogo-ink" : "text-white",
+              "font-serif text-[1.25rem] lowercase tracking-tight transition-colors",
+              scrolled ? "text-ink" : "text-white",
             )}
           >
             cashquest
@@ -98,9 +97,9 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={cn(
-                    "font-rogo-sans text-[0.875rem] font-medium transition-colors",
+                    "font-sans text-[0.875rem] font-medium transition-colors",
                     scrolled
-                      ? "text-rogo-ink/80 hover:text-rogo-ink"
+                      ? "text-ink/80 hover:text-ink"
                       : "text-white/80 hover:text-white",
                   )}
                 >
@@ -112,18 +111,18 @@ export function Navbar() {
 
           <div className="hidden items-center gap-5 md:flex">
             <Link
-              href="#"
+              href="/login"
               className={cn(
-                "font-rogo-sans text-[0.875rem] font-medium transition-colors",
+                "font-sans text-[0.875rem] font-medium transition-colors",
                 scrolled
-                  ? "text-rogo-ink/80 hover:text-rogo-ink"
+                  ? "text-ink/80 hover:text-ink"
                   : "text-white/80 hover:text-white",
               )}
             >
               Log in
             </Link>
             <Button
-              href="#pricing"
+              href="/signup"
               variant={scrolled ? "primary-on-paper" : "primary-on-ink"}
             >
               Get Started
@@ -139,7 +138,7 @@ export function Navbar() {
             aria-label="Open menu"
             className={cn(
               "md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors",
-              scrolled ? "text-rogo-ink" : "text-white",
+              scrolled ? "text-ink" : "text-white",
             )}
           >
             <Menu className="h-5 w-5" />
@@ -154,10 +153,10 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
-          className="fixed inset-0 z-[60] flex flex-col bg-rogo-paper px-6 py-5 md:hidden"
+          className="fixed inset-0 z-[60] flex flex-col bg-paper px-6 py-5 md:hidden"
         >
           <div className="flex items-center justify-between">
-            <span className="font-rogo-serif text-[1.25rem] lowercase tracking-tight text-rogo-ink">
+            <span className="font-serif text-[1.25rem] lowercase tracking-tight text-ink">
               cashquest
             </span>
             <button
@@ -165,7 +164,7 @@ export function Navbar() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-rogo-ink"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink"
             >
               <X className="h-5 w-5" />
             </button>
@@ -177,7 +176,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-rogo-serif text-[2rem] font-normal tracking-tight text-rogo-ink"
+                  className="font-serif text-[2rem] font-normal tracking-tight text-ink"
                 >
                   {link.label}
                 </Link>
@@ -187,13 +186,13 @@ export function Navbar() {
 
           <div className="mt-auto flex flex-col gap-4 pb-4">
             <Link
-              href="#"
+              href="/login"
               onClick={() => setOpen(false)}
-              className="font-rogo-sans text-[0.875rem] font-medium text-rogo-muted"
+              className="font-sans text-[0.875rem] font-medium text-muted"
             >
               Log in
             </Link>
-            <Button href="#pricing" variant="primary-on-paper">
+            <Button href="/signup" variant="primary-on-paper">
               Get Started
             </Button>
           </div>

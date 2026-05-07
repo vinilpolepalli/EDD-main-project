@@ -28,9 +28,9 @@ const ACTIONS = [
 
 function getCreditColor(score: number) {
   if (score < 580) return { bar: "bg-red-500", text: "text-red-600", label: "Poor" };
-  if (score < 670) return { bar: "bg-yellow-500", text: "text-yellow-600", label: "Fair" };
-  if (score < 740) return { bar: "bg-emerald-500", text: "text-emerald-600", label: "Good" };
-  return { bar: "bg-emerald-600", text: "text-emerald-700", label: "Excellent" };
+  if (score < 670) return { bar: "bg-accent", text: "text-accent", label: "Fair" };
+  if (score < 740) return { bar: "bg-accent", text: "text-accent", label: "Good" };
+  return { bar: "bg-accent", text: "text-accent", label: "Excellent" };
 }
 
 export default function CreditClimbPage() {
@@ -157,7 +157,7 @@ export default function CreditClimbPage() {
                     className={cn(
                       "rounded-xl border-2 p-3 text-sm font-semibold leading-relaxed",
                       lastCorrect
-                        ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+                        ? "border-accent-soft bg-accent-soft text-ink"
                         : "border-red-300 bg-red-50 text-red-800"
                     )}
                     initial={{ opacity: 0, height: 0 }}
@@ -172,7 +172,7 @@ export default function CreditClimbPage() {
               {/* Answer buttons */}
               <div className="flex gap-4">
                 <Button
-                  className="flex-1 min-h-[56px] rounded-2xl bg-emerald-500 font-extrabold text-white hover:bg-emerald-600"
+                  className="flex-1 min-h-[56px] rounded-2xl bg-accent font-extrabold text-white hover:bg-accent"
                   onClick={() => handleAnswer(true)}
                 >
                   ⬆️ RAISES

@@ -49,8 +49,8 @@ function formatMoney(amount: number): string {
 
 function getCreditScoreColor(score: number): string {
   if (score < 580) return "text-red-500";
-  if (score < 670) return "text-yellow-500";
-  return "text-emerald-500";
+  if (score < 670) return "text-accent";
+  return "text-accent";
 }
 
 function getCreditScoreLabel(score: number): string {
@@ -81,15 +81,15 @@ function getEmergencyFundStatus(
   if (monthsCovered >= 3) {
     return {
       label: `${Math.floor(monthsCovered)}mo covered`,
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50",
+      color: "text-accent",
+      bgColor: "bg-accent-soft",
     };
   }
   if (monthsCovered >= 1) {
     return {
       label: `${Math.floor(monthsCovered)}mo covered`,
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-50",
+      color: "text-accent",
+      bgColor: "bg-paper-2",
     };
   }
   return {
@@ -103,10 +103,10 @@ function getEmergencyFundStatus(
 function ActivityFeedEntry({ entry }: { entry: ActivityEntry }) {
   const bgColor =
     entry.positivity === "positive"
-      ? "bg-emerald-50 border-emerald-200"
+      ? "bg-accent-soft border-accent-soft"
       : entry.positivity === "negative"
         ? "bg-red-50 border-red-200"
-        : "bg-blue-50 border-blue-200";
+        : "bg-paper-2 border-paper-2";
 
   return (
     <div
@@ -411,7 +411,7 @@ export default function SimulatorPlayPage() {
       <div className="flex flex-col gap-5 pb-8">
         {/* Life Stage Banner */}
         <motion.div
-          className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-purple-600 to-violet-600 px-5 py-4 text-white shadow-lg"
+          className="flex items-center justify-between rounded-2xl bg-paper-2 from-ink to-ink px-5 py-4 text-white shadow-lg"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -424,7 +424,7 @@ export default function SimulatorPlayPage() {
               <span className="text-lg font-extrabold tracking-tight">
                 {state.lifeStage}
               </span>
-              <span className="text-xs font-bold text-purple-200">
+              <span className="text-xs font-bold text-muted">
                 Month {state.month} &bull; Age {state.age}
               </span>
             </div>
@@ -448,8 +448,8 @@ export default function SimulatorPlayPage() {
               transition={{ delay: 0.1 }}
             >
               {/* Balance */}
-              <div className="flex flex-col items-center gap-1 rounded-xl bg-emerald-50 p-3">
-                <DollarSign className="h-4 w-4 text-emerald-500" />
+              <div className="flex flex-col items-center gap-1 rounded-xl bg-accent-soft p-3">
+                <DollarSign className="h-4 w-4 text-accent" />
                 <span className="text-lg font-extrabold tabular-nums text-foreground">
                   {formatMoney(state.balance)}
                 </span>
@@ -472,8 +472,8 @@ export default function SimulatorPlayPage() {
               </div>
 
               {/* Credit Score */}
-              <div className="flex flex-col items-center gap-1 rounded-xl bg-purple-50 p-3">
-                <CreditCard className="h-4 w-4 text-purple-500" />
+              <div className="flex flex-col items-center gap-1 rounded-xl bg-paper-2 p-3">
+                <CreditCard className="h-4 w-4 text-ink" />
                 <span
                   className={`text-lg font-extrabold tabular-nums ${getCreditScoreColor(state.creditScore)}`}
                 >
@@ -485,8 +485,8 @@ export default function SimulatorPlayPage() {
               </div>
 
               {/* Happiness */}
-              <div className="flex flex-col items-center gap-1 rounded-xl bg-yellow-50 p-3">
-                <Smile className="h-4 w-4 text-yellow-500" />
+              <div className="flex flex-col items-center gap-1 rounded-xl bg-paper-2 p-3">
+                <Smile className="h-4 w-4 text-accent" />
                 <span className="text-lg font-extrabold tabular-nums text-foreground">
                   {state.happiness}%
                 </span>
@@ -496,9 +496,9 @@ export default function SimulatorPlayPage() {
               </div>
 
               {/* Monthly Net Flow — spans full width on mobile */}
-              <div className={`col-span-2 sm:col-span-2 flex flex-col items-center gap-1 rounded-xl p-3 ${isPositiveFlow ? "bg-blue-50" : "bg-orange-50"}`}>
-                <TrendingUp className={`h-4 w-4 ${isPositiveFlow ? "text-blue-500" : "text-orange-500"}`} />
-                <span className={`text-lg font-extrabold tabular-nums ${isPositiveFlow ? "text-blue-600" : "text-orange-600"}`}>
+              <div className={`col-span-2 sm:col-span-2 flex flex-col items-center gap-1 rounded-xl p-3 ${isPositiveFlow ? "bg-paper-2" : "bg-paper-2"}`}>
+                <TrendingUp className={`h-4 w-4 ${isPositiveFlow ? "text-ink" : "text-accent"}`} />
+                <span className={`text-lg font-extrabold tabular-nums ${isPositiveFlow ? "text-ink" : "text-accent"}`}>
                   {isPositiveFlow ? "+" : ""}{formatMoney(monthlyNetFlow)}
                 </span>
                 <span className="text-[10px] font-bold text-muted-foreground">
@@ -529,8 +529,8 @@ export default function SimulatorPlayPage() {
                   state.creditScore < 580
                     ? "bg-red-500"
                     : state.creditScore < 670
-                      ? "bg-yellow-500"
-                      : "bg-emerald-500"
+                      ? "bg-accent"
+                      : "bg-accent"
                 }`}
                 initial={{ width: 0 }}
                 animate={{ width: `${creditScorePercent}%` }}
@@ -541,7 +541,7 @@ export default function SimulatorPlayPage() {
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center justify-between text-xs font-bold">
               <span className="text-muted-foreground">Happiness</span>
-              <span className="text-yellow-500">{state.happiness} / 100</span>
+              <span className="text-accent">{state.happiness} / 100</span>
             </div>
             <Progress value={state.happiness} className="h-2.5" />
           </div>
@@ -567,29 +567,29 @@ export default function SimulatorPlayPage() {
         {/* Goal Progress */}
         {goal && (
           <motion.div
-            className="flex flex-col gap-2 rounded-xl border-2 border-purple-200 bg-purple-50 p-3"
+            className="flex flex-col gap-2 rounded-xl border-2 border-paper-2 bg-paper-2 p-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
             <div className="flex items-center justify-between">
-              <span className="flex items-center gap-2 text-xs font-extrabold text-purple-700">
+              <span className="flex items-center gap-2 text-xs font-extrabold text-ink">
                 <Target className="h-3.5 w-3.5" />
                 {goal.label}
               </span>
               {goalComplete ? (
-                <Badge className="bg-emerald-500 text-white text-xs">
+                <Badge className="bg-accent text-white text-xs">
                   COMPLETE!
                 </Badge>
               ) : (
-                <span className="text-xs font-extrabold tabular-nums text-purple-600">
+                <span className="text-xs font-extrabold tabular-nums text-ink">
                   {goalProgress}%
                 </span>
               )}
             </div>
             <Progress
               value={goalProgress}
-              className={`h-2 ${goalComplete ? "[&>div]:bg-emerald-500" : "[&>div]:bg-purple-500"}`}
+              className={`h-2 ${goalComplete ? "[&>div]:bg-accent" : "[&>div]:bg-ink"}`}
             />
           </motion.div>
         )}
@@ -606,14 +606,14 @@ export default function SimulatorPlayPage() {
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
             >
               {/* Income Breakdown */}
-              <Card className="border-2 border-purple-100">
+              <Card className="border-2 border-paper-2">
                 <CardContent className="flex flex-col gap-2.5 p-4">
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-2 text-sm font-bold text-emerald-600">
+                    <span className="flex items-center gap-2 text-sm font-bold text-accent">
                       <DollarSign className="h-4 w-4" />
                       Gross Salary
                     </span>
-                    <span className="text-sm font-extrabold tabular-nums text-emerald-600">
+                    <span className="text-sm font-extrabold tabular-nums text-accent">
                       +{formatMoney(effectiveSalary)}
                     </span>
                   </div>
@@ -647,21 +647,21 @@ export default function SimulatorPlayPage() {
                   </div>
                   {debtInterest > 0 && (
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-2 text-sm font-bold text-orange-500">
+                      <span className="flex items-center gap-2 text-sm font-bold text-accent">
                         <AlertTriangle className="h-4 w-4" />
                         Debt Interest
                       </span>
-                      <span className="text-sm font-extrabold tabular-nums text-orange-500">
+                      <span className="text-sm font-extrabold tabular-nums text-accent">
                         -{formatMoney(debtInterest)}
                       </span>
                     </div>
                   )}
-                  <div className="border-t border-purple-200 pt-2">
+                  <div className="border-t border-paper-2 pt-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-extrabold text-purple-700">
+                      <span className="text-sm font-extrabold text-ink">
                         Discretionary Income
                       </span>
-                      <span className="text-lg font-extrabold tabular-nums text-purple-700">
+                      <span className="text-lg font-extrabold tabular-nums text-ink">
                         {formatMoney(discretionaryIncome)}
                       </span>
                     </div>
@@ -670,9 +670,9 @@ export default function SimulatorPlayPage() {
               </Card>
 
               {/* Allocation Sliders */}
-              <Card className="border-2 border-purple-200">
+              <Card className="border-2 border-paper-2">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-base text-purple-700">
+                  <CardTitle className="text-base text-ink">
                     How will you split your money?
                   </CardTitle>
                 </CardHeader>
@@ -694,7 +694,7 @@ export default function SimulatorPlayPage() {
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button
                   size="lg"
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-violet-600 py-6 text-lg font-extrabold text-white hover:from-purple-700 hover:to-violet-700"
+                  className="flex-1 bg-paper-2 from-ink to-ink py-6 text-lg font-extrabold text-white hover:from-ink hover:to-ink"
                   onClick={handleEndMonth}
                   disabled={allocationTotal !== 100}
                 >
@@ -704,7 +704,7 @@ export default function SimulatorPlayPage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-purple-300 text-purple-700 hover:bg-purple-50"
+                  className="border-paper-2 text-ink hover:bg-paper-2"
                   onClick={handleEndSimulation}
                 >
                   <LogOut className="h-5 w-5" />
@@ -743,7 +743,7 @@ export default function SimulatorPlayPage() {
               {/* Goal completion banner */}
               {goalComplete && goal && (
                 <motion.div
-                  className="flex flex-col items-center gap-2 rounded-2xl border-2 border-emerald-400 bg-emerald-50 p-5 text-center"
+                  className="flex flex-col items-center gap-2 rounded-2xl border-2 border-accent bg-accent-soft p-5 text-center"
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
@@ -751,10 +751,10 @@ export default function SimulatorPlayPage() {
                   <span className="text-4xl">
                     {"\uD83C\uDF89"}
                   </span>
-                  <h3 className="text-xl font-extrabold text-emerald-700">
+                  <h3 className="text-xl font-extrabold text-accent">
                     GOAL ACHIEVED!
                   </h3>
-                  <p className="text-sm font-bold text-emerald-600">
+                  <p className="text-sm font-bold text-accent">
                     {goal.label}
                   </p>
                 </motion.div>
@@ -782,11 +782,11 @@ export default function SimulatorPlayPage() {
               {/* Net worth */}
               <div className="flex items-center justify-between rounded-xl bg-muted p-3">
                 <span className="flex items-center gap-2 text-sm font-bold text-foreground">
-                  <TrendingUp className="h-4 w-4 text-blue-500" />
+                  <TrendingUp className="h-4 w-4 text-ink" />
                   Net Worth
                 </span>
                 <span
-                  className={`text-lg font-extrabold tabular-nums ${netWorth >= 0 ? "text-emerald-600" : "text-red-600"}`}
+                  className={`text-lg font-extrabold tabular-nums ${netWorth >= 0 ? "text-accent" : "text-red-600"}`}
                 >
                   {formatMoney(netWorth)}
                 </span>
@@ -795,7 +795,7 @@ export default function SimulatorPlayPage() {
               {/* Next Month button */}
               <Button
                 size="lg"
-                className="w-full bg-gradient-to-r from-purple-600 to-violet-600 py-6 text-lg font-extrabold text-white hover:from-purple-700 hover:to-violet-700"
+                className="w-full bg-paper-2 from-ink to-ink py-6 text-lg font-extrabold text-white hover:from-ink hover:to-ink"
                 onClick={handleNextMonth}
               >
                 <ArrowRight className="h-6 w-6" />

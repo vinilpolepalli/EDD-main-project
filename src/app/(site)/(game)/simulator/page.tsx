@@ -52,10 +52,10 @@ function RunCard({ run, index }: { run: SimulatorRunRecord; index: number }) {
       variants={itemVariants}
       className="group"
     >
-      <Card className="overflow-hidden border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white transition-shadow hover:shadow-lg">
+      <Card className="overflow-hidden border-2 border-paper-2 bg-paper-2 from-paper-2 to-white transition-shadow hover:shadow-lg">
         <CardContent className="flex items-center gap-4 p-4">
-          <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${isBankrupt ? "bg-red-100" : "bg-purple-100"}`}>
-            <span className="text-xl font-extrabold tabular-nums text-purple-700">
+          <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${isBankrupt ? "bg-red-100" : "bg-paper-2"}`}>
+            <span className="text-xl font-extrabold tabular-nums text-ink">
               #{index + 1}
             </span>
           </div>
@@ -70,7 +70,7 @@ function RunCard({ run, index }: { run: SimulatorRunRecord; index: number }) {
                 </Badge>
               )}
               {!isBankrupt && run.finalBalance > 5000 && (
-                <Badge className="bg-purple-100 text-purple-700 text-[10px] font-bold">
+                <Badge className="bg-paper-2 text-ink text-[10px] font-bold">
                   STRONG
                 </Badge>
               )}
@@ -121,7 +121,7 @@ export default function SimulatorPage() {
         {/* Hero Section */}
         <motion.div
           variants={itemVariants}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-600 via-purple-500 to-violet-600 p-6 text-white shadow-xl sm:p-8"
+          className="relative overflow-hidden rounded-3xl bg-paper-2 from-ink via-ink to-ink p-6 text-white shadow-xl sm:p-8"
         >
           {/* Background decoration */}
           <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10" />
@@ -141,7 +141,7 @@ export default function SimulatorPage() {
               <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
                 Life Simulator
               </h2>
-              <p className="max-w-md text-sm leading-relaxed text-purple-100 sm:text-base">
+              <p className="max-w-md text-sm leading-relaxed text-muted sm:text-base">
                 Can you manage your money through real life? Make smart choices
                 about saving, spending, and investing each month. Watch out for
                 surprise events!
@@ -151,7 +151,7 @@ export default function SimulatorPage() {
             <Link href="/simulator/setup">
               <Button
                 size="lg"
-                className="mt-2 w-full bg-white text-purple-700 hover:bg-purple-50 sm:w-auto"
+                className="mt-2 w-full bg-white text-ink hover:bg-paper-2 sm:w-auto"
               >
                 <Play className="h-5 w-5" />
                 Start New Simulation
@@ -162,24 +162,24 @@ export default function SimulatorPage() {
 
         {/* Rules Card */}
         <motion.div variants={itemVariants}>
-          <Card className="border-2 border-purple-100">
+          <Card className="border-2 border-paper-2">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg text-purple-700">
+              <CardTitle className="flex items-center gap-2 text-lg text-ink">
                 <Target className="h-5 w-5" />
                 How It Works
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-3">
               {[
-                { icon: <Sparkles className="h-4 w-4 text-purple-500" />, text: "You get a random age, salary, and starting balance" },
-                { icon: <DollarSign className="h-4 w-4 text-green-500" />, text: "Each month, split your extra money between savings, spending, and investing" },
-                { icon: <Calendar className="h-4 w-4 text-blue-500" />, text: "Random life events happen — car repairs, bonuses, medical bills!" },
-                { icon: <CreditCard className="h-4 w-4 text-orange-500" />, text: "Your credit score changes based on your decisions" },
+                { icon: <Sparkles className="h-4 w-4 text-ink" />, text: "You get a random age, salary, and starting balance" },
+                { icon: <DollarSign className="h-4 w-4 text-accent" />, text: "Each month, split your extra money between savings, spending, and investing" },
+                { icon: <Calendar className="h-4 w-4 text-ink" />, text: "Random life events happen — car repairs, bonuses, medical bills!" },
+                { icon: <CreditCard className="h-4 w-4 text-accent" />, text: "Your credit score changes based on your decisions" },
                 { icon: <TrendingUp className="h-4 w-4 text-red-500" />, text: "If your balance hits $0 with debt, it's GAME OVER" },
               ].map((rule, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-start gap-3 rounded-xl bg-purple-50/60 p-3"
+                  className="flex items-start gap-3 rounded-xl bg-paper-2/60 p-3"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 + i * 0.08 }}
@@ -203,7 +203,7 @@ export default function SimulatorPage() {
               Previous Runs
             </h3>
             {sortedRuns.length > 0 && (
-              <Badge className="bg-purple-100 text-purple-700">
+              <Badge className="bg-paper-2 text-ink">
                 {sortedRuns.length} {sortedRuns.length === 1 ? "run" : "runs"}
               </Badge>
             )}
@@ -212,10 +212,10 @@ export default function SimulatorPage() {
           {!isLoaded ? (
             <RunsSkeleton />
           ) : sortedRuns.length === 0 ? (
-            <Card className="border-2 border-dashed border-purple-200">
+            <Card className="border-2 border-dashed border-paper-2">
               <CardContent className="flex flex-col items-center gap-3 py-8 text-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100">
-                  <TrendingUp className="h-7 w-7 text-purple-400" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-paper-2">
+                  <TrendingUp className="h-7 w-7 text-muted" />
                 </div>
                 <p className="text-sm font-bold text-muted-foreground">
                   No runs yet! Start your first simulation above.

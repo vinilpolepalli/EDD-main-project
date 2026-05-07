@@ -30,7 +30,7 @@ const StreakCounter: React.FC<StreakCounterProps> = ({ streak, className }) => {
       )}
     >
       <motion.div
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-100"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-paper-2"
         animate={{
           scale: [flameScale, flameScale * 0.94, flameScale],
         }}
@@ -40,7 +40,7 @@ const StreakCounter: React.FC<StreakCounterProps> = ({ streak, className }) => {
           ease: "easeInOut",
         }}
       >
-        <Flame className="h-6 w-6 text-orange-500" />
+        <Flame className="h-6 w-6 text-accent" />
       </motion.div>
       <div className="flex flex-col">
         <span className="text-2xl font-extrabold tabular-nums text-foreground">
@@ -49,7 +49,7 @@ const StreakCounter: React.FC<StreakCounterProps> = ({ streak, className }) => {
         <span className="text-xs font-semibold text-muted-foreground">
           {streak === 1 ? "day streak" : "day streak"}
         </span>
-        <span className="mt-0.5 text-xs font-medium text-orange-500">
+        <span className="mt-0.5 text-xs font-medium text-accent">
           {getStreakMessage(streak)}
         </span>
       </div>

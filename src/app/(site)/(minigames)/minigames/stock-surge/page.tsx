@@ -136,17 +136,17 @@ export default function StockSurgePage() {
             >
               {/* Stats row */}
               <div className="grid grid-cols-3 gap-3">
-                <div className="flex flex-col items-center gap-1 rounded-xl bg-emerald-50 p-3">
+                <div className="flex flex-col items-center gap-1 rounded-xl bg-accent-soft p-3">
                   <p className="text-[10px] font-bold text-muted-foreground">Cash</p>
-                  <p className="text-base font-extrabold tabular-nums text-emerald-700">{formatMoney(cash)}</p>
+                  <p className="text-base font-extrabold tabular-nums text-accent">{formatMoney(cash)}</p>
                 </div>
-                <div className="flex flex-col items-center gap-1 rounded-xl bg-blue-50 p-3">
+                <div className="flex flex-col items-center gap-1 rounded-xl bg-paper-2 p-3">
                   <p className="text-[10px] font-bold text-muted-foreground">Shares</p>
-                  <p className="text-base font-extrabold tabular-nums text-blue-700">{shares}</p>
+                  <p className="text-base font-extrabold tabular-nums text-ink">{shares}</p>
                 </div>
-                <div className="flex flex-col items-center gap-1 rounded-xl bg-purple-50 p-3">
+                <div className="flex flex-col items-center gap-1 rounded-xl bg-paper-2 p-3">
                   <p className="text-[10px] font-bold text-muted-foreground">Portfolio</p>
-                  <p className="text-base font-extrabold tabular-nums text-purple-700">{formatMoney(portfolioValue)}</p>
+                  <p className="text-base font-extrabold tabular-nums text-ink">{formatMoney(portfolioValue)}</p>
                 </div>
               </div>
 
@@ -157,7 +157,7 @@ export default function StockSurgePage() {
                   key={currentPrice}
                   className={cn(
                     "text-4xl font-extrabold tabular-nums",
-                    lastDirection === "up" ? "text-emerald-600" : lastDirection === "down" ? "text-red-600" : "text-foreground"
+                    lastDirection === "up" ? "text-accent" : lastDirection === "down" ? "text-red-600" : "text-foreground"
                   )}
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
@@ -166,7 +166,7 @@ export default function StockSurgePage() {
                 </motion.p>
                 <span className={cn(
                   "text-sm font-bold",
-                  lastDirection === "up" ? "text-emerald-500" : lastDirection === "down" ? "text-red-500" : "text-muted-foreground"
+                  lastDirection === "up" ? "text-accent" : lastDirection === "down" ? "text-red-500" : "text-muted-foreground"
                 )}>
                   {lastDirection === "up" ? "▲" : lastDirection === "down" ? "▼" : "—"}
                 </span>
@@ -189,7 +189,7 @@ export default function StockSurgePage() {
               {/* Action buttons */}
               <div className="flex gap-4">
                 <Button
-                  className="flex-1 min-h-[56px] rounded-2xl bg-emerald-500 text-lg font-extrabold text-white hover:bg-emerald-600 disabled:opacity-40"
+                  className="flex-1 min-h-[56px] rounded-2xl bg-accent text-lg font-extrabold text-white hover:bg-accent disabled:opacity-40"
                   onClick={handleBuy}
                   disabled={cash < currentPrice}
                 >
@@ -220,7 +220,7 @@ export default function StockSurgePage() {
               <span className="text-6xl">{profitLoss >= 0 ? "📈" : "📉"}</span>
               <div>
                 <h2 className="text-4xl font-extrabold">{formatMoney(portfolioValue)}</h2>
-                <p className={cn("font-bold", profitLoss >= 0 ? "text-emerald-600" : "text-red-600")}>
+                <p className={cn("font-bold", profitLoss >= 0 ? "text-accent" : "text-red-600")}>
                   {profitLoss >= 0 ? "+" : ""}{formatMoney(profitLoss)} vs start
                 </p>
               </div>
@@ -228,11 +228,11 @@ export default function StockSurgePage() {
               <div className="w-full rounded-2xl border-2 border-border bg-card p-4 text-left">
                 <div className="flex justify-between py-2 text-sm">
                   <span className="font-bold">Your portfolio</span>
-                  <span className={cn("font-extrabold", profitLoss >= 0 ? "text-emerald-600" : "text-red-600")}>{formatMoney(portfolioValue)}</span>
+                  <span className={cn("font-extrabold", profitLoss >= 0 ? "text-accent" : "text-red-600")}>{formatMoney(portfolioValue)}</span>
                 </div>
                 <div className="flex justify-between py-2 text-sm border-t border-border">
                   <span className="font-bold">"Just held" strategy</span>
-                  <span className="font-extrabold text-blue-600">{formatMoney(holdValue)}</span>
+                  <span className="font-extrabold text-ink">{formatMoney(holdValue)}</span>
                 </div>
                 <p className="mt-2 text-xs text-muted-foreground">
                   {portfolioValue >= holdValue

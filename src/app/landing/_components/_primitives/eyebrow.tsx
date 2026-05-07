@@ -10,8 +10,8 @@ export function Eyebrow({ className, tone = "paper", children }: EyebrowProps) {
   return (
     <span
       className={cn(
-        "block font-rogo-sans text-[0.75rem] font-medium uppercase tracking-[0.12em]",
-        tone === "ink" ? "text-rogo-muted-dark" : "text-rogo-muted",
+        "block font-sans text-[0.75rem] font-medium uppercase tracking-[0.12em]",
+        tone === "ink" ? "text-muted-dark" : "text-muted",
         className,
       )}
     >

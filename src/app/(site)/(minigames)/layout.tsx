@@ -6,11 +6,9 @@ export default function MinigamesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-paper text-ink">
       <Sidebar />
-      <main className="flex-1 pb-20 lg:ml-64 lg:pb-0">
-        {children}
-      </main>
+      <main className="flex-1 pb-24 lg:ml-16 lg:pb-0">{children}</main>
     </div>
   );
 }

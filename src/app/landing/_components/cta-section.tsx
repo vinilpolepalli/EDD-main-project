@@ -8,7 +8,7 @@ export function CTASection() {
       <div className="mx-auto flex max-w-[48rem] flex-col items-center text-center">
         <FadeUp>
           <h2
-            className="font-rogo-serif font-normal text-white"
+            className="font-serif font-normal text-white"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
               letterSpacing: "-0.02em",
@@ -20,7 +20,7 @@ export function CTASection() {
         </FadeUp>
         <FadeUp delay={0.05}>
           <div className="mt-12">
-            <Button href="#" variant="primary-on-ink">
+            <Button href="/signup" variant="primary-on-ink">
               Get Started Free
             </Button>
           </div>

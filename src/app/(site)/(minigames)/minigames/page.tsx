@@ -29,7 +29,7 @@ const GAMES: GameCard[] = [
     tagline: "Swipe to decide!",
     description: "Cards fly at you — is it a NEED or a WANT? Beat the clock and build your streak.",
     href: "/minigames/need-or-want",
-    gradient: "from-emerald-500 to-teal-500",
+    gradient: "from-accent to-accent",
     ceeStandard: "CEE.PF.2",
     difficulty: "Easy",
     duration: "60 sec",
@@ -42,7 +42,7 @@ const GAMES: GameCard[] = [
     tagline: "Higher or Lower?",
     description: "Does this action raise or drop your credit score? Survive until you hit 850 or crash to 300.",
     href: "/minigames/credit-climb",
-    gradient: "from-indigo-500 to-violet-500",
+    gradient: "from-ink to-ink",
     ceeStandard: "CEE.PF.4",
     difficulty: "Medium",
     duration: "Survival",
@@ -55,7 +55,7 @@ const GAMES: GameCard[] = [
     tagline: "Allocate fast!",
     description: "Salary drops in — split it across Rent, Food, Fun, and Savings. Balance it before time runs out.",
     href: "/minigames/budget-blitz-v2",
-    gradient: "from-amber-500 to-orange-500",
+    gradient: "from-accent to-accent",
     ceeStandard: "CEE.PF.2",
     difficulty: "Medium",
     duration: "90 sec",
@@ -68,7 +68,7 @@ const GAMES: GameCard[] = [
     tagline: "Test your tax IQ",
     description: "Multiple-choice questions on W-2s, deductions, refunds, and gross vs net. Build your refund total.",
     href: "/minigames/tax-trivia",
-    gradient: "from-rose-500 to-pink-500",
+    gradient: "from-rose-500 to-ink",
     ceeStandard: "CEE.PF.5",
     difficulty: "Hard",
     duration: "5 rounds",
@@ -81,7 +81,7 @@ const GAMES: GameCard[] = [
     tagline: "Compound wins!",
     description: "Pick your savings rate each round. Watch compound interest snowball over 10 simulated years.",
     href: "/minigames/savings-race",
-    gradient: "from-cyan-500 to-sky-500",
+    gradient: "from-ink to-ink",
     ceeStandard: "CEE.PF.3",
     difficulty: "Easy",
     duration: "5 min",
@@ -94,7 +94,7 @@ const GAMES: GameCard[] = [
     tagline: "Buy low, sell high",
     description: "Watch a simulated ticker. Buy and sell at the right moment. Ends when the clock hits zero.",
     href: "/minigames/stock-surge",
-    gradient: "from-lime-500 to-green-500",
+    gradient: "from-accent to-accent",
     ceeStandard: "CEE.PF.3",
     difficulty: "Hard",
     duration: "3 min",
@@ -107,7 +107,7 @@ const GAMES: GameCard[] = [
     tagline: "Story-driven choices",
     description: "Follow Alex through college, first job, and apartment hunting. Every panel is a financial decision.",
     href: "/minigames/comic-adventure",
-    gradient: "from-purple-500 to-fuchsia-500",
+    gradient: "from-ink to-ink",
     ceeStandard: "CEE.PF.1",
     difficulty: "Medium",
     duration: "10 min",
@@ -119,8 +119,8 @@ const GAMES: GameCard[] = [
 const TOPICS = ["All", "Budgeting", "Credit", "Taxes", "Saving", "Investing", "All Topics"];
 
 const difficultyColors = {
-  Easy: "bg-emerald-100 text-emerald-700",
-  Medium: "bg-amber-100 text-amber-700",
+  Easy: "bg-accent-soft text-accent",
+  Medium: "bg-paper-2 text-accent",
   Hard: "bg-red-100 text-red-700",
 };
 
@@ -203,7 +203,7 @@ export default function MinigamesHubPage() {
                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   >
                     {/* Gradient header */}
-                    <div className={cn("flex items-center gap-3 bg-gradient-to-r p-4 text-white", game.gradient)}>
+                    <div className={cn("flex items-center gap-3 bg-paper-2 p-4 text-white", game.gradient)}>
                       <span className="text-3xl">{game.emoji}</span>
                       <div className="flex flex-1 flex-col">
                         <span className="font-extrabold leading-tight">{game.title}</span>
@@ -230,7 +230,7 @@ export default function MinigamesHubPage() {
                         <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-bold text-gray-600">
                           ⏱ {game.duration}
                         </span>
-                        <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700">
+                        <span className="rounded-full bg-paper-2 px-2 py-0.5 text-[10px] font-bold text-ink">
                           {game.topic}
                         </span>
                       </div>

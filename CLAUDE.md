@@ -247,7 +247,38 @@ Rules:
 
 ---
 
-## Landing page (rogo style)
+## Site-wide design system (rogo-inspired)
+
+As of the rebrand commit, the entire app uses a single rogo.ai-inspired aesthetic — editorial serif headlines (Newsreader 400) over Inter body, near-black/warm-paper palette, with a muted forest-green accent (`#2F7A5C`).
+
+### Token convention
+
+All shared tokens live in `src/app/globals.css` `@theme`. Use the bare names site-wide:
+
+| Token | Value | Use |
+|---|---|---|
+| `--color-ink` | `#0A0A0A` | text on light, bg of dark sections |
+| `--color-paper` | `#F5F4F0` | warm off-white page bg |
+| `--color-paper-2` | `#ECEAE3` | subtle card bg, hover state |
+| `--color-line` | `#E5E2DA` | hairline dividers and borders |
+| `--color-muted` | `#6B6B6B` | secondary text on light |
+| `--color-muted-dark` | `#A8A8A8` | secondary text on ink |
+| `--color-accent` | `#2F7A5C` | links, active states, single CTAs, success |
+| `--color-accent-soft` | `#DCEFE5` | accent backgrounds, badges |
+| `--font-serif` | Newsreader | all headlines (h1-h4) |
+| `--font-sans` | Inter | all body / UI text |
+
+Semantic legacy aliases (`--color-primary`, `--color-card`, `--color-success`, `--color-learn`, etc.) are kept as references to the new palette so older pages render coherently. Prefer the bare names for new code.
+
+### Routes
+
+- **`/landing`** — public marketing page (rogo-style hero photo, sticky-scroll Why section, pricing, etc.).
+- **`/`** — server-component redirect: authenticated → `/dashboard`, anonymous → `/landing`.
+- **`/dashboard`** — vertical icon sidebar + stat cards + activity sparkline + daily-tip panel.
+- **`/login`, `/signup`** — split-screen: white form on the left themed via Clerk's `appearance` prop, ink editorial panel on the right with JSX-rendered mock CashQuest cards.
+- **`/learn/*`, `/simulator/*`, `/minigames/*`** — inherit the new palette via shared tokens; per-page chrome restyled to ink/paper/accent.
+
+### Landing components
 
 A separate parent-facing marketing landing page lives at `/landing`. It uses an editorial serif aesthetic (Newsreader + Inter, ink/paper palette) and is intentionally independent from the kid-facing game UI at `/`.
 
@@ -255,35 +286,41 @@ A separate parent-facing marketing landing page lives at `/landing`. It uses an 
 
 ```
 src/app/
-├── layout.tsx                        # Slim root: <html><body><ClerkProvider> only
-├── (site)/                           # Route group wrapping the existing kid-facing app
-│   ├── layout.tsx                    # Nunito + flex column + global disclaimer footer
-│   ├── page.tsx                      # Existing home
-│   ├── (auth)/, (game)/, (minigames)/  # Existing routes
-└── landing/                          # New rogo-style marketing route
-    ├── layout.tsx                    # Newsreader + Inter font loaders, scoped to /landing
+├── layout.tsx                        # Root: ClerkProvider + Newsreader + Inter font loaders for the whole site
+├── globals.css                       # All shared tokens
+├── (site)/                           # Route group for the in-app experience
+│   ├── layout.tsx                    # Slim disclaimer footer
+│   ├── page.tsx                      # / → server redirect (auth() → /dashboard else /landing)
+│   ├── (auth)/                       # Split-screen login + signup
+│   ├── (game)/                       # Sidebar + dashboard + learn + simulator + guide
+│   └── (minigames)/                  # Sidebar + arcade
+└── landing/                          # Public marketing page
+    ├── layout.tsx                    # Wraps content in bg-paper text-ink
     ├── page.tsx                      # Composes the sections below
     └── _components/
         ├── _primitives/              # section, eyebrow, button, fade-up
         ├── navbar.tsx                # Client; IntersectionObserver scroll-flip + mobile sheet
-        ├── hero.tsx                  # CSS-rendered architectural composition (no real photo yet)
+        ├── hero.tsx                  # next/image hero photo + vignette overlays
         ├── logo-marquee.tsx          # Pure CSS keyframes, reduced-motion-aware
         ├── testimonials-section.tsx
-        ├── why-section.tsx
+        ├── why-section.tsx           # Sticky-scroll: left headline pinned, right column scrolls
         ├── pricing-section.tsx
         ├── stats-section.tsx
         ├── security-section.tsx
         ├── cta-section.tsx
-        └── footer.tsx
+        └── footer.tsx                # Includes "Landing page inspired by rogo.ai"
+
+src/components/
+├── auth/auth-split-screen.tsx        # 50/50 form + dark editorial panel with mock CashQuest cards
+├── shared/sidebar.tsx                # Vertical icon rail (desktop) + mobile bottom tabs
+└── ...                                # Rest unchanged structurally; restyled to new tokens
+
+public/landing/hero.jpg                # Free CC0 photo (Unsplash, photographer Nhan Hoang)
 ```
-
-### Token convention
-
-Landing-only color and font tokens are prefixed `--color-rogo-*` / `--font-rogo-*` in `src/app/globals.css` to avoid collision with the existing `--color-muted` and other shared tokens. Any new landing token MUST use the `rogo-` prefix. Tailwind utilities resolve to `bg-rogo-ink`, `text-rogo-muted`, `font-rogo-serif`, etc.
 
 ### Hero composition
 
-The hero right column is a layered CSS/SVG composition (gradient sky + radial sun glow + neoclassical column SVG + vignette) that evokes the rogo.ai institutional architecture mood without shipping any image asset. To swap to a real photo later, replace the `<ArchitectureComposition />` block inside `landing/_components/hero.tsx` — the rest of the layout is independent.
+The hero right column uses a real architectural photo at `public/landing/hero.jpg` rendered via `next/image`. To swap, replace the file (keep ≤300KB) — the surrounding layout is independent.
 
 ### Auth
 

@@ -1,61 +1,62 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Nunito", "Segoe UI", system-ui, sans-serif;
+  /* Type — rogo-style mix: serif headlines, Inter body */
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  --color-background: #F8FAFC;
-  --color-foreground: #0F172A;
-  --color-muted: #F1F5F9;
-  --color-muted-foreground: #64748B;
-  --color-border: #E2E8F0;
+  /* Core palette — black, paper, line, muted, with subtle green accent */
+  --color-ink: #0A0A0A;
+  --color-paper: #F5F4F0;
+  --color-paper-2: #ECEAE3;
+  --color-line: #E5E2DA;
+  --color-muted: #6B6B6B;
+  --color-muted-dark: #A8A8A8;
 
-  --color-primary: #16A34A;
-  --color-primary-foreground: #FFFFFF;
-  --color-secondary: #DCFCE7;
-  --color-secondary-foreground: #15803D;
-
-  --color-accent: #F59E0B;
+  --color-accent: #2F7A5C;
+  --color-accent-soft: #DCEFE5;
   --color-accent-foreground: #FFFFFF;
 
-  --color-destructive: #EF4444;
+  --color-destructive: #B23A3A;
   --color-destructive-foreground: #FFFFFF;
 
-  --color-success: #16A34A;
-  --color-success-foreground: #FFFFFF;
-
-  --color-learn: #16A34A;
-  --color-learn-light: #DCFCE7;
-  --color-simulator: #15803D;
-  --color-simulator-light: #DCFCE7;
-  --color-arcade: #F59E0B;
-  --color-arcade-light: #FEF3C7;
-
-  --color-xp: #F59E0B;
-  --color-xp-light: #FEF3C7;
-
+  /* Semantic aliases — every existing token in the app now resolves to the
+     new rogo palette so pages render coherently before per-page migration.
+     Removed at the end of the rebrand sweep. */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-border: var(--color-line);
+  --color-muted-foreground: var(--color-muted);
   --color-card: #FFFFFF;
-  --color-card-foreground: #0F172A;
+  --color-card-foreground: var(--color-ink);
 
-  --color-sidebar: #DCFCE7;
-  --color-sidebar-foreground: #14532D;
+  --color-primary: var(--color-accent);
+  --color-primary-foreground: var(--color-accent-foreground);
+  --color-secondary: var(--color-accent-soft);
+  --color-secondary-foreground: var(--color-accent);
+
+  --color-success: var(--color-accent);
+  --color-success-foreground: var(--color-accent-foreground);
+
+  --color-learn: var(--color-accent);
+  --color-learn-light: var(--color-accent-soft);
+  --color-simulator: var(--color-ink);
+  --color-simulator-light: var(--color-paper-2);
+  --color-arcade: var(--color-ink);
+  --color-arcade-light: var(--color-paper-2);
+
+  --color-xp: var(--color-accent);
+  --color-xp-light: var(--color-accent-soft);
+
+  --color-sidebar: var(--color-ink);
+  --color-sidebar-foreground: #FFFFFF;
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   --radius-full: 9999px;
-
-  /* Rogo landing page tokens (scoped via --color-rogo-* prefix to avoid global collisions) */
-  --color-rogo-ink: #0A0A0A;
-  --color-rogo-paper: #F5F4F0;
-  --color-rogo-paper-2: #ECEAE3;
-  --color-rogo-line: #E5E2DA;
-  --color-rogo-muted: #6B6B6B;
-  --color-rogo-muted-dark: #A8A8A8;
-
-  --font-rogo-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
-  --font-rogo-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
@@ -63,11 +64,21 @@
     border-color: transparent;
   }
 
+  html {
+    background-color: var(--color-paper);
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 }

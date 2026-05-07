@@ -9,10 +9,10 @@ const CHIPS = [
 
 export function LogoMarquee() {
   return (
-    <div className="relative w-full border-t border-white/10 bg-rogo-ink py-10 overflow-hidden">
+    <div className="relative w-full border-t border-white/10 bg-ink py-10 overflow-hidden">
       {/* Edge masks */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-rogo-ink to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-rogo-ink to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-paper-2 from-ink to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-paper-2 from-ink to-transparent" />
 
       <div className="rogo-marquee-track flex w-max items-center gap-10 hover:[animation-play-state:paused]">
         {[...CHIPS, ...CHIPS].map((chip, i) => (
@@ -20,7 +20,7 @@ export function LogoMarquee() {
             key={`${chip}-${i}`}
             className="flex shrink-0 items-center gap-10"
           >
-            <span className="font-rogo-sans text-[0.875rem] font-medium uppercase tracking-[0.08em] text-white/60">
+            <span className="font-sans text-[0.875rem] font-medium uppercase tracking-[0.08em] text-white/60">
               {chip}
             </span>
             <span aria-hidden className="text-white/30">

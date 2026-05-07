@@ -61,34 +61,34 @@ const topicColors: Record<
   { bg: string; light: string; text: string; headerBg: string }
 > = {
   credit: {
-    bg: "bg-indigo-500",
-    light: "bg-indigo-500/10",
-    text: "text-indigo-400",
-    headerBg: "bg-indigo-500",
+    bg: "bg-ink",
+    light: "bg-ink/10",
+    text: "text-muted",
+    headerBg: "bg-ink",
   },
   taxes: {
-    bg: "bg-amber-500",
-    light: "bg-amber-500/10",
-    text: "text-amber-400",
-    headerBg: "bg-amber-500",
+    bg: "bg-accent",
+    light: "bg-accent/10",
+    text: "text-muted",
+    headerBg: "bg-accent",
   },
   budgeting: {
-    bg: "bg-emerald-500",
-    light: "bg-emerald-500/10",
-    text: "text-emerald-400",
-    headerBg: "bg-emerald-500",
+    bg: "bg-accent",
+    light: "bg-accent/10",
+    text: "text-muted",
+    headerBg: "bg-accent",
   },
   saving: {
-    bg: "bg-cyan-500",
-    light: "bg-cyan-500/10",
-    text: "text-cyan-400",
-    headerBg: "bg-cyan-500",
+    bg: "bg-ink",
+    light: "bg-ink/10",
+    text: "text-muted",
+    headerBg: "bg-ink",
   },
   investing: {
-    bg: "bg-violet-500",
-    light: "bg-violet-500/10",
-    text: "text-violet-400",
-    headerBg: "bg-violet-500",
+    bg: "bg-ink",
+    light: "bg-ink/10",
+    text: "text-muted",
+    headerBg: "bg-ink",
   },
   insurance: {
     bg: "bg-rose-500",
@@ -150,7 +150,7 @@ function XpFloat({ amount }: { amount: number }) {
       animate={{ opacity: 0, y: -80 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
     >
-      <span className="text-3xl font-extrabold text-yellow-400">
+      <span className="text-3xl font-extrabold text-muted">
         +{amount} XP
       </span>
     </motion.div>
@@ -197,7 +197,7 @@ export default function QuizPage() {
             The quiz for &quot;{String(topicParam)}&quot; doesn&apos;t exist.
           </p>
           <Link href="/learn">
-            <Button className="mt-2 min-h-[48px] rounded-xl bg-indigo-500 font-extrabold text-white hover:bg-indigo-600">
+            <Button className="mt-2 min-h-[48px] rounded-xl bg-ink font-extrabold text-white hover:bg-ink">
               Back to Learn Path
             </Button>
           </Link>
@@ -360,7 +360,7 @@ export default function QuizPage() {
             <div className="flex-1 px-4">
               <Progress
                 value={progressPercent}
-                color="bg-emerald-500"
+                color="bg-accent"
                 height="h-3"
               />
             </div>
@@ -413,7 +413,7 @@ export default function QuizPage() {
                         state === "idle" &&
                           "border-gray-700 bg-gray-800/80 text-gray-200 hover:border-gray-500 hover:bg-gray-700/80",
                         state === "correct" &&
-                          "border-emerald-500 bg-emerald-500/15 text-emerald-400",
+                          "border-accent bg-accent/15 text-muted",
                         state === "wrong" &&
                           "border-red-500 bg-red-500/15 text-red-400",
                         state === "dimmed" &&
@@ -437,7 +437,7 @@ export default function QuizPage() {
                       <span
                         className={cn(
                           "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold",
-                          state === "correct" && "bg-emerald-500 text-white",
+                          state === "correct" && "bg-accent text-white",
                           state === "wrong" && "bg-red-500 text-white",
                           (state === "idle" || state === "dimmed") &&
                             "bg-gray-700 text-gray-400"
@@ -470,7 +470,7 @@ export default function QuizPage() {
                     className={cn(
                       "rounded-xl p-4",
                       selectedAnswer === currentQuestion.correctIndex
-                        ? "bg-emerald-500/15 border border-emerald-500/30"
+                        ? "bg-accent/15 border border-accent/30"
                         : "bg-red-500/15 border border-red-500/30"
                     )}
                   >
@@ -478,7 +478,7 @@ export default function QuizPage() {
                       className={cn(
                         "text-sm font-extrabold",
                         selectedAnswer === currentQuestion.correctIndex
-                          ? "text-emerald-400"
+                          ? "text-muted"
                           : "text-red-400"
                       )}
                     >
@@ -497,7 +497,7 @@ export default function QuizPage() {
                       className={cn(
                         "min-h-[52px] w-full rounded-xl text-base font-extrabold text-white",
                         selectedAnswer === currentQuestion.correctIndex
-                          ? "bg-emerald-500 hover:bg-emerald-600"
+                          ? "bg-accent hover:bg-accent"
                           : "bg-gray-600 hover:bg-gray-500"
                       )}
                       onClick={handleNextQuestion}
@@ -527,7 +527,7 @@ export default function QuizPage() {
                     className={cn(
                       "flex flex-col items-center gap-4 rounded-2xl border-2 p-8 shadow-lg",
                       quizResults.passed && !gameOver
-                        ? "border-emerald-500/50 bg-emerald-500/10"
+                        ? "border-accent/50 bg-accent/10"
                         : "border-red-500/50 bg-red-500/10"
                     )}
                   >
@@ -543,7 +543,7 @@ export default function QuizPage() {
                       className={cn(
                         "flex h-24 w-24 items-center justify-center rounded-full",
                         quizResults.passed && !gameOver
-                          ? "bg-emerald-500"
+                          ? "bg-accent"
                           : "bg-red-500"
                       )}
                     >
@@ -587,7 +587,7 @@ export default function QuizPage() {
                           className={cn(
                             "text-4xl font-extrabold tabular-nums",
                             quizResults.passed && !gameOver
-                              ? "text-emerald-400"
+                              ? "text-muted"
                               : "text-red-400"
                           )}
                         >
@@ -618,7 +618,7 @@ export default function QuizPage() {
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ delay: 0.5, type: "spring" }}
                         >
-                          <Zap className="h-6 w-6 text-yellow-500" />
+                          <Zap className="h-6 w-6 text-accent" />
                           <span className="text-2xl font-extrabold text-white tabular-nums">
                             +{quizResults.xpEarned}
                           </span>

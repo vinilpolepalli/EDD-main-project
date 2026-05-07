@@ -242,13 +242,13 @@ export default function ComicAdventurePage() {
                   <div className="rounded-2xl border-2 border-primary/20 bg-primary/5 p-4">
                     <p className="text-sm font-bold text-foreground">{selectedChoice.outcome}</p>
                     <div className="mt-2 flex gap-3 text-xs font-bold">
-                      <span className={selectedChoice.balanceDelta >= 0 ? "text-emerald-600" : "text-red-600"}>
+                      <span className={selectedChoice.balanceDelta >= 0 ? "text-accent" : "text-red-600"}>
                         💰 {selectedChoice.balanceDelta >= 0 ? "+" : ""}{selectedChoice.balanceDelta}
                       </span>
-                      <span className={selectedChoice.creditDelta >= 0 ? "text-emerald-600" : "text-red-600"}>
+                      <span className={selectedChoice.creditDelta >= 0 ? "text-accent" : "text-red-600"}>
                         📊 {selectedChoice.creditDelta >= 0 ? "+" : ""}{selectedChoice.creditDelta}
                       </span>
-                      <span className={selectedChoice.happinessDelta >= 0 ? "text-emerald-600" : "text-red-600"}>
+                      <span className={selectedChoice.happinessDelta >= 0 ? "text-accent" : "text-red-600"}>
                         😊 {selectedChoice.happinessDelta >= 0 ? "+" : ""}{selectedChoice.happinessDelta}
                       </span>
                     </div>
@@ -284,19 +284,19 @@ export default function ComicAdventurePage() {
 
               <div className="flex w-full justify-around rounded-2xl border-2 border-border bg-card p-4">
                 <div className="flex flex-col items-center gap-1">
-                  <span className={cn("text-xl font-extrabold", totalBalance >= 0 ? "text-emerald-600" : "text-red-600")}>
+                  <span className={cn("text-xl font-extrabold", totalBalance >= 0 ? "text-accent" : "text-red-600")}>
                     {totalBalance >= 0 ? "+" : ""}{totalBalance}
                   </span>
                   <span className="text-[10px] font-bold text-muted-foreground">Balance</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <span className={cn("text-xl font-extrabold", totalCredit >= 0 ? "text-emerald-600" : "text-red-600")}>
+                  <span className={cn("text-xl font-extrabold", totalCredit >= 0 ? "text-accent" : "text-red-600")}>
                     {totalCredit >= 0 ? "+" : ""}{totalCredit}
                   </span>
                   <span className="text-[10px] font-bold text-muted-foreground">Credit</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <span className={cn("text-xl font-extrabold", totalHappiness >= 0 ? "text-emerald-600" : "text-red-600")}>
+                  <span className={cn("text-xl font-extrabold", totalHappiness >= 0 ? "text-accent" : "text-red-600")}>
                     {totalHappiness >= 0 ? "+" : ""}{totalHappiness}
                   </span>
                   <span className="text-[10px] font-bold text-muted-foreground">Happiness</span>

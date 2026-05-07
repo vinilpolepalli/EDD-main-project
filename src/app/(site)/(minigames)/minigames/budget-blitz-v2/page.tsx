@@ -19,9 +19,9 @@ interface Bucket {
 
 const BUCKETS: Bucket[] = [
   { key: "rent", label: "Rent & Bills", emoji: "🏠", target: 40, color: "text-rose-600", bgColor: "bg-rose-50" },
-  { key: "food", label: "Food & Groceries", emoji: "🥗", target: 20, color: "text-orange-600", bgColor: "bg-orange-50" },
-  { key: "fun", label: "Fun & Entertainment", emoji: "🎉", target: 10, color: "text-purple-600", bgColor: "bg-purple-50" },
-  { key: "savings", label: "Savings", emoji: "🐷", target: 30, color: "text-emerald-600", bgColor: "bg-emerald-50" },
+  { key: "food", label: "Food & Groceries", emoji: "🥗", target: 20, color: "text-accent", bgColor: "bg-paper-2" },
+  { key: "fun", label: "Fun & Entertainment", emoji: "🎉", target: 10, color: "text-ink", bgColor: "bg-paper-2" },
+  { key: "savings", label: "Savings", emoji: "🐷", target: 30, color: "text-accent", bgColor: "bg-accent-soft" },
 ];
 
 type Allocation = Record<Bucket["key"], number>;
@@ -150,7 +150,7 @@ export default function BudgetBlitzV2Page() {
             >
               <div className="rounded-2xl border-2 border-border bg-card p-4">
                 <p className="mb-1 text-xs font-bold text-muted-foreground">Monthly Take-Home</p>
-                <p className="text-3xl font-extrabold text-emerald-600">
+                <p className="text-3xl font-extrabold text-accent">
                   ${salary.toLocaleString()}
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
@@ -176,9 +176,9 @@ export default function BudgetBlitzV2Page() {
                 const diff = alloc[bucket.key] - bucket.target;
                 const statusColor =
                   Math.abs(diff) <= 5
-                    ? "text-emerald-600"
+                    ? "text-accent"
                     : Math.abs(diff) <= 10
-                      ? "text-amber-600"
+                      ? "text-accent"
                       : "text-red-600";
 
                 return (
@@ -255,7 +255,7 @@ export default function BudgetBlitzV2Page() {
                   return (
                     <div key={bucket.key} className="flex items-center justify-between py-1.5 text-sm">
                       <span className="font-bold">{bucket.emoji} {bucket.label}</span>
-                      <span className={cn("font-extrabold", isGood ? "text-emerald-600" : "text-red-600")}>
+                      <span className={cn("font-extrabold", isGood ? "text-accent" : "text-red-600")}>
                         {alloc[bucket.key]}% {isGood ? "✓" : `(target ${bucket.target}%)`}
                       </span>
                     </div>

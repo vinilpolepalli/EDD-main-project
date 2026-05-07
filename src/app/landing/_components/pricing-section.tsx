@@ -52,7 +52,7 @@ export function PricingSection() {
     <Section variant="paper" id="pricing">
       <FadeUp>
         <h2
-          className="mx-auto max-w-[36rem] text-center font-rogo-serif font-normal text-rogo-ink"
+          className="mx-auto max-w-[36rem] text-center font-serif font-normal text-ink"
           style={{
             fontSize: "clamp(2.25rem, 5vw, 4rem)",
             letterSpacing: "-0.02em",
@@ -63,7 +63,7 @@ export function PricingSection() {
         </h2>
       </FadeUp>
       <FadeUp delay={0.05}>
-        <p className="mt-4 text-center font-rogo-sans text-[1rem] text-rogo-muted">
+        <p className="mt-4 text-center font-sans text-[1rem] text-muted">
           Start free. Upgrade when you&apos;re ready.
         </p>
       </FadeUp>
@@ -72,35 +72,35 @@ export function PricingSection() {
         {PLANS.map((plan, idx) => (
           <FadeUp key={plan.name} delay={idx * 0.05}>
             <div
-              className={`relative flex h-full flex-col rounded-2xl bg-rogo-paper-2 p-8 md:p-10 ${
-                plan.emphasized ? "border border-rogo-ink" : ""
+              className={`relative flex h-full flex-col rounded-2xl bg-paper-2 p-8 md:p-10 ${
+                plan.emphasized ? "border border-ink" : ""
               }`}
             >
               {plan.emphasized && (
-                <Eyebrow className="mb-3">Most Popular</Eyebrow>
+                <Eyebrow className="mb-3 !text-accent">Most Popular</Eyebrow>
               )}
-              <h3 className="font-rogo-serif text-[1.5rem] font-normal text-rogo-ink">
+              <h3 className="font-serif text-[1.5rem] font-normal text-ink">
                 {plan.name}
               </h3>
 
               <div className="mt-4 flex items-baseline gap-2">
                 <span
-                  className="font-rogo-serif font-normal text-rogo-ink"
+                  className="font-serif font-normal text-ink"
                   style={{ fontSize: "3.5rem", lineHeight: 1 }}
                 >
                   {plan.price}
                 </span>
-                <span className="font-rogo-sans text-[0.9375rem] text-rogo-muted">
+                <span className="font-sans text-[0.9375rem] text-muted">
                   {plan.period}
                 </span>
               </div>
               {plan.yearly && (
-                <div className="mt-1 font-rogo-sans text-[0.8125rem] text-rogo-muted">
+                <div className="mt-1 font-sans text-[0.8125rem] text-muted">
                   {plan.yearly}
                 </div>
               )}
 
-              <p className="mt-3 font-rogo-sans text-[0.9375rem] text-rogo-muted">
+              <p className="mt-3 font-sans text-[0.9375rem] text-muted">
                 {plan.tagline}
               </p>
 
@@ -108,9 +108,9 @@ export function PricingSection() {
                 {plan.features.map((feat) => (
                   <li
                     key={feat}
-                    className="flex items-start gap-3 font-rogo-sans text-[0.9375rem] text-rogo-ink"
+                    className="flex items-start gap-3 font-sans text-[0.9375rem] text-ink"
                   >
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-rogo-ink" />
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-ink" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -118,7 +118,7 @@ export function PricingSection() {
 
               <div className="mt-10 pt-2">
                 <Button
-                  href="#"
+                  href="/signup"
                   variant="primary-on-paper"
                   className="w-full"
                 >
@@ -130,7 +130,7 @@ export function PricingSection() {
         ))}
       </div>
 
-      <p className="mt-10 text-center font-rogo-sans text-[0.8125rem] text-rogo-muted">
+      <p className="mt-10 text-center font-sans text-[0.8125rem] text-muted">
         AI Tutor launches Spring 2026. Family Plus subscribers get first access
         at no extra cost.
       </p>

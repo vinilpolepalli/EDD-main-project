@@ -59,35 +59,35 @@ function getPerformanceRating(state: SimulatorState): PerformanceRating {
     return {
       title: "Financial Wizard",
       emoji: "\uD83E\uDDD9",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-300",
+      color: "text-ink",
+      bgColor: "bg-paper-2",
+      borderColor: "border-paper-2",
     };
   }
   if (netWorth > 20000) {
     return {
       title: "Wealth Builder",
       emoji: "\uD83D\uDCB0",
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50",
-      borderColor: "border-emerald-300",
+      color: "text-accent",
+      bgColor: "bg-accent-soft",
+      borderColor: "border-accent-soft",
     };
   }
   if (netWorth > state.startingBalance) {
     return {
       title: "Money Smart",
       emoji: "\uD83E\uDDE0",
-      color: "text-green-600",
-      bgColor: "bg-green-50",
-      borderColor: "border-green-300",
+      color: "text-accent",
+      bgColor: "bg-accent-soft",
+      borderColor: "border-accent-soft",
     };
   }
   return {
     title: "Getting There",
     emoji: "\uD83D\uDCC8",
-    color: "text-yellow-600",
-    bgColor: "bg-yellow-50",
-    borderColor: "border-yellow-300",
+    color: "text-accent",
+    bgColor: "bg-paper-2",
+    borderColor: "border-paper-2",
   };
 }
 
@@ -461,7 +461,7 @@ export default function SimulatorSummaryPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Badge className="bg-white/80 text-sm font-extrabold text-purple-700">
+            <Badge className="bg-white/80 text-sm font-extrabold text-ink">
               +{xpAwarded} XP Earned
             </Badge>
             <span className="text-xs font-bold text-muted-foreground">
@@ -475,8 +475,8 @@ export default function SimulatorSummaryPage() {
           <motion.div
             className={`w-full max-w-md rounded-2xl border-2 p-5 ${
               goalComplete
-                ? "border-emerald-400 bg-emerald-50"
-                : "border-purple-200 bg-purple-50"
+                ? "border-accent bg-accent-soft"
+                : "border-paper-2 bg-paper-2"
             }`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -485,23 +485,23 @@ export default function SimulatorSummaryPage() {
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-2 text-sm font-extrabold">
                 <Target
-                  className={`h-5 w-5 ${goalComplete ? "text-emerald-500" : "text-purple-500"}`}
+                  className={`h-5 w-5 ${goalComplete ? "text-accent" : "text-ink"}`}
                 />
                 {goal.label}
               </span>
               {goalComplete ? (
-                <Badge className="bg-emerald-500 text-white">
+                <Badge className="bg-accent text-white">
                   {"\uD83C\uDF89"} ACHIEVED!
                 </Badge>
               ) : (
-                <span className="text-sm font-extrabold tabular-nums text-purple-600">
+                <span className="text-sm font-extrabold tabular-nums text-ink">
                   {goalProgress}%
                 </span>
               )}
             </div>
             <Progress
               value={goalProgress}
-              className={`mt-2 h-3 ${goalComplete ? "[&>div]:bg-emerald-500" : "[&>div]:bg-purple-500"}`}
+              className={`mt-2 h-3 ${goalComplete ? "[&>div]:bg-accent" : "[&>div]:bg-ink"}`}
             />
           </motion.div>
         )}
@@ -518,12 +518,12 @@ export default function SimulatorSummaryPage() {
               <CardContent className="flex flex-col gap-2 p-5">
                 <div className="flex items-center justify-between">
                   <h3 className="flex items-center gap-2 text-sm font-extrabold text-foreground">
-                    <TrendingUp className="h-4 w-4 text-blue-500" />
+                    <TrendingUp className="h-4 w-4 text-ink" />
                     Net Worth Over Time
                   </h3>
                   <span
                     className={`text-sm font-extrabold tabular-nums ${
-                      netWorth >= 0 ? "text-emerald-600" : "text-red-600"
+                      netWorth >= 0 ? "text-accent" : "text-red-600"
                     }`}
                   >
                     {formatMoney(netWorth)}
@@ -543,37 +543,37 @@ export default function SimulatorSummaryPage() {
           transition={{ delay: 0.5 }}
         >
           <SummaryStat
-            icon={<Calendar className="h-5 w-5 text-purple-500" />}
+            icon={<Calendar className="h-5 w-5 text-ink" />}
             label="Months Survived"
             value={`${monthsSurvived}`}
             delay={0.5}
           />
           <SummaryStat
-            icon={<DollarSign className="h-5 w-5 text-emerald-500" />}
+            icon={<DollarSign className="h-5 w-5 text-accent" />}
             label="Final Balance"
             value={formatMoney(state.balance)}
             delay={0.55}
           />
           <SummaryStat
-            icon={<CreditCard className="h-5 w-5 text-blue-500" />}
+            icon={<CreditCard className="h-5 w-5 text-ink" />}
             label="Credit Score"
             value={`${state.creditScore}`}
             delay={0.6}
           />
           <SummaryStat
-            icon={<Smile className="h-5 w-5 text-yellow-500" />}
+            icon={<Smile className="h-5 w-5 text-accent" />}
             label="Happiness"
             value={`${state.happiness}%`}
             delay={0.65}
           />
           <SummaryStat
-            icon={<ShieldAlert className="h-5 w-5 text-teal-500" />}
+            icon={<ShieldAlert className="h-5 w-5 text-accent" />}
             label="Emergency Fund"
             value={formatMoney(state.emergencyFund)}
             delay={0.7}
           />
           <SummaryStat
-            icon={<TrendingUp className="h-5 w-5 text-blue-500" />}
+            icon={<TrendingUp className="h-5 w-5 text-ink" />}
             label="Investments"
             value={formatMoney(state.investments)}
             delay={0.75}
@@ -588,9 +588,9 @@ export default function SimulatorSummaryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            <Card className="border-2 border-purple-200">
+            <Card className="border-2 border-paper-2">
               <CardContent className="flex flex-col gap-3 p-5">
-                <h3 className="flex items-center gap-2 text-sm font-extrabold text-purple-700">
+                <h3 className="flex items-center gap-2 text-sm font-extrabold text-ink">
                   <Zap className="h-4 w-4" />
                   Key Decisions Made
                 </h3>
@@ -599,10 +599,10 @@ export default function SimulatorSummaryPage() {
                     key={i}
                     className={`flex items-start gap-2.5 rounded-xl border px-3 py-2 ${
                       entry.positivity === "positive"
-                        ? "border-emerald-200 bg-emerald-50"
+                        ? "border-accent-soft bg-accent-soft"
                         : entry.positivity === "negative"
                           ? "border-red-200 bg-red-50"
-                          : "border-blue-200 bg-blue-50"
+                          : "border-paper-2 bg-paper-2"
                     }`}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -626,22 +626,22 @@ export default function SimulatorSummaryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          <Card className="border-2 border-purple-200">
+          <Card className="border-2 border-paper-2">
             <CardContent className="flex flex-col gap-3 p-5">
-              <h3 className="flex items-center gap-2 text-base font-extrabold text-purple-700">
+              <h3 className="flex items-center gap-2 text-base font-extrabold text-ink">
                 <Target className="h-5 w-5" />
                 Financial Tips
               </h3>
               {tips.map((tip, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-start gap-3 rounded-xl bg-purple-50 p-3"
+                  className="flex items-start gap-3 rounded-xl bg-paper-2 p-3"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1.05 + i * 0.1 }}
                 >
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-purple-200">
-                    <Star className="h-3 w-3 text-purple-600" />
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-paper-2">
+                    <Star className="h-3 w-3 text-ink" />
                   </div>
                   <p className="text-sm font-semibold leading-relaxed text-foreground">
                     {tip}
@@ -661,7 +661,7 @@ export default function SimulatorSummaryPage() {
         >
           <Button
             size="lg"
-            className="flex-1 bg-gradient-to-r from-purple-600 to-violet-600 text-white hover:from-purple-700 hover:to-violet-700"
+            className="flex-1 bg-paper-2 from-ink to-ink text-white hover:from-ink hover:to-ink"
             onClick={() => router.push("/simulator/setup")}
           >
             <RotateCcw className="h-5 w-5" />
@@ -670,7 +670,7 @@ export default function SimulatorSummaryPage() {
           <Button
             variant="outline"
             size="lg"
-            className="flex-1 border-purple-300 text-purple-700 hover:bg-purple-50"
+            className="flex-1 border-paper-2 text-ink hover:bg-paper-2"
             onClick={() => router.push("/dashboard")}
           >
             <Home className="h-5 w-5" />

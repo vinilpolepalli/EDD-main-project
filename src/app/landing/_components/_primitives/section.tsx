@@ -11,8 +11,8 @@ interface SectionProps {
 }
 
 const bgByVariant: Record<Variant, string> = {
-  ink: "bg-rogo-ink text-white",
-  paper: "bg-rogo-paper text-rogo-ink",
+  ink: "bg-ink text-white",
+  paper: "bg-paper text-ink",
 };
 
 export function Section({

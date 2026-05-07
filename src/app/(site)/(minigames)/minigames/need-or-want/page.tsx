@@ -150,7 +150,7 @@ export default function NeedOrWantPage() {
                   className={cn(
                     "flex w-full flex-col items-center gap-4 rounded-3xl border-4 p-8 shadow-lg transition-colors",
                     feedback === "correct"
-                      ? "border-emerald-400 bg-emerald-50"
+                      ? "border-accent bg-accent-soft"
                       : feedback === "wrong"
                         ? "border-red-400 bg-red-50"
                         : "border-border bg-card"
@@ -173,7 +173,7 @@ export default function NeedOrWantPage() {
               {/* Buttons */}
               <div className="flex w-full gap-4">
                 <Button
-                  className="flex-1 min-h-[64px] rounded-2xl bg-emerald-500 text-lg font-extrabold text-white hover:bg-emerald-600"
+                  className="flex-1 min-h-[64px] rounded-2xl bg-accent text-lg font-extrabold text-white hover:bg-accent"
                   onClick={() => handleAnswer(true)}
                 >
                   ✅ NEED
@@ -214,7 +214,7 @@ export default function NeedOrWantPage() {
               <div className="w-full rounded-2xl border-2 border-border bg-card p-5">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <p className="text-xl font-extrabold text-emerald-600">
+                    <p className="text-xl font-extrabold text-accent">
                       {correct}
                     </p>
                     <p className="text-xs font-bold text-muted-foreground">
@@ -230,7 +230,7 @@ export default function NeedOrWantPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-xl font-extrabold text-amber-600">
+                    <p className="text-xl font-extrabold text-accent">
                       x{maxCombo - 1}
                     </p>
                     <p className="text-xs font-bold text-muted-foreground">
