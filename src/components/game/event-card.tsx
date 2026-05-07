@@ -20,9 +20,9 @@ const categoryStyles: Record<
   { border: string; bg: string; icon: React.ReactNode; label: string }
 > = {
   positive: {
-    border: "border-emerald-400",
-    bg: "bg-emerald-50",
-    icon: <TrendingUp className="h-5 w-5 text-emerald-500" />,
+    border: "border-accent",
+    bg: "bg-accent-soft",
+    icon: <TrendingUp className="h-5 w-5 text-accent" />,
     label: "Good News!",
   },
   negative: {
@@ -32,9 +32,9 @@ const categoryStyles: Record<
     label: "Uh oh!",
   },
   neutral: {
-    border: "border-blue-300",
-    bg: "bg-blue-50",
-    icon: <Minus className="h-5 w-5 text-blue-500" />,
+    border: "border-paper-2",
+    bg: "bg-paper-2",
+    icon: <Minus className="h-5 w-5 text-ink" />,
     label: "Life happens!",
   },
 };
@@ -79,7 +79,7 @@ const EffectRow: React.FC<{
       <span
         className={cn(
           "font-extrabold tabular-nums",
-          isPositive ? "text-emerald-600" : "text-destructive"
+          isPositive ? "text-accent" : "text-destructive"
         )}
       >
         {display}
@@ -115,7 +115,7 @@ function ChoiceEffectPreview({ choice }: { choice: EventChoice }) {
             key={eff.label}
             className={cn(
               "rounded px-1.5 py-0.5 text-[10px] font-bold",
-              isPos ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"
+              isPos ? "bg-accent-soft text-accent" : "bg-red-100 text-red-700"
             )}
           >
             {eff.label}: {display}
@@ -207,7 +207,7 @@ const EventCard: React.FC<EventCardProps> = ({
             >
               <Button
                 variant="outline"
-                className="h-auto w-full flex-col items-start gap-1 rounded-xl border-2 p-4 text-left hover:border-purple-400 hover:bg-purple-50"
+                className="h-auto w-full flex-col items-start gap-1 rounded-xl border-2 p-4 text-left hover:border-paper-2 hover:bg-paper-2"
                 onClick={() => onChoiceSelect(choice.id)}
               >
                 <div className="flex w-full items-center justify-between">

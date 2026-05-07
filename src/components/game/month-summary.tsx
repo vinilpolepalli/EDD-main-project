@@ -80,7 +80,7 @@ const SummaryRow: React.FC<SummaryRowProps> = ({
             className={cn(
               "rounded-md px-1.5 py-0.5 text-xs font-extrabold tabular-nums",
               isPositive
-                ? "bg-emerald-50 text-emerald-600"
+                ? "bg-accent-soft text-accent"
                 : "bg-red-50 text-destructive"
             )}
           >
@@ -121,7 +121,7 @@ const DetailRow: React.FC<DetailRowProps> = ({
       className={cn(
         "font-extrabold tabular-nums",
         isPositive === true
-          ? "text-emerald-600"
+          ? "text-accent"
           : isPositive === false
             ? "text-destructive"
             : "text-foreground"
@@ -159,7 +159,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
       {/* Main stat changes */}
       <div className="flex flex-col gap-2">
         <SummaryRow
-          icon={<DollarSign className="h-4 w-4 text-emerald-500" />}
+          icon={<DollarSign className="h-4 w-4 text-accent" />}
           label="Balance"
           before={result.balanceBefore}
           after={result.balanceAfter}
@@ -167,7 +167,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
           delay={0.1}
         />
         <SummaryRow
-          icon={<CreditCard className="h-4 w-4 text-purple-500" />}
+          icon={<CreditCard className="h-4 w-4 text-ink" />}
           label="Credit Score"
           before={result.creditScoreBefore}
           after={result.creditScoreAfter}
@@ -175,7 +175,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
           delay={0.2}
         />
         <SummaryRow
-          icon={<Smile className="h-4 w-4 text-yellow-500" />}
+          icon={<Smile className="h-4 w-4 text-accent" />}
           label="Happiness"
           before={result.happinessBefore}
           after={result.happinessAfter}
@@ -211,7 +211,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
         {/* Emergency fund used */}
         {result.emergencyFundUsed > 0 && (
           <DetailRow
-            icon={<ShieldAlert className="h-4 w-4 text-teal-500" />}
+            icon={<ShieldAlert className="h-4 w-4 text-accent" />}
             label="Emergency Fund Used"
             value={`$${result.emergencyFundUsed.toLocaleString()}`}
             isPositive={true}
@@ -222,7 +222,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
         {/* Savings interest */}
         {result.interestEarned > 0 && (
           <DetailRow
-            icon={<PiggyBank className="h-4 w-4 text-emerald-500" />}
+            icon={<PiggyBank className="h-4 w-4 text-accent" />}
             label="Savings Interest"
             value={`+$${result.interestEarned.toLocaleString()}`}
             isPositive={true}
@@ -233,7 +233,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
         {/* Investment return */}
         {result.investmentReturn !== 0 && (
           <DetailRow
-            icon={<TrendingUp className="h-4 w-4 text-blue-500" />}
+            icon={<TrendingUp className="h-4 w-4 text-ink" />}
             label="Investment Return"
             value={`${result.investmentReturn > 0 ? "+" : ""}$${result.investmentReturn.toLocaleString()}`}
             isPositive={result.investmentReturn > 0}
@@ -250,7 +250,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
         >
           <span className="flex items-center gap-1.5 font-extrabold text-foreground">
             {netWorthChange >= 0 ? (
-              <ArrowUpRight className="h-4 w-4 text-emerald-500" />
+              <ArrowUpRight className="h-4 w-4 text-accent" />
             ) : (
               <ArrowDownRight className="h-4 w-4 text-red-500" />
             )}
@@ -259,7 +259,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
           <span
             className={cn(
               "font-extrabold tabular-nums",
-              netWorthChange >= 0 ? "text-emerald-600" : "text-destructive"
+              netWorthChange >= 0 ? "text-accent" : "text-destructive"
             )}
           >
             ${Math.round(result.netWorth).toLocaleString()}
@@ -273,7 +273,7 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
           className={cn(
             "rounded-xl border p-3 text-sm",
             result.event.category === "positive"
-              ? "border-emerald-300 bg-emerald-50"
+              ? "border-accent-soft bg-accent-soft"
               : result.event.category === "negative"
                 ? "border-destructive bg-red-50"
                 : "border-border bg-secondary"
@@ -290,20 +290,20 @@ const MonthSummary: React.FC<MonthSummaryProps> = ({
       {/* Choice explanation */}
       {result.choiceExplanation && (
         <motion.div
-          className="rounded-xl border border-blue-200 bg-blue-50 p-3 text-sm"
+          className="rounded-xl border border-paper-2 bg-paper-2 p-3 text-sm"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.65 }}
         >
-          <span className="font-extrabold text-blue-700">Lesson learned: </span>
-          <span className="text-blue-800">{result.choiceExplanation}</span>
+          <span className="font-extrabold text-ink">Lesson learned: </span>
+          <span className="text-ink">{result.choiceExplanation}</span>
         </motion.div>
       )}
 
       {/* Debt spiral warning */}
       {result.debtSpiral && (
         <motion.div
-          className="flex items-center gap-2 rounded-xl bg-orange-50 p-3 text-sm font-bold text-orange-700"
+          className="flex items-center gap-2 rounded-xl bg-paper-2 p-3 text-sm font-bold text-accent"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}

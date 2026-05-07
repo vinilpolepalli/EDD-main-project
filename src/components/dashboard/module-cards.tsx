@@ -28,8 +28,8 @@ const modules: ModuleCardData[] = [
     href: "/learn",
     buttonLabel: "Continue Learning",
     icon: <BookOpen className="h-8 w-8" />,
-    gradientFrom: "from-emerald-500",
-    gradientTo: "to-emerald-600",
+    gradientFrom: "from-accent",
+    gradientTo: "to-accent",
     badges: ["Credit", "Taxes", "Budgeting"],
   },
   {
@@ -40,8 +40,8 @@ const modules: ModuleCardData[] = [
     href: "/simulator",
     buttonLabel: "Play Now",
     icon: <BarChart2 className="h-8 w-8" />,
-    gradientFrom: "from-green-600",
-    gradientTo: "to-green-700",
+    gradientFrom: "from-accent",
+    gradientTo: "to-accent",
   },
   {
     id: "minigames",
@@ -51,8 +51,8 @@ const modules: ModuleCardData[] = [
     href: "/minigames",
     buttonLabel: "Play Now",
     icon: <Gamepad2 className="h-8 w-8" />,
-    gradientFrom: "from-amber-500",
-    gradientTo: "to-orange-500",
+    gradientFrom: "from-accent",
+    gradientTo: "to-accent",
     badges: ["Credit", "Taxes", "Budgeting", "Investing"],
   },
 ];
@@ -88,7 +88,7 @@ const ModuleCards: React.FC<ModuleCardsProps> = ({
             <Link href={mod.href} className="block h-full">
               <motion.div
                 className={cn(
-                  "group relative flex h-full flex-col overflow-hidden rounded-2xl bg-gradient-to-br p-6 text-white shadow-lg transition-shadow hover:shadow-xl",
+                  "group relative flex h-full flex-col overflow-hidden rounded-2xl bg-paper-2 p-6 text-white shadow-lg transition-shadow hover:shadow-xl",
                   mod.gradientFrom,
                   mod.gradientTo
                 )}

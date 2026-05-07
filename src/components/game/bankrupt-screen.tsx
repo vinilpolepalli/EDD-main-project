@@ -48,10 +48,10 @@ const phaseConfig: Record<
   warning: {
     title: "FINANCIAL WARNING",
     icon: <ShieldAlert className="h-10 w-10 text-white" />,
-    iconBg: "bg-orange-500",
-    borderColor: "border-orange-400",
+    iconBg: "bg-accent",
+    borderColor: "border-paper-2",
     bgColor: "bg-orange-950",
-    textColor: "text-orange-400",
+    textColor: "text-muted",
     description:
       "Your balance is dangerously low! You're one bad event away from a debt spiral. Consider building an emergency fund to protect yourself.",
     tip: "Emergency funds should cover 3-6 months of expenses. Even $500 saved can prevent a financial crisis!",
@@ -230,7 +230,7 @@ const BankruptScreen: React.FC<BankruptScreenProps> = ({
             className={cn(
               "flex-1",
               phase === "warning"
-                ? "bg-orange-600 hover:bg-orange-700"
+                ? "bg-accent hover:bg-accent"
                 : "bg-red-600 hover:bg-red-700"
             )}
             onClick={onContinue}

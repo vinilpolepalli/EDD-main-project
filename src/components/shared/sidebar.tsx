@@ -3,229 +3,134 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import {
   Home,
   BookOpen,
   BarChart2,
-  Flame,
-  Coins,
   Gamepad2,
-  LogOut,
   HelpCircle,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useGameState } from "@/hooks/use-game-state";
-import { getLevel, getXpForCurrentLevel } from "@/components/dashboard/xp-bar";
 import { useUser, useClerk } from "@clerk/nextjs";
-
-function getInitials(name: string): string {
-  return name
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase() ?? "")
-    .join("");
-}
 
 interface SidebarLink {
   href: string;
   label: string;
-  icon: React.ReactNode;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 const sidebarLinks: SidebarLink[] = [
-  {
-    href: "/dashboard",
-    label: "Dashboard",
-    icon: <Home className="h-5 w-5" />,
-  },
-  {
-    href: "/learn",
-    label: "Learn",
-    icon: <BookOpen className="h-5 w-5" />,
-  },
-  {
-    href: "/simulator",
-    label: "Life Simulator",
-    icon: <BarChart2 className="h-5 w-5" />,
-  },
-  {
-    href: "/minigames",
-    label: "Mini-Games",
-    icon: <Gamepad2 className="h-5 w-5" />,
-  },
-  {
-    href: "/guide",
-    label: "How to Play",
-    icon: <HelpCircle className="h-5 w-5" />,
-  },
+  { href: "/dashboard", label: "Dashboard", icon: Home },
+  { href: "/learn", label: "Learn", icon: BookOpen },
+  { href: "/simulator", label: "Simulator", icon: BarChart2 },
+  { href: "/minigames", label: "Mini-games", icon: Gamepad2 },
+  { href: "/guide", label: "Guide", icon: HelpCircle },
 ];
 
 const Sidebar: React.FC = () => {
   const pathname = usePathname();
-  const { progress, isLoaded } = useGameState();
   const { user } = useUser();
   const { signOut } = useClerk();
-
-  const displayName = user?.firstName ?? user?.emailAddresses?.[0]?.emailAddress?.split("@")[0] ?? null;
-  const isGuest = !user;
 
   const isActive = (href: string) => {
     if (href === "/dashboard") return pathname === "/dashboard";
     return pathname.startsWith(href);
   };
 
-  const level = isLoaded ? getLevel(progress.totalXp) : 0;
-  const { current, required } = isLoaded
-    ? getXpForCurrentLevel(progress.totalXp)
-    : { current: 0, required: 100 };
-  const xpPercent = Math.min((current / required) * 100, 100);
-
   return (
     <>
-      {/* Desktop Sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col bg-sidebar lg:flex">
-        <div className="flex h-full flex-col">
-          {/* Logo */}
-          <div className="flex items-center gap-3 px-6 py-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-md shadow-primary/30">
-              <Coins className="h-5 w-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-extrabold text-green-900">
-                CashQuest
-              </span>
-              <span className="text-xs font-medium text-green-600">
-                Finance for the Future
-              </span>
-            </div>
-          </div>
+      {/* Desktop — vertical icon rail */}
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-16 flex-col bg-ink lg:flex">
+        <div className="flex h-full flex-col items-center py-5">
+          {/* Wordmark / brand initial */}
+          <Link
+            href="/landing"
+            aria-label="CashQuest home"
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-white font-serif text-[1.125rem] text-ink"
+          >
+            c
+          </Link>
 
-          {/* Divider */}
-          <div className="mx-4 border-t border-green-200" />
-
-          {/* Navigation Links */}
-          <nav className="mt-4 flex flex-1 flex-col gap-1 px-3" aria-label="Main navigation">
+          <nav
+            aria-label="Main navigation"
+            className="mt-10 flex flex-1 flex-col gap-2"
+          >
             {sidebarLinks.map((link) => {
+              const Icon = link.icon;
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={cn(
-                    "relative flex min-h-[44px] items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200",
-                    active
-                      ? "bg-primary text-white shadow-lg shadow-primary/25"
-                      : "text-green-700 hover:bg-green-200 hover:text-green-900"
-                  )}
+                  aria-label={link.label}
                   aria-current={active ? "page" : undefined}
+                  title={link.label}
+                  className={cn(
+                    "relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
+                    active
+                      ? "bg-white text-ink"
+                      : "text-white/60 hover:bg-white/10 hover:text-white",
+                  )}
                 >
-                  {link.icon}
-                  {link.label}
+                  <Icon className="h-[18px] w-[18px]" />
+                  {active && (
+                    <span
+                      aria-hidden
+                      className="absolute -left-1 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-r-full bg-accent"
+                    />
+                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* User Profile */}
-          {displayName && (
-            <div className="mx-3 mb-2 flex items-center gap-3 rounded-xl bg-green-100 px-4 py-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white shadow-sm overflow-hidden">
-                {user?.imageUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={user.imageUrl} alt={displayName} className="h-full w-full object-cover" />
-                ) : (
-                  getInitials(displayName)
-                )}
+          {/* Sign out + avatar */}
+          <div className="flex flex-col items-center gap-3">
+            {user && (
+              <button
+                type="button"
+                aria-label="Sign out"
+                onClick={() => signOut({ redirectUrl: "/landing" })}
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-white/60 hover:bg-white/10 hover:text-white"
+              >
+                <LogOut className="h-[18px] w-[18px]" />
+              </button>
+            )}
+            {user?.imageUrl && (
+              <div className="h-9 w-9 overflow-hidden rounded-full ring-2 ring-white/10">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={user.imageUrl}
+                  alt={user.firstName ?? "Profile"}
+                  className="h-full w-full object-cover"
+                />
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-bold text-green-900">
-                  {displayName}
-                </p>
-                <p className="text-xs text-green-600">
-                  {isGuest ? "Guest" : `Level ${isLoaded ? getLevel(progress.totalXp) : 1}`}
-                </p>
-              </div>
-              {!isGuest && (
-                <button
-                  type="button"
-                  aria-label="Sign out"
-                  onClick={() => signOut({ redirectUrl: "/" })}
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-green-500 transition-colors hover:bg-green-200 hover:text-green-800"
-                >
-                  <LogOut className="h-4 w-4" />
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Bottom Section: XP + Streak */}
-          {isLoaded && (
-            <div className="mx-3 mb-4 flex flex-col gap-3">
-              {/* Streak Badge */}
-              <div className="flex items-center gap-3 rounded-xl bg-green-100 px-4 py-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-100">
-                  <Flame className="h-4 w-4 text-orange-500" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold tabular-nums text-green-900">
-                    {progress.currentStreak} day streak
-                  </span>
-                  <span className="text-xs text-green-600">
-                    {progress.currentStreak === 0
-                      ? "Start today!"
-                      : "Keep it going!"}
-                  </span>
-                </div>
-              </div>
-
-              {/* XP Progress */}
-              <div className="rounded-xl bg-green-100 px-4 py-3">
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-green-700">
-                    Level {level}
-                  </span>
-                  <span className="text-xs font-semibold tabular-nums text-green-700">
-                    {current} / {required} XP
-                  </span>
-                </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-green-200">
-                  <motion.div
-                    className="h-full rounded-full bg-primary"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${xpPercent}%` }}
-                    transition={{ type: "spring", stiffness: 80, damping: 18 }}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </aside>
 
-      {/* Mobile Bottom Tab Bar */}
+      {/* Mobile bottom tab bar */}
       <nav
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.06)] lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper lg:hidden"
         aria-label="Mobile navigation"
       >
-        <div className="flex items-center justify-around px-2 py-1">
+        <div className="flex items-center justify-around px-2 py-2">
           {sidebarLinks.map((link) => {
+            const Icon = link.icon;
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "flex min-h-[44px] min-w-[64px] flex-col items-center justify-center gap-0.5 rounded-xl px-3 py-2 text-xs font-semibold transition-colors",
-                  active
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
                 aria-current={active ? "page" : undefined}
+                className={cn(
+                  "flex min-h-[44px] min-w-[56px] flex-col items-center justify-center gap-0.5 rounded-lg px-2 py-1.5 font-sans text-[0.6875rem] font-medium transition-colors",
+                  active ? "text-ink" : "text-muted hover:text-ink",
+                )}
               >
-                <span className={cn(active && "text-primary")}>
-                  {link.icon}
-                </span>
+                <Icon className="h-[18px] w-[18px]" />
                 <span>{link.label}</span>
               </Link>
             );
